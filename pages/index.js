@@ -22,20 +22,20 @@ const Home = () => {
   // Testing out the apollo connection 
   return (
     <div>
-       <table>
+      <table>
         <tr>
           <th>ID</th>
           <th>isbn</th>
           <th>title</th>
         </tr>
         <tr>
-        <td>{data.book.id}</td>
-            <td>{data.book.isbn}</td>
-            
-            <td>{data.book.title}</td>
-            </tr>
-       
-      </table> 
+          <td>{data.book.id}</td>
+          <td>{data.book.isbn}</td>
+
+          <td>{data.book.title}</td>
+        </tr>
+
+      </table>
     </div>
   );
 };
