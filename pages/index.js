@@ -8,7 +8,7 @@ const Home = () => {
   // Create a query hook
   // console.log(localStorage)
   const { data, loading, error } = useQuery(USER_QUERY);
-
+  console.log(data)
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -22,21 +22,20 @@ const Home = () => {
   // Testing out the apollo connection 
   return (
     <div>
-      <table>
+       <table>
         <tr>
           <th>ID</th>
-          <th>username</th>
-          <th>email</th>
+          <th>isbn</th>
+          <th>title</th>
         </tr>
-        {data.getAllUsers.map(user => {
-          return <tr key={`user__${user.id}`}>
-            <td>{user._id}</td>
-            <td>{user.username}</td>
-            <td>{user.email}</td>
+        <tr>
+        <td>{data.book.id}</td>
+            <td>{data.book.isbn}</td>
             
-            </tr>;
-        })}
-      </table>
+            <td>{data.book.title}</td>
+            </tr>
+       
+      </table> 
     </div>
   );
 };

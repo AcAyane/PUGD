@@ -1,12 +1,11 @@
 import gql from 'graphql-tag';
 
 const USER_QUERY = gql`
-query{
-  getAllUsers{
-    _id
-    username
-    password
-    email
+query {
+  book(id: "5e52e33077cd942d42c417cb"){
+   id
+    isbn
+    title
   }
 }
 `;

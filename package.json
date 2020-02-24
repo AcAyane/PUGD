@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.2",
-    "apollo-boost": "^0.4.7", 
+    "apollo-boost": "^0.4.7",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
@@ -19,6 +19,5 @@
     "react": "16.10.2",
     "react-dom": "16.10.2"
   },
-  "devDependencies": { 
-  }
+  "devDependencies": {}
 }
