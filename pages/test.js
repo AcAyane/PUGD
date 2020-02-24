@@ -15,9 +15,6 @@ export default class test extends React.Component {
             <div>
                 {/* the below comment can be added to Link to hide the url while accessing to a certain page (like after login) */}
                 {/* as={"/baaaaaaka".toString()} */}
-                <Link href="./" >
-                    <button>Go to index</button>
-                </Link>
                 <Query query={BOOKS_QUERY}>
                     {({ loading, error, data }) => {
                         if (loading) return 'Loading...';
@@ -25,17 +22,20 @@ export default class test extends React.Component {
                         console.log("hey");
                         return (
                             <div>
-                                <Head>
-                                    <title>Home</title>
-                                    <link rel="icon" href="/favicon.ico" />
-                                    <link href="/public/static/skeleton.css" rel="stylesheet" />
+                                <table>
+                                    <tr>
+                                        <th>Ihahah</th>
+                                        <th>isbn</th>
+                                        <th>title</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{data.book.id}</td>
+                                        <td>{data.book.isbn}</td>
 
-                                </Head>
-                                <ul>
-                                    {data.jobs.map(job => {
-                                        return <li key={`job__${job.id}`}>{job.title}</li>;
-                                    })}
-                                </ul>
+                                        <td>{data.book.title}</td>
+                                    </tr>
+
+                                </table>
                             </div>
                         );
                     }}

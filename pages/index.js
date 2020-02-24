@@ -2,12 +2,12 @@ import React from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 // import JOBS_QUERY from '../graphql/jobs.query';
-import USER_QUERY from '../queries/user.query';
+import BOOKS_QUERY from '../queries/books.query';
 
 const Home = () => {
   // Create a query hook
   // console.log(localStorage)
-  const { data, loading, error } = useQuery(USER_QUERY);
+  const { data, loading, error } = useQuery(BOOKS_QUERY);
   console.log(data)
   if (loading) {
     return <p>Loading...</p>;

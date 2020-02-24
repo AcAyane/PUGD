@@ -2,7 +2,7 @@ import React from 'react';
 import App from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-// import test from './test';
+import Header from '../components/Header'
 import withData from '../util/apollo-client';
 
 class MyApp extends App {
@@ -12,7 +12,6 @@ class MyApp extends App {
         if (router.pathname.startsWith('/front-office/')) {
             return (
                 <ApolloProvider client={apollo}>
-                    {/* <Header /> */}
                     <Component {...pageProps} />
                 </ApolloProvider>
             )
@@ -20,6 +19,7 @@ class MyApp extends App {
 
         return (
             <ApolloProvider client={apollo}>
+                <Header />
                 <Component {...pageProps} />
             </ApolloProvider>
         )
