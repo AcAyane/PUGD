@@ -24,10 +24,7 @@ class Book extends Component{
             <button className="btn btn-info">Modify</button>
             <Mutation mutation={DELETE_BOOK_MUTATION}>
             {(deleteBook, { data }) => (
-                
-            
                 <button className="btn btn-danger" onClick={()=>doDeleteBook(deleteBook,this.props.id,this.props.refetch)}>Delete</button>
-     
                 )}
             </Mutation>
             

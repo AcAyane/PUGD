@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const BOOK_QUERY = gql`
+const BOOKS_QUERY = gql`
 query{
   books{
     _id
@@ -10,5 +10,19 @@ query{
   
   
 `;
+const BOOK_QUERY = gql`
+query($id : String!){
+  book(id:$id )
+  {
+    isbn
+    title
+  }
+  }
+`;
 
-export default BOOK_QUERY;
+module.exports = {
+  BOOKS_QUERY,
+  BOOK_QUERY,
+
+}
+// export default BOOK_QUERY;

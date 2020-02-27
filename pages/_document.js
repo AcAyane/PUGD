@@ -9,9 +9,13 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head> 
-            <link rel="stylesheet" href="/css/bootstrap.css"/>
-
+        <Head>  
+       
+        <link rel="stylesheet" href="/css/materialize.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="/css/style.min.css" /> 
+          
+          
         </Head>
         <body> 
           <Main />
