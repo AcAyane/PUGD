@@ -1,4 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,500,600);
+
+.sidenav li a span.drop-icon {
+    transition: transform .3s ease-in-out,opacity .25s ease-in-out .1s,-webkit-transform .3s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg)
+
+}
+.sidenav li.open a span.drop-icon {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+
 #main, #main.main-full {
     padding-left: 0
 }
@@ -929,6 +944,13 @@ ul.list-type-bullet {
 }
 
 a {
+    text-decoration: none !important
+}
+
+a:hover{
+    text-decoration: none !important
+}
+a:active{
     text-decoration: none !important
 }
 
