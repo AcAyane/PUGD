@@ -2,13 +2,13 @@ import React from 'react';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 // import JOBS_QUERY from '../graphql/jobs.query';
-import BOOKS_QUERY from '../queries/books.query';
+import { BOOKS_QUERY } from '../queries/books.query';
 
 const Home = () => {
   // Create a query hook
   // console.log(localStorage)
   const { data, loading, error } = useQuery(BOOKS_QUERY);
-  console.log(data)
+  console.log(data);
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -17,9 +17,8 @@ const Home = () => {
     return <p>Error: {JSON.stringify(error)}</p>;
   }
 
-
   // console.log(data)
-  // Testing out the apollo connection 
+  // Testing out the apollo connection
   return (
     <div>
       <table>
@@ -34,11 +33,9 @@ const Home = () => {
 
           <td>{data.book.title}</td>
         </tr>
-
       </table>
     </div>
   );
 };
 
 export default Home;
-
