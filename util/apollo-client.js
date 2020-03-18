@@ -14,18 +14,17 @@ const httpLink = new HttpLink({ uri: GRAPHQL_URL });
 
 const authLink = new ApolloLink((operation, forward) => {
   // Retrieve the authorization token from local storage.
-  const token = ''
   //If we're client side
-  if(process.browser)
-  {
+ 
     const token = localStorage.getItem('token');
-  }
-  // Use the setContext method to set the HTTP headers.
+     // Use the setContext method to set the HTTP headers.
   operation.setContext({
+    uri:GRAPHQL_URL,
     headers: {
-      authorization: token ? `Bearer ${token}` : '',
+      Authorization: token ? `Bearer ${token}` : '',
     }, 
   });
+  
 
   // Call the next link in the middleware chain.
   return forward(operation);
