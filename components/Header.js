@@ -2,6 +2,17 @@ import { Component } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import Router from 'next/router';
+import NProgress from 'nprogress';
+
+Router.onRouteChangeStart = url => {
+  console.log(url);
+  NProgress.start();
+};
+
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
+
 export default class Header extends Component {
   render() {
     return (

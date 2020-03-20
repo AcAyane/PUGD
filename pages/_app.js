@@ -1,5 +1,6 @@
 import React from 'react';
 import App from 'next/app';
+
 import { ApolloProvider } from '@apollo/react-hooks';
 
 import Header from '../components/Header';
@@ -18,7 +19,7 @@ class MyApp extends App {
 
     return (
       <ApolloProvider client={apollo}>
-        {/* <Header /> */}
+        <Header />
         <Component {...pageProps} />
       </ApolloProvider>
     );
