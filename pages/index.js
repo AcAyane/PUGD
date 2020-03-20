@@ -37,12 +37,6 @@ const Login = props => {
         }
     };
 
-    const useStyles = makeStyles(theme => ({
-        margin: {
-            margin: theme.spacing(1),
-        },
-    }));
-    const classes = useStyles();
     return (
 
         <div className="login-container d-flex justify-content-md-center align-items-center vh-100" >
@@ -118,23 +112,14 @@ const Login = props => {
                                                     {isLogin ? "login" : "create account"}
                                                 </button>
 
-
-                                                <div className="flex mt3">
-                                                    <div className="input-field col s6 m6 l6">
-                                                        <p className="margin right-align medium-small">
-                                                            <button onClick={() => setLogin(!isLogin)} className={"primary"}>
-                                                                {isLogin ? "need to create an account?" : "already have an account?"}
-                                                            </button>
-                                                        </p>
-                                                    </div>
-                                                </div>
-
                                                 <div className="row">
                                                     <div className="input-field col s6 m6 l6">
                                                         <p className="margin medium-small">
-
-                                                            <span onClick={() => Router.push('/singup')}>
-                                                                Register now plz</span>
+                                                            <a href="/signup">
+                                                                Register now
+                                                            </a>
+                                                            {/*<span onClick={() => Router.push("/signup")}>
+                                                                Register now plz</span>*/}
 
                                                         </p>
                                                     </div>

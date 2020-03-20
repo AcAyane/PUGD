@@ -16,7 +16,7 @@ class MyApp extends App {
     const { Component, pageProps, apollo, router } = this.props;
 
     // console.log(apollo)
-    if (router.pathname === '/')
+    if (router.pathname === '/' || router.pathname === '/signup')
       return (
 
         <ApolloProvider client={apollo}>
@@ -34,7 +34,7 @@ class MyApp extends App {
               <Component {...pageProps} />
             </div>
           </div>
-          
+
         </ApolloProvider>
       );
   }

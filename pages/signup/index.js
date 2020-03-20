@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import {useMutation} from "@apollo/react-hooks"
-import {setToken} from "./token";
-import {SIGNUP_USER_Mutation} from "../mutations/user.mutation";
+import {SIGNUP_USER_Mutation} from "../../mutations/user.mutation";
 
 
-const SingUp = props => {
+const index = props => {
     const [username, setUserName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -16,7 +15,7 @@ const SingUp = props => {
         onCompleted(data) {
             const {_id} = data
             console.log("id user is:", _id)
-            //props.history.push("/");
+            props.history.push("/");
         }
     });
 
@@ -192,4 +191,4 @@ const SingUp = props => {
 }
 
 
-export default SingUp;
+export default index;
