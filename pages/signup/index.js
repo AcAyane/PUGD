@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useMutation} from "@apollo/react-hooks"
 import {SIGNUP_USER_Mutation} from "../../mutations/user.mutation";
+import Router from 'next/router'
+
 
 
 const index = props => {
@@ -15,7 +17,7 @@ const index = props => {
         onCompleted(data) {
             const {_id} = data
             console.log("id user is:", _id)
-            props.history.push("/");
+            Router.push("/");
         }
     });
 

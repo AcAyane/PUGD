@@ -24,7 +24,7 @@ const Login = props => {
             const {login} = data
             console.log("Login sucess => token is:", login.token)
             setToken(login.token)
-            props.history.push("/book");
+            Router.push("/book");
         }
     })
 
