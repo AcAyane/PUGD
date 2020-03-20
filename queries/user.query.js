@@ -11,4 +11,7 @@ query{
 }
 `;
 
-export default USER_QUERY;
+
+module.exports = {
+    USER_QUERY,
+}
