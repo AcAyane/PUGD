@@ -1,22 +1,16 @@
 import React from 'react';
 import App from 'next/app';
 import { ApolloProvider } from '@apollo/react-hooks';
-
-import withData from '../util/apollo-client';
-
 import SideBar from '../components/Layout/sideBar'
 import HeaderBar from '../components/Layout/headerNav'
-
-
-class MyApp extends App {
-  token = '';
-
-
+import { withApollo } from '../lib/apollo'
+import Protect from '../shared/protect';  
+class MyApp extends App { 
   render() {
+
     const { Component, pageProps, apollo, router } = this.props;
 
-    // console.log(apollo)
-    if (router.pathname === '/' || router.pathname === '/signup')
+    if ( router.pathname === '/auth/login')
       return (
 
         <ApolloProvider client={apollo}>
@@ -34,11 +28,11 @@ class MyApp extends App {
               <Component {...pageProps} />
             </div>
           </div>
-
+          
         </ApolloProvider>
       );
   }
 }
 
-// Wraps all components in the tree with the data provider
-export default withData(MyApp);
+ 
+export default withApollo()(Protect( MyApp));

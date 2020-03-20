@@ -1,17 +1,22 @@
 import gql from 'graphql-tag';
 
-const USER_QUERY = gql`
-query{
-  getAllUsers{
-    _id
-    username
-    password
-    email
-  }
+const REGISTER_QUERY = gql`
+mutation($username : String!,$password : String!){
+  register(username:$username,password:$password)
 }
+
+`;
+const LOGIN_QUERY = gql`
+  query($username : String!,$password : String!){
+    login(username:$username,password:$password)
+    {
+      token
+    }
+  }
+
 `;
 
-
 module.exports = {
-    USER_QUERY,
+  REGISTER_QUERY,
+  LOGIN_QUERY,
 }
