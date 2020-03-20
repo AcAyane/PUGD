@@ -7,8 +7,7 @@ import { FaAngleRight, FaTv, FaRegCircle } from 'react-icons/fa';
 const sideBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => {
-    console.log("hiiii")
+  const toggle = () => { 
     setIsOpen(!isOpen);
   }
 
@@ -100,17 +99,6 @@ const sideBar = () => {
         </li>
 
       </ul>
-
-
-
-
-
-
-
-      <div className="navigation-background"></div><a
-        className="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
-        href="#"
-        data-target="slide-out"><i className="material-icons">menu</i></a>
       <style jsx>{`
             .item-icon{
               margin-right:25px;

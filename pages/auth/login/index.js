@@ -11,7 +11,7 @@ import { useLazyQuery } from '@apollo/react-hooks'
 import { LOGIN_QUERY } from '../../../queries/user.query';
 import Grid from '@material-ui/core/Grid';
 import Router from 'next/router'
-import Link from '@material-ui/core/Link';
+import Link from 'next/link';
 import { Alert } from 'reactstrap';
 
 function SignIn() {
@@ -84,15 +84,17 @@ function SignIn() {
 
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              {/* <Link href="#" variant="body2">
                 Forgot password?
-              </Link>
+              </Link> */}
             </Grid>
-            <Grid item>
-              <Link href="/auth/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
+            {/* <Grid item>
+            <Link href="/auth/register">
+        <a>Don't have an account? Sign Up</a>
+      </Link>
+
+              
+            </Grid> */}
           </Grid>
         </form>
       </div>
