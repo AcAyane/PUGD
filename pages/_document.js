@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from 'react';
 
 class MyDocument extends Document {
   //   static async getInitialProps(ctx) {
@@ -10,15 +11,14 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="stylesheet" href="/static/materialize.min.css" />
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          />
-          <link rel="stylesheet" href="/static/style.min.css" />
+          <link rel="stylesheet" href="/css/bootstrap.css" />
+          <link rel="stylesheet" href="/css/materialize.min.css" />
+
+          <link rel="stylesheet" href="/css/style.min.css" />
         </Head>
-        <body>
+        <body className="login-form">
           <Main />
+
           <NextScript />
         </body>
       </Html>
