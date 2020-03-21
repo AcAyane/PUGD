@@ -1,11 +1,6 @@
 import gql from 'graphql-tag';
 
-const REGISTER_QUERY = gql`
-mutation($username : String!,$password : String!){
-  register(username:$username,password:$password)
-}
-
-`;
+ 
 const LOGIN_QUERY = gql`
   query($username : String!,$password : String!){
     login(username:$username,password:$password)
@@ -16,7 +11,6 @@ const LOGIN_QUERY = gql`
 
 `;
 
-module.exports = {
-  REGISTER_QUERY,
+module.exports = { 
   LOGIN_QUERY,
 }

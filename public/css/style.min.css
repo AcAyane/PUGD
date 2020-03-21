@@ -2,8 +2,13 @@
 
  
  
+.login-container{
+    height:100vh
+}
 
- 
+.header-right-nav{
+    margin-right: 30px;
+}
  
 .sidenav::-webkit-scrollbar-track
 {
@@ -238,7 +243,7 @@ h1 {
     backface-visibility: hidden
 }
 
-.brand-sidebar .logo-wrapper {
+.brand-sidebar h1 {
     font-size: 3rem;
     line-height: 17px!important;
     margin: 0;
@@ -335,7 +340,7 @@ h1 {
 }
 
 .sidenav li a.collapsible-header, .sidenav li>a {
-    font-weight: 400;
+    font-weight: 450;
     line-height: 44px;
     height: 44px;
     padding: 0 16px!important
@@ -355,13 +360,13 @@ h1 {
 }
  
 
-.navbar2-full .brand-sidebar {
+.brand-sidebar {
     background: #a53394
 }
 
  
 
-.navbar2-full .brand-sidebar .brand-logo, .navbar2-full .brand-sidebar .logo-wrapper a.navbar2-toggler i {
+.brand-sidebar .brand-logo,.brand-sidebar .logo-wrapper a.navbar2-toggler i {
     color: #fff
 }
 
