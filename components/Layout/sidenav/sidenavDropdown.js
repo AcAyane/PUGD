@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Collapse } from 'reactstrap';
-import { FaAngleRight, FaTv } from 'react-icons/fa';
-import SidenavItem from './sidenav-item';
+import { FaAngleRight, FaTv } from 'react-icons/fa'; 
 
 
 const SidenavDropdown = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -17,7 +16,7 @@ const SidenavDropdown = (props) => {
       <a href="#" onClick={toggle}>
         <span className="item-icon"> <FaTv /></span>
         <span className="menu-title" > {props.Label}</span>
-        <span className="drop-icon"> <FaAngleRight /></span>
+        <span className="drop-icon float-right"> <FaAngleRight /></span>
       </a>
 
 
@@ -35,7 +34,7 @@ const SidenavDropdown = (props) => {
             }
             .drop-icon{
              display:inline-block;
-             position:absolute;
+             position:relative;
              right:25px;
              top:2px
             }  

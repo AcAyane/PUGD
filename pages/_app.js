@@ -1,28 +1,21 @@
 import React from 'react';
-import App from 'next/app';
-import { ApolloProvider } from '@apollo/react-hooks';
-import SideBar from '../components/Layout/sidenav/sideBar'
-import HeaderBar from '../components/Layout/headerNav'
-import { withApollo } from '../shared/apollo'
+import App from 'next/app'; 
+
 import Protect from '../shared/protect';  
-class MyApp extends App { 
+// import AdminLayout from '../components/adminLayout';
+class MyApp extends App {  
   render() {
 
     const { Component, pageProps, router } = this.props;
-
+    const Layout = Component.Layout 
  
       if(router.pathname.startsWith("/admin") || router.pathname === "/")
       return (
-        <div>
-          <HeaderBar />
-          <SideBar />
-
-          <div className="container">
-            <div id="main">
+    
+              <Layout>
               <Component {...pageProps} />
-            </div>
-          </div>
-          </div>
+              </Layout>
+        
       )
       else 
      return  <Component {...pageProps} />
@@ -30,4 +23,4 @@ class MyApp extends App {
 }
 
  
-export default withApollo({ ssr: true })(Protect( MyApp));
+export default  Protect(MyApp) ;

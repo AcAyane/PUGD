@@ -1,39 +1,48 @@
 import React from 'react';
 import SidenavItem from './sidenav-item';
 import SidenavDropdown from './sidenavDropdown';
+import SideBarBrandName from './sideBarBrand';
+import SidenavHeader from './sidenavHeader';
+import AuthoritiesSideItems from '../../admin/authorities/SidebarItems';
+import Router from 'next/router'
 
-
-
-const sideBar = () => {
+const sideBar = (props) => {
+  let sidebarItems
+  if(Router.route.startsWith('/admin/authorities'))
+      sidebarItems=AuthoritiesSideItems
+  let  [header , ...childrenItems ]=sidebarItems ? sidebarItems: [null,null]
  
-
   return (
     <aside className="sidenav-main nav-lock sidenav-active-rounded">
+    
+      <SideBarBrandName />
+
+      {sidebarItems  &&
       
-      <div className="brand-sidebar">
-        <h1 >
-          <a className="brand-logo" href="#">
-            <img src="/materialize-logo.png" />
-            <span className="logo-text hide-on-med-and-down">PUGD</span></a>  
-        </h1>
-      </div>
-
       <ul className="sidenav sidenav-fixed "
-        id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion" >
-          
-        <SidenavDropdown Label="Autorités">
-          <SidenavItem Label="Author" Active="true" />
-          <SidenavItem Label="Catégories" />
-          <SidenavItem Label="Editeurs" />
-          <SidenavItem Label="Collections" />
-          <SidenavItem Label="Sous-Collections" />
-          <SidenavItem Label="Titre de série" />
-          <SidenavItem Label="Titre uniformes" />
-          <SidenavItem Label="Index décimales" />
-        </SidenavDropdown>
+      id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion" >
 
-      </ul>
-     
+        <SidenavHeader Label={header}/>
+
+      {childrenItems.map((item, index) => {
+        return (
+          <SidenavDropdown Label={item.Label} key={index}>
+
+            {item.Children.map((subItem, index) => {  
+              return (
+                <SidenavItem Label={subItem.Label} key={index} href={subItem.href}/>
+              )
+            })}
+
+          </SidenavDropdown>
+        )
+      })}
+    </ul>
+
+    }
+
+    
+
     </aside>
   )
 }

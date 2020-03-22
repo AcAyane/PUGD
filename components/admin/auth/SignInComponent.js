@@ -10,9 +10,9 @@ import Container from '@material-ui/core/Container';
 import { useLazyQuery } from '@apollo/react-hooks'
 import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
 import Router from 'next/router' 
-import { Alert } from 'reactstrap'; 
-import { withApollo } from '../../../shared/apollo';
-function SignIn() {
+import { Alert } from 'reactstrap';
+
+function SignInComponent() {
 
   const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
   const [username, setUsername] = useState('');
@@ -25,7 +25,7 @@ function SignIn() {
       variables: {
         username: username,
         password: password
-      } 
+      }
     });
   }
 
@@ -118,4 +118,4 @@ function SignIn() {
     </div>
   );
 }
-export default withApollo({ ssr: true })(SignIn);
+export default SignInComponent;

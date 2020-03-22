@@ -6,6 +6,7 @@ import { FaCircle } from 'react-icons/fa';
 import { useMutation } from '@apollo/react-hooks'
 import Router from 'next/router'
 import { REGISTER_MUTATION } from '../../../graphql/mutations/user.mutation';
+import { withApollo } from '../../../shared/apollo';
 export function signup() {
 
   const [register] = useMutation(REGISTER_MUTATION);
@@ -107,4 +108,4 @@ export function signup() {
 
 
 
-export default signup;
+export default withApollo({ ssr: true })(signup);

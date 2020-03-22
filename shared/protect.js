@@ -5,8 +5,7 @@ import Router from 'next/router'
 const allowedRoutes = [
       '/auth/login',
       '/auth/register' 
-]
- 
+] 
 const protect = function(Child) {
 	return class Higher extends React.Component {
 
@@ -25,7 +24,7 @@ const protect = function(Child) {
                     isLoading: true
                   };
                 }
-
+         
 		haveToken(){
                   let token 
                   if(  typeof window !== 'undefined'){
@@ -38,6 +37,7 @@ const protect = function(Child) {
                   console.log(this.props.allowed,this.haveToken())
                   if(this.props.allowed || this.haveToken()) 
                   {
+                        
                         return <Child {...this.props}  />
                   }
                   
