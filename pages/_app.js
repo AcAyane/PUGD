@@ -1,24 +1,24 @@
 import React from 'react';
-import App from 'next/app';
+import App from 'next/app'; 
 
-import { ApolloProvider } from '@apollo/react-hooks';
-import SideBar from '../components/Layout/sideBar';
-import HeaderBar from '../components/Layout/headerNav';
-// import { withApollo } from '../lib/apollo';
-import Protect from '../shared/protect';
-class MyApp extends App {
+import Protect from '../shared/protect';  
+// import AdminLayout from '../components/adminLayout';
+const Nolayout =  ({children}) => <>{children}</>
+class MyApp extends App {  
   render() {
-    const { Component, pageProps, router } = this.props;
-    const Layout = Component.Layout;
 
-    if (router.pathname.startsWith('/admin') || router.pathname === '/')
+    const { Component, pageProps, router } = this.props;
+    const Layout = Component.Layout || Nolayout
+  
       return (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      );
-    else return <Component {...pageProps} />;
+     
+              <Layout>
+              <Component {...pageProps} />
+              </Layout>
+        
+      )
   }
 }
 
-export default Protect(MyApp);
+ 
+export default  Protect(MyApp) ;

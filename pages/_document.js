@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react'
 
 class MyDocument extends Document {
   //   static async getInitialProps(ctx) {
@@ -20,8 +20,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

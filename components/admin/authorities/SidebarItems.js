@@ -18,15 +18,15 @@ const SidebarItems = [
         Label: "Authorities",
         Children: [
             {
-                Label: "Subject",
-                href: "/admin/authorities/Subject"
+                Label: "Author",
+                href: "/admin/authorities/Author"
             },
             {
                 Label: "headings",
                 href: "/admin/authorities/headings"
             },
             {
-                Label: "SubjPublishersect",
+                Label: "Publisher",
                 href: "/admin/authorities/Publishers"
             },
             {

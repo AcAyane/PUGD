@@ -6,7 +6,13 @@ import SidenavHeader from './sidenavHeader';
 import AuthoritiesSideItems from '../../admin/authorities/SidebarItems';
 import Router from 'next/router'
 
-const sideBar = (props) => {
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography"; 
+
+
+const sideBar = (props) => { 
   let sidebarItems
   if(Router.route.startsWith('/admin/authorities'))
       sidebarItems=AuthoritiesSideItems
@@ -15,7 +21,46 @@ const sideBar = (props) => {
   return (
     <aside className="sidenav-main nav-lock sidenav-active-rounded">
     
-      <SideBarBrandName />
+
+    <ExpansionPanel>
+        <ExpansionPanelSummary
+          // expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          Expansion Panel 1
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          // expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2a-content"
+          id="panel2a-header"
+        >
+          <Typography>Expansion Panel 2</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+      <ExpansionPanel disabled>
+        <ExpansionPanelSummary
+          // expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3a-content"
+          id="panel3a-header"
+        >
+          <Typography>Disabled Expansion Panel</Typography>
+        </ExpansionPanelSummary>
+      </ExpansionPanel>
+
+      {/* <SideBarBrandName />
 
       {sidebarItems  &&
       
@@ -39,7 +84,7 @@ const sideBar = (props) => {
       })}
     </ul>
 
-    }
+    } */}
 
     
 

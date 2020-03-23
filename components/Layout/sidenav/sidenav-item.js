@@ -5,7 +5,7 @@ const SidenavItem = (props) => {
 
   return (
     <li >
-     <Link href="/admin/authorities/[submodules]" as={props.href}>
+     <Link href={props.href} >
      <a className={props.Active == "true" ? "active" : ""}>
         <span className="item-icon"><FaRegCircle size="0.75em" /></span>
         <span  >{props.Label}</span>
