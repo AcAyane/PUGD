@@ -2,11 +2,12 @@ import React from 'react';
 import SidebarItems from '../../../components/admin/authorities/SidebarItems';
 import AdminLayout from '../../../components/adminLayout';
 
+import BrrowersComponent from "./BrrowersComponent";
 const sideBar = () => {
 
 
     return (
-        <div>this is the circulation page</div>
+        <BrrowersComponent/>
     )
 }
 
