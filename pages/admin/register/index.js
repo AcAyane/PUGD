@@ -108,4 +108,4 @@ export function signup() {
 
 
 
-export default withApollo({ ssr: true })(signup);
+export default signup ;

@@ -6,7 +6,49 @@ html {
     line-height: 1.5;
     color: #6b6f82
 }
+
+.MuiPaper-root {
+margin-bottom: 10px;
+    /* box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2) !important; */
+}
  
+
+.sidenav-item{
+    margin-right: 1.15rem;
+    padding: 0 0 0 21px!important;
+     font-weight: 450;
+    line-height: 44px;
+    height: 44px;
+    padding: 0 16px!important;
+    transition: none; 
+    color: rgba(0, 0, 0, .87);
+	display: block;
+    font-size: 14px;
+}
+.MuiExpansionPanelSummary-content.Mui-expanded {
+   margin: 0 !important;
+}
+.MuiExpansionPanelSummary-content {
+    margin: 0 !important;
+}
+
+
+.MuiExpansionPanel-root.Mui-expanded { 
+    margin: 0 !important; 
+}
+.MuiExpansionPanelDetails-root{
+    padding: 0 !important;
+}
+
+.MuiExpansionPanelDetails-root {
+    display: block !important
+  
+}
+
+.MuiExpansionPanelSummary-root.Mui-expanded {
+    min-height: 48px !important;
+}
+
 .login-container{
     height:100vh
 }
@@ -23,23 +65,23 @@ html {
    
 }
 
-.sidenav::-webkit-scrollbar
+::-webkit-scrollbar
 {
 	width: 10px;
     background-color: #eee; 
     
 }
 
-.sidenav::-webkit-scrollbar:hover
+::-webkit-scrollbar:hover
 { 
     background-color: #eee;  
     
 }
 
-.sidenav::-webkit-scrollbar-thumb
+::-webkit-scrollbar-thumb
 {
 	border-radius: 10px; 
-    background-color: #ddd; 
+    background-color: #ccc; 
     -webkit-transition:all ease-in-out 10s ;
 }
 
@@ -591,16 +633,16 @@ h1 {
 }
 
  
-
+/* 
 .sidenav li:not(.active).open {
     background-color: rgba(0, 0, 0, .035)
 }
- 
+  */
 
 
-.sidenav li.open {
+/* .sidenav li.open {
     background: rgba(0, 0, 0, .035)
-}
+} */
 
 .sidenav li a.collapsible-header, .sidenav li>a {
     font-weight: 450;

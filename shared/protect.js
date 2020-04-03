@@ -33,8 +33,7 @@ const protect = function(Child) {
                   }
                   return null
             }
-            render(){
-                  console.log(this.props.allowed,this.haveToken())
+            render(){ 
                   if(this.props.allowed || this.haveToken()) 
                   {
                         

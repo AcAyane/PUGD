@@ -9,7 +9,7 @@ const SidebarItems = [
             },
             {
                 Label: "Predefined",
-                href: "/admin/authorities/Predefined"
+                href: "/admin/authorities/predefined"
             },
 
         ]
@@ -19,7 +19,7 @@ const SidebarItems = [
         Children: [
             {
                 Label: "Author",
-                href: "/admin/authorities/Author"
+                href: "/admin/authorities/author"
             },
             {
                 Label: "headings",
@@ -27,27 +27,27 @@ const SidebarItems = [
             },
             {
                 Label: "Publisher",
-                href: "/admin/authorities/Publishers"
+                href: "/admin/authorities/publishers"
             },
             {
                 Label: "Series",
-                href: "/admin/authorities/Series"
+                href: "/admin/authorities/series"
             },
             {
                 Label: "Sub-series",
-                href: "/admin/authorities/Sub-series"
+                href: "/admin/authorities/sub-series"
             },
             {
                 Label: "Collection Title",
-                href: "/admin/authorities/Collection-Title"
+                href: "/admin/authorities/collection-title"
             },
             {
                 Label: "Uniform Titles",
-                href: "/admin/authorities/Uniform-Titles"
+                href: "/admin/authorities/uniform-titles"
             },
             {
                 Label: "Class number",
-                href: "/admin/authorities/Class-number"
+                href: "/admin/authorities/class-number"
             },
 
 
@@ -58,19 +58,19 @@ const SidebarItems = [
         Children: [
             {
                 Label: "Management",
-                href: "/admin/authorities/Management"
+                href: "/admin/authorities/management"
             },
              {
                 Label: "Collection",
-                href: "/admin/authorities/Collection"
+                href: "/admin/authorities/collection"
             },
              {
                 Label: "Tag on/off",
-                href: "/admin/authorities/Tags"
+                href: "/admin/authorities/tags"
             },
              {
                 Label: "Actions",
-                href: "/admin/authorities/Actions"
+                href: "/admin/authorities/actions"
             }, 
         ]
     },
@@ -79,11 +79,11 @@ const SidebarItems = [
         Children: [
             {
                 Label: "Synonyms",
-                href: "/admin/authorities/Synonyms"
+                href: "/admin/authorities/synonyms"
             }, 
             {
                 Label: "Stopwords",
-                href: "/admin/authorities/Stopwords"
+                href: "/admin/authorities/stopwords"
             },  
         ]
     },
@@ -92,7 +92,7 @@ const SidebarItems = [
         Children: [
             {
                 Label: "Import",
-                href: "/admin/authorities/Import"
+                href: "/admin/authorities/import"
             },  
         ]
     },
