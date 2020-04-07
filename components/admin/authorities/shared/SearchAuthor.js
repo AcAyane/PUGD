@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
@@ -12,18 +12,17 @@ import Select from '@material-ui/core/Select';
 import { Alert } from 'reactstrap';
 
 
-
 import { useLazyQuery } from '@apollo/react-hooks';
 
-import { GET_AUTHOR_ALL_FIELDS } from '../../../graphql/queries/admin/authorities/author.queries';
-import { GET_CATEGORY_ALL_FIELDS } from '../../../graphql/queries/admin/authorities/category.queries';
+import { GET_AUTHOR_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/author.queries';
+import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
 
-import SearchAuthorComponent from './author/SearchAuthorComponent';
+import SearchAuthorComponent from '../author/SearchAuthorComponent';
 
-import ListAuthorComponent from './author/ListAuthorComponent';
-import ListCategoryComponent from './category/ListCategoryComponent';
+import ListAuthorComponent from '../author/ListAuthorComponent';
+import ListCategoryComponent from '../category/ListCategoryComponent';
 
-import SearchCategoryComponent from './category/SearchCategoryComponent';
+import SearchCategoryComponent from '../category/SearchCategoryComponent';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -41,34 +40,43 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const SimpleModal = (props) => {
+const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
 
+    
     const [getAuthorAllFields, { error, data }] = useLazyQuery(GET_AUTHOR_ALL_FIELDS);
 
-    const [getCategoryAllFields, CategoryResponse] = useLazyQuery(GET_CATEGORY_ALL_FIELDS ); 
+    const [getCategoryAllFields, CategoryResponse] = useLazyQuery(GET_CATEGORY_ALL_FIELDS);
+
+    const [Authority_Type, setAuthority_Type] = useState(AuthorityType || 10)
+
+    useEffect(() => {
+        if(AuthorityType !== undefined)
+        setAuthority_Type(AuthorityType)
+    }, [AuthorityType]);
+ 
     const AddAuthorityLink = ({ id, label }) => {
 
-        props.addAuthor({
+        addAuthor({
             id,
-            AuthorityName:label,
+            AuthorityName: label,
             Authority_Type,
-            Start:null,
-            End:null,
-            Comment:"sdfdsfdsf",
+            Start: null,
+            End: null,
+            Comment: "",
         })
     }
 
     const classes = useStyles();
-
-    const [Authority_Type, setAuthority_Type] = useState(10)
+   
+        
 
     const renderSwitch = () => {
         switch (Authority_Type) {
-            case 10:
+            case 10: 
                 return <React.Fragment>
                     <Card  >
                         <CardContent>
-                            <SearchAuthorComponent 
+                            <SearchAuthorComponent
                                 getAuthorAllFields={getAuthorAllFields}
                                 SearchOnly />
                         </CardContent>
@@ -112,14 +120,15 @@ const SimpleModal = (props) => {
         <Modal
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
-            open={props.open}
-            onClose={props.handleClose}
+            open={open}
+            onClose={handleClose}
         >
             <div className={classes.paper}>
-                <h2 id="simple-modal-title">Linked authorities</h2>
 
-                <Grid container spacing={3}>
+
+                {!AuthorityType && <Grid container spacing={3}>
                     <Grid item xs={6}>
+                        <h2 id="simple-modal-title">Linked authorities</h2>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Authority</InputLabel>
                             <Select
@@ -138,7 +147,7 @@ const SimpleModal = (props) => {
                             </Select>
                         </FormControl>
                     </Grid>
-                </Grid>
+                </Grid>}
                 {renderSwitch()}
 
 
@@ -148,4 +157,4 @@ const SimpleModal = (props) => {
         </Modal>
     );
 }
-export default SimpleModal
+export default SearchAuthority

@@ -19,8 +19,8 @@ const SearchAuthorComponent = ({ SearchOnly,getAuthorAllFields }) => {
  
 
 const SearchClickHandler = (e, All_Fields, Status) => {
-    e.preventDefault();
-
+    e.preventDefault(); 
+    
     getAuthorAllFields({
         variables: {
             all_fields: All_Fields

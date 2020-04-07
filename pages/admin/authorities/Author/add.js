@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AdminLayout from '../../../../components/adminLayout';
+import { Card, CardContent } from '@material-ui/core';
 import { INSERT_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
 import { useMutation } from '@apollo/react-hooks';
-import AuthorityHeader from '../../../../components/admin/authorities/authorityHeader';
-import { Card, CardContent } from '@material-ui/core';
+import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
+
 import AddAuthorForm from '../../../../components/admin/authorities/author/AddAuthorForm';
 import Router from 'next/router';
 
@@ -21,7 +22,7 @@ const AuthorPage = () => {
         }
     });
 
-    const onSearchHandler = (e,
+    const onAddHandler = (e,
         Author_Type,
         Name_Auth,
         IndexName_Auth,
@@ -48,19 +49,16 @@ const AuthorPage = () => {
                 ISNI_Auth,
                 Subdivision_Auth,
                 UrlThumbnail_Auth,
-                Linked_authorities: Linked_authorities.map((authority) => {
-                    return { 
+                Linked_authorities: Linked_authorities.map((authority) => {   
+                    return {
+                        Linked_Authority_Id: authority.id.split('"')[1],
                         Linked_Authority_Type: authority.Authority_Type,
-                        // Comment: String
                         Start: authority.Start,
                         End: authority.End,
+                        Comment: authority.Comment,
+                        LinkType: authority.LinkType,
                     }
                 }),
-                // Linked_authorities
-                // : [{
-                //     Comment:"fffffffffff",
-                //     Start:new Date().toISOString(),
-                // }] 
             }
         });
     }
@@ -71,7 +69,7 @@ const AuthorPage = () => {
             <Card  >
                 <CardContent>
                     <h4 >Création d'un auteur</h4>
-                    <AddAuthorForm onSearchHandler={onSearchHandler} />
+                    <AddAuthorForm onAddHandler={onAddHandler} />
                     <br /><br />
                 </CardContent>
             </Card>

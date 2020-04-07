@@ -23,8 +23,7 @@ category(
     broader_term
     comment
     linked_authorities
-    name
-    parent_category
+    name 
     record
     scope_note
 }
@@ -44,8 +43,7 @@ category_all_fields(
     broader_term
     comment
     linked_authorities
-    name
-    parent_category
+    name 
     record
     scope_note
 }

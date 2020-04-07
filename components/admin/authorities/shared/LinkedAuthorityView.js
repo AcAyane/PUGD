@@ -12,7 +12,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
-const LinkedAuthorityView = ({Authority,OnAuthorityLinkChange,index}) => {
+const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
 
     return <ExpansionPanel>
         <ExpansionPanelSummary
@@ -39,15 +39,15 @@ const LinkedAuthorityView = ({Authority,OnAuthorityLinkChange,index}) => {
                 </Grid>
                 <Grid item xs={3}>
                     <FormControl fullWidth>
-                        {/* <InputLabel id="demo-simple-select-label">Link type</InputLabel> */}
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={10}
-
-                        //   onChange={handleChange}
-                        // value={Author_Type}
-                        // onChange={e => { setAuthor_Type(e.target.value) }}
+                            value={Authority.LinkType || 10}
+                            onChange={(event) => {
+                                const Authority2 = { ...Authority }
+                                Authority2.LinkType = event.target.value
+                                OnAuthorityLinkChange(index, Authority2)
+                            }}
                         >
                             <MenuItem value={10}>a participé à</MenuItem>
                             <MenuItem value={20}> après, voir aussi</MenuItem>
@@ -116,11 +116,11 @@ const LinkedAuthorityView = ({Authority,OnAuthorityLinkChange,index}) => {
                         label="Next appointment"
                         type="date"
                         // defaultValue="2017-05-24"
-                        value={Authority.Start && Authority.Start.toISOString().split('T')[0] || ""} 
-                        onChange={(event)=>{
-                            const Authority2 = {...Authority}
-                            Authority2.Start=new Date(event.target.value)
-                            OnAuthorityLinkChange(index,Authority2)
+                        value={Authority.Start && Authority.Start.toISOString().split('T')[0] || ""}
+                        onChange={(event) => {
+                            const Authority2 = { ...Authority }
+                            Authority2.Start = new Date(event.target.value)
+                            OnAuthorityLinkChange(index, Authority2)
                         }}
                         InputLabelProps={{
                             shrink: true,
@@ -132,12 +132,12 @@ const LinkedAuthorityView = ({Authority,OnAuthorityLinkChange,index}) => {
                     <TextField
                         id="datetime-local"
                         label="Next appointment"
-                        type="date" 
-                        value={Authority.End && Authority.End.toISOString().split('T')[0] || ""} 
-                        onChange={(event)=>{
-                            const Authority2 = {...Authority}
-                            Authority2.End=new Date(event.target.value)
-                            OnAuthorityLinkChange(index,Authority2)
+                        type="date"
+                        value={Authority.End && Authority.End.toISOString().split('T')[0] || ""}
+                        onChange={(event) => {
+                            const Authority2 = { ...Authority }
+                            Authority2.End = new Date(event.target.value)
+                            OnAuthorityLinkChange(index, Authority2)
                         }}
                         InputLabelProps={{
                             shrink: true,
@@ -153,8 +153,12 @@ const LinkedAuthorityView = ({Authority,OnAuthorityLinkChange,index}) => {
                     <TextField fullWidth label="Comment"
                         multiline
                         rows="4"
-                    // value={Note_Auth}
-                    // onChange={e => { setNote_Auth(e.target.value) }} 
+                        value={Authority.Comment || ""}
+                        onChange={(event) => {
+                            const Authority2 = { ...Authority }
+                            Authority2.Comment = event.target.value
+                            OnAuthorityLinkChange(index, Authority2)
+                        }}
                     />
                 </Grid>
             </Grid>
