@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { TextField, IconButton } from '@material-ui/core';
 
 import { RemoveCircle } from '@material-ui/icons';
+import TextBox from '../../../ui/TextBox';
 
 
 const SeeAlsoComponent = ({ categorys, removeSeeAlso }) => {
@@ -13,7 +14,7 @@ const SeeAlsoComponent = ({ categorys, removeSeeAlso }) => {
                         categorys.map((category,index) => {
                             return <Grid container spacing={3} key={index}>
                                 <Grid item xs={5}>
-                                    <TextField fullWidth label="See also (related term)"
+                                    <TextBox label="See also (related term)"
                                         value={category.AuthorityName}
                                         InputProps={{
                                             readOnly: true,

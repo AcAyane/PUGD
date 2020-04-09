@@ -1,7 +1,7 @@
 import React from 'react'
-import { Person } from '@material-ui/icons';
+import Person from '@material-ui/icons/Person';
 const ListAuthorComponent = ({ authors, AddAuthorityLink }) => {
- 
+
 
     return (
         <React.Fragment>
@@ -9,15 +9,15 @@ const ListAuthorComponent = ({ authors, AddAuthorityLink }) => {
                 authors.map((row) => (
 
                     <div className="person-container" key={row._id}>
-                        <Person style={{ margin: "auto", width: "30px", color:"gray" }} />
+                        <Person style={{ margin: "auto", width: "30px", color: "gray" }} />
                         <div
                             className="person-name"
-                            onClick={() =>{
-                                if(AddAuthorityLink)AddAuthorityLink({
+                            onClick={() => {
+                                if (AddAuthorityLink) AddAuthorityLink({
                                     id: row._id,
                                     label: [row.name_auth, row.indexName_auth].join(' '),
                                 })
-                            } }
+                            }}
                         >  {[row.name_auth, row.indexName_auth].join(' ')} </div>
                     </div>
 

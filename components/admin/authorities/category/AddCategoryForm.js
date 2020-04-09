@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { TextField, Button, IconButton } from '@material-ui/core';
+import { Button, IconButton } from '@material-ui/core';
 
 import SimpleModal from '../shared/SearchAuthor'
 import { Add, RemoveCircle } from '@material-ui/icons';
@@ -8,6 +8,7 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
+import TextBox from '../../../ui/TextBox';
 
 const AddCategoryForm = ({ onAddHandler }) => {
 
@@ -22,7 +23,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
         handleOpenSee,
         handleOpenBroader_term,
         handleOpenSee_Also,
-      unsetBroader_term,
+        unsetBroader_term,
         unsetSee, } = useCategoryForm();
 
     return (
@@ -30,7 +31,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
 
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    <TextField fullWidth required label="Name"
+                    <TextBox  required label="Name"
                         name="Name"
                         value={inputs.Name}
                         onChange={handleInputChange}
@@ -39,7 +40,8 @@ const AddCategoryForm = ({ onAddHandler }) => {
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    <TextField fullWidth required label="Scope note"
+                    <TextBox required 
+                    label="Scope note"
                         name="Scope_note"
                         value={inputs.Scope_note}
                         onChange={handleInputChange}
@@ -47,7 +49,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    <TextField fullWidth required label="Comment"
+                    <TextBox required label="Comment"
                         name="Comment"
                         value={inputs.Comment}
                         onChange={handleInputChange}
@@ -56,7 +58,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={5}>
-                    <TextField fullWidth label="Broader term"
+                    <TextBox label="Broader term"
                         name="Broader_term"
                         value={inputs.Broader_term.Label}
                         onChange={handleInputChange}
@@ -79,7 +81,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={5}>
-                    <TextField fullWidth label="See (preferred term)"
+                    <TextBox label="See (preferred term)"
                         name="See"
                         value={inputs.See.Label}
                         onChange={handleInputChange}
@@ -117,12 +119,12 @@ const AddCategoryForm = ({ onAddHandler }) => {
                         </IconButton>
                     </h5>
 
-                        <SeeAlsoComponent  categorys={inputs.See_also} removeSeeAlso={handleOpen}/>
+                    <SeeAlsoComponent categorys={inputs.See_also} removeSeeAlso={handleOpen} />
                 </Grid>
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    <TextField fullWidth label="Authority number"
+                    <TextBox label="Authority number"
                         name="Authority_number"
                         value={inputs.Authority_number}
                         onChange={handleInputChange}
@@ -131,7 +133,7 @@ const AddCategoryForm = ({ onAddHandler }) => {
             </Grid>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <TextField fullWidth label="URL of thumbnail"
+                    <TextBox label="URL of thumbnail"
                         name="URL_thumbnail"
                         value={inputs.URL_thumbnail}
                         onChange={handleInputChange}
