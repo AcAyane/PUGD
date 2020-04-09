@@ -16,13 +16,17 @@ import { useLazyQuery } from '@apollo/react-hooks';
 
 import { GET_AUTHOR_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/author.queries';
 import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
+import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
 
 import SearchAuthorComponent from '../author/SearchAuthorComponent';
+import SearchCategoryComponent from '../category/SearchCategoryComponent';
+import SearchPublisherComponent from '../publisher/SearchPublisherComponent';
 
 import ListAuthorComponent from '../author/ListAuthorComponent';
 import ListCategoryComponent from '../category/ListCategoryComponent';
+import ListPublisherComponent from '../publisher/ListPublisherComponent';
 
-import SearchCategoryComponent from '../category/SearchCategoryComponent';
+
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -42,18 +46,20 @@ const useStyles = makeStyles(theme => ({
 
 const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
 
-    
+
     const [getAuthorAllFields, { error, data }] = useLazyQuery(GET_AUTHOR_ALL_FIELDS);
 
     const [getCategoryAllFields, CategoryResponse] = useLazyQuery(GET_CATEGORY_ALL_FIELDS);
 
+    const [getPublisherAllFields, PublisherResponse ] = useLazyQuery(GET_PUBLISHER_ALL_FIELDS);
+
     const [Authority_Type, setAuthority_Type] = useState(AuthorityType || 10)
 
     useEffect(() => {
-        if(AuthorityType !== undefined)
-        setAuthority_Type(AuthorityType)
+        if (AuthorityType !== undefined)
+            setAuthority_Type(AuthorityType)
     }, [AuthorityType]);
- 
+
     const AddAuthorityLink = ({ id, label }) => {
 
         addAuthor({
@@ -67,12 +73,12 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
     }
 
     const classes = useStyles();
-   
-        
+
+
 
     const renderSwitch = () => {
         switch (Authority_Type) {
-            case 10: 
+            case 10:
                 return <React.Fragment>
                     <Card  >
                         <CardContent>
@@ -108,6 +114,25 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
 
                             {CategoryResponse.data &&
                                 <ListCategoryComponent categories={CategoryResponse.data.category_all_fields} AddAuthorityLink={AddAuthorityLink} />
+                            }
+                        </CardContent>
+                    </Card>
+                </React.Fragment>
+            case 30:
+                return <React.Fragment>
+                    <Card  >
+                        <CardContent>
+                            <SearchPublisherComponent getPublisherAllFields={getPublisherAllFields} SearchOnly />
+                        </CardContent>
+                    </Card>
+
+                    <Card  >
+                        <CardContent>
+                            <h4 className="card-title">Recherche : Publishers</h4>
+                            {error ? <Alert color="danger">{String(PublisherResponse.error.message)}</Alert> : null}
+
+                            {PublisherResponse.data &&
+                                <ListPublisherComponent publishers={PublisherResponse.data.publisher_all_fields} AddAuthorityLink={AddAuthorityLink} />
                             }
                         </CardContent>
                     </Card>

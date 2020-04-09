@@ -6,7 +6,8 @@ import { Alert } from 'reactstrap';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader'
 import SearchAuthorComponent from '../../../../components/admin/authorities/author/SearchAuthorComponent';
 import ListAuthorComponent from '../../../../components/admin/authorities/author/ListAuthorComponent';
-import { Card, CardContent } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const AuthorPage = () => {
 

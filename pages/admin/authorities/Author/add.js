@@ -22,7 +22,7 @@ const AuthorPage = () => {
         }
     });
 
-    const onAddHandler = (e,
+    const onAddHandler = (
         Author_Type,
         Name_Auth,
         IndexName_Auth,
@@ -35,7 +35,7 @@ const AuthorPage = () => {
         Note_Auth,
         Subdivision_Auth,
         Linked_authorities) => {
-        e.preventDefault();
+       
         insertAuthor({
             variables: {
                 Author_Type,

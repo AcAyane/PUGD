@@ -33,7 +33,7 @@ query(
     author_type
     city_auth
     country_auth
-    indexName_auth
+    indexname_auth
     isni_auth
     name_auth
     note_auth
@@ -52,7 +52,7 @@ query($all_fields: String!){
     author_type
     city_auth
     country_auth
-    indexName_auth
+    indexname_auth
     isni_auth
     name_auth
     note_auth

@@ -17,6 +17,7 @@ const httpLink = new HttpLink({
   headers: {
     Authorization: token ? `Bearer ${token}` : '',
   }, 
+  fetch
 }); 
 
 

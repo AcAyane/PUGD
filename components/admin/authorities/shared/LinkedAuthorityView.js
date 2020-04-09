@@ -10,6 +10,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TextBox from '../../../ui/TextBox';
 
 
 const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
@@ -29,7 +30,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                 onFocus={event => event.stopPropagation()}
             >
                 <Grid item xs={3}>
-                    <TextField fullWidth
+                    <TextBox
 
                         value={Authority.AuthorityName}
                         // onChange={e => { setIndexName_Auth(e.target.value) }}
@@ -91,7 +92,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                     </FormControl>
                 </Grid>
                 <Grid item xs={3}>
-                    <TextField fullWidth
+                    <TextBox
                     // label="Linked authorities "
                     // value={IndexName_Auth}
                     // onChange={e => { setIndexName_Auth(e.target.value) }}
@@ -107,11 +108,11 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
 
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    {/* <TextField fullWidth label="Starts"
+                    {/* <TextBox label="Starts"
                     // value={Note_Auth}
                     // onChange={e => { setNote_Auth(e.target.value) }}
                     /> */}
-                    <TextField
+                    <TextBox
                         id="datetime-local"
                         label="Next appointment"
                         type="date"
@@ -125,11 +126,11 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                         InputLabelProps={{
                             shrink: true,
                         }}
-                        fullWidth
+                         
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    <TextField
+                    <TextBox
                         id="datetime-local"
                         label="Next appointment"
                         type="date"
@@ -141,8 +142,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                         }}
                         InputLabelProps={{
                             shrink: true,
-                        }}
-                        fullWidth
+                        }} 
                     />
                 </Grid>
 
@@ -150,7 +150,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
             <br />
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <TextField fullWidth label="Comment"
+                    <TextBox label="Comment"
                         multiline
                         rows="4"
                         value={Authority.Comment || ""}

@@ -32,8 +32,8 @@ mutation(
 }
 
 `;
- 
+
 
 module.exports = {
-    INSERT_AUTHOR, 
+  INSERT_AUTHOR,
 }
