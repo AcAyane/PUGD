@@ -27,7 +27,7 @@ const SidebarItems = [
             },
             {
                 Label: "Publisher",
-                href: "/admin/authorities/publishers"
+                href: "/admin/authorities/publisher"
             },
             {
                 Label: "Series",
