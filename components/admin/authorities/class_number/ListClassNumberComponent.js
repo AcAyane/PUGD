@@ -1,0 +1,45 @@
+import React from 'react'
+
+import { Folder } from '@material-ui/icons';
+
+const ListClassNumberComponent = ({ class_numbers, AddAuthorityLink }) => {
+    return (
+        <React.Fragment>
+            {
+                class_numbers.map((row) => (
+
+                    <div className="person-container" key={row._id}>
+                        <Folder style={{ margin: "auto", width: "30px", color: "gray" }} />
+                        <div className="person-name"
+                            onClick={() => {
+                                if (AddAuthorityLink) AddAuthorityLink({
+                                    id: row._id,
+                                    label: row.name,
+                                })
+                            }}
+                        > {row.name} </div>
+                    </div>
+
+                ))
+            }
+            <style jsx>
+                {`
+    .person-container{
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+    }
+    .person-name{
+        height: 35px;
+        display: inline-block;
+        margin: auto;
+        line-height: 35px;
+        width:fit-content;
+    }
+    `}
+            </style>
+        </React.Fragment>
+    )
+}
+export default ListClassNumberComponent
