@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const INSERT_Series = gql`
+const INSERT_SUB_SERIES = gql`
 mutation(
   $Website: String,
   $Comment: String,
@@ -25,7 +25,7 @@ InsertSubSeries(
 }
 `;
 
-const UPDATE_Series = gql`
+const UPDATE_SUB_SERIES = gql`
 mutation(
   $ID :String!,
   $Website: String,
@@ -52,7 +52,7 @@ UpdateSubSeries(
 }
 `;
 
-const DELETE_Series = gql`
+const DELETE_SUB_SERIES = gql`
 mutation(
   $ID :String!,
 ){
@@ -64,7 +64,7 @@ DeleteSubSeries(
 `;
 
 module.exports = {
-  INSERT_Series,
-  UPDATE_Series,
-  DELETE_Series
+  INSERT_SUB_SERIES,
+  UPDATE_SUB_SERIES,
+  DELETE_SUB_SERIES
 }
