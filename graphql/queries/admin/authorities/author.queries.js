@@ -38,9 +38,20 @@ query(
     name_auth
     note_auth
     subdivision_auth
-    url_thumbnail_auth
+    urlthumbnail_auth
     website_auth
     year_auth
+    linked_authoritiess {
+      _id
+      comment
+      end
+      linked_authority_id
+      linked_authority_type
+      linktype
+      root_authority_id
+      root_authority_type
+      start
+    } 
   }
 }
 `;
@@ -57,7 +68,7 @@ query($all_fields: String!){
     name_auth
     note_auth
     subdivision_auth
-    url_thumbnail_auth
+    urlthumbnail_auth
     website_auth
     year_auth
   }

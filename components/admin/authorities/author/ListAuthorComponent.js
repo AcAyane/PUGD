@@ -2,7 +2,7 @@ import React from 'react'
 import Person from '@material-ui/icons/Person';
 const ListAuthorComponent = ({ authors, AddAuthorityLink }) => {
 
-
+    
     return (
         <React.Fragment>
             {
@@ -12,13 +12,13 @@ const ListAuthorComponent = ({ authors, AddAuthorityLink }) => {
                         <Person style={{ margin: "auto", width: "30px", color: "gray" }} />
                         <div
                             className="person-name"
-                            onClick={() => {
+                            onClick={() => { 
                                 if (AddAuthorityLink) AddAuthorityLink({
                                     id: row._id,
-                                    label: [row.name_auth, row.indexName_auth].join(' '),
+                                    label: [row.name_auth, row.indexname_auth].join(' '),
                                 })
                             }}
-                        >  {[row.name_auth, row.indexName_auth].join(' ')} </div>
+                        >  {[row.name_auth, row.indexname_auth].join(' ')} </div>
                     </div>
 
                 ))

@@ -1,9 +1,9 @@
 import React ,{ useState } from "react";
 
-const useAuthorForm = (callback) => {
+const useAuthorForm = (author) => {
 
 
-    const [inputs, setInputs] = useState({
+    const [inputs, setInputs] = useState(author || {
         Author_Type: 10,
         Name_Auth: "",
         IndexName_Auth: "",

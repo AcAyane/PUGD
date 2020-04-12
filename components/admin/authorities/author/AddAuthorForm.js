@@ -11,7 +11,7 @@ import useAuthorForm from './useAuthorForm';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
 
-const AddAuthorForm = ({ onAddHandler }) => {
+const AddAuthorForm = ({ onAddHandler, author }) => {
 
     const {
         inputs,
@@ -20,7 +20,7 @@ const AddAuthorForm = ({ onAddHandler }) => {
         handleClose,
         OnAuthorityLinkChange,
         handleOpen,
-        open } = useAuthorForm();
+        open } = useAuthorForm(author);
 
     const onSubmitForm = (event) => {
         event.preventDefault();

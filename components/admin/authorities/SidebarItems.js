@@ -35,11 +35,11 @@ const SidebarItems = [
             },
             {
                 Label: "Sub-series",
-                href: "/admin/authorities/sub-series"
+                href: "/admin/authorities/sub_series"
             },
             {
                 Label: "Collection Title",
-                href: "/admin/authorities/collection-title"
+                href: "/admin/authorities/collection_title"
             },
             {
                 Label: "Uniform Titles",
@@ -47,7 +47,7 @@ const SidebarItems = [
             },
             {
                 Label: "Class number",
-                href: "/admin/authorities/class-number"
+                href: "/admin/authorities/class_number"
             },
 
 
