@@ -5,9 +5,7 @@ import HeaderBar from '../components/Layout/headerNav'
 const AdminLayout = (props) => {
    
     return (
-       
-        
-        <div>
+        <React.Fragment>
             <HeaderBar />
             <SideBar SidebarItems={AdminLayout.SidebarItems} />
 
@@ -16,7 +14,7 @@ const AdminLayout = (props) => {
                     {props.children}
                 </div>
             </div>
-        </div>
+        </React.Fragment>
     )
 }
 export default AdminLayout

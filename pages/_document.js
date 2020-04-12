@@ -11,7 +11,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="stylesheet" href="/css/bootstrap.css" />
           <link rel="stylesheet" href="/css/materialize.min.css" />
           <link rel="stylesheet" href="/css/style.min.css" />
         </Head>

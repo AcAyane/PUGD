@@ -3,14 +3,12 @@ import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import Link from '@material-ui/core/Link'; 
+import Checkbox from '@material-ui/core/Checkbox'; 
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useLazyQuery } from '@apollo/react-hooks'
 import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
-import Router from 'next/router' 
-import { Alert } from 'reactstrap'; 
+import Router from 'next/router'  
 import { withApollo } from '../../../shared/apollo';
 function SignIn() {
 
@@ -80,7 +78,7 @@ function SignIn() {
                   >
                     Sign In
                   </Button>
-                  {error ? <Alert color="danger">{String(error)}</Alert> : null}
+                  {error ? <div  >{String(error)}</div> : null}
                 </form>
               </div>
 

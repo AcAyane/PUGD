@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
-import { FaCircle } from 'react-icons/fa';
+ 
+import FaCircle from '@material-ui/icons/FiberManualRecord';
 import { useMutation } from '@apollo/react-hooks'
 import Router from 'next/router'
-import { REGISTER_MUTATION } from '../../../graphql/mutations/user.mutation';
-import { withApollo } from '../../../shared/apollo';
+import { REGISTER_MUTATION } from '../../../graphql/mutations/user.mutation'; 
 export function signup() {
 
   const [register] = useMutation(REGISTER_MUTATION);
@@ -39,7 +38,7 @@ export function signup() {
 
       <div className="card animate">
         <div className="card-content " >
-          <FaCircle size="14px" color="#8e24aa" />
+          <FaCircle />
           <h5 className="uk-icon">Add user</h5>
         </div>
       </div>
