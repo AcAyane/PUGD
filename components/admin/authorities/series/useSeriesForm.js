@@ -26,10 +26,7 @@ const useSeriesForm = (callback) => {
     // Handle the adding of an authority to inputs.Linked_authorities
     const addLinked_authorities = (author) => {
         setInputs(inputs => ({ ...inputs, Linked_authorities: [...inputs.Linked_authorities, author] }));
-    }
-    const addSee_Also = (category) => {
-        setInputs(inputs => ({ ...inputs, See_also: [...inputs.See_also, category] }));
-    }
+    } 
 
     // Handle state change of the authority links
     const OnAuthorityLinkChange = (index, authorityLink) => {

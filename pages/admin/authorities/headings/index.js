@@ -1,8 +1,7 @@
 import React from 'react';
 import AdminLayout from '../../../../components/adminLayout';
 import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
-import { useLazyQuery } from '@apollo/react-hooks';
-import { Alert } from 'reactstrap';
+import { useLazyQuery } from '@apollo/react-hooks'; 
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchCategoryComponent from '../../../../components/admin/authorities/category/SearchCategoryComponent';
 import ListCategoryComponent from '../../../../components/admin/authorities/category/ListCategoryComponent';
@@ -24,7 +23,7 @@ const CategoryPage = () => {
             <Card  >
                 <CardContent>
                     <h4 className="card-title">Recherche : Category</h4>
-                    {CategoryResponse.error ? <Alert color="danger">{String(CategoryResponse.error.message)}</Alert> : null}
+                    {CategoryResponse.error ? <div color="danger">{String(CategoryResponse.error.message)}</div> : null}
                     {CategoryResponse.data &&
                         <ListCategoryComponent categories={CategoryResponse.data.category_all_fields} />
                     }

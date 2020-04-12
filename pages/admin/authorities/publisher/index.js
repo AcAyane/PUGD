@@ -1,8 +1,7 @@
 import React from 'react';
 import AdminLayout from '../../../../components/adminLayout';
 import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
-import { useLazyQuery } from '@apollo/react-hooks';
-import { Alert } from 'reactstrap';
+import { useLazyQuery } from '@apollo/react-hooks'; 
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchPublisherComponent from '../../../../components/admin/authorities/publisher/SearchPublisherComponent';
 import ListPublisherComponent from '../../../../components/admin/authorities/publisher/ListPublisherComponent';
@@ -25,7 +24,7 @@ const PublisherPage = () => {
             <Card  >
                 <CardContent>
                     <h4 className="card-title">Recherche : Publishers</h4>
-                    {PublisherResponse.error ? <Alert color="danger">{String(PublisherResponse.error.message)}</Alert> : null}
+                    {PublisherResponse.error ? <div color="danger">{String(PublisherResponse.error.message)}</div> : null}
                     {PublisherResponse.data &&
                         <ListPublisherComponent publishers={PublisherResponse.data.publisher_all_fields} />
                     }

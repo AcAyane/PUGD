@@ -9,7 +9,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Alert } from 'reactstrap';
 
 
 import { useLazyQuery } from '@apollo/react-hooks';
@@ -17,14 +16,17 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { GET_AUTHOR_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/author.queries';
 import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
 import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
+import { GET_SERIES_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/series.queries';
 
 import SearchAuthorComponent from '../author/SearchAuthorComponent';
 import SearchCategoryComponent from '../category/SearchCategoryComponent';
 import SearchPublisherComponent from '../publisher/SearchPublisherComponent';
+import SearchSeriesComponent from '../series/SearchSeriesComponent';
 
 import ListAuthorComponent from '../author/ListAuthorComponent';
 import ListCategoryComponent from '../category/ListCategoryComponent';
 import ListPublisherComponent from '../publisher/ListPublisherComponent';
+import ListSeriesComponent from '../series/ListSeriesComponent';
 
 
 
@@ -51,7 +53,9 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
 
     const [getCategoryAllFields, CategoryResponse] = useLazyQuery(GET_CATEGORY_ALL_FIELDS);
 
-    const [getPublisherAllFields, PublisherResponse ] = useLazyQuery(GET_PUBLISHER_ALL_FIELDS);
+    const [getPublisherAllFields, PublisherResponse] = useLazyQuery(GET_PUBLISHER_ALL_FIELDS);
+
+    const [getSeriesAllFields, SeriesResponse] = useLazyQuery(GET_SERIES_ALL_FIELDS);
 
     const [Authority_Type, setAuthority_Type] = useState(AuthorityType || 10)
 
@@ -61,7 +65,6 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
     }, [AuthorityType]);
 
     const AddAuthorityLink = ({ id, label }) => {
-
         addAuthor({
             id,
             AuthorityName: label,
@@ -91,7 +94,7 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
                     <Card  >
                         <CardContent>
                             <h4 className="card-title">Recherche : Auteurs</h4>
-                            {error ? <Alert color="danger">{String(error.message)}</Alert> : null}
+                            {error ? <div color="danger">{String(error.message)}</div> : null}
 
                             {data &&
                                 <ListAuthorComponent authors={data.author_all_fields} AddAuthorityLink={AddAuthorityLink} />
@@ -110,7 +113,7 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
                     <Card  >
                         <CardContent>
                             <h4 className="card-title">Recherche : Categories</h4>
-                            {error ? <Alert color="danger">{String(error.message)}</Alert> : null}
+                            {error ? <div color="danger">{String(error.message)}</div> : null}
 
                             {CategoryResponse.data &&
                                 <ListCategoryComponent categories={CategoryResponse.data.category_all_fields} AddAuthorityLink={AddAuthorityLink} />
@@ -129,10 +132,28 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
                     <Card  >
                         <CardContent>
                             <h4 className="card-title">Recherche : Publishers</h4>
-                            {error ? <Alert color="danger">{String(PublisherResponse.error.message)}</Alert> : null}
+                            {error ? <div color="danger">{String(PublisherResponse.error.message)}</div> : null}
 
                             {PublisherResponse.data &&
                                 <ListPublisherComponent publishers={PublisherResponse.data.publisher_all_fields} AddAuthorityLink={AddAuthorityLink} />
+                            }
+                        </CardContent>
+                    </Card>
+                </React.Fragment>
+            case 40:
+                return <React.Fragment>
+                    <Card  >
+                        <CardContent>
+                            <SearchSeriesComponent getSeriesAllFields={getSeriesAllFields} SearchOnly/>
+                        </CardContent>
+                    </Card>
+
+                    <Card  >
+                        <CardContent>
+                            <h4 className="card-title">Recherche : Series</h4>
+                            {SeriesResponse.error ? <div color="danger">{String(SeriesResponse.error.message)}</div> : null}
+                            {SeriesResponse.data &&
+                                <ListSeriesComponent series={SeriesResponse.data.series_all_fields} AddAuthorityLink={AddAuthorityLink}/>
                             }
                         </CardContent>
                     </Card>

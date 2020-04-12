@@ -1,9 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { TextField } from '@material-ui/core';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
 
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -11,7 +8,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextBox from '../../../ui/TextBox';
-
+import SelectBox from '../../../ui/SelectBox';
 
 const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
 
@@ -29,7 +26,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                 onClick={event => event.stopPropagation()}
                 onFocus={event => event.stopPropagation()}
             >
-                <Grid item xs={3}>
+                <Grid item xs={4}>
                     <TextBox
 
                         value={Authority.AuthorityName}
@@ -38,66 +35,58 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                             readOnly: true,
                         }} />
                 </Grid>
-                <Grid item xs={3}>
-                    <FormControl fullWidth>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={Authority.LinkType || 10}
-                            onChange={(event) => {
-                                const Authority2 = { ...Authority }
-                                Authority2.LinkType = event.target.value
-                                OnAuthorityLinkChange(index, Authority2)
-                            }}
-                        >
-                            <MenuItem value={10}>a participé à</MenuItem>
-                            <MenuItem value={20}> après, voir aussi</MenuItem>
-                            <MenuItem value={30}> avant, voir aussi</MenuItem>
-                            <MenuItem value={40}> est associé à</MenuItem>
-                            <MenuItem value={50}> participant</MenuItem>
-                            <MenuItem value={60}> voir</MenuItem>
-                            <MenuItem value={70}> voir aussi</MenuItem>
-                            <MenuItem value={80}> voir aussi au nom d'état-civil</MenuItem>
-                            <MenuItem value={90}> voir aussi au nom dans le siècle</MenuItem>
-                            <MenuItem value={110}> voir aussi au nom de femme mariée</MenuItem>
-                            <MenuItem value={120}> voir aussi au nom de jeune fille</MenuItem>
-                            <MenuItem value={130}> voir aussi au nom en religion</MenuItem>
-                            <MenuItem value={140}> voir aussi au noms des membres du pseudonyme collectif</MenuItem>
-                            <MenuItem value={150}> voir aussi au pseudoyme</MenuItem>
-                            <MenuItem value={160}> voir aussi au terme générique</MenuItem>
-                            <MenuItem value={170}> voir aussi au terme spécifique</MenuItem>
-                            <MenuItem value={180}> voir aussi la forme développée</MenuItem>
+                <Grid item xs={4}>
 
-                        </Select>
-                    </FormControl>
+                    <SelectBox
+                        label="Link type"
+                        value={Authority.LinkType || 10}
+                        onChange={(event) => {
+                            const Authority2 = { ...Authority }
+                            Authority2.LinkType = event.target.value
+                            OnAuthorityLinkChange(index, Authority2)
+                        }}
+                    >
+                        <MenuItem value={10}>a participé à</MenuItem>
+                        <MenuItem value={20}> après, voir aussi</MenuItem>
+                        <MenuItem value={30}> avant, voir aussi</MenuItem>
+                        <MenuItem value={40}> est associé à</MenuItem>
+                        <MenuItem value={50}> participant</MenuItem>
+                        <MenuItem value={60}> voir</MenuItem>
+                        <MenuItem value={70}> voir aussi</MenuItem>
+                        <MenuItem value={80}> voir aussi au nom d'état-civil</MenuItem>
+                        <MenuItem value={90}> voir aussi au nom dans le siècle</MenuItem>
+                        <MenuItem value={110}> voir aussi au nom de femme mariée</MenuItem>
+                        <MenuItem value={120}> voir aussi au nom de jeune fille</MenuItem>
+                        <MenuItem value={130}> voir aussi au nom en religion</MenuItem>
+                        <MenuItem value={140}> voir aussi au noms des membres du pseudonyme collectif</MenuItem>
+                        <MenuItem value={150}> voir aussi au pseudoyme</MenuItem>
+                        <MenuItem value={160}> voir aussi au terme générique</MenuItem>
+                        <MenuItem value={170}> voir aussi au terme spécifique</MenuItem>
+                        <MenuItem value={180}> voir aussi la forme développée</MenuItem>
+                    </SelectBox>
+
                 </Grid>
-                <Grid item xs={3}>
-                    <FormControl fullWidth>
-                        {/* <InputLabel id="demo-simple-select-label">Authority</InputLabel> */}
-                        <Select
-                            labelId="demo-simple-select-label"
-                            value={Authority.Authority_Type}
-                            readOnly
-                        // onChange={e => { setAuthority_Type(e.target.value) }}
-                        >
-                            <MenuItem value={10}>Authors</MenuItem>
-                            <MenuItem value={20}>Subject headings</MenuItem>
-                            <MenuItem value={30}>Publishers</MenuItem>
-                            <MenuItem value={40}>Series</MenuItem>
-                            <MenuItem value={50}>Sub-series</MenuItem>
-                            <MenuItem value={60}>Collection Title</MenuItem>
-                            <MenuItem value={70}>Uniform Titles</MenuItem>
-                            <MenuItem value={80}>Class number</MenuItem>
-                        </Select>
-                    </FormControl>
+                <Grid item xs={4}>
+
+                    {/* <InputLabel id="demo-simple-select-label">Authority</InputLabel> */}
+                    <SelectBox
+                        label="Authority Type"
+                        value={Authority.Authority_Type}
+                        readOnly
+                    // onChange={e => { setAuthority_Type(e.target.value) }}
+                    >
+                        <MenuItem value={10}>Authors</MenuItem>
+                        <MenuItem value={20}>Subject headings</MenuItem>
+                        <MenuItem value={30}>Publishers</MenuItem>
+                        <MenuItem value={40}>Series</MenuItem>
+                        <MenuItem value={50}>Sub-series</MenuItem>
+                        <MenuItem value={60}>Collection Title</MenuItem>
+                        <MenuItem value={70}>Uniform Titles</MenuItem>
+                        <MenuItem value={80}>Class number</MenuItem>
+                    </SelectBox>
+
                 </Grid>
-                <Grid item xs={3}>
-                    <TextBox
-                    // label="Linked authorities "
-                    // value={IndexName_Auth}
-                    // onChange={e => { setIndexName_Auth(e.target.value) }}
-                    />
-                </Grid>
+ 
             </Grid>
 
 
@@ -126,7 +115,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                         InputLabelProps={{
                             shrink: true,
                         }}
-                         
+
                     />
                 </Grid>
                 <Grid item xs={6}>
@@ -142,7 +131,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
                         }}
                         InputLabelProps={{
                             shrink: true,
-                        }} 
+                        }}
                     />
                 </Grid>
 

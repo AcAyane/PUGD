@@ -6,9 +6,7 @@ import { Card, CardContent } from '@material-ui/core';
 
 
 const LinkedAuthorityListView = ({ Linked_authorities, OnAuthorityLinkChange }) => {
-
-
-
+ 
     return <Card  >
         <CardContent>
    
