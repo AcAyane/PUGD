@@ -1,18 +1,9 @@
-import React from 'react';
-import SidebarItems from '../../../components/admin/authorities/SidebarItems';
-import AdminLayout from '../../../components/adminLayout';
-
-
-const sideBar = () => {
-
-
-    return (
-        <div>this is the authorities page</div>
-    )
+import React from 'react'
+import AdminLayout from '../../../components/adminLayout'
+const AuthoritiesHome = () => {
+    return <div>
+        this is the authorities module main page
+    </div>
 }
-
- 
-AdminLayout.SidebarItems=SidebarItems
-sideBar.Layout = AdminLayout
-
-export default sideBar
+AuthoritiesHome.Layout = AdminLayout
+export default AuthoritiesHome

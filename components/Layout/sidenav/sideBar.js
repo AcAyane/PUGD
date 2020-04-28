@@ -1,93 +1,112 @@
-import React from 'react';
-import SidenavItem from './sidenav-item';
-import SidenavDropdown from './sidenavDropdown';
-import SideBarBrandName from './sideBarBrand';
-import SidenavHeader from './sidenavHeader';
+import React, { useRef, useEffect, useState } from 'react';
+import SideBarDropDown from './sideBarDropDown';
+import SideBarNavigationHeader from './sideBarNavigationHeader';
+import SideBarDropDownItem from './sideBarDropDownItem';
 import AuthoritiesSideItems from '../../admin/authorities/SidebarItems';
+
 import Router from 'next/router'
+const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
+  const [hoverClass, setHoverClass] = useState("");
+  const [collapsedClass, setcollapsedClass] = useState("nav-lock");
 
-import ExpansionPanel from "@material-ui/core/ExpansionPanel";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import Typography from "@material-ui/core/Typography"; 
-
-
-const sideBar = (props) => { 
   let sidebarItems
-  if(Router.route.startsWith('/admin/authorities'))
-      sidebarItems=AuthoritiesSideItems
-  let  [header , ...childrenItems ]=sidebarItems ? sidebarItems: [null,null]
- 
+  if (typeof window !== 'undefined' && Router.route.startsWith('/admin/authorities'))
+    sidebarItems = AuthoritiesSideItems
+  let [header, ...childrenItems] = sidebarItems ? sidebarItems : [null, null]
+
+
+  const sideBarToggle = (inside) => {
+
+    setcollapsedClass("")
+    if (inside)
+      setHoverClass("nav-expanded");
+    else
+      setHoverClass("nav-collapsed")
+  }
+  const toggleCollapsed = () => {
+    setHoverClass("")
+    if (collapsedClass === "nav-collapsed" || collapsedClass === "")
+      setcollapsedClass("nav-lock")
+    else
+      setcollapsedClass("nav-collapsed")
+    setcollapsed(!collapsed)
+  }
+
+
+  const collapsibleHeader = useRef();
+  useEffect(() => {
+    var instances = M.Collapsible.init(collapsibleHeader.current);
+  }, [])
   return (
-    <aside className="sidenav-main nav-lock sidenav-active-rounded">
-    
+    <aside className={`sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded ${collapsedClass} ${hoverClass}`}
+      onMouseEnter={() => collapsed && sideBarToggle(true)}
+      onMouseLeave={() => collapsed && sideBarToggle(false)}>
+      <div className="brand-sidebar">
+        <h1 className="logo-wrapper">
+          <a className="brand-logo darken-1" href="#" >
+            <img className="hide-on-med-and-down " src="/app-assets/images/logo/materialize-logo.png" alt="materialize logo" />
+            <img className="show-on-medium-and-down hide-on-med-and-up" src="/app-assets/images/logo/materialize-logo-color.png" alt="materialize logo" />
+            <span className="logo-text hide-on-med-and-down">
+              Materialize
+            </span>
+          </a>
+          <a className="navbar-toggler" href="#" onClick={toggleCollapsed}>
+            <i className="material-icons">
+              {collapsed ? "radio_button_unchecked" : "radio_button_checked"}
+            </i>
+          </a>
+        </h1>
+      </div>
+      <ul
+        className="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow"
+        id="slide-out"
+        data-menu="menu-navigation"
+        data-collapsible="menu-accordion"
+        ref={collapsibleHeader}
+      >
 
-    <ExpansionPanel>
-        <ExpansionPanelSummary
-          // expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          Expansion Panel 1
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel>
-        <ExpansionPanelSummary
-          // expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography>Expansion Panel 2</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel disabled>
-        <ExpansionPanelSummary
-          // expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel3a-content"
-          id="panel3a-header"
-        >
-          <Typography>Disabled Expansion Panel</Typography>
-        </ExpansionPanelSummary>
-      </ExpansionPanel>
 
-      {/* <SideBarBrandName />
+        
+        {sidebarItems &&
 
-      {sidebarItems  &&
-      
-      <ul className="sidenav sidenav-fixed "
-      id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion" >
 
-        <SidenavHeader Label={header}/>
 
-      {childrenItems.map((item, index) => {
-        return (
-          <SidenavDropdown Label={item.Label} key={index}>
+        
+          <React.Fragment>
 
-            {item.Children.map((subItem, index) => {  
+            <SideBarNavigationHeader Label={header} />
+            {childrenItems.map((item, index) => {
               return (
-                <SidenavItem Label={subItem.Label} key={index} href={subItem.href}/>
+                <SideBarDropDown Label={item.Label} key={index} icon={item.Icon}>
+
+                  {item.Children.map((subItem, index) => {
+                    return (
+                      <SideBarDropDownItem Label={subItem.Label} key={index} href={subItem.href} />
+                    )
+                  })}
+
+                </SideBarDropDown>
               )
             })}
+          </React.Fragment>
 
-          </SidenavDropdown>
-        )
-      })}
-    </ul>
 
-    } */}
+        }
 
-    
-
+        {/* 
+        <SideBarNavigationHeader Label="Application" />
+        <SideBarDropDown Label="Dashboard">
+          <SideBarDropDownItem Label="Modern" />
+          <SideBarDropDownItem Label="Dashboard" />
+          <SideBarDropDownItem Label="Test" />
+        </SideBarDropDown> */}
+      </ul>
+      <div className="navigation-background">
+      </div>
+      <a className="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out">
+        <i className="material-icons">
+          menu</i>
+      </a>
     </aside>
   )
 }

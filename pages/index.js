@@ -1,21 +1,21 @@
-import React from 'react'; 
+import React, { useEffect } from 'react';
+import  Router from 'next/router';
 
 
 const Home = () => {
 
- 
+  useEffect(() => {
+    if (typeof window !== "undefined")
+    Router.push("/admin/authorities")
+  })
   return (
     <div>
-    <div className="card gradient-shadow gradient-45deg-light-blue-cyan border-radius-3"  >
-            <div className="card-content center">
-              <h5 className="white-text lighten-4">Autorités</h5>
-            </div>
-          </div>
+        Main platform page
     </div>
 
-  
+
   );
 };
 
 export default Home;
- 
+

@@ -1,10 +1,13 @@
 {
-  "name": "with-apollo",
-  "version": "2.0.0",
+  "name": "PUGD",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@apollo/react-hooks": "3.1.3",
@@ -18,13 +21,12 @@
     "next": "latest",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "@material-ui/core": "^4.9.5", 
-    "react-icons": "^3.9.0",
-    "reactstrap": "^8.4.1"
+    "react-dom": "^16.7.0"
   },
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.2",
+    "@next/bundle-analyzer": "^9.3.4",
     "babel-plugin-graphql-tag": "^2.5.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.10.7",
