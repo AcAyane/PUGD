@@ -1,22 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React  from 'react';
 
 const SideBarDropDown = ({ active, Label,icon,...props }) => {
-  const collapsibleHeader = useRef();
-  useEffect(() => {
-    // var elems = document.querySelectorAll('.notification-button, .profile-button, .translation-button, .dropdown-settings');
-    var instances = M.Collapsible.init(collapsibleHeader.current, {
-      inDuration: 300,
-      outDuration: 225,
-      constrainWidth: false,
-      hover: false,
-      gutter: 0,
-      coverTrigger: false,
-      alignment: "right",
-      hover: false,
-      closeOnClick: true,
-    });
-  }, [])
-  
+
   return (
     <li className={`bold ${active}`} >
       <a className="collapsible-header waves-effect waves-cyan " href="#" >

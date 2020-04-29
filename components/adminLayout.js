@@ -7,7 +7,7 @@ const AdminLayout = (props) => {
     return (
         <React.Fragment>
               <HeaderBar collapsed={true} />
-            <RightNav />
+                <RightNav />
   
             <SideBar SidebarItems={AdminLayout.SidebarItems} collapsedState={CollapsedState} />
             <div className="container">

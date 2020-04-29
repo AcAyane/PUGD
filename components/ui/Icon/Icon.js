@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Icon = ({ children, ...props }) => {
+const Icon = ({ children,className="", ...props }) => {
 
     return (
-        <i className="material-icons" {...props}>{children}</i>
+        <i className={`material-icons ${className}`} {...props}>{children}</i>
     )
 }
 
