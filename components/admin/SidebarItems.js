@@ -228,7 +228,7 @@ const SidebarItems = {
             ]
         },
         {
-            Label: "Authorities",
+            Label: "Borrowers",
             Icon: "settings_input_svideo",
             Children: [
                 {
