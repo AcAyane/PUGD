@@ -6,12 +6,15 @@ import GridElement from '../../../components/ui/Grid/GridElement';
 import TextBox from "../../../components/ui/TextBox";
 import Button from "../../../components/ui/Button";
 import DatePicker from "../../../components/ui/DatePicker/DatePicker";
+import SelectBox from "../../../components/ui/SelectBox";
+
 
 const CirculationHome = () => {
+
     return <div className="container">
         <form>
             <Card>
-                <h6 className="center">Add Brrowers</h6>
+                <h6 className="center">Add Borrowers</h6>
                 <div className="row">
                     <Grid>
                         <GridElement s={6}>
@@ -23,16 +26,11 @@ const CirculationHome = () => {
                         <GridElement s={6}>
                             {/*todo check code if not used by another Brroweers*/}
 
-                            <TextBox label="Code Bar"
-                                     value={this.state.search}
-                                     onChange={(e) =>
-                                         this.setState({ search: e.target.value })
-                                     }
-                            />
-
-                            <TextBox label="Gender"/>
-                            <TextBox label="Statues"/>
-                            <TextBox label="Email"/>
+                            <TextBox label="Code Bar"/>
+                            <SelectBox >
+                                <option value="Male">Male</option>
+                                <option selected value="Female">Female</option>
+                            </SelectBox>
 
                         </GridElement>
 
