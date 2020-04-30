@@ -56,8 +56,9 @@ function SignIn() {
 
                     <TextBox icon="lock_outline" type="password" label="Password"
                       onChange={event => { setPassword(event.target.value) }}
-                      value={password} />
+                      value={password} /> 
 
+                  
                   </div>
                   <div className="row">
                     <div className="col s12 m12 l12 ml-2 mt-1">
