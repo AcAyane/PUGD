@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react' 
+import React, { useRef, useEffect } from 'react'
 
 const SelectBox = ({ children, label, ...props }) => {
 
@@ -9,7 +9,6 @@ const SelectBox = ({ children, label, ...props }) => {
 
 
   return (
-
     <div className="input-field col s12">
       <select ref={selectElement} { ...props}>
         {children}

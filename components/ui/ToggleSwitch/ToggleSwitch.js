@@ -1,21 +1,19 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 const ToggleSwitch =
-    ({ prefix, sufix, label, value, type = "checkbox", ...props }) => {
-        const [ open, setOpen ] = useState(true)
-    return (
+    ({ prefix, colorSufix, sufix,sufixActive, sufixDesactive, label, type = "checkbox", ...props }) => {
+
+        return (
         <React.Fragment>
             {
-
-                    <div className="switch">
-                        {label}
+                    <div className="switch" {...props}>
+                        <span>{label}</span>
                         <label>
-                            {prefix}<input type={type} value={value}
-                                           checked={open}
-                                           {...props}
-                                           onClick={ () =>{console.log(open);setOpen(!open)}}
-                        />
-                            <span className="lever"/>{open === true ? sufix : 'in'+sufix}
+                            {prefix}<input type={type} {...props} />
+                            <span className="lever"/>
+                            <label style={{color: colorSufix === true ? '#d60e28' : '#707587'  }}>
+                                {colorSufix === true ? sufix+sufixActive : sufix+sufixDesactive }
+                            </label>
                         </label>
                     </div>
             }
