@@ -105,7 +105,7 @@ const SidebarItems = {
 
     ],
     circulation:[
-        "circulation",
+        "Circulation",
         {
             Label: "Circulation",
             Icon: "home",
