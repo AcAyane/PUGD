@@ -221,104 +221,148 @@ const SidebarItems = {
     reporting:[
         "reporting",
         {
-            Label: "Search",
+            Label: "Stats",
             Icon: "search",
             Children: [
                 {
-                    Label: "All authorities",
-                    href: "/admin/authorities/allAuth"
+                    Label: "Customizable",
+                    href: "/admin/reporting/customizablz"
                 },
                 {
-                    Label: "Predefined",
-                    href: "/admin/authorities/predefined"
+                    Label: "Configurable",
+                    href: "/admin/reporting/configurable"
                 },
 
             ]
         },
         {
-            Label: "Borrowers",
+            Label: "Loans",
             Icon: "settings_input_svideo",
             Children: [
                 {
-                    Label: "Author",
-                    href: "/admin/authorities/author"
+                    Label: "Current Loans",
+                    href: "/admin/reporting/currentloans"
                 },
                 {
-                    Label: "headings",
-                    href: "/admin/authorities/headings"
+                    Label: "Delay by Reader",
+                    href: "/admin/reporting/delaybyreader"
                 },
                 {
-                    Label: "Publisher",
-                    href: "/admin/authorities/publisher"
+                    Label: "Delay by Date",
+                    href: "/admin/reporting/delaybydate"
                 },
                 {
-                    Label: "Series",
-                    href: "/admin/authorities/series"
+                    Label: "Loan Group",
+                    href: "/admin/reporting/loangroup"
                 },
                 {
-                    Label: "Sub-series",
-                    href: "/admin/authorities/sub_series"
+                    Label: "Delay by Group",
+                    href: "/admin/reporting/delaybygroup"
                 },
-                {
-                    Label: "Collection Title",
-                    href: "/admin/authorities/collection_title"
-                },
-                {
-                    Label: "Uniform Titles",
-                    href: "/admin/authorities/uniform-titles"
-                },
-                {
-                    Label: "Class number",
-                    href: "/admin/authorities/class_number"
-                },
-
 
             ]
         },
         {
-            Label: "Baskets",
-            Icon: "shopping_basket",
-            Children: [
-                {
-                    Label: "Management",
-                    href: "/admin/authorities/basket/management"
-                },
-                {
-                    Label: "Collection",
-                    href: "/admin/authorities/basket/collection"
-                },
-                {
-                    Label: "Tag on/off",
-                    href: "/admin/authorities/basket/tags"
-                },
-                {
-                    Label: "Actions",
-                    href: "/admin/authorities/basket/actions"
-                },
-            ]
-        },
-        {
-            Label: "Semantic",
+            Label: "Reservations",
             Icon: "spellcheck",
             Children: [
                 {
-                    Label: "Synonyms",
-                    href: "/admin/authorities/synonyms"
+                    Label: "In Progress",
+                    href: "/admin/reporting/inprogress"
                 },
                 {
-                    Label: "Stopwords",
-                    href: "/admin/authorities/stopwords"
+                    Label: "Treat",
+                    href: "/admin/reporting/totreat"
+                },
+                
+            ]
+        },
+        {
+            Label: "Readers",
+            Icon: "spellcheck",
+            Children: [
+                {
+                    Label: "Current Readers",
+                    href: "/admin/reporting/currentreaders"
+                },
+                {
+                    Label: "End of Subscription",
+                    href: "/admin/reporting/endofsubscription"
+                },
+                {
+                    Label: "Subscription Exceeded",
+                    href: "/admin/reporting/subscriptionexceed"
+                },
+                {
+                    Label: "Category to Change",
+                    href: "/admin/reporting/categorytochange"
+                },
+                        ]
+        },
+        {
+            Label: "Periodic",
+            Icon: "settings_applications",
+            Children: [
+                {
+                    Label: "Collection Stat",
+                    href: "/admin/reporting/collectionstat"
+                },
+                {
+                    Label: "Circulation Stat",
+                    href: "/admin/reporting/circulationstat"
+                },
+                {
+                    Label: "Simplified Circulation",
+                    href: "/admin/reporting/simplifiedcirculation"
                 },
             ]
         },
         {
-            Label: "Management",
+            Label: "BarCode",
             Icon: "settings_applications",
             Children: [
                 {
-                    Label: "Import",
-                    href: "/admin/authorities/import"
+                    Label: "Free Generated",
+                    href: "/admin/reporting/freegenerated"
+                },    
+            ]
+        },
+        {
+            Label: "Labels",
+            Icon: "settings_applications",
+            Children: [
+                {
+                    Label: "Plank Models",
+                    href: "/admin/reporting/plankmodels"
+                },    
+            ]
+        },
+        {
+            Label: "Templates",
+            Icon: "settings_applications",
+            Children: [
+                {
+                    Label: "Notices",
+                    href: "/admin/reporting/notices"
                 },
+                {
+                    Label: "Circulation List",
+                    href: "/admin/reporting/circulationlist"
+                },
+                {
+                    Label: "Bannettes",
+                    href: "/admin/reporting/bannettes"
+                },
+            ]
+        },
+        {
+            Label: "OPAC",
+            Icon: "settings_applications",
+            Children: [
+                {
+                    Label: "Mail Compaign",
+                    href: "/admin/reporting/mailcompaign"
+                },    
             ]
         },
 

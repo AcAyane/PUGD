@@ -5,7 +5,7 @@ const TextBox = ({ label, value, icon, Multiline, type = "text", ...props }) => 
     return (
         <React.Fragment>
             {
-                !Multiline ?
+                Multiline ?
                       <div className="input-field col s12">
                         <textarea id={id} className="materialize-textarea" value={value}  {...props} />
                         <label htmlFor={id}>{label}</label>
