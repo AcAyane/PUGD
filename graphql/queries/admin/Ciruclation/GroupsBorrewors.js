@@ -1,9 +1,12 @@
 import gql from 'graphql-tag';
 
-const GET_GROUPS_BORREWORS = gql`
-    {
-        GetAllCategoriesBorrowers{
+const GetAllCategoriesBorrowers = gql`
+    query{
+        allcatbr{
             _id
+            dureeadhesion
+            agemin
+            agemax
             namecategoriesbrrowers
         }
     }
@@ -19,6 +22,6 @@ const GET_GROUPS_BY_NAME= gql`
 `;
 
 module.exports = {
-    GET_GROUPS_BORREWORS,
+    GetAllCategoriesBorrowers,
     GET_GROUPS_BY_NAME
 }

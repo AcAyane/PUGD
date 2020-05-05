@@ -125,15 +125,23 @@ const SidebarItems = {
 
                 {
                     Label: "Groupes de lecteurs",
-                    href: "/admin/circulation/groupBrs"
+                    href: "/admin/circulation/groups"
                 },
                 {
                     Label: "Nouveau lecteur",
-                    href: "/admin/circulation/newBrrowers"
+                    href: "/admin/circulation/Borrowers"
                 },
                 {
-                    Label: "Recherches prédéfinies",
-                    href: "/admin/circulation/recherches"
+                    Label: "Périodiques",
+                    href: "/admin/circulation/periodique"
+                },
+                {
+                    Label: "Recharch Personalisé",
+                    href: "/admin/circulation/recharch"
+                },
+                {
+                    Label: "List lecteur (Borrows)",
+                    href: "/admin/circulation/Borrowers"
                 },
 
             ]
@@ -274,7 +282,7 @@ const SidebarItems = {
                     Label: "Treat",
                     href: "/admin/reporting/totreat"
                 },
-                
+
             ]
         },
         {
@@ -324,7 +332,7 @@ const SidebarItems = {
                 {
                     Label: "Free Generated",
                     href: "/admin/reporting/freegenerated"
-                },    
+                },
             ]
         },
         {
@@ -334,7 +342,7 @@ const SidebarItems = {
                 {
                     Label: "Plank Models",
                     href: "/admin/reporting/plankmodels"
-                },    
+                },
             ]
         },
         {
@@ -362,7 +370,7 @@ const SidebarItems = {
                 {
                     Label: "Mail Compaign",
                     href: "/admin/reporting/mailcompaign"
-                },    
+                },
             ]
         },
 

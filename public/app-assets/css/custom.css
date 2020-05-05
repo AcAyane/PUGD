@@ -24,5 +24,30 @@ li.active .collapsible-header .collapsible-icon{
     -moz-user-select: none !important;
     -khtml-user-select: none !important;
     -webkit-user-select: none !important;
-    -o-user-select: none !important; 
+    -o-user-select: none !important;
+}
+
+.recent-buyers-card .collection
+{
+    border: none;
+}
+
+.recent-buyers-card .collection .collection-item
+{
+    min-height: auto;
+    padding-left: 55px;
+
+    border-bottom: none;
+}
+
+.recent-buyers-card .collection .collection-item.avatar:not(.circle-clipper) > .circle
+{
+    left: 0;
+}
+
+.recent-buyers-card .collection .collection-item.avatar .secondary-content
+{
+    right: 0;
+
+    color: #3f51b5;
 }

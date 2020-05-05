@@ -4,6 +4,6 @@ const AuthoritiesHome = () => {
     return <div>
         this is the authorities module main page
     </div>
-}
+};
 AuthoritiesHome.Layout = AdminLayout
 export default AuthoritiesHome
