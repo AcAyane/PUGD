@@ -1,60 +1,58 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox'; 
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import { useLazyQuery } from '@apollo/react-hooks'
-import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
-import Router from 'next/router'  
-import { withApollo } from '../../../shared/apollo';
+import React, { useState } from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+// import Link from '@material-ui/core/Link';
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { useLazyQuery } from "@apollo/react-hooks";
+import { LOGIN_QUERY } from "../../../graphql/queries/user.query";
+import Router from "next/router";
+import { Alert } from "reactstrap";
+import { withApollo } from "../../../shared/apollo";
 function SignIn() {
-
   const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-
-  const onSubmitHandler = (e)=>{
+  const onSubmitHandler = e => {
     e.preventDefault();
     login({
       variables: {
         username: username,
         password: password
-      } 
+      }
     });
-  }
-
+  };
 
   if (data && data.login) {
-    localStorage.setItem('token', data.login.token);
-    Router.push('/')
+    localStorage.setItem("token", data.login.token);
+    Router.push("/");
   }
 
   return (
-    <div className="login-container float-right" >
+    <div className="login-container float-right">
       <div className="float-right login-form">
         <div className="row h-100">
           <div className="col-sm-12 my-auto">
             <Container component="main" maxWidth="xs">
               <CssBaseline />
               <div className="paper">
-
                 <Typography component="h1" variant="h5">
                   Sign in
                 </Typography>
-                <form className="form" noValidate
-                  onSubmit={ onSubmitHandler}
-                >
+                <form className="form" noValidate onSubmit={onSubmitHandler}>
                   <TextField
                     margin="normal"
                     required
                     fullWidth
                     label="Username"
                     autoFocus
-                    onChange={event => { setUsername(event.target.value) }}
+                    onChange={event => {
+                      setUsername(event.target.value);
+                    }}
                     value={username}
                   />
                   <TextField
@@ -81,12 +79,11 @@ function SignIn() {
                   {error ? <div  >{String(error)}</div> : null}
                 </form>
               </div>
-
             </Container>
           </div>
         </div>
       </div>
-      <style jsx >
+      <style jsx>
         {`
      
         .login-form{
