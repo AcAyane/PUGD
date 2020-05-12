@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -267,19 +266,3 @@ export default orderForm;
 // AdminLayout.SidebarItems = SidebarItems;
 // sideBar.Layout = AdminLayout;
 // export default sideBar;
-||||||| parent of 1045006... Acquisition module
-=======
-import React from 'react';
-import SidebarItems from '../../../components/admin/acquisition/SidebarItems';
-import AdminLayout from '../../../components/adminLayout';
-
-import Addprovider from './Addprovider';
-
-const sideBar = () => {
-  return <Addprovider></Addprovider>;
-};
-
-AdminLayout.SidebarItems = SidebarItems;
-sideBar.Layout = AdminLayout;
-export default sideBar;
->>>>>>> 1045006... Acquisition module
