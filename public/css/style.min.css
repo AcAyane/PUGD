@@ -13,6 +13,10 @@ html {
   line-height: 1.5;
   color: #6b6f82;
 }
+.k-pdf-export p {
+  border: 2px dashed #aaa;
+  padding: 10px;
+}
 
 .login-container {
   height: 100vh;
