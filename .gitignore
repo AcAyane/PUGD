@@ -26,5 +26,11 @@ yarn-debug.log*
 yarn-error.log*
 /.idea/
 
+<<<<<<< HEAD
 # prettier
 .prettierrc
+||||||| parent of c1a5143... Minor updates
+# prettier
+.prettierrc
+=======
+>>>>>>> c1a5143... Minor updates
