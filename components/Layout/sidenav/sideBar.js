@@ -1,17 +1,17 @@
-import React from "react";
-import SidenavItem from "./sidenav-item";
-import SidenavDropdown from "./sidenavDropdown";
-import SideBarBrandName from "./sideBarBrand";
-import SidenavHeader from "./sidenavHeader";
-import AuthoritiesSideItems from "../../admin/authorities/SidebarItems";
-import AcquisitionSideItems from "../../admin/acquisition/SidebarItems";
-import Router from "next/router";
+import React from 'react';
+import SidenavItem from './sidenav-item';
+import SidenavDropdown from './sidenavDropdown';
+import SideBarBrandName from './sideBarBrand';
+import SidenavHeader from './sidenavHeader';
+import AuthoritiesSideItems from '../../admin/authorities/SidebarItems';
+import AcquisitionSideItems from '../../admin/acquisition/SidebarItems';
+import Router from 'next/router';
 
-const sideBar = (props) => {
+const sideBar = props => {
   let sidebarItems;
-  if (Router.route.startsWith("/admin/authorities"))
+  if (Router.route.startsWith('/admin/authorities'))
     sidebarItems = AuthoritiesSideItems;
-  else if (Router.route.startsWith("/admin/acquisition"))
+  else if (Router.route.startsWith('/admin/acquisition'))
     sidebarItems = AcquisitionSideItems;
   let [header, ...childrenItems] = sidebarItems ? sidebarItems : [null, null];
 
