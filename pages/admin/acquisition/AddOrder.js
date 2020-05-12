@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
