@@ -315,16 +315,83 @@ label {
   border-radius: 2px;
 }
 
-.waves-effect {
-  position: relative;
-  z-index: 1;
+.deleteButton {
+  box-shadow: 0px 1px 0px 0px #f0f7fa;
+  background: linear-gradient(to bottom, #a30d30 5%, #d10202 100%);
+  background-color: #a30d30;
+  border-radius: 6px;
+  border: 1px solid #cf0617;
   display: inline-block;
-  overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: 0.3s ease-out;
-  transition: 0.3s ease-out;
-  vertical-align: middle;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 13px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #785b65;
+  font-style: italic;
+}
+.deleteButton:hover {
+  background: linear-gradient(to bottom, #d10202 5%, #a30d30 100%);
+  background-color: #d10202;
+}
+.deleteButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.updateButton {
+  box-shadow: 0px 1px 0px 0px #f0f7fa;
+  background: linear-gradient(to bottom, #30bfc9 5%, #11d4c4 100%);
+  background-color: #30bfc9;
+  border-radius: 6px;
+  border: 1px solid #06c2cf;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 13px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #785b65;
+  font-style: italic;
+}
+.updateButton:hover .submitButton:hover {
+  background: linear-gradient(to bottom, #11d4c4 5%, #30bfc9 100%);
+  background-color: #11d4c4;
+}
+.updateButton:active .submitButton:active {
+  position: relative;
+  top: 1px;
+}
+
+.submitButton {
+  box-shadow: 0px 1px 0px 0px #f0f7fa;
+  background: linear-gradient(to bottom, #30bfc9 5%, #11d4c4 100%);
+  background-color: #30bfc9;
+  border-radius: 6px;
+  border: 1px solid #06c2cf;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 13px;
+  min-width: 25px;
+  max-width: 120px;
+  text-decoration: none;
+  text-shadow: 0px -1px 0px #785b65;
+  font-style: italic;
+}
+
+.submitButton:hover {
+  background: linear-gradient(to bottom, #11d4c4 5%, #30bfc9 100%);
+  background-color: #11d4c4;
+}
+.submitButton:active {
+  position: relative;
+  top: 1px;
 }

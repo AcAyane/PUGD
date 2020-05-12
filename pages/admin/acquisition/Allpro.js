@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { withApollo } from "../../../shared/apollo";
 import { Query, Mutation } from "react-apollo";
@@ -220,3 +221,130 @@ class Allpro extends Component {
   }
 }
 export default withApollo({ ssr: true })(Allpro);
+||||||| parent of bddeded... CRUD provider
+=======
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { withApollo } from '../../../shared/apollo';
+import { Query } from 'react-apollo';
+import { Mutation } from 'react-apollo';
+// import JOBS_QUERY from '../graphql/jobs.query';
+import { GetAllProviders } from '../../../graphql/queries/acquisition/provider';
+import { DeleteProvider } from '../../../graphql/mutations/acquisition/provider';
+import { Table } from 'reactstrap';
+import { Router } from 'next/router';
+
+class Allpro extends Component {
+  splitfunction = e =>
+    e
+      .split('(')[1]
+      .split(')')[0]
+      .replace(/^"(.*)"$/, '$1');
+
+  render() {
+    return (
+      <div>
+        <Query query={GetAllProviders}>
+          {({ loading, error, data }) => {
+            if (loading) return 'Loading...';
+            if (error) return `couldn't fetch data`;
+
+            console.log(data);
+
+            return (
+              <div className="col s12">
+                <div className="card card-tabs">
+                  <div className="card-content">
+                    <div className="card-title">
+                      <h4>All providers</h4>
+                    </div>
+                    <div className="row">
+                      <div className="col s12">
+                        <Table striped>
+                          <thead className="abc">
+                            <tr>
+                              <th>Name</th>
+                              <th>Adress</th>
+                              <th>Phone</th>
+                              <th>Email</th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {data.getallproviders.map(item => (
+                              <tr>
+                                <td>{item.name}</td>
+                                <td>{item.adress}</td>
+                                <td>{item.phone}</td>
+                                <td>{item.email}</td>
+                                <td>
+                                  <button
+                                    className="updateButton"
+                                    onClick={() =>
+                                      (window.location.href = `/admin/acquisition/UpdateProvider?id=${this.splitfunction(
+                                        item._id
+                                      )}`)
+                                    }
+                                  >
+                                    update
+                                  </button>
+                                </td>
+                                <td>
+                                  <Mutation
+                                    mutation={DeleteProvider}
+                                    update={cache => {
+                                      const dataP = cache.readQuery({
+                                        query: GetAllProviders
+                                      });
+                                      const newData = {
+                                        getallproviders: data.getallproviders.filter(
+                                          t =>
+                                            this.splitfunction(t._id) !==
+                                            this.splitfunction(item._id)
+                                        )
+                                      };
+                                      cache.writeQuery({
+                                        query: GetAllProviders,
+                                        data: newData
+                                      });
+                                    }}
+                                  >
+                                    {deleteProvider => {
+                                      const remove = () => {
+                                        deleteProvider({
+                                          variables: {
+                                            _id: this.splitfunction(item._id)
+                                          }
+                                        });
+                                      };
+                                      return (
+                                        <button
+                                          className="deleteButton"
+                                          onClick={remove}
+                                        >
+                                          delete
+                                        </button>
+                                      );
+                                    }}
+                                  </Mutation>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </Table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }}
+        </Query>
+      </div>
+    );
+  }
+}
+export default withApollo({ ssr: true })(Allpro);
+>>>>>>> bddeded... CRUD provider
