@@ -11,7 +11,8 @@ import Checkbox from "../../../../components/ui/Checkbox";
 import TextArea from "../../../../components/ui/TextArea";
 import Button from "../../../../components/ui/Button";
 import {useQuery} from "@apollo/react-hooks";
-import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrewos.query";
+import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
+
 
 const addGroups = () => {
     const { loading, error, data } = useQuery(GetAllBro);
@@ -59,7 +60,7 @@ const addGroups = () => {
                                         </div>
                                                 <SelectBox label={"Responsable du Groups"}>
                                                     {data.GetAllBro.map((items)=>(
-                                                        <option key={items._id} value={items.fullname}>{items.fullname}</option>
+                                                        <option value={items._id}>{items.fullname}</option>
                                                     ))}
                                                 </SelectBox>
                                     </GridElement>
@@ -98,7 +99,7 @@ const addGroups = () => {
 
                                 </Grid>
                                 <br/>
-                                <Button rounded={4}>Anullé</Button>
+                                <Button rounded={4}>Annuler</Button>
                                 <Button rounded={4}>Submit</Button>
 
                             </div>

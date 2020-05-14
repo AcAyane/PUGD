@@ -51,7 +51,7 @@ const Groups = () => {
                     <Card>
                         <div className="row">
                             <div className="card-header">
-                                <h4 className="card-title">Group de Lecteur (Borrowers)</h4>
+                                <h4 className="card-title">Groupes de Lecteurs (Borrowers)</h4>
 
                             </div>
                             <p>Recherche groupe</p>
@@ -77,16 +77,16 @@ const Groups = () => {
                     error ? nul : (data == null || undefined ) ?
 
 
-                        <ResGroup/> :
+
 
                         ('')
 
-                         /*: ( <ResGroup name={data.GetGroupsByName.namegroups}
+                         : ( <ResGroup name={data.GetGroupsByName.namegroups}
                                     respo={data.GetGroupsByName.respgroup}
                                     date={data.GetGroupsByName.CreatAt}
                                     email={data.GetGroupsByName.mailRappel}
                                     notification={data.GetGroupsByName.letterrappel}
-                            /> )*/
+                            /> )
 
                 }
 

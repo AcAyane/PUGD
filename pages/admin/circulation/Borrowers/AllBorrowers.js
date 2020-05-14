@@ -4,9 +4,9 @@ import Table from "../../../../components/ui/Table/Table";
 
 import moment from 'moment'
 import ChipText from "../../../../components/ui/Text/ChipText";
-import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrewos.query";
+import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
 
-const AllBorrewors = () => {
+const AllBorrowers = () => {
     const { loading, error, data } = useQuery(GetAllBro);
 
     /*     ulisé logrque on'a un button , il ne s'execute pas automatiquement
@@ -95,4 +95,4 @@ const AllBorrewors = () => {
 }
 // export default withApollo({ssr:true})(AllGroups)
 
-export default AllBorrewors
+export default AllBorrowers
