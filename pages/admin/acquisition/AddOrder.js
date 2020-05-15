@@ -324,7 +324,7 @@ const AddOrder = () => {
                               newData.order = OrderID;
                               values.order_lines.push(newData.id);
                               const order_line1 = [...order_line, newData];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -337,7 +337,7 @@ const AddOrder = () => {
                                 ...order_line.filter((x) => x !== oldData),
                                 newData,
                               ];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -349,7 +349,7 @@ const AddOrder = () => {
                               const order_line1 = [
                                 ...order_line.filter((x) => x !== oldData),
                               ];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);

@@ -96,7 +96,6 @@ const MyForm = (props) => {
               </div>
             </div>
 
-<<<<<<< HEAD
             <div className="row">
               <div className="input-field col s12">
                 <i className="material-icons prefix">description</i>
@@ -117,13 +116,7 @@ const MyForm = (props) => {
                 ></textarea>
               </div>
             </div>
-||||||| parent of bddeded... CRUD provider
-import Addprovider from './Addprovider';
-=======
-import AddPro from './Addpro';
->>>>>>> bddeded... CRUD provider
 
-<<<<<<< HEAD
             <button
               type="button"
               className="button"
@@ -149,13 +142,6 @@ import AddPro from './Addpro';
                   /> */}
     </div>
   );
-||||||| parent of bddeded... CRUD provider
-const sideBar = () => {
-  return <Addprovider></Addprovider>;
-=======
-const sideBar = () => {
-  return <AddPro></AddPro>;
->>>>>>> bddeded... CRUD provider
 };
 
 const MyEnhancedForm = withFormik({

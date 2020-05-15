@@ -5,6 +5,7 @@ import html2canvas from "../../../helpers/html2canvas";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
+import TextBox from "../../../components/ui/TextBox";
 import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -78,36 +79,48 @@ const AddQuotation = () => {
       alert(error.message);
     },
   });
-
-  const allprov = (touched, errors, values, setFieldValue) => {
-    const [{ loading, data, error }] = useQuery(GetAllProviders);
-    // if(!called)GetAllProviders();
+  const ListPro = [];
+  function Hello() {
+    const { loading, data, error } = useQuery(GetAllProviders);
     if (loading) return "Loading...";
     if (error) return `couldn't fetch data`;
-    var ListPro = [];
     for (var i = 0; i < data.getallproviders.length; i++) {
       ListPro.push({
         value: data.getallproviders[i].name,
         label: data.getallproviders[i].name,
       });
     }
-    return (
-      <div className="col s12 m6">
-        <label htmlFor="provider">Provider</label>
-        {touched.id_Provider && errors.id_Provider && (
-          <p className="alert alert-danger">{errors.id_Provider}</p>
-        )}
-        <Select
-          id="provider"
-          name="provider"
-          options={ListPro}
-          multi={true}
-          selected={values.provider}
-          onChange={(provider) => setFieldValue("provider", provider.value)}
-        />
-      </div>
-    );
-  };
+  }
+
+  // const allprov = (touched, errors, values, setFieldValue) => {
+  //   const [{ loading, data, error }] = useQuery(GetAllProviders);
+  //   // if(!called)GetAllProviders();
+  //   if (loading) return "Loading...";
+  //   if (error) return `couldn't fetch data`;
+  //   var ListPro = [];
+  //   for (var i = 0; i < data.getallproviders.length; i++) {
+  //     ListPro.push({
+  //       value: data.getallproviders[i].name,
+  //       label: data.getallproviders[i].name,
+  //     });
+  //   }
+  //   return (
+  //     <div className="col s12 m6">
+  //       <label htmlFor="provider">Provider</label>
+  //       {touched.id_Provider && errors.id_Provider && (
+  //         <p className="alert alert-danger">{errors.id_Provider}</p>
+  //       )}
+  //       <Select
+  //         id="provider"
+  //         name="provider"
+  //         options={ListPro}
+  //         multi={true}
+  //         selected={values.provider}
+  //         onChange={(provider) => setFieldValue("provider", provider.value)}
+  //       />
+  //     </div>
+  //   );
+  // };
   const [order_line, setOrder_line] = useState([b1]);
   const [type, setType] = useState("quotation");
 
@@ -181,6 +194,7 @@ const AddQuotation = () => {
                       </p>
                     )}
                     <Field
+                      component={TextBox()}
                       type="text"
                       name="quotation_number"
                       placeholder="Enter quotation number"
@@ -212,42 +226,23 @@ const AddQuotation = () => {
                       className="form-control"
                     />
                   </div>
-                  {/* {allprov(touched, errors, values, setFieldValue)} */}
-                  {() => {
-                    const [{ loading, data, error }] = useQuery(
-                      GetAllProviders
-                    );
-                    // if(!called)GetAllProviders();
-                    if (loading) return "Loading...";
-                    if (error) return `couldn't fetch data`;
-                    var ListPro = [];
-                    for (var i = 0; i < data.getallproviders.length; i++) {
-                      ListPro.push({
-                        value: data.getallproviders[i].name,
-                        label: data.getallproviders[i].name,
-                      });
-                    }
-                    return (
-                      <div className="col s12 m6">
-                        <label htmlFor="provider">Provider</label>
-                        {touched.id_Provider && errors.id_Provider && (
-                          <p className="alert alert-danger">
-                            {errors.id_Provider}
-                          </p>
-                        )}
-                        <Select
-                          id="provider"
-                          name="provider"
-                          options={ListPro}
-                          multi={true}
-                          selected={values.provider}
-                          onChange={(provider) =>
-                            setFieldValue("provider", provider.value)
-                          }
-                        />
-                      </div>
-                    );
-                  }}
+                  {Hello()}
+                  <div className="col s12 m6">
+                    <label htmlFor="provider">Provider</label>
+                    {touched.id_Provider && errors.id_Provider && (
+                      <p className="alert alert-danger">{errors.id_Provider}</p>
+                    )}
+                    <Select
+                      id="provider"
+                      name="provider"
+                      options={ListPro}
+                      multi={true}
+                      selected={values.provider}
+                      onChange={(provider) =>
+                        setFieldValue("provider", provider.value)
+                      }
+                    />
+                  </div>
                 </div>
                 <div className="row">
                   <div className="col s12 m6">
