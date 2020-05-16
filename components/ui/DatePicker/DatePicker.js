@@ -9,7 +9,7 @@ const DatePicker = ({ label, onDateSelect, ...props }) => {
         // Initialize the modal and store the instance in the component instance
         DatePicker.instance = M.Datepicker.init(datePickerElement.current, {
             // format: "dd/mm/yyyy",
-            format: "yyyy-mm-dd",
+            format: "dd-mm-yyyy",
             container: document.body,
             onSelect: (e) => {
                 onDateSelect && onDateSelect(e)

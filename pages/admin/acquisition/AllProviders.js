@@ -66,14 +66,6 @@ const AllProviders = () => {
                                 onClick={(e) => {
                                   deleteProvider({
                                     variables: { _id: splitfunction(item._id) },
-                                    // update: (cache) => {
-                                    //   cache.writeQuery({
-                                    //     query: GetAllProviders,
-                                    //     data: data.getallproviders.filter(
-                                    //       (t) => t._id !== item._id
-                                    //     ),
-                                    //   });
-                                    // },
                                     refetchQueries: [
                                       { query: GetAllProviders },
                                     ],

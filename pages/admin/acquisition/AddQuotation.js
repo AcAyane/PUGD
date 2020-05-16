@@ -5,7 +5,6 @@ import html2canvas from "../../../helpers/html2canvas";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-import TextBox from "../../../components/ui/TextBox";
 import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -60,7 +59,6 @@ const options1 = [
   { value: "provider1", label: "provider1" },
   { value: "provider2", label: "provider2" },
 ];
-// const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const AddQuotation = () => {
   const [insertOrder] = useMutation(InsertOrder, {
@@ -92,35 +90,6 @@ const AddQuotation = () => {
     }
   }
 
-  // const allprov = (touched, errors, values, setFieldValue) => {
-  //   const [{ loading, data, error }] = useQuery(GetAllProviders);
-  //   // if(!called)GetAllProviders();
-  //   if (loading) return "Loading...";
-  //   if (error) return `couldn't fetch data`;
-  //   var ListPro = [];
-  //   for (var i = 0; i < data.getallproviders.length; i++) {
-  //     ListPro.push({
-  //       value: data.getallproviders[i].name,
-  //       label: data.getallproviders[i].name,
-  //     });
-  //   }
-  //   return (
-  //     <div className="col s12 m6">
-  //       <label htmlFor="provider">Provider</label>
-  //       {touched.id_Provider && errors.id_Provider && (
-  //         <p className="alert alert-danger">{errors.id_Provider}</p>
-  //       )}
-  //       <Select
-  //         id="provider"
-  //         name="provider"
-  //         options={ListPro}
-  //         multi={true}
-  //         selected={values.provider}
-  //         onChange={(provider) => setFieldValue("provider", provider.value)}
-  //       />
-  //     </div>
-  //   );
-  // };
   const [order_line, setOrder_line] = useState([b1]);
   const [type, setType] = useState("quotation");
 
@@ -194,7 +163,6 @@ const AddQuotation = () => {
                       </p>
                     )}
                     <Field
-                      component={TextBox()}
                       type="text"
                       name="quotation_number"
                       placeholder="Enter quotation number"
@@ -331,7 +299,7 @@ const AddQuotation = () => {
                   </div>
                 </div>
                 <br></br>
-                <div style={{ width: "100%" }}>
+                <div style={{ width: "150%" }}>
                   <MaterialTable
                     columns={[
                       { title: "id", field: "id_record" },
@@ -370,9 +338,9 @@ const AddQuotation = () => {
                         new Promise((resolve) => {
                           setTimeout(() => {
                             setOrder_line(() => {
-                              newData.id = ObjectId();
+                              newData._id = ObjectId();
                               newData.order = OrderID;
-                              values.order_lines.push(newData.id);
+                              values.order_lines.push(newData._id);
                               const order_line1 = [...order_line, newData];
                               return { order_line1 };
                             });

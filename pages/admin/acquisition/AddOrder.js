@@ -39,7 +39,7 @@ const initialFormData = {
 };
 // $order_lines: [String!]!
 const b1 = {
-  id: OrderID2,
+  _id: OrderID2,
   author: "34",
   budget: "B1",
   discount: "3",
@@ -62,6 +62,7 @@ const options1 = [
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const AddOrder = () => {
+  // const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
   const [order_line, setOrder_line] = useState([b1]);
 
   const [insertOrder] = useMutation(InsertOrder, {
@@ -281,7 +282,7 @@ const AddOrder = () => {
                   </div>
                 </div>
                 <br></br>
-                <div style={{ width: "100%" }}>
+                <div style={{ width: "110%" }}>
                   <MaterialTable
                     columns={[
                       { title: "id", field: "id_record" },
@@ -320,11 +321,11 @@ const AddOrder = () => {
                         new Promise((resolve) => {
                           setTimeout(() => {
                             setOrder_line(() => {
-                              newData.id = ObjectId();
+                              newData._id = ObjectId();
                               newData.order = OrderID;
                               values.order_lines.push(newData.id);
                               const order_line1 = [...order_line, newData];
-                              return order_line1;
+                              return { order_line1 };
                             });
                             resolve();
                           }, 1000);
@@ -337,7 +338,7 @@ const AddOrder = () => {
                                 ...order_line.filter((x) => x !== oldData),
                                 newData,
                               ];
-                              return order_line1;
+                              return { order_line1 };
                             });
                             resolve();
                           }, 1000);
@@ -349,7 +350,7 @@ const AddOrder = () => {
                               const order_line1 = [
                                 ...order_line.filter((x) => x !== oldData),
                               ];
-                              return order_line1;
+                              return { order_line1 };
                             });
                             resolve();
                           }, 1000);
@@ -389,7 +390,7 @@ const AddOrder = () => {
       },
       .form {
         display: relative;
-        width: 80%;
+        width: 90%;
         margin-top: 8px;
         margin-:4px;
         margin-left:10px
