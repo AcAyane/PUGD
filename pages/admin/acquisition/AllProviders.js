@@ -75,7 +75,7 @@ const AllProviders = () => {
                                 <i className="material-icons">delete</i>
                               </a>
                               <a
-                                href={`/admin/acquisition/UpdateProvider?id=${splitfunction(
+                                href={`/admin/acquisition/UpdatePro?id=${splitfunction(
                                   item._id
                                 )}`}
                                 className="invoice-action-edit"

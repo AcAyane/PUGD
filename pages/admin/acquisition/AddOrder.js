@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { Formik, Form, Field, FieldArray } from "formik";
+import { Formik, Form, Field } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
@@ -9,7 +9,6 @@ import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
 // import { Mutation, graphql } from "react-apollo";
 import { useMutation } from "@apollo/react-hooks";
-import { withApollo } from "../../../shared/apollo";
 import MaterialTable from "material-table-formik";
 
 const ObjectId = (
@@ -24,7 +23,7 @@ var OrderID2 = ObjectId();
 
 const initialFormData = {
   id: OrderID,
-  id_number: "1",
+  order_number: "1",
   establishement: "hahahaa",
   name: "haha",
   financial_year: "10",
@@ -62,7 +61,6 @@ const options1 = [
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const AddOrder = () => {
-  // const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
   const [order_line, setOrder_line] = useState([b1]);
 
   const [insertOrder] = useMutation(InsertOrder, {
@@ -103,7 +101,7 @@ const AddOrder = () => {
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
           name: Yup.string().required("name is required"),
-          id_number: Yup.string().required("id is required"),
+          order_number: Yup.string().required("id is required"),
           financial_year: Yup.string().required("financial year is required"),
 
           provider: Yup.string().required("provider is required"),
@@ -325,7 +323,7 @@ const AddOrder = () => {
                               newData.order = OrderID;
                               values.order_lines.push(newData.id);
                               const order_line1 = [...order_line, newData];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -338,7 +336,7 @@ const AddOrder = () => {
                                 ...order_line.filter((x) => x !== oldData),
                                 newData,
                               ];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -350,7 +348,7 @@ const AddOrder = () => {
                               const order_line1 = [
                                 ...order_line.filter((x) => x !== oldData),
                               ];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);

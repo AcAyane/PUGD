@@ -2,9 +2,11 @@ import gql from "graphql-tag";
 
 const InsertOrder = gql`
   mutation(
+    $id: String!
     $establishement: String!
-    $name: String!
-    $id_number: String!
+    $name: String
+    $quotation_number: String
+    $order_number: String
     $financial_year: String!
     $date: String!
     $delivery_address: String!
@@ -12,22 +14,57 @@ const InsertOrder = gql`
     $notes: String!
     $status: String!
     $type: String!
-    $id_Provider: String!
-    $order_line: String!
+    $provider: String!
+    $order_lines: [String!]!
   ) {
-    insertProvider(
+    insertOrder(
+      id: $id
       establishement: $establishement
       name: $name
-      account: $account
-      adress: $adress
-      phone: $phone
-      email: $email
-      website: $website
+      quotation_number: $quotation_number
+      order_number: $order_number
+      financial_year: $financial_year
+      date: $date
+      delivery_address: $delivery_address
+      billing_address: $billing_address
+      notes: $notes
+      status: $status
+      type: $type
+      provider: $provider
+      order_lines: $order_lines
     )
+  }
+`;
+
+const UpdateOrder = gql`
+  mutation(
+    $_id: String!
+    $name: String
+    $quotation_number: String
+    $order_number: String
+    $status: String!
+    $order_lines: [String]
+  ) {
+    updateOrder(
+      _id: $_id
+      name: $name
+      quotation_number: $quotation_number
+      order_number: $order_number
+      status: $status
+      order_lines: $order_lines
+    )
+  }
+`;
+
+const DeleteOrder = gql`
+  mutation($_id: String!) {
+    deleteOrder(_id: $_id)
   }
 `;
 
 //important
 module.exports = {
-  InsertOrder
+  InsertOrder,
+  DeleteOrder,
+  UpdateOrder,
 };
