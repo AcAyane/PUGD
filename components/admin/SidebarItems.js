@@ -234,7 +234,7 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Customizable",
-                    href: "/admin/reporting/customizablz"
+                    href: "/admin/reporting/customizable"
                 },
                 {
                     Label: "Configurable",
