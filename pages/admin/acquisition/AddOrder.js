@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import Select from "react-select";
 import { Formik, Form, Field, FieldArray } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
-import Button from "@material-ui/core/Button";
-import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
-// import { Mutation, graphql } from "react-apollo";
-import { useMutation } from "@apollo/react-hooks";
-import { withApollo } from "../../../shared/apollo";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
+import DatePicker from "../../../components/ui/DatePicker/DatePicker";
+import GridElement from "../../../components/ui/Grid/GridElement";
+import Grid from "../../../components/ui/Grid/grid";
 import MaterialTable from "material-table-formik";
+import Container from "../../../components/ui/Container";
+import ButtonS from "../../../components/ui/ButtonSubmit";
+import AdminLayout from "../../../components/adminLayout";
+import Router from "next/router";
 
 const ObjectId = (
   m = Math,
@@ -24,7 +28,7 @@ var OrderID2 = ObjectId();
 
 const initialFormData = {
   id: OrderID,
-  id_number: "1",
+  order_number: "1",
   establishement: "hahahaa",
   name: "haha",
   financial_year: "10",
@@ -66,6 +70,10 @@ const AddOrder = () => {
   const [order_line, setOrder_line] = useState([b1]);
 
   const [insertOrder] = useMutation(InsertOrder, {
+    onCompleted: () => {
+      window.alert(`Order added succesfully!!`);
+      Router.push("/admin/acquisition/AllOrders");
+    },
     onError: (error) => {
       alert(error.message);
     },
@@ -76,6 +84,18 @@ const AddOrder = () => {
     },
   });
 
+  const ListPro = [];
+  function Hello() {
+    const { loading, data, error } = useQuery(GetAllProviders);
+    if (loading) return "Loading...";
+    if (error) return `couldn't fetch data`;
+    for (var i = 0; i < data.getallproviders.length; i++) {
+      ListPro.push({
+        value: data.getallproviders[i].name,
+        label: data.getallproviders[i].name,
+      });
+    }
+  }
   const printDocument = () => {
     let jsPDF = null;
     if (typeof window !== "undefined") {
@@ -95,15 +115,14 @@ const AddOrder = () => {
     });
   };
   return (
-    <div>
-      <br />
+    <Container>
       <Formik
         enableReinitialize
         initialValues={initialFormData}
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
           name: Yup.string().required("name is required"),
-          id_number: Yup.string().required("id is required"),
+          order_number: Yup.string().required("order num is required"),
           financial_year: Yup.string().required("financial year is required"),
 
           provider: Yup.string().required("provider is required"),
@@ -123,166 +142,151 @@ const AddOrder = () => {
             console.log(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
           });
-          alert("Order added succesfully");
+          alert("Adding Order..");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <div id="divToPrint">
-            <Button variant="contained" color="primary" onClick={printDocument}>
+            <ButtonS
+              className="SubmitButton"
+              onClick={() => {
+                printDocument();
+              }}
+            >
               Print
-            </Button>
-            <div className="row">
-              <Form>
-                <legend>New Order</legend>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="Id">Id</label>
-                    {touched.id_number && errors.id_number && (
-                      <p className="alert alert-danger">{errors.id_number}</p>
-                    )}
-                    <Field
-                      type="text"
-                      name="id_number"
-                      placeholder="Enter id"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="Id">status</label>
-                    <Field
-                      type="text"
-                      name="status"
-                      placeholder="pending"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="establishement">Establishement</label>
-                    {touched.establishement && errors.establishement && (
-                      <p className="alert alert-danger">
-                        {errors.establishement}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="establishement"
-                      placeholder="Enter an establishement"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="Provider">Provider</label>
-                    {touched.id_Provider && errors.id_Provider && (
-                      <p className="alert alert-danger">{errors.id_Provider}</p>
-                    )}
-                    <Select
-                      id="provider"
-                      name="provider"
-                      options={options1}
-                      multi={true}
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="name">Name</label>
-                    {touched.name && errors.name && (
-                      <p className="alert alert-danger">{errors.name}</p>
-                    )}
-                    <Field
-                      type="text"
-                      name="name"
-                      placeholder="Enter Name"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="financial_year">Financial year</label>
-                    {touched.financial_year && errors.financial_year && (
-                      <p className="alert alert-danger">
-                        {errors.financial_year}
-                      </p>
-                    )}
-                    <Select
-                      id="financial_year"
-                      name="financial_year"
-                      options={options}
-                      multi={true}
-                    />
-                  </div>
-                </div>
-                {/* <div className="form-group">
-                          <label htmlFor="adress">Adress</label>
-                          {touched.adress && errors.adress && (
-                            <p className="alert alert-danger">
-                              {errors.adress}
-                            </p>
-                          )}
-                          <Field
-                            type="text"
-                            name="adress"
-                            placeholder="Enter en adress"
-                            className="form-control"
-                          />
-                        </div> */}
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="date">Date</label>
+            </ButtonS>
 
-                    <DatePicker
-                      className="date-control"
-                      name="date"
-                      showPopperArrow={false}
-                      selected={values.date}
-                      onChange={(date) => setFieldValue("date", date)}
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="delivery_address">Delivery address</label>
-                    {touched.delivery_address && errors.delivery_address && (
-                      <p className="alert alert-danger">
-                        {errors.delivery_address}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="delivery_address"
-                      placeholder="Enter delivery address"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="billing_address">Billing address</label>
-                    {touched.billing_address && errors.billing_address && (
-                      <p className="alert alert-danger">
-                        {errors.billing_address}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="billing_address"
-                      placeholder="Enter billing address"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="notes">Notes</label>
-                    {touched.notes && errors.notes && (
-                      <p className="alert alert-danger">{errors.notes}</p>
-                    )}
-                    <Field
-                      type="text"
-                      name="notes"
-                      placeholder="Enter your notes"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-                <br></br>
-                <div style={{ width: "110%" }}>
+            <Form>
+              <Grid>
+                <GridElement className="col s12 m6" name="Order number">
+                  {touched.order_number && errors.order_number && (
+                    <p className="alert alert-danger">{errors.order_number}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="order_number"
+                    placeholder="Order Number"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Status">
+                  <Field
+                    type="text"
+                    name="status"
+                    placeholder="pending"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Establishement">
+                  {touched.establishement && errors.establishement && (
+                    <p className="alert alert-danger">
+                      {errors.establishement}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="establishement"
+                    placeholder="Enter an establishement"
+                    className="form-control"
+                  />
+                </GridElement>
+                {Hello()}
+                <GridElement className="col s12 m6" name="Provider">
+                  {touched.id_Provider && errors.id_Provider && (
+                    <p className="alert alert-danger">{errors.id_Provider}</p>
+                  )}
+                  <Select
+                    className="input-field col s12"
+                    id="provider"
+                    name="provider"
+                    options={ListPro}
+                    multi={true}
+                    selected={values.provider}
+                    onChange={(provider) =>
+                      setFieldValue("provider", provider.value)
+                    }
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Name">
+                  {touched.name && errors.name && (
+                    <p className="alert alert-danger">{errors.name}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Enter Name"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Financial Year">
+                  {touched.financial_year && errors.financial_year && (
+                    <p className="alert alert-danger">
+                      {errors.financial_year}
+                    </p>
+                  )}
+                  <Select
+                    id="financial_year"
+                    name="financial_year"
+                    options={options}
+                    multi={true}
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Date">
+                  <DatePicker
+                    className="date-control"
+                    name="date"
+                    showPopperArrow={false}
+                    selected={values.date}
+                    onChange={(date) => setFieldValue("date", date)}
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Delivery Address">
+                  {touched.delivery_address && errors.delivery_address && (
+                    <p className="alert alert-danger">
+                      {errors.delivery_address}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="delivery_address"
+                    placeholder="Enter delivery address"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Billing Address">
+                  {touched.billing_address && errors.billing_address && (
+                    <p className="alert alert-danger">
+                      {errors.billing_address}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="billing_address"
+                    placeholder="Enter billing address"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Notes">
+                  {touched.notes && errors.notes && (
+                    <p className="alert alert-danger">{errors.notes}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="notes"
+                    placeholder="Enter your notes"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <div style={{ width: "100%" }}>
                   <MaterialTable
                     columns={[
                       { title: "id", field: "id_record" },
@@ -323,9 +327,9 @@ const AddOrder = () => {
                             setOrder_line(() => {
                               newData._id = ObjectId();
                               newData.order = OrderID;
-                              values.order_lines.push(newData.id);
+                              values.order_lines.push(newData._id);
                               const order_line1 = [...order_line, newData];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -358,47 +362,24 @@ const AddOrder = () => {
                     }}
                   />
                 </div>
-                <div className="form-group">
-                  <Button variant="contained" color="primary" type="submit">
-                    Submit
-                  </Button>
+              </Grid>
+              <br></br>
+              <Grid>
+                <button className="SubmitButton" type="submit">
+                  Submit
+                </button>
 
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      this.setFormValues({ formValues: values });
-                    }}
-                  >
-                    SetValues
-                  </Button>
-                </div>
-              </Form>
-            </div>
+                <button className="SubmitButton"> Place an order</button>
+              </Grid>
+              <br></br>
+            </Form>
           </div>
         )}
       />
-
-      <style jsx>
-        {`
-          
-       .paper {
-        display: flex;
-        // margin-top: 64px;
-        align-items: center;
-        flex-direction: column;
-      },
-      .form {
-        display: relative;
-        width: 90%;
-        margin-top: 8px;
-        margin-:4px;
-        margin-left:10px
-      },
-        `}
-      </style>
-    </div>
+    </Container>
   );
 };
+
+AddOrder.Layout = AdminLayout;
 
 export default AddOrder;

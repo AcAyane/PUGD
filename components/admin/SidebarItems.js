@@ -369,16 +369,16 @@ const SidebarItems = {
       Icon: "home",
       Children: [
         {
-          Label: "List Providers",
-          href: "/admin/acquisition/Addprovider",
+          Label: "Providers",
+          href: "/admin/acquisition/AllProviders",
         },
         {
           Label: "Quotations",
-          href: "/admin/acquisition/AddQuotation",
+          href: "/admin/acquisition/AllQuotations",
         },
         {
           Label: "Orders",
-          href: "/admin/acquisition/AddOrder",
+          href: "/admin/acquisition/AllOrders",
         },
         {
           Label: "Receivings",
