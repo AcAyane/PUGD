@@ -249,11 +249,11 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Current Loans",
-                    href: "/admin/reporting/currentloans"
+                    href: "/admin/reporting/currentLoans"
                 },
                 {
                     Label: "Delay by Reader",
-                    href: "/admin/reporting/delaybyreader"
+                    href: "/admin/reporting/delayByReader"
                 },
                 {
                     Label: "Delay by Date",
