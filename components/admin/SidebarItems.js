@@ -257,7 +257,7 @@ const SidebarItems = {
                 },
                 {
                     Label: "Delay by Date",
-                    href: "/admin/reporting/delaybydate"
+                    href: "/admin/reporting/delayByDate"
                 },
                 {
                     Label: "Loan Group",
