@@ -261,11 +261,11 @@ const SidebarItems = {
                 },
                 {
                     Label: "Loan Group",
-                    href: "/admin/reporting/loangroup"
+                    href: "/admin/reporting/loanGroup"
                 },
                 {
                     Label: "Delay by Group",
-                    href: "/admin/reporting/delaybygroup"
+                    href: "/admin/reporting/delayByGroup"
                 },
 
             ]
