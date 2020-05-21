@@ -276,11 +276,11 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "In Progress",
-                    href: "/admin/reporting/inprogress"
+                    href: "/admin/reporting/inProgress"
                 },
                 {
                     Label: "Treat",
-                    href: "/admin/reporting/totreat"
+                    href: "/admin/reporting/treat"
                 },
 
             ]
