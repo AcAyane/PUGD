@@ -331,7 +331,7 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Free Generated",
-                    href: "/admin/reporting/freegenerated"
+                    href: "/admin/reporting/freeGenerated"
                 },
             ]
         },
