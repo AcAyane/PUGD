@@ -291,7 +291,7 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Current Readers",
-                    href: "/admin/reporting/currentreaders"
+                    href: "/admin/reporting/currentReaders"
                 },
                 {
                     Label: "End of Subscription",
