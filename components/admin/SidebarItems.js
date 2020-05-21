@@ -299,11 +299,11 @@ const SidebarItems = {
                 },
                 {
                     Label: "Subscription Exceeded",
-                    href: "/admin/reporting/subscriptionexceed"
+                    href: "/admin/reporting/subscriptionExceed"
                 },
                 {
                     Label: "Category to Change",
-                    href: "/admin/reporting/categorytochange"
+                    href: "/admin/reporting/categoryToChange"
                 },
                         ]
         },
@@ -313,15 +313,15 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Collection Stat",
-                    href: "/admin/reporting/collectionstat"
+                    href: "/admin/reporting/collectionStat"
                 },
                 {
                     Label: "Circulation Stat",
-                    href: "/admin/reporting/circulationstat"
+                    href: "/admin/reporting/circulationStat"
                 },
                 {
                     Label: "Simplified Circulation",
-                    href: "/admin/reporting/simplifiedcirculation"
+                    href: "/admin/reporting/simplifiedCirculation"
                 },
             ]
         },
