@@ -295,7 +295,7 @@ const SidebarItems = {
                 },
                 {
                     Label: "End of Subscription",
-                    href: "/admin/reporting/endofsubscription"
+                    href: "/admin/reporting/endOfSubscription"
                 },
                 {
                     Label: "Subscription Exceeded",
