@@ -341,7 +341,7 @@ const SidebarItems = {
             Children: [
                 {
                     Label: "Plank Models",
-                    href: "/admin/reporting/plankmodels"
+                    href: "/admin/reporting/plankModels"
                 },
             ]
         },
