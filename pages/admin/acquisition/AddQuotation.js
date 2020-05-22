@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
-import Button from "@material-ui/core/Button";
-import DatePicker from "react-datepicker";
+import Router from "next/router";
+import DatePicker from "../../../components/ui/DatePicker/DatePicker";
 import * as Yup from "yup";
 import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import MaterialTable from "material-table-formik";
 import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
+import GridElement from "../../../components/ui/Grid/GridElement";
+import Grid from "../../../components/ui/Grid/grid";
+import MaterialTable from "material-table-formik";
+import Container from "../../../components/ui/Container";
+import ButtonS from "../../../components/ui/ButtonSubmit";
+import AdminLayout from "../../../components/adminLayout";
 
 const ObjectId = (
   m = Math,
@@ -33,10 +38,9 @@ const initialFormData = {
   notes: "zaeaze",
   status: "pending",
   type: "quotation",
-  provider: "ahmed",
+  provider: "zaeaze",
   order_lines: [OrderID2],
 };
-
 // $order_lines: [String!]!
 const b1 = {
   _id: OrderID2,
@@ -59,24 +63,27 @@ const options1 = [
   { value: "provider1", label: "provider1" },
   { value: "provider2", label: "provider2" },
 ];
+// const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const AddQuotation = () => {
+  // const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
+  const [order_line, setOrder_line] = useState([b1]);
+
   const [insertOrder] = useMutation(InsertOrder, {
     onCompleted: () => {
-      window.alert("You submitted order");
+      window.alert(`Quotation added succesfully!!`);
+      Router.push("/admin/acquisition/AllQuotations");
     },
     onError: (error) => {
       alert(error.message);
     },
   });
   const [insertOrderLine] = useMutation(InsertOrderLine, {
-    onCompleted: () => {
-      window.alert(`you submitted data about quotation line with success !!`);
-    },
     onError: (error) => {
       alert(error.message);
     },
   });
+
   const ListPro = [];
   function Hello() {
     const { loading, data, error } = useQuery(GetAllProviders);
@@ -89,10 +96,6 @@ const AddQuotation = () => {
       });
     }
   }
-
-  const [order_line, setOrder_line] = useState([b1]);
-  const [type, setType] = useState("quotation");
-
   const printDocument = () => {
     let jsPDF = null;
     if (typeof window !== "undefined") {
@@ -111,195 +114,182 @@ const AddQuotation = () => {
       pdf.save("download.pdf");
     });
   };
-
   return (
-    <div>
-      <br />
+    <Container>
       <Formik
         enableReinitialize
         initialValues={initialFormData}
         validationSchema={Yup.object().shape({
+          establishement: Yup.string().required("establishement is required"),
+          name: Yup.string().required("name is required"),
           quotation_number: Yup.string().required("id is required"),
           financial_year: Yup.string().required("financial year is required"),
+
           provider: Yup.string().required("provider is required"),
         })}
         onSubmit={(values, actions) => {
           new Promise((resolve) => {
             setTimeout(() => {
               for (var i = 0; i < order_line.length; i++) {
-                insertOrderLine(order_line[i]);
+                // this.createOrderLine(order_line[i]);
+                insertOrderLine({ variables: order_line[i] });
               }
               resolve(order_line);
             }, 2000);
             // eslint-disable-next-line no-unused-vars
           }).then((orderlines) => {
-            values.type = type;
             insertOrder({ variables: values });
             console.log(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
           });
-          alert(`${type} added succesfully`);
+          alert("Adding Quotation..");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <div id="divToPrint">
-            <Button
-              variant="contained"
-              color="primary"
+            <ButtonS
+              className="SubmitButton"
               onClick={() => {
                 printDocument();
               }}
             >
               Print
-            </Button>
-            <div className="row">
-              <Form>
-                <legend>New Quotation</legend>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="Quotation_number">Quotation Number</label>
-                    {touched.quotation_number && errors.quotation_number && (
-                      <p className="alert alert-danger">
-                        {errors.quotation_number}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="quotation_number"
-                      placeholder="Enter quotation number"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="Status">status</label>
-                    <Field
-                      type="text"
-                      name="status"
-                      placeholder="pending"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="establishement">establishement</label>
-                    {touched.establishement && errors.establishement && (
-                      <p className="alert alert-danger">
-                        {errors.establishement}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="establishement"
-                      placeholder="Enter establishement"
-                      className="form-control"
-                    />
-                  </div>
-                  {Hello()}
-                  <div className="col s12 m6">
-                    <label htmlFor="provider">Provider</label>
-                    {touched.id_Provider && errors.id_Provider && (
-                      <p className="alert alert-danger">{errors.id_Provider}</p>
-                    )}
-                    <Select
-                      id="provider"
-                      name="provider"
-                      options={ListPro}
-                      multi={true}
-                      selected={values.provider}
-                      onChange={(provider) =>
-                        setFieldValue("provider", provider.value)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="name">Name</label>
-                    {touched.name && errors.name && (
-                      <p className="alert alert-danger">{errors.name}</p>
-                    )}
-                    <Field
-                      type="text"
-                      name="name"
-                      placeholder="Enter Name"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="financial_year">Financial year</label>
-                    {touched.financial_year && errors.financial_year && (
-                      <p className="alert alert-danger">
-                        {errors.financial_year}
-                      </p>
-                    )}
-                    <Select
-                      id="financial_year"
-                      name="financial_year"
-                      options={options}
-                      selected={values.financial_year}
-                      onChange={(year) =>
-                        setFieldValue("financial_year", year.value)
-                      }
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="date">Date</label>
+            </ButtonS>
 
-                    <DatePicker
-                      className="date-control"
-                      name="date"
-                      showPopperArrow={false}
-                      selected={values.date}
-                      onChange={(date) => setFieldValue("date", date)}
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="delivery_address">Delivery address</label>
-                    {touched.delivery_address && errors.delivery_address && (
-                      <p className="alert alert-danger">
-                        {errors.delivery_address}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="delivery_address"
-                      placeholder="Enter delivery address"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col s12 m6">
-                    <label htmlFor="billing_address">Billing address</label>
-                    {touched.billing_address && errors.billing_address && (
-                      <p className="alert alert-danger">
-                        {errors.billing_address}
-                      </p>
-                    )}
-                    <Field
-                      type="text"
-                      name="billing_address"
-                      placeholder="Enter billing address"
-                      className="form-control"
-                    />
-                  </div>
-                  <div className="col s12 m6">
-                    <label htmlFor="notes">Notes</label>
-                    {touched.notes && errors.notes && (
-                      <p className="alert alert-danger">{errors.notes}</p>
-                    )}
-                    <Field
-                      type="text"
-                      name="notes"
-                      placeholder="Enter your notes"
-                      className="form-control"
-                    />
-                  </div>
-                </div>
+            <Form>
+              <Grid>
+                <GridElement className="col s12 m6" name="Quotation number">
+                  {touched.quotation_number && errors.quotation_number && (
+                    <p className="alert alert-danger">
+                      {errors.quotation_number}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="quotation_number"
+                    placeholder="quotation Number"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Status">
+                  <Field
+                    type="text"
+                    name="status"
+                    placeholder="pending"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Establishement">
+                  {touched.establishement && errors.establishement && (
+                    <p className="alert alert-danger">
+                      {errors.establishement}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="establishement"
+                    placeholder="Enter an establishement"
+                    className="form-control"
+                  />
+                </GridElement>
+                {Hello()}
+                <GridElement className="col s12 m6" name="Provider">
+                  {touched.id_Provider && errors.id_Provider && (
+                    <p className="alert alert-danger">{errors.id_Provider}</p>
+                  )}
+                  <Select
+                    className="input-field col s12"
+                    id="provider"
+                    name="provider"
+                    options={ListPro}
+                    multi={true}
+                    selected={values.provider}
+                    onChange={(provider) =>
+                      setFieldValue("provider", provider.value)
+                    }
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Name">
+                  {touched.name && errors.name && (
+                    <p className="alert alert-danger">{errors.name}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Enter Name"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Financial Year">
+                  {touched.financial_year && errors.financial_year && (
+                    <p className="alert alert-danger">
+                      {errors.financial_year}
+                    </p>
+                  )}
+                  <Select
+                    id="financial_year"
+                    name="financial_year"
+                    options={options}
+                    multi={true}
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Date">
+                  <DatePicker
+                    className="date-control"
+                    name="date"
+                    showPopperArrow={false}
+                    selected={values.date}
+                    onChange={(date) => setFieldValue("date", date)}
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Delivery Address">
+                  {touched.delivery_address && errors.delivery_address && (
+                    <p className="alert alert-danger">
+                      {errors.delivery_address}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="delivery_address"
+                    placeholder="Enter delivery address"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
+                <GridElement className="col s12 m6" name="Billing Address">
+                  {touched.billing_address && errors.billing_address && (
+                    <p className="alert alert-danger">
+                      {errors.billing_address}
+                    </p>
+                  )}
+                  <Field
+                    type="text"
+                    name="billing_address"
+                    placeholder="Enter billing address"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Notes">
+                  {touched.notes && errors.notes && (
+                    <p className="alert alert-danger">{errors.notes}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="notes"
+                    placeholder="Enter your notes"
+                    className="form-control"
+                  />
+                </GridElement>
+              </Grid>
+              <Grid>
                 <br></br>
-                <div style={{ width: "150%" }}>
+                <div style={{ width: "100%" }}>
                   <MaterialTable
                     columns={[
                       { title: "id", field: "id_record" },
@@ -342,7 +332,7 @@ const AddQuotation = () => {
                               newData.order = OrderID;
                               values.order_lines.push(newData._id);
                               const order_line1 = [...order_line, newData];
-                              return { order_line1 };
+                              return order_line1;
                             });
                             resolve();
                           }, 1000);
@@ -375,46 +365,23 @@ const AddQuotation = () => {
                     }}
                   />
                 </div>
-                <div className="form-group">
-                  <Button variant="contained" color="primary" type="submit">
-                    Submit
-                  </Button>
+              </Grid>
+              <br></br>
+              <Grid>
+                <button className="SubmitButton" type="submit">
+                  Submit
+                </button>
 
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => setType("order")}
-                    type="submit"
-                  >
-                    Place an order{" "}
-                  </Button>
-                </div>
-              </Form>
-            </div>
+                <button className="SubmitButton"> Place an order</button>
+              </Grid>
+              <br></br>
+            </Form>
           </div>
         )}
       />
-
-      <style jsx>
-        {`
-          
-       .paper {
-        display: flex;
-        // margin-top: 64px;
-        align-items: center;
-        flex-direction: column;
-      },
-      .form {
-        display: relative;
-        width: 80%;
-        margin-top: 8px;
-        margin-:4px;
-        margin-left:10px
-      },
-        `}
-      </style>
-    </div>
+    </Container>
   );
 };
 
+AddQuotation.Layout = AdminLayout;
 export default AddQuotation;

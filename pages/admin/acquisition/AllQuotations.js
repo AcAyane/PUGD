@@ -1,193 +1,92 @@
-import React, { Component } from "react";
-import { Table } from "reactstrap";
-import { withApollo } from "../../../shared/apollo";
-import { Query } from "react-apollo";
+import React from "react";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import Table from "../../../components/ui/Table/Table";
 import { GetOrders } from "../../../graphql/queries/acquisition/order";
-import Pagination from "../../../components/pagination";
-import Router from "next/router";
+import CardTitle from "../../../components/ui/card/cardTitle";
+import Card from "../../../components/ui/card/card";
+import AdminLayout from "../../../components/adminLayout";
+import Button from "../../../components/ui/Button";
 
-export class AllQuotations extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchEstablishement: "",
-      searchProvider: "",
-      currentPageNumber: 1,
-      QuotationPerPage: 4,
-    };
-  }
-
-  handlePageChange(pageNumber) {
-    this.setState({ currentPageNumber: pageNumber });
-  }
-
-  //convert from object id to string
-  splitfunction = (e) =>
-    e
+const AllQuotations = () => {
+  function splitfunction(e) {
+    return e
       .split("(")[1]
       .split(")")[0]
       .replace(/^"(.*)"$/, "$1");
-
-  render() {
-    const typeord = "quotation";
-    const currentPageNumber = this.state.currentPageNumber;
-    const QuotationPerPage = this.state.QuotationPerPage;
-    return (
-      <div>
-        {/* ====Card Title====*/}
-        <div className="col s12">
-          <div className="card card-tabs">
-            <div className="card-content">
-              <div className="row">
-                <div className="col s12 m6">
-                  <div className="card-title">
-                    <h4>Purchasing Management : Quotations</h4>
-                  </div>
-                </div>
-                <div className="col s12 m6">
-                  <button
-                    className="rightButton"
-                    onClick={() =>
-                      (window.location.href = `/admin/acquisition/AddQuotations`)
-                    }
-                  >
-                    New Quotation{" "}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* ==== End of Card Title====*/}
-
-        <Query query={GetOrders} variables={{ type: typeord }}>
-          {({ loading, error, data }) => {
-            if (loading) return "Loading...";
-            if (error) return `couldn't fetch data`;
-            console.log(data);
-
-            //search function
-            let filtredQuotation = data.getOrders.filter((item) => {
-              return (
-                item.establishement
-                  .toLowerCase()
-                  .indexOf(this.state.searchEstablishement.toLowerCase()) >=
-                  0 &&
-                item.provider
-                  .toLowerCase()
-                  .indexOf(this.state.searchProvider.toLowerCase()) >= 0
-              );
-            });
-            const lastindex = currentPageNumber * QuotationPerPage;
-            const firstindex = lastindex - QuotationPerPage;
-            const currentQuotation = filtredQuotation.slice(
-              firstindex,
-              lastindex
-            );
-
-            return (
-              <div className="col s12">
-                <div className="card card-tabs">
-                  <div className="card-content">
-                    {/* Search input*/}
-                    <div className="card-title">
-                      <h4>Search Quotation</h4>
-                    </div>
-                    <br />
-                    <div className="row">
-                      <br />
-                      <div className="col s12 m6">
-                        <h6>By Provider </h6>
-                        <input
-                          className="form-control"
-                          type="text"
-                          placeholder="Provider"
-                          value={this.state.searchProvider}
-                          onChange={(e) =>
-                            this.setState({ searchProvider: e.target.value })
-                          }
-                        ></input>
-                      </div>
-                      <div className="col s12 m6">
-                        <h6>By Establishement </h6>
-                        <input
-                          className="form-control"
-                          type="text"
-                          placeholder="Establishement"
-                          value={this.state.searchEstablishement}
-                          onChange={(e) =>
-                            this.setState({
-                              searchEstablishement: e.target.value,
-                            })
-                          }
-                        ></input>
-                      </div>
-                    </div>
-                    <br></br>
-                    <div className="row">
-                      <div className="col s12">
-                        <div className="card-title">
-                          <h5>List</h5>
-                        </div>
-                        <Table>
-                          <thead>
-                            <tr>
-                              <th>Establishement</th>
-                              <th>Provider</th>
-                              <th>Date</th>
-                              <th>Status</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {currentQuotation.map((item) => (
-                              <tr>
-                                <td>{item.establishement}</td>
-                                <td>{item.provider}</td>
-                                <td>{item.date}</td>
-                                <td>{item.status}</td>
-
-                                <td>
-                                  <button
-                                    className="buttonup"
-                                    onClick={() =>
-                                      Router.push({
-                                        pathname:
-                                          "/admin/acquisition/UpdateQuotations",
-                                        query: {
-                                          id: this.splitfunction(item._id),
-                                        },
-                                      })
-                                    }
-                                  >
-                                    update
-                                  </button>
-                                </td>
-                                <td>
-                                  <button className="deletebutton">
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                          <Pagination
-                            postsPerPage={QuotationPerPage}
-                            totalPosts={data.getOrders.length}
-                            paginate={this.handlePageChange.bind(this)}
-                          ></Pagination>
-                        </Table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          }}
-        </Query>
-      </div>
-    );
   }
-}
 
-export default withApollo({ ssr: true })(AllQuotations);
+  const { loading, error, data } = useQuery(GetOrders, {
+    variables: { type: "quotation" },
+  });
+  if (loading) return "Loading...";
+  if (error) return `Error! ${error.message}`;
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col s12">
+          <CardTitle>
+            <h5>Purchase Management : Quotations</h5>
+          </CardTitle>
+          <Card>
+            <div className="col s12">
+              {data == null ? (
+                nul
+              ) : (
+                <Table
+                  Thead={
+                    <tr>
+                      <th>Establishement</th>
+                      <th>Provider</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                    </tr>
+                  }
+                  Tbody={
+                    <tbody>
+                      {data.getOrders.map((item) => (
+                        // eslint-disable-next-line react/jsx-key
+                        <tr>
+                          <td>
+                            <span className="chip lighten-5 red red-text">
+                              {item.establishement}
+                            </span>
+                          </td>
+                          <td>{item.provider}</td>
+                          <td>{item.date}</td>
+                          <td>{item.status}</td>
+
+                          <td>
+                            <div className="invoice-action">
+                              <a href="#" className="invoice-action-view mr-4">
+                                <i className="material-icons">delete</i>
+                              </a>
+                              <a
+                                href={`/admin/acquisition/UpdateQuotation?id=${splitfunction(
+                                  item._id
+                                )}`}
+                                className="invoice-action-edit"
+                              >
+                                <i className="material-icons">edit</i>
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  }
+                />
+              )}
+            </div>
+            <Button href="/admin/acquisition/AddQuotation" rounded={2}>
+              New
+            </Button>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+AllQuotations.Layout = AdminLayout;
+export default AllQuotations;

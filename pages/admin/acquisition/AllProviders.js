@@ -5,7 +5,8 @@ import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
 import { DeleteProvider } from "../../../graphql/mutations/acquisition/provider";
 import CardTitle from "../../../components/ui/card/cardTitle";
 import Card from "../../../components/ui/card/card";
-
+import AdminLayout from "../../../components/adminLayout";
+import Button from "../../../components/ui/Button";
 const AllProviders = () => {
   const [
     deleteProvider,
@@ -28,7 +29,8 @@ const AllProviders = () => {
       <div className="row">
         <div className="col s12">
           <CardTitle>
-            <h5>All providers</h5>
+            {" "}
+            <h5>Purchase Management : Providers</h5>
           </CardTitle>
           <Card>
             <div className="col s12">
@@ -47,7 +49,6 @@ const AllProviders = () => {
                   Tbody={
                     <tbody>
                       {data.getallproviders.map((item) => (
-                        // eslint-disable-next-line react/jsx-key
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">
@@ -91,6 +92,9 @@ const AllProviders = () => {
                 />
               )}
             </div>
+            <Button href="/admin/acquisition/AddProvider" rounded={2}>
+              New
+            </Button>
           </Card>
         </div>
       </div>
@@ -98,4 +102,5 @@ const AllProviders = () => {
   );
 };
 
+AllProviders.Layout = AdminLayout;
 export default AllProviders;

@@ -5,6 +5,11 @@ import { GetOneProvider } from "../../../graphql/queries/acquisition/provider";
 import { UpdateProvider } from "../../../graphql/mutations/acquisition/provider";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import * as Yup from "yup";
+import GridElement from "../../../components/ui/Grid/GridElement";
+import Grid from "../../../components/ui/Grid/grid";
+import ButtonSubmit from "../../../components/ui/ButtonSubmit";
+import Container from "../../../components/ui/Container";
+import AdminLayout from "../../../components/adminLayout";
 
 const phoneRegExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 
@@ -21,7 +26,7 @@ const UpdatePro = () => {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div className="container">
+    <Container Title="Update Provider">
       <Formik
         //initial input values
         initialValues={{
@@ -72,118 +77,99 @@ const UpdatePro = () => {
         render={({ errors, touched }) => (
           //form to update
           <Form>
-            <div className="form-group">
-              <legend>Update Provider</legend>
-              <label htmlFor="establishement">Establishement</label>
-              {touched.establishement && errors.establishement && (
-                <p className="alert alert-danger">{errors.establishement}</p>
-              )}
-              <Field
-                type="text"
-                name="establishement"
-                placeholder="Enter an establishement"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="name">Name</label>
-              {touched.name && errors.name && (
-                <p className="alert alert-danger">{errors.name}</p>
-              )}
-              <Field
-                type="text"
-                name="name"
-                placeholder="Enter Name"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="account">Account</label>
-              {touched.account && errors.account && (
-                <p className="alert alert-danger">{errors.account}</p>
-              )}
-              <Field
-                type="text"
-                name="account"
-                placeholder="Enter an account"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="adress">Adress</label>
-              {touched.adress && errors.adress && (
-                <p className="alert alert-danger">{errors.adress}</p>
-              )}
-              <Field
-                type="text"
-                name="adress"
-                placeholder="Enter en adress"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="phone">phone</label>
-              {touched.phone && errors.phone && (
-                <p className="alert alert-danger">{errors.phone}</p>
-              )}
-              <Field
-                type="text"
-                name="phone"
-                placeholder="0670102010 or +212670102010 or (212)670102010"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">email</label>
-              {touched.email && errors.email && (
-                <p className="alert alert-danger">{errors.email}</p>
-              )}
-              <Field
-                type="text"
-                name="email"
-                placeholder="you@yourdomain.com"
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="website">website</label>
-              {touched.website && errors.website && (
-                <p className="alert alert-danger">{errors.website}</p>
-              )}
-              <Field
-                type="text"
-                name="website"
-                placeholder="Http://website"
-                className="form-control"
-              />
-            </div>
+            <Grid>
+              <GridElement className="col s12 m6 l4" name="Establishement">
+                {touched.establishement && errors.establishement && (
+                  <p className="alert alert-danger">{errors.establishement}</p>
+                )}
+                <Field
+                  type="text"
+                  name="establishement"
+                  placeholder="Enter an establishement"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6 l4" name="Name">
+                {touched.name && errors.name && (
+                  <p className="alert alert-danger">{errors.name}</p>
+                )}
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="Enter Name"
+                  className="form-control"
+                />
+              </GridElement>
 
-            <button className="submitButton" type="submit" name="action">
-              Submit
-            </button>
+              <GridElement className="col s12 m6 l2" name="Account">
+                {touched.account && errors.account && (
+                  <p className="alert alert-danger">{errors.account}</p>
+                )}
+                <Field
+                  type="text"
+                  name="account"
+                  placeholder="Enter an account"
+                  className="form-control"
+                />
+              </GridElement>
+            </Grid>
+            <Grid>
+              <GridElement className="col s12 m6" name="Adress">
+                {touched.adress && errors.adress && (
+                  <p className="alert alert-danger">{errors.adress}</p>
+                )}
+                <Field
+                  type="text"
+                  name="adress"
+                  placeholder="Enter en adress"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6" name="Phone">
+                {touched.phone && errors.phone && (
+                  <p className="alert alert-danger">{errors.phone}</p>
+                )}
+                <Field
+                  type="text"
+                  name="phone"
+                  placeholder="0670102010 or +212670102010 or (212)670102010"
+                  className="form-control"
+                />
+              </GridElement>
+            </Grid>
+            <Grid>
+              <GridElement className="col s12 m6" name="Email">
+                {touched.email && errors.email && (
+                  <p className="alert alert-danger">{errors.email}</p>
+                )}
+                <Field
+                  type="text"
+                  name="email"
+                  placeholder="you@yourdomain.com"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6" name="Website">
+                {touched.website && errors.website && (
+                  <p className="alert alert-danger">{errors.website}</p>
+                )}
+                <Field
+                  type="text"
+                  name="website"
+                  placeholder="Http://website"
+                  className="form-control"
+                />
+              </GridElement>
+            </Grid>
+            <ButtonSubmit className="SubmitButton">Submit</ButtonSubmit>
           </Form>
           //end of form
         )}
       />
       {/*end of GetOneProvider query*/}
-      <style jsx>
-        {`
-       .paper {
-        display: flex;
-        // margin-top: 64px;
-        align-items: center;
-        flex-direction: column;
-      },
-      .form {
-        display: center;
-        width: 80%;
-        margin-top: 8px;
-        margin-:4px;
-      },
-        `}
-      </style>
-    </div>
+    </Container>
   );
 };
 
+UpdatePro.Layout = AdminLayout;
 export default UpdatePro;

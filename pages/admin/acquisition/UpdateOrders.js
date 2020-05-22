@@ -12,6 +12,7 @@ import {
 import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
+import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 import GridElement from "../../../components/ui/Grid/GridElement";
@@ -32,11 +33,11 @@ const ObjectId = (
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
-const UpdateQuotation = () => {
+const UpdateOrders = () => {
   const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onCompleted: () => {
-      window.alert(`Quotation Line inserted !!`);
+      window.alert(`Order Line inserted !!`);
     },
     onError: (error) => {
       alert(error.message);
@@ -98,7 +99,7 @@ const UpdateQuotation = () => {
         enableReinitialize
         initialValues={{
           id: Router.query.id,
-          quotation_number: data_order.getOrder.quotation_number,
+          order_number: data_order.getOrder.order_number,
           establishement: data_order.getOrder.establishement,
           name: data_order.getOrder.name,
           financial_year: data_order.getOrder.financial_year,
@@ -113,7 +114,7 @@ const UpdateQuotation = () => {
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
           name: Yup.string().required("name is required"),
-          quotation_number: Yup.string().required("id is required"),
+          order_number: Yup.string().required("order num is required"),
           financial_year: Yup.string().required("financial year is required"),
 
           provider: Yup.string().required("provider is required"),
@@ -131,7 +132,7 @@ const UpdateQuotation = () => {
             variables: {
               _id: Router.query.id,
               name: values.name,
-              quotation_number: values.quotation_number,
+              order_number: values.order_number,
               status: values.status,
               order_lines: initord,
             },
@@ -141,21 +142,19 @@ const UpdateQuotation = () => {
             actions.setSubmitting(false);
           }, 1000);
 
-          alert("Quotation updated succesfully");
+          alert("Order updated succesfully");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <GridElement className="col s12 m6" name="Quotation number">
-                {touched.quotation_number && errors.quotation_number && (
-                  <p className="alert alert-danger">
-                    {errors.quotation_number}
-                  </p>
+              <GridElement className="col s12 m6" name="Order number">
+                {touched.order_number && errors.order_number && (
+                  <p className="alert alert-danger">{errors.order_number}</p>
                 )}
                 <Field
                   type="text"
-                  name="quotation_number"
-                  placeholder="Enter quotation number"
+                  name="order_number"
+                  placeholder="Enter order number"
                   className="form-control"
                 />
               </GridElement>
@@ -376,7 +375,6 @@ const UpdateQuotation = () => {
               <button className="SubmitButton" type="submit">
                 Submit
               </button>
-              <button className="SubmitButton"> Place an order</button>
             </Grid>
             <br></br>
           </Form>
@@ -386,5 +384,5 @@ const UpdateQuotation = () => {
   );
 };
 
-UpdateQuotation.Layout = AdminLayout;
-export default UpdateQuotation;
+UpdateOrders.Layout = AdminLayout;
+export default UpdateOrders;
