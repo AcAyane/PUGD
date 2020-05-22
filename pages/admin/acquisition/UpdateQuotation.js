@@ -37,7 +37,7 @@ const UpdateQuotation = () => {
   const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onCompleted: () => {
-      window.alert(`Quotation Line inderted !!`);
+      window.alert(`Quotation Line inserted !!`);
     },
     onError: (error) => {
       alert(error.message);
@@ -147,8 +147,7 @@ const UpdateQuotation = () => {
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <div className="col s12 m6">
-                <label htmlFor="Quotation_number">Quotation Number</label>
+              <GridElement className="col s12 m6" name="Quotation number">
                 {touched.quotation_number && errors.quotation_number && (
                   <p className="alert alert-danger">
                     {errors.quotation_number}
@@ -160,20 +159,18 @@ const UpdateQuotation = () => {
                   placeholder="Enter quotation number"
                   className="form-control"
                 />
-              </div>
-              <div className="col s12 m6">
-                <label htmlFor="Status">status</label>
+              </GridElement>
+              <GridElement className="col s12 m6" name="Status">
                 <Field
                   type="text"
                   name="status"
                   placeholder="pending"
                   className="form-control"
                 />
-              </div>
+              </GridElement>
             </Grid>
             <Grid>
-              <div className="col s12 m6">
-                <label htmlFor="establishement">Establishement</label>
+              <GridElement className="col s12 m6" name="Establishement">
                 {touched.establishement && errors.establishement && (
                   <p className="alert alert-danger">{errors.establishement}</p>
                 )}
@@ -183,11 +180,10 @@ const UpdateQuotation = () => {
                   placeholder="Enter an establishement"
                   className="form-control"
                 />
-              </div>
+              </GridElement>
               {Providers()}
               {/* {AllOrderLines()} */}
-              <div className="col s12 m6">
-                <label htmlFor="provider">Provider</label>
+              <GridElement className="col s12 m6" name="Provider">
                 {touched.id_Provider && errors.id_Provider && (
                   <p className="alert alert-danger">{errors.id_Provider}</p>
                 )}
@@ -201,11 +197,10 @@ const UpdateQuotation = () => {
                     setFieldValue("provider", provider.value)
                   }
                 />
-              </div>
+              </GridElement>
             </Grid>
             <Grid>
-              <div className="col s12 m6">
-                <label htmlFor="name">Name</label>
+              <GridElement className="col s12 m6" name="Name">
                 {touched.name && errors.name && (
                   <p className="alert alert-danger">{errors.name}</p>
                 )}
@@ -215,9 +210,8 @@ const UpdateQuotation = () => {
                   placeholder="Enter Name"
                   className="form-control"
                 />
-              </div>
-              <div className="col s12 m6">
-                <label htmlFor="financial_year">Financial year</label>
+              </GridElement>
+              <GridElement className="col s12 m6" name="Financial-Year">
                 {touched.financial_year && errors.financial_year && (
                   <p className="alert alert-danger">{errors.financial_year}</p>
                 )}
@@ -230,12 +224,10 @@ const UpdateQuotation = () => {
                     setFieldValue("financial_year", year.value)
                   }
                 />
-              </div>
+              </GridElement>
             </Grid>
             <Grid>
-              <div className="col s12 m6">
-                <label htmlFor="date">Date</label>
-
+              <GridElement className="col s12 m6" name="Date">
                 <DatePicker
                   className="date-control"
                   name="date"
@@ -243,9 +235,8 @@ const UpdateQuotation = () => {
                   selected={values.date}
                   onChange={(date) => setFieldValue("date", date)}
                 />
-              </div>
-              <div className="col s12 m6">
-                <label htmlFor="delivery_address">Delivery address</label>
+              </GridElement>
+              <GridElement className="col s12 m6" name="Delivery Address">
                 {touched.delivery_address && errors.delivery_address && (
                   <p className="alert alert-danger">
                     {errors.delivery_address}
@@ -257,11 +248,10 @@ const UpdateQuotation = () => {
                   placeholder="Enter delivery address"
                   className="form-control"
                 />
-              </div>
+              </GridElement>
             </Grid>
             <Grid>
-              <div className="col s12 m6">
-                <label htmlFor="billing_address">Billing address</label>
+              <GridElement className="col s12 m6" name="Billing Address">
                 {touched.billing_address && errors.billing_address && (
                   <p className="alert alert-danger">{errors.billing_address}</p>
                 )}
@@ -271,9 +261,8 @@ const UpdateQuotation = () => {
                   placeholder="Enter billing address"
                   className="form-control"
                 />
-              </div>
-              <div className="col s12 m6">
-                <label htmlFor="notes">Notes</label>
+              </GridElement>
+              <GridElement className="col s12 m6" name="Notes">
                 {touched.notes && errors.notes && (
                   <p className="alert alert-danger">{errors.notes}</p>
                 )}
@@ -283,7 +272,7 @@ const UpdateQuotation = () => {
                   placeholder="Enter your notes"
                   className="form-control"
                 />
-              </div>
+              </GridElement>
             </Grid>
             <br></br>
             <Grid>
@@ -398,4 +387,5 @@ const UpdateQuotation = () => {
   );
 };
 
+UpdateQuotation.Layout = AdminLayout;
 export default UpdateQuotation;

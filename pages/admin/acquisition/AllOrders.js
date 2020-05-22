@@ -62,7 +62,7 @@ const AllOrders = () => {
                                 <i className="material-icons">delete</i>
                               </a>
                               <a
-                                href={`/admin/acquisition/UpdateQuotation?id=${splitfunction(
+                                href={`/admin/acquisition/UpdateOrders?id=${splitfunction(
                                   item._id
                                 )}`}
                                 className="invoice-action-edit"
