@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Router from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GetOrder } from "../../../graphql/queries/acquisition/order";
@@ -29,13 +29,8 @@ const ObjectId = (
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
-const b1 = {
-  title: "hh",
-  author: "hh",
-  isbn: "hh",
-};
 const UpdateQuotation = () => {
-  const [order_line, setOrder_line] = useState(0);
+  const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onError: (error) => {
       alert(error.message);
@@ -57,15 +52,20 @@ const UpdateQuotation = () => {
       alert(error.message);
     },
   });
-  const { loading, error } = useQuery(GetOrder, {
+  const { loading, error, data: data_order } = useQuery(GetOrder, {
     variables: { id: Router.query.id },
   });
-  const { data } = useQuery(GetAllOrderLines, {
+  const { data: data_lines } = useQuery(GetAllOrderLines, {
     variables: { order: Router.query.id },
   });
 
-  const ListPro = [];
+  useMemo(() => {
+    if (data_lines && data_lines.getAllOrderLines) {
+      setOrder_line(data_lines.getAllOrderLines);
+    }
+  }, [data_lines]);
 
+  const ListPro = [];
   function Providers() {
     const { loading, data, error } = useQuery(GetAllProviders);
     if (loading) return "Loading...";
@@ -77,7 +77,7 @@ const UpdateQuotation = () => {
       });
     }
   }
-  if (data != null) setOrder_line(data.getAllOrderLines);
+
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 
@@ -92,17 +92,17 @@ const UpdateQuotation = () => {
         enableReinitialize
         initialValues={{
           id: Router.query.id,
-          quotation_number: data.getOrder.quotation_number,
-          establishement: data.getOrder.establishement,
-          name: data.getOrder.name,
-          financial_year: data.getOrder.financial_year,
+          quotation_number: data_order.getOrder.quotation_number,
+          establishement: data_order.getOrder.establishement,
+          name: data_order.getOrder.name,
+          financial_year: data_order.getOrder.financial_year,
           date: new Date(),
-          delivery_address: data.getOrder.delivery_address,
-          billing_address: data.getOrder.billing_address,
-          notes: data.getOrder.notes,
-          status: data.getOrder.status,
-          type: data.getOrder.type,
-          provider: data.getOrder.provider,
+          delivery_address: data_order.getOrder.delivery_address,
+          billing_address: data_order.getOrder.billing_address,
+          notes: data_order.getOrder.notes,
+          status: data_order.getOrder.status,
+          type: data_order.getOrder.type,
+          provider: data_order.getOrder.provider,
         }}
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
@@ -115,13 +115,13 @@ const UpdateQuotation = () => {
         onSubmit={(values, actions) => {
           let initord = [];
           for (var i = 0; i < order_line.length; i++) {
-            initord.push(this.splitfunction(order_line[i]._id));
+            initord.push(splitfunction(order_line[i]._id));
           }
           updateOrder({
             variables: {
               _id: Router.query.id,
               name: values.name,
-              id_number: values.quotation_number,
+              quotation_number: values.quotation_number,
               status: values.status,
               order_lines: initord,
             },
@@ -178,6 +178,7 @@ const UpdateQuotation = () => {
                   />
                 </div>
                 {Providers()}
+                {/* {AllOrderLines()} */}
                 <div className="col s12 m6">
                   <label htmlFor="provider">Provider</label>
                   {touched.id_Provider && errors.id_Provider && (
@@ -323,7 +324,7 @@ const UpdateQuotation = () => {
                             setOrder_line(() => {
                               newData._id = ObjectId();
                               newData.order = Router.query.id;
-                              values.order_lines.push(newData.id);
+                              // values.order_lines.push(newData.id);
                               const order_line1 = [...order_line, newData];
                               return order_line1;
                             });
@@ -372,62 +373,13 @@ const UpdateQuotation = () => {
                           }, 1000);
                         }).then(() => {
                           var a = splitfunction(oldData._id);
-                          deleteOrderLine({ variables: { _id: a } });
+                          deleteOrderLine({
+                            variables: { _id: a },
+                          });
                         }),
                     }}
                   />
                 </div>
-                {/* editable={{
-
-                                        onRowUpdate: (newData, oldData) =>
-                                          new Promise((resolve) => {
-                                            setTimeout(() => {
-                                              this.setState((state) => {
-                                                const order_line = [
-                                                  ...state.order_line.filter(
-                                                    (x) => x !== oldData
-                                                  ),
-                                                  newData,
-                                                ];
-                                                return { order_line };
-                                              });
-                                              resolve();
-                                            }, 1000);
-                                          }).then(() => {
-                                            var a = this.splitfunction(
-                                              newData._id
-                                            );
-                                            this.updateorderline({
-                                              _id: a,
-                                              isbn: newData.isbn,
-                                              title: newData.title,
-                                              author: newData.author,
-                                              quantity: newData.quantity,
-                                              price: newData.price,
-                                              discount: newData.discount,
-                                              status: newData.status,
-                                            });
-                                          }),
-                                        onRowDelete: (oldData) =>
-                                          new Promise((resolve) => {
-                                            setTimeout(() => {
-                                              this.setState((state) => {
-                                                const order_line = [
-                                                  ...state.order_line.filter(
-                                                    (x) => x !== oldData
-                                                  ),
-                                                ];
-                                                return { order_line };
-                                              });
-                                              resolve();
-                                            }, 1000);
-                                          }).then(() => {
-                                            var a = splitfunction(
-                                              oldData._id
-                                            );
-                                            deleteOrderLine({ _id: a });
-                                          }),
-                                      }} */}
               </div>
               <div className="form-group">
                 <Button variant="contained" color="primary" type="submit">

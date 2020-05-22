@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 const GetAllOrderLines = gql`
   query($order: String!) {
     getAllOrderLines(order: $order) {
-      id
+      _id
       isbn
       title
       author
