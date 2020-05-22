@@ -358,8 +358,8 @@ const SidebarItems = {
                     href: "/admin/reporting/circulationList"
                 },
                 {
-                    Label: "Bannettes",
-                    href: "/admin/reporting/bannettes"
+                    Label: "Banners",
+                    href: "/admin/reporting/banners"
                 },
             ]
         },
