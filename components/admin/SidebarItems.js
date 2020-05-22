@@ -355,7 +355,7 @@ const SidebarItems = {
                 },
                 {
                     Label: "Circulation List",
-                    href: "/admin/reporting/circulationlist"
+                    href: "/admin/reporting/circulationList"
                 },
                 {
                     Label: "Bannettes",

@@ -3,7 +3,7 @@ import AdminLayout from '../../../../components/adminLayout'
 const CopyHome = () => {
     return <div>
 
-        this is the reporting notices Page
+        this is the reporting circulationList Page
 
     </div>
 
