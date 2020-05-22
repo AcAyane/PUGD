@@ -2,8 +2,8 @@ import React from 'react'
 import AdminLayout from '../../../../components/adminLayout'
 const RecordHome = () => {
     return <div>
-        this is the reporting delayByReader Page
 
+        this is the reporting delayByReader Page
 
     </div>
 

@@ -2,8 +2,8 @@ import React from 'react'
 import AdminLayout from '../../../../components/adminLayout'
 const CopyHome = () => {
     return <div>
-        this is the reporting endOfSubscriptionPage
 
+        this is the reporting endOfSubscriptionPage
 
     </div>
 

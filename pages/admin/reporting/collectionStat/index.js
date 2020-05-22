@@ -2,8 +2,8 @@ import React from 'react'
 import AdminLayout from '../../../../components/adminLayout'
 const CopyHome = () => {
     return <div>
-        this is the reporting collectionStat Page
 
+        this is the reporting collectionStat Page
 
     </div>
 
