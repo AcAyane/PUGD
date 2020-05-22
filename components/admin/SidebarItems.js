@@ -368,8 +368,8 @@ const SidebarItems = {
             Icon: "settings_applications",
             Children: [
                 {
-                    Label: "Mail Compaign",
-                    href: "/admin/reporting/mailcompaign"
+                    Label: "Mail Campaign",
+                    href: "/admin/reporting/mailCampaign"
                 },
             ]
         },

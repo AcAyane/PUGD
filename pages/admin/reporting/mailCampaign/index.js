@@ -3,7 +3,7 @@ import AdminLayout from '../../../../components/adminLayout'
 const borrowersHome = () => {
     return <div>
 
-        this is the reporting loanGroup Page
+        this is the reporting mailCampaign Page
 
     </div>
 
