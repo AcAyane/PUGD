@@ -11,6 +11,7 @@ const GetOrders = gql`
       delivery_address
       billing_address
       order_lines
+      orders
     }
   }
 `;
@@ -31,6 +32,7 @@ const GetOrder = gql`
       billing_address
       order_lines
       name
+      orders
     }
   }
 `;
