@@ -1,12 +1,11 @@
 import React from 'react'
 import {useQuery} from "@apollo/react-hooks";
-import Table from "../../../../components/ui/Table/Table";
+import Table from "../../../../../components/ui/Table/Table";
 
-import moment from 'moment'
-import ChipText from "../../../../components/ui/Text/ChipText";
-import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
 
-const AllBorrowers = () => {
+import {GetAllBro} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
+
+const AllBorrewors = () => {
     const { loading, error, data } = useQuery(GetAllBro);
 
     /*     ulisé logrque on'a un button , il ne s'execute pas automatiquement
@@ -22,7 +21,7 @@ const AllBorrowers = () => {
     // var cts = this.props.message.createdAt,
     //   cdate = (new Date(cts)).toString();
     if(data != null || data !== undefined){
-        data.GetAllBro.map((items)=>
+        data.GetAllBro.map((items) =>
 
                 console.log("lecteur name : ",items.fullname),
             //console.log("Create At : ",moment(items.CreatAt).format("DD-MM-YYYY HH:mm"))
@@ -62,12 +61,11 @@ const AllBorrowers = () => {
                             </a>
                         </td>
                         <td>
-                            <span className="chip lighten-5 red red-text"></span>
+                            <span className="chip lighten-5 red red-text"/>
                         </td>
                         <td>
-                            <span className="bullet green"></span>
-                            <small></small>
-                        </td>
+                            <span className="bullet green"/>
+ww                        </td>
 
 
                         <td>
@@ -95,4 +93,4 @@ const AllBorrowers = () => {
 }
 // export default withApollo({ssr:true})(AllGroups)
 
-export default AllBorrowers
+export default AllBorrewors

@@ -16,13 +16,22 @@ const GetAllGrroups = gql`
 
 const GroupsByName = gql`
     query($name: String!){
-        GetGroupsByName(name : $name,){
+        GetGroupsByName(name: $name){
+            _id
             namegroups,
             CreatedAt,
-            respgroup,
+            respgroup{
+                fullname,
+                _id
+            },
             letterrappel,
-            libellegroup,
             mailRappel,
+            libellegroup,
+            MembersBrrowers{
+                _id,
+                fullname,
+                barcode
+            }
         }
     }
 `;

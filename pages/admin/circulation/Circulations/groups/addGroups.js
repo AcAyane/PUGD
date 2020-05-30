@@ -1,17 +1,17 @@
 import React from 'react'
-import AdminLayout from '../../../../components/adminLayout'
-import Card from "../../../../components/ui/card/card";
-import Grid from "../../../../components/ui/Grid/grid";
-import GridElement from "../../../../components/ui/Grid/GridElement";
-import TextBox from "../../../../components/ui/TextBox";
-import SelectBox from "../../../../components/ui/SelectBox";
-import ToggleSwitch from "../../../../components/ui/ToggleSwitch/ToggleSwitch";
-import DatePicker from "../../../../components/ui/DatePicker/DatePicker";
-import Checkbox from "../../../../components/ui/Checkbox";
-import TextArea from "../../../../components/ui/TextArea";
-import Button from "../../../../components/ui/Button";
+import AdminLayout from '../../../../../components/adminLayout'
+import Card from "../../../../../components/ui/card/card";
+import Grid from "../../../../../components/ui/Grid/grid";
+import GridElement from "../../../../../components/ui/Grid/GridElement";
+import TextBox from "../../../../../components/ui/TextBox";
+import SelectBox from "../../../../../components/ui/SelectBox";
+import ToggleSwitch from "../../../../../components/ui/ToggleSwitch/ToggleSwitch";
+import DatePicker from "../../../../../components/ui/DatePicker/DatePicker";
+import Checkbox from "../../../../../components/ui/Checkbox";
+import TextArea from "../../../../../components/ui/TextArea";
+import Button from "../../../../../components/ui/Button";
 import {useQuery} from "@apollo/react-hooks";
-import {GetAllBro} from "../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
+import {GetAllBro} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
 
 
 const addGroups = () => {
@@ -60,7 +60,7 @@ const addGroups = () => {
                                         </div>
                                                 <SelectBox label={"Responsable du Groups"}>
                                                     {data.GetAllBro.map((items)=>(
-                                                        <option value={items._id}>{items.fullname}</option>
+                                                        <option key={items._id} value={items.fullname}>{items.fullname}</option>
                                                     ))}
                                                 </SelectBox>
                                     </GridElement>
@@ -99,7 +99,7 @@ const addGroups = () => {
 
                                 </Grid>
                                 <br/>
-                                <Button rounded={4}>Annuler</Button>
+                                <Button rounded={4}>Anullé</Button>
                                 <Button rounded={4}>Submit</Button>
 
                             </div>

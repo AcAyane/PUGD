@@ -105,44 +105,45 @@ const SidebarItems = {
 
     ],
     circulation:[
-        "Circulation",
+        "Circulations",
         {
             Label: "Circulation",
             Icon: "home",
             Children: [
                 {
                     Label: "Prêt de documents",
-                    href: "/admin/circulation/pretDoc"
+                    href: "/admin/circulation/Circulations/pretDoc"
                 },
                 {
                     Label: "Retour de documents",
-                    href: "/admin/circulation/retDoc"
+                    href: "/admin/circulation/Circulations/retDoc"
                 },
                 {
                     Label: "Documents À traiter",
-                    href: "/admin/circulation/taritDoc"
+                    href: "/admin/circulation/Circulations/taritDoc"
                 },
 
                 {
                     Label: "Groupes de lecteurs",
-                    href: "/admin/circulation/groups"
+                    href: "/admin/circulation/Circulations/groups"
                 },
                 {
                     Label: "Nouveau lecteur",
-                    href: "/admin/circulation/Borrowers"
+                    href: "/admin/circulation/Circulations/Borrowers"
                 },
                 {
                     Label: "Périodiques",
-                    href: "/admin/circulation/periodique"
+                    href: "/admin/circulation/Circulations/periodique"
                 },
                 {
                     Label: "Recharch Personalisé",
-                    href: "/admin/circulation/recharch"
+                    href: "/admin/circulation/Circulations/recharch"
                 },
                 {
                     Label: "List lecteur (Borrows)",
-                    href: "/admin/circulation/Borrowers"
+                    href: "/admin/circulation/Circulations/Borrowers"
                 },
+
 
             ]
         },
@@ -151,39 +152,21 @@ const SidebarItems = {
             Icon: "shopping_basket",
             Children: [
                 {
-                    Label: "Author",
-                    href: "/admin/Circulation/author"
+                    Label: "Gestion",
+                    href: "/admin/Circulations/author"
                 },
                 {
-                    Label: "headings",
-                    href: "/admin/Circulation/headings"
+                    Label: "Collecte",
+                    href: "/admin/Circulations/headings"
                 },
                 {
-                    Label: "Publisher",
-                    href: "/admin/Circulation/publisher"
+                    Label: "Pointage",
+                    href: "/admin/Circulations/Pointage"
                 },
                 {
-                    Label: "Series",
-                    href: "/admin/Circulation/series"
+                    Label: "Actions",
+                    href: "/admin/Circulations/series"
                 },
-                {
-                    Label: "Sub-series",
-                    href: "/admin/Circulation/sub_series"
-                },
-                {
-                    Label: "Collection Title",
-                    href: "/admin/Circulation/collection_title"
-                },
-                {
-                    Label: "Uniform Titles",
-                    href: "/admin/Circulation/uniform-titles"
-                },
-                {
-                    Label: "Class number",
-                    href: "/admin/Circulation/class_number"
-                },
-
-
             ]
         },
         {
@@ -191,20 +174,12 @@ const SidebarItems = {
             Icon: "settings_input_svideo",
             Children: [
                 {
-                    Label: "Management",
-                    href: "/admin/Circulation/basket/management"
+                    Label: "Exemplaire",
+                    href: "/admin/circulation/Visualiser/Exemplaire"
                 },
                 {
-                    Label: "Collection",
-                    href: "/admin/Circulation/basket/collection"
-                },
-                {
-                    Label: "Tag on/off",
-                    href: "/admin/Circulation/basket/tags"
-                },
-                {
-                    Label: "Actions",
-                    href: "/admin/Circulation/basket/actions"
+                    Label: "Notice",
+                    href: "/admin/Circulations/Exemplaire/notice"
                 },
             ]
         },
@@ -213,12 +188,26 @@ const SidebarItems = {
             Icon: "spellcheck",
             Children: [
                 {
-                    Label: "Synonyms",
-                    href: "/admin/Circulation/synonyms"
+                    Label: "En cours",
+                    href: "/admin/circulation/Reservation/En_cour"
                 },
                 {
-                    Label: "Stopwords",
-                    href: "/admin/Circulation/stopwords"
+                    Label: "Dépassées",
+                    href: "/admin/circulation/Reservation/Depasse"
+                },
+                {
+                    Label: "Document à ranger",
+                    href: "/admin/circulation/Reservation/docranger"
+                },
+            ]
+        },
+        {
+            Label: "Suggestions",
+            Icon: "spellcheck",
+            Children: [
+                {
+                    Label: "Suggestions",
+                    href: "/admin/circulation/Suggestions"
                 },
             ]
         },
@@ -316,11 +305,11 @@ const SidebarItems = {
                     href: "/admin/reporting/collectionstat"
                 },
                 {
-                    Label: "Circulation Stat",
+                    Label: "Circulations Stat",
                     href: "/admin/reporting/circulationstat"
                 },
                 {
-                    Label: "Simplified Circulation",
+                    Label: "Simplified Circulations",
                     href: "/admin/reporting/simplifiedcirculation"
                 },
             ]
@@ -354,7 +343,7 @@ const SidebarItems = {
                     href: "/admin/reporting/notices"
                 },
                 {
-                    Label: "Circulation List",
+                    Label: "Circulations List",
                     href: "/admin/reporting/circulationlist"
                 },
                 {

@@ -1,10 +1,10 @@
 import React from 'react'
-import Checkbox from "../../../../components/ui/Checkbox";
+import Checkbox from "../../../../../components/ui/Checkbox";
 import {useQuery} from "@apollo/react-hooks";
-import Table from "../../../../components/ui/Table/Table";
-import {GetAllGrroups} from "../../../../graphql/queries/admin/Ciruclation/groups.query";
+import Table from "../../../../../components/ui/Table/Table";
+import {GetAllGrroups} from "../../../../../graphql/queries/admin/Ciruclation/groups.query";
 import moment from 'moment'
-import ChipText from "../../../../components/ui/Text/ChipText";
+import ChipText from "../../../../../components/ui/Text/ChipText";
 
 const AllGroups = () => {
     const { loading, error, data } = useQuery(GetAllGrroups);

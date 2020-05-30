@@ -1,18 +1,12 @@
-import React, {useState} from 'react'
-import AdminLayout from '../../../../components/adminLayout'
-import Card from '../../../../components/ui/Card/Card'
-import Grid from '../../../../components/ui/Grid/grid';
-import GridElement from '../../../../components/ui/Grid/GridElement';
-import TextBox from "../../../../components/ui/TextBox";
-import Button from "../../../../components/ui/Button";
-import ButtonPopUp from "../../../../components/ui/ButtonPopUp";
-
+import React from 'react'
+import AdminLayout from '../../../../../components/adminLayout'
+import Card from '../../../../../components/ui/card/card'
+import Grid from '../../../../../components/ui/Grid/grid';
+import GridElement from '../../../../../components/ui/Grid/GridElement';
+import TextBox from "../../../../../components/ui/TextBox";
+import Button from "../../../../../components/ui/Button";
+import ButtonPopUp from "../../../../../components/ui/ButtonPopUp";
 import AllBorrewors from "./AllBorrowers";
-import SelectBox from "../../../../components/ui/SelectBox";
-import ToggleSwitch from "../../../../components/ui/ToggleSwitch/ToggleSwitch";
-import DatePicker from "../../../../components/ui/DatePicker/DatePicker";
-import Checkbox from "../../../../components/ui/Checkbox";
-import TextArea from "../../../../components/ui/TextArea";
 
 const indexBorrowers = () => {
 
