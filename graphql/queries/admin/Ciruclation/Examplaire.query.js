@@ -2,9 +2,18 @@ import gql from "graphql-tag";
 
 const EXAMPLAIR_BY_CODE = gql`
     query($code: String!){
-        copy(code_bar: $code){
+        GetExamplaireByCodeBar(code_bar: $code){
             _id
-            CopyNumber,
+            BareCode
+            Record{
+                _id,
+                Title,
+                RecYear,
+            }
+            CopyNumber
+            Localisation
+            __typename
+            Stack
             
         }
     }
