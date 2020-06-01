@@ -229,7 +229,7 @@ const SidebarItems = {
     reporting:[
         "reporting",
         {
-            Label: "Stats",
+            Label: "Reports",
             Icon: "search",
             Children: [
                 {
