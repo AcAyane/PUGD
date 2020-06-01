@@ -10,7 +10,7 @@ query(
   $URL_thumbnail : String,
 ){
 category(
-  id:$Id
+  Id:$Id
   Name:$Name,
   Scope_note:$Scope_note,
   Comment:$Comment,
@@ -20,12 +20,42 @@ category(
     
     _id
     authority_number
-    broader_term
+    broader_term{
+      _id 
+      broader_term 
+      name
+    }
     comment
-    linked_authorities
     name 
     record
     scope_note
+    url_thumbnail
+    see_also {
+      _id 
+      broader_term 
+      name
+    }
+    see {
+      _id 
+      broader_term 
+      name
+    }
+    broader_term {
+      _id 
+      broader_term 
+      name
+    }
+    linked_authorities {
+      _id
+      comment
+      end
+      linked_authority_id
+      linked_authority_type
+      linktype
+      root_authority_id
+      root_authority_type
+      start
+    }
 }
 }
 `;

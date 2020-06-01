@@ -1,87 +1,85 @@
 import React, { useState } from 'react'
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import MenuItem from '@material-ui/core/MenuItem';
-import Link from 'next/Link';
+import Grid from '../../../ui/Grid/Grid';
+import Button from '../../../ui/Button';
+import Link from 'next/link';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
-
-
-
+import GridElement from '../../../ui/Grid/GridElement';
 const SearchAuthorComponent = ({ SearchOnly, getAuthorAllFields }) => {
-
     const [All_Fields, setAll_Fields] = useState("")
-    const [Index_Name, setIndex_Name] = useState("")
-    const [Author_Type, setAuthor_Type] = useState(10)
-    const [Status, setStatus] = useState(10)
-
-
-    const SearchClickHandler = (e, All_Fields, Status) => {
+    // const [Index_Name, setIndex_Name] = useState("")
+    const [Author_Type, setAuthor_Type] = useState(0)
+    const [searchWith, setSearchWith] = useState(10)
+    const SearchClickHandler = (e) => {
         e.preventDefault();
+        const Author = { Author_Type }
+        Author_Type !== 0 ? Author.Author_Type = Author_Type : undefined
+        searchWith !== 10 ? Author.All_Fields = All_Fields : Author.IndexName_Auth = All_Fields
 
         getAuthorAllFields({
-            variables: {
-                all_fields: All_Fields
-            }
+            variables: Author
         });
     }
-
     return (
         <React.Fragment>
-
             <h4 className="card-title">Recherche : Auteurs</h4>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox label="All fields"
+            <Grid>
+                <GridElement s={6}>
+                    <TextBox
+                        label={"Search phrase"}
                         value={All_Fields}
-                        onChange={e => { setAll_Fields(e.target.value) }}
-                    />
-                </Grid>
-                <Grid item xs={6}>
-                    <TextBox label="Indexable name (or last name)"
-                        value={Index_Name}
-                        onChange={e => { setIndex_Name(e.target.value) }}
+                        onChange={e => {
+                            setAll_Fields(e.target.value);
+                        }}
                     />
 
-                </Grid>
-
+                </GridElement>
+                <GridElement s={6}>
+                    <SelectBox
+                        label="Search with"
+                        value={searchWith}
+                        onChange={e => { setSearchWith(e.target.value) }}
+                    >
+                        <option value={10}>All Fields</option>
+                        <option value={20}>Indexable name(or last name)</option>
+                    </SelectBox>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-
+            <Grid>
+                <GridElement s={6}>
                     <SelectBox
                         label="Type Auteur"
                         name="Author_Type"
                         value={Author_Type}
                         onChange={e => { setAuthor_Type(e.target.value) }}
                     >
-                        <MenuItem value={0}>All</MenuItem>
-                        <MenuItem value={10}>Personne Physique</MenuItem>
-                        <MenuItem value={20}>Collectivité</MenuItem>
-                        <MenuItem value={30}>Congrés</MenuItem>
+                        <option value={0}>All</option>
+                        <option value={10}>Personne Physique</option>
+                        <option value={20}>Collectivité</option>
+                        <option value={30}>Congrés</option>
                     </SelectBox>
-                </Grid>
-                <Grid item xs={6}>
+                </GridElement>
+                {/* <GridElement s={6}>
                     <SelectBox
                         label="Status"
                         name="Author_Type"
                         value={Status}
                         onChange={e => { setStatus(e.target.value) }}
                     >
-                        <MenuItem value={10}>All Statuses</MenuItem>
+                        <option value={10}>All Statuses</option>
                     </SelectBox>
-                </Grid>
+                </GridElement> */}
 
             </Grid>
             <br />
-            <Button variant="contained" onClick={(e) => SearchClickHandler(e, All_Fields, Index_Name, Author_Type, Status)}>Rechercher</Button>
+            <Button onClick={(e) => SearchClickHandler(e)}>Rechercher</Button>
             {!SearchOnly &&
                 <Link href="/admin/authorities/author/add">
-                    <Button variant="contained">Ajouter Auteur</Button>
+
+                    <Button >Ajouter Auteur</Button>
+
                 </Link>
             }
-
-
         </React.Fragment>
     )
 }

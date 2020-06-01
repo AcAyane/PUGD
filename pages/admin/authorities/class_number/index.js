@@ -1,11 +1,12 @@
 import React from 'react';
-import AdminLayout from '../../../../components/adminLayout';
 import { GET_CLASS_NUMBER } from '../../../../graphql/queries/admin/authorities/class_number.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchClassNumberComponent from '../../../../components/admin/authorities/class_number/SearchClassNumberComponent';
 import ListClassNumberComponent from '../../../../components/admin/authorities/class_number/ListClassNumberComponent';
-import { CardContent, Card } from '@material-ui/core';
+import Card from '../../../../components/ui/Card/Card';
+import { withApollo } from '../../../../shared/apollo';
+import WithAdminLayout from '../../../../shared/WithAdminLayout';
 
 const ClassNumberPage = () => {
 
@@ -14,25 +15,20 @@ const ClassNumberPage = () => {
         <div className="animate fadeLeft">
             <AuthorityHeader Authority="Class bumber" />
             <Card  >
-                <CardContent>
-                    <SearchClassNumberComponent getClassNumberAllFields={getClassNumberAllFields} />
-                </CardContent>
+                <SearchClassNumberComponent getClassNumberAllFields={getClassNumberAllFields} />
+
             </Card>
- 
+
             <Card  >
-                <CardContent>
-                    <h4 className="card-title">Recherche : Sub-Series</h4>
-                    {ClassNumberResponse.error ? <div color="danger">{String(ClassNumberResponse.error.message)}</div> : null}
-                    {ClassNumberResponse.data &&
-                        <ListClassNumberComponent class_numbers={ClassNumberResponse.data.class_number} />
-                    }
-                </CardContent>
+                <h4 className="card-title">Recherche : class number</h4>
+                {ClassNumberResponse.error ? <div color="danger">{String(ClassNumberResponse.error.message)}</div> : null}
+                {ClassNumberResponse.data &&
+                    <ListClassNumberComponent class_numbers={ClassNumberResponse.data.class_number} />
+                }
             </Card>
         </div>
     );
 };
 
 
-ClassNumberPage.Layout = AdminLayout
-
-export default ClassNumberPage;
+export default WithAdminLayout(withApollo({ ssr: true })(ClassNumberPage));

@@ -1,5 +1,7 @@
-import React ,{ useState } from "react";
-
+import React, { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import { INSERT_CATEGORY } from '../../../../graphql/mutations/admin/authorities/category.mutations';
+import { Router } from "next/router";
 const useCategoryForm = (callback) => {
 
 
@@ -22,6 +24,44 @@ const useCategoryForm = (callback) => {
         Linked_authorities: [],
     })
 
+
+    const setInputValue = (newInputs) => {
+
+
+        setInputs({
+            Name: newInputs.name,
+            Scope_note: newInputs.scope_note,
+            Comment: newInputs.comment,
+            Broader_term: {
+                id: newInputs.broader_term._id.split('"')[1],
+                Label: newInputs.broader_term.name
+            },
+            See: {
+                id: newInputs.see._id.split('"')[1],
+                Label: newInputs.see.name
+            },
+            See_also: newInputs.see_also.map((category) => {
+                return {
+                    id: category._id.split('"')[1],
+                    AuthorityName: category.name
+                }
+            }),
+            Authority_number: newInputs.authority_number,
+            URL_thumbnail: newInputs.url_thumbnail,
+            Linked_authorities: newInputs.linked_authorities.map((linked_authority) => {
+
+                return {
+                    AuthorityName: "something",
+                    Authority_Type: Number(linked_authority.linked_authority_type),
+                    Comment: linked_authority.comment,
+                    End: linked_authority.end && linked_authority.end > 0 && new Date(Number(linked_authority.end)),
+                    Start: linked_authority.start && linked_authority.start > 0 && new Date(Number(linked_authority.start)),
+                    id: linked_authority._id,
+                }
+            }),
+        });
+    }
+
     // Handle the state changes of the inputs using the name property
     const handleInputChange = (event) => {
         event.persist();
@@ -32,7 +72,7 @@ const useCategoryForm = (callback) => {
     const addLinked_authorities = (author) => {
         setInputs(inputs => ({ ...inputs, Linked_authorities: [...inputs.Linked_authorities, author] }));
     }
-    const addSee_Also = (category) => { 
+    const addSee_Also = (category) => {
         setInputs(inputs => ({ ...inputs, See_also: [...inputs.See_also, category] }));
     }
 
@@ -130,10 +170,67 @@ const useCategoryForm = (callback) => {
         setOpen(false);
     };
 
+    const [insertCategory] = useMutation(INSERT_CATEGORY, {
+        onCompleted: () => {
+            Router.push("/admin/authorities/headings")
 
+        },
+        onError: (error) => {
+            alert(error.message);
+        }
+    });
+
+
+
+    const onAddHandler = (e,
+        Name,
+        Scope_note,
+        Comment,
+        Broader_term,
+        See,
+        See_also,
+        Authority_number,
+        URL_thumbnail,
+        Linked_authorities) => {
+        e.preventDefault();
+
+        const category = {
+            Name,
+            Scope_note,
+            Comment,
+            See_also: See_also.map((authority) => {
+                return authority.id.split('"')[1]
+            }),
+            Authority_number,
+            URL_thumbnail,
+            Linked_authorities: Linked_authorities.map((authority) => {
+                return {
+                    Linked_Authority_Id: authority.id.split('"')[1],
+                    Linked_Authority_Type: authority.Authority_Type,
+                    Start: authority.Start,
+                    End: authority.End,
+                    Comment: authority.Comment,
+                    LinkType: authority.LinkType,
+                }
+            }),
+        }
+
+
+        if (Broader_term !== "") {
+            category.Broader_term = Broader_term
+        }
+        if (See !== "") {
+            category.See = See
+        }
+
+
+        insertCategory({
+            variables: category
+        });
+    }
     return {
-        inputs, 
-        handleInputChange, 
+        inputs,
+        handleInputChange,
         ModalAuthorityType,
         HandleChosenAuthority,
         handleClose,
@@ -144,7 +241,9 @@ const useCategoryForm = (callback) => {
         handleOpenSee_Also,
         unsetBroader_term,
         unsetSee,
-        open
+        open,
+        onAddHandler,
+        setInputValue
     };
 }
 

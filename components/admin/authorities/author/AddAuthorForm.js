@@ -1,62 +1,49 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button  from '@material-ui/core/Button'; 
-import MenuItem from '@material-ui/core/MenuItem'; 
+import Button from '../../../ui/Button';
 
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
-import IconButton from '@material-ui/core/IconButton';
 import SearchAuthority from "../shared/SearchAuthor"
-import Add from '@material-ui/icons/Add';
 import useAuthorForm from './useAuthorForm';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
+import RoundButton from '../../../ui/RoundButton/RoundButton';
+import { withApollo } from '../../../../shared/apollo';
 
-const AddAuthorForm = ({ onAddHandler, author }) => {
+const AddAuthorForm = () => {
+
 
     const {
         inputs,
+        onAddHandler,
         handleInputChange,
         HandleChosenAuthority,
         handleClose,
         OnAuthorityLinkChange,
         handleOpen,
-        open } = useAuthorForm(author);
+        open } = useAuthorForm();
 
     const onSubmitForm = (event) => {
         event.preventDefault();
-        onAddHandler(
-            inputs.Author_Type,
-            inputs.Name_Auth,
-            inputs.IndexName_Auth,
-            inputs.Year_Auth,
-            inputs.City_Auth,
-            inputs.Country_Auth,
-            inputs.WebSite_Auth,
-            inputs.ISNI_Auth,
-            inputs.UrlThumbnail_Auth,
-            inputs.Note_Auth,
-            inputs.Subdivision_Auth,
-            inputs.Linked_authorities)
+        onAddHandler()
     }
     return (
         <React.Fragment>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <div className="row">
+                <div className="col s6">
 
                     <SelectBox
                         label="Type Auteur"
                         name="Author_Type"
                         value={inputs.Author_Type}
-                        onChange={handleInputChange}>
-                        <MenuItem value={0}>All</MenuItem>
-                        <MenuItem value={10}>Personne Physique</MenuItem>
-                        <MenuItem value={20}>Collectivité</MenuItem>
-                        <MenuItem value={30}>Congrés</MenuItem>
+                        onChange={handleInputChange}> 
+                        <option value={10}>Personne Physique</option>
+                        <option value={20}>Collectivité</option>
+                        <option value={30}>Congrés</option>
                     </SelectBox>
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s6">
                     <TextBox
                         required
                         label="Indexable name (or last name)"
@@ -64,81 +51,91 @@ const AddAuthorForm = ({ onAddHandler, author }) => {
                         value={inputs.IndexName_Auth}
                         onChange={handleInputChange}
                     />
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+                <div className="col s6">
                     <TextBox required label="Non indexable name (or first name)"
                         name="Name_Auth"
                         value={inputs.Name_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox label="Year of birth-year of death"
-                        name="Year_Auth"
-                        value={inputs.Year_Auth}
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s6">
+                    <TextBox label="Year of birth"
+                        name="Year_Birth"
+                        value={inputs.Year_Birth}
+                        onChange={handleInputChange}
+                        type="number" />
+                </div>
+                <div className="col s6">
+                    <TextBox label="Year of death"
+                        type="number"
+                        name="Year_Death"
+                        value={inputs.Year_Death}
                         onChange={handleInputChange} />
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s12">
                     <TextBox label="Website"
                         name="WebSite_Auth"
                         value={inputs.WebSite_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+                </div>
+            </div>
+
+
+            <div className="row">
+                <div className="col s6">
                     <TextBox label="City"
                         name="City_Auth"
                         value={inputs.City_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+                <div className="col s6">
                     <TextBox label="Country"
                         name="Country_Auth"
                         value={inputs.Country_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s12">
                     <TextBox label="Note"
                         name="Note_Auth"
                         value={inputs.Note_Auth}
                         onChange={handleInputChange}
-                        multiline
-                        rows="4" />
-                </Grid>
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+                        Multiline />
+                </div>
+            </div>
+            <div className="row">
+                <div className="col s6">
                     <TextBox label="ISNI"
                         name="ISNI_Auth"
                         value={inputs.ISNI_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-                <Grid item xs={6}>
+                </div>
+                <div className="col s6">
                     <TextBox label="Subdivision"
                         name="Subdivision_Auth"
                         value={inputs.Subdivision_Auth}
                         onChange={handleInputChange} />
 
-                </Grid>
+                </div>
 
-            </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            </div>
+            <div className="row">
+                <div className="col s12">
                     <TextBox label="URL of thumbnail"
                         name="UrlThumbnail_Auth"
                         value={inputs.UrlThumbnail_Auth}
                         onChange={handleInputChange} />
-                </Grid>
-            </Grid>
+                </div>
+            </div>
 
             <h5> Linked Auhorities
-                <IconButton color="primary" aria-label="upload picture" component="span" onClick={handleOpen}>
-                    <Add />
-                </IconButton>
+            &nbsp;
+                <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
@@ -157,4 +154,4 @@ const AddAuthorForm = ({ onAddHandler, author }) => {
         </React.Fragment>
     )
 }
-export default AddAuthorForm
+export default withApollo({ ssr: true })(AddAuthorForm)

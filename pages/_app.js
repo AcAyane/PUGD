@@ -1,28 +1,18 @@
 import React from 'react';
-import App from 'next/app'; 
-
-import Protect from '../shared/protect';  
-import { withApollo } from '../shared/apollo';
-// import AdminLayout from '../components/adminLayout';
-const Nolayout =  ({children}) => <>{children}</>
-class MyApp extends App {  
+import App from 'next/app';
+import protect from '../shared/protect'; 
+class MyApp extends App {
   render() {
-  
-    
+
+
     const { Component, pageProps, router } = this.props;
 
- 
-    const Layout = Component.Layout || Nolayout
-  
-      return (
-     
-              <Layout>
-              <Component {...pageProps} />
-              </Layout>
-        
-      )
-  }
-}
 
- 
-export default  withApollo({ ssr: true })((Protect(MyApp))) ;
+
+    return (
+      <Component {...pageProps} />
+    )
+  }
+} 
+// export default protect(MyApp);
+export default MyApp;

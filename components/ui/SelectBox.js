@@ -1,25 +1,21 @@
-import React from 'react'
-import { Select, InputLabel, FormControl } from '@material-ui/core';
+import React, { useRef, useEffect } from 'react'
 
-const SelectBox = ({children,label,...props}) => {
+const SelectBox = ({ children, constrainWidth, label, ...props }) => {
+
+  const selectElement = useRef();
+  useEffect(() => {
+    var instances = M.FormSelect.init(selectElement.current);
+  }, [])
+
+
   return (
 
-    <FormControl
-      fullWidth
-      size="small"
-      variant="outlined">
-      <InputLabel  style={
-        { background: "white" }
-      }>
-        {label}
-        </InputLabel>
-      <Select 
-        {...props}
-      >
-       {children}
-      </Select>
-    </FormControl>
-
+    <div className="input-field col s12">
+      <select ref={selectElement} {...props}>
+        {children}
+      </select>
+      <label>{label}</label>
+    </div>
   )
 }
 
