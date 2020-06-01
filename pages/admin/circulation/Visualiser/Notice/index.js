@@ -5,13 +5,12 @@ import Button from "../../../../../components/ui/Button";
 import Card from "../../../../../components/ui/card/card";
 import {useLazyQuery} from "@apollo/react-hooks";
 import {EXAMPLAIR_BY_CODE} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
-import Examplaire from "./Examplaire";
+import ListNotice from "./ListNotice";
 
 
-const visual = () => {
-    const NO_Examplair = <span style={{color:'#d60e28'}}>No data is finder</span>;
+const notice = () => {
 
-
+    const nul = <span style={{color:'#d60e28'}}>No document finder with id : </span>;
 
     const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(EXAMPLAIR_BY_CODE);
 
@@ -40,11 +39,11 @@ const visual = () => {
                     <div className="col s12">
                         <form>
                             <Card >
-                                <h5>Examplaire</h5>
+                                <h5>Notice </h5>
                                 <span>Recherche un ListNotice</span>
                                 <div className="row display-flex">
                                     <TextBox
-                                        label="Code Bar ListNotice"
+                                        label="Code Bar Notice"
                                         type="text"
                                         onChange={event => { setCodeBar(event.target.value) }}
                                         value={codBar}
@@ -52,17 +51,16 @@ const visual = () => {
                                     <Button
                                         onClick={onSearchHandler}
                                         rounded={4}>Search</Button>
-
                                 </div>
                             </Card>
                         </form>
                         {  data != null || data !== undefined ?
-                            <Examplaire data = {data.GetExamplaireByCodeBar}/>
-                            : NO_Examplair }
+                            <ListNotice data = {data.GetExamplaireByCodeBar}/>
+                            : <p>false</p> }
 
                     </div>
                 </div>
-    </div>
+            </div>
 }
-visual.Layout = AdminLayout
-export default visual
+notice.Layout = AdminLayout
+export default notice

@@ -1,9 +1,7 @@
-import React, {useState} from 'react'
+import React from 'react'
 import AdminLayout from '../../../../../components/adminLayout'
-import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
 
-const Examplaire = (props) => {
+const ListNotice = (props) => {
 
     return <React.Fragment>
 
@@ -174,12 +172,10 @@ const Examplaire = (props) => {
 
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
     </React.Fragment>
 }
-Examplaire.Layout = AdminLayout
-export default Examplaire
+ListNotice.Layout = AdminLayout
+export default ListNotice

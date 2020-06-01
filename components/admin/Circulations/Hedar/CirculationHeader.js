@@ -1,26 +1,26 @@
 import React from 'react'
 import Card from '../../../ui/Card/Card'
-const CirculationHeader = ({ CirculationModule }) => {
+import TextBox from "../../../ui/TextBox";
+import Button from "../../../ui/Button";
+const CirculationHeader = ({ CirculationModule, children }) => {
 
     return (
 
         <React.Fragment>
             <Card>
                 <div className="header-container card-content">
-                    <i className="material-icons pink-text" style={{ margin: "auto" }}>
+                    <i className="material-icons pink-text-blue" style={{ margin: "auto" }}>
                     fiber_manual_record
                     </i>
-                    <h6 className="uk-icon">Circulation : {CirculationModule}</h6>
+                    <h5 className="uk-icon">Circulation : {CirculationModule}</h5>
                 </div>
-
+                {children}
             </Card>
             <style jsx>
                 {`
-                    .pink-text{
-                        color: #FF1E51E9 !important;
-                    }
+                    
                     .uk-icon { 
-                        margin-left:10px;
+                        margin-left:5px;
                         display:inline-block;
                     } 
                     .header-container{
