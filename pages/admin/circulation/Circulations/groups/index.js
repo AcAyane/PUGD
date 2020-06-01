@@ -9,19 +9,17 @@ import Button from "../../../../../components/ui/Button";
 import {useLazyQuery} from "@apollo/react-hooks";
 import {GroupsByName} from "../../../../../graphql/queries/admin/Ciruclation/groups.query";
 import ResGroup from "./resGroups";
+import Null from "../../../../../components/admin/Circulations/Handerls/Null";
+import Circulation from "../../../../../components/admin/Circulations/Body/Body";
+import CirculationHeader from "../../../../../components/admin/Circulations/Hedar/CirculationHeader";
+import Link from "next/link";
 
 const Groups = () => {
-
-    const nul = <span style={{color:'#d60e28'}}>No Group finder</span>;
-
     const [GetGroupsByName, { loading, error, data }] = useLazyQuery(GroupsByName);
-
     const [name, setName] = useState('');
-
     if (loading) {
         return <div>Loading...</div>;
     }
-
     if(error){
         console.log(error)
         console.log(data)
@@ -44,39 +42,37 @@ const Groups = () => {
 
 
 
-    return <div className="container">
-        <div className="row">
-            <div className="col s12">
-                {/*<ButtonPopUp icon={"add"} hrf={"#"}/>*/}
-                <form>
-                    <Card>
-                        <div className="row">
-                            <div className="card-header">
-                                <h4 className="card-title">Group de Lecteur (Borrowers)</h4>
+    return <Circulation>
+        <CirculationHeader CirculationModule=" => Group"
 
-                            </div>
-                            <p>Recherche groupe</p>
+                children={
+                    <form>
+                        <div>
                             <Grid>
+                                <p>Recherche groupe</p>
                                 <GridElement s={12} style={{display:"flex"}}>
                                     <TextBox
                                         label="Nom du Group"
                                         type="text"
                                         onChange={event => {setName(event.target.value)}}
                                         value={name}
-                                    />
+                                        />
                                     <Button
-                                            onClick={onSearchHandler}
-                                            rounded={4}>Search</Button>
+                                        onClick={onSearchHandler}
+                                        rounded={4}>Search
+                                    </Button>
                                     <Button href="/admin/circulation/Circulations/groups/addGroups" rounded={4}>add group</Button>
                                 </GridElement>
                             </Grid>
                         </div>
-                    </Card>
-                </form>
+                    </form>
+                }
+        />
+
 
                 {
 
-                    error ? nul : (data == null || undefined ) ?
+                    error ? <Null children="No group Finder"/> : (data == null || undefined ) ?
 
 
                         <ResGroup/> :
@@ -87,9 +83,7 @@ const Groups = () => {
 
                 }
 
-            </div>
-        </div>
-    </div>
+    </Circulation>
 }
 Groups.Layout = AdminLayout
 export default Groups
