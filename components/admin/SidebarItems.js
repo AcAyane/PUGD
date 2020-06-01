@@ -174,12 +174,12 @@ const SidebarItems = {
             Icon: "settings_input_svideo",
             Children: [
                 {
-                    Label: "Exemplaire",
+                    Label: "Exemplaire (copy)",
                     href: "/admin/circulation/Visualiser/Exemplaire"
                 },
                 {
-                    Label: "Notice",
-                    href: "/admin/Circulations/Exemplaire/notice"
+                    Label: "Notice (record)",
+                    href: "/admin/circulation/Visualiser/Notice"
                 },
             ]
         },
