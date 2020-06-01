@@ -1,11 +1,11 @@
 import React from 'react'
 import AdminLayout from '../../../../components/adminLayout'
+import ReportingHeader from "../../../../components/admin/reporting/header/reportingHeader"
+import Reporting from "../../../../components/admin/reporting/body/body"
 const CopyHome = () => {
-    return <div>
-
-        this is the reporting plankModels Page
-
-    </div>
+    return <Reporting>
+        <ReportingHeader ReportingModule="Plank Model" />
+    </Reporting>
 
 }
 CopyHome.Layout = AdminLayout
