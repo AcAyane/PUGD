@@ -1,14 +1,11 @@
 import gql from 'graphql-tag';
 
 const GET_LOANS  = gql`
-query(
-   
-){ GetLoans
+query{ GetLoans
   {
     _id
     BareCode
-    Price
-	id_Record        
+    Price    
 	ReplacementPrice 
 	DateLastBorrowed 
 	DateLastSeen    
@@ -20,8 +17,8 @@ query(
 	CopyNumber       
 	Status           
 	NewStatus        
-	Reservation     
-	Loans        
+	   
+	     
   }
 }
   

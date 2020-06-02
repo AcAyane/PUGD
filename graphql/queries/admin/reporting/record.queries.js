@@ -1,22 +1,19 @@
 import gql from 'graphql-tag';
 
-const GET_RECORD_YEAR  = gql`
+const GetRecordYear= gql`
 query(
   $RecYear : int,
   $Author :String,
-      
-  
-  
-){ GetRecordYear(RecYear:$RecYear,Outher:$Outher)
+){GetRecordYear(RecYear:$RecYear,Author:$Author)
   {
     _id
     Title
-    isbn
+    ISBN
     OtherTitle
     ParallelTitle
     RecYear
     EditionStatement
-    OtherInformation
+    OtherInformations
     Format
     Summary
     IsNew
@@ -24,42 +21,43 @@ query(
     AccMaterial
     NoteAuthor
     NbPages
-    FKSeries
-    FKSubSeries
+    FkSeries
+    FkSubSeries
     Baskets
     KeyWords
     Category
     Branches         
-	Copy             
-	Serial          
-	Responsibilities 
-	Publishers       
-	Author string 
+    Copies            
+	Serials          
+	Responsibilities
+ 
   }
+
 }
   
   `;
-const GET_RECORD = gql`
+const getRecord = gql`
 query(
-  $RecYear : int,
-  $Outher :String,
+  $RecYear : Int,
+  $Author :String,
   $Original_language :String,
   $Category :String,
-  $Author : String,
-  $NbPage : int,
-  
-  
+  $NbPage : Int,
+  $YearPublishing : Int,
+  $Redactor : String,
+$ContentType : String,
+
 ){
-GetRecord(RecYear:$RecYear,Author:$Author,Original_language:$Original_language,Category:$Category,NbPages:$$NbPage)
+  GetRecord (RecYear:$RecYear,Author:$Author,Original_language:$Original_language,Category:$Category,NbPage:$NbPage,YearPublishing:$YearPublishing,Redactor:$Redactor,ContentType:$ContentType)
   {
     _id
     Title
-    isbn
+    ISBN
     OtherTitle
     ParallelTitle
     RecYear
     EditionStatement
-    OtherInformation
+    OtherInformations
     Format
     Summary
     IsNew
@@ -67,24 +65,21 @@ GetRecord(RecYear:$RecYear,Author:$Author,Original_language:$Original_language,C
     AccMaterial
     NoteAuthor
     NbPages
-    FKSeries
-    FKSubSeries
+    FkSeries
+    FkSubSeries
     Baskets
     KeyWords
     Category
     Branches         
-	Copy             
-	Serial          
-	Responsibilities 
-	Publishers       
-	Author 
+    Copies            
+	  Serials          
+  	Responsibilities 
+    Redactor
+    YearPublishing
   }
-}
-  
-  `;
-
+} 
+`;
 module.exports = {
-    GET_RECORD_YEAR,
-    GET_RECORD,
-
+  GetRecordYear,
+  getRecord,
 }
