@@ -12,6 +12,7 @@ const headerDropDown = ({ icon, ...props }) => {
       gutter: 0,
       coverTrigger: false,
       alignment: "right",
+      hover: false,
       closeOnClick: true,
     });
   }, [])
@@ -27,7 +28,7 @@ const headerDropDown = ({ icon, ...props }) => {
           ref={translationButton} >
             {icon}
          </a>
-
+          
         <ul className="dropdown-content black-text" id={props.id}>
           {props.children}
         </ul>

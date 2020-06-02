@@ -1,19 +1,18 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { Button, IconButton } from '@material-ui/core';
-
+import Grid from '../../../ui/Grid/Grid';
+import GridElement from '../../../ui/Grid/GridElement';
+import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Button from '../../../ui/Button';
 import SimpleModal from '../shared/SearchAuthor'
-import { Add, RemoveCircle } from '@material-ui/icons';
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
-
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
 import TextBox from '../../../ui/TextBox';
+import { withApollo } from '../../../../shared/apollo';
 
-const AddCategoryForm = ({ onAddHandler }) => {
+const AddCategoryForm = () => {
 
     const { inputs,
-        open,
         handleInputChange,
         ModalAuthorityType,
         HandleChosenAuthority,
@@ -24,134 +23,104 @@ const AddCategoryForm = ({ onAddHandler }) => {
         handleOpenBroader_term,
         handleOpenSee_Also,
         unsetBroader_term,
-        unsetSee, } = useCategoryForm();
+        unsetSee,
+        open,
+        onAddHandler } = useCategoryForm();
 
     return (
         <React.Fragment>
 
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox  required label="Name"
+            <Grid>
+                <GridElement s={6}>
+                    <TextBox required label="Name"
                         name="Name"
                         value={inputs.Name}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox required 
-                    label="Scope note"
+            <Grid>
+                <GridElement s={6}>
+                    <TextBox required
+                        label="Scope note"
                         name="Scope_note"
                         value={inputs.Scope_note}
                         onChange={handleInputChange}
 
                     />
-                </Grid>
-                <Grid item xs={6}>
+                </GridElement>
+                <GridElement s={6}>
                     <TextBox required label="Comment"
                         name="Comment"
                         value={inputs.Comment}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={5}>
+            <Grid>
+                <GridElement s={5}>
                     <TextBox label="Broader term"
                         name="Broader_term"
                         value={inputs.Broader_term.Label}
                         onChange={handleInputChange}
-                        InputProps={{
-                            readOnly: true,
-                        }}
+
                     />
-                </Grid>
-                <Grid item xs={2} style={{ display: "flex" }}>
-                    <IconButton color="primary" component="span"
-                        onClick={handleOpenBroader_term}
-                        style={{ margin: "auto" }}
-                    >
-                        <Add />
-                    </IconButton>
-                    <IconButton color="primary" component="span" onClick={unsetBroader_term} style={{ margin: "auto" }}>
-                        <RemoveCircle />
-                    </IconButton>
-                </Grid>
+                </GridElement>
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
+                    <RoundButton icon="add" size="30" onClick={handleOpenBroader_term} />
+                    <RoundButton icon="delete" size="30" onClick={unsetBroader_term} />
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={5}>
+            <Grid>
+                <GridElement s={5}>
                     <TextBox label="See (preferred term)"
                         name="See"
                         value={inputs.See.Label}
                         onChange={handleInputChange}
-                        InputProps={{
-                            readOnly: true,
-                        }}
                     />
-                </Grid>
-                <Grid item xs={2} style={{ display: "flex" }}>
-                    <IconButton color="primary" component="span"
-                        onClick={handleOpenSee}
-                        style={{ margin: "auto" }}
-                    >
-                        <Add />
-                    </IconButton>
-                    <IconButton color="primary" component="span" onClick={unsetSee} style={{ margin: "auto" }}>
-                        <RemoveCircle />
-                    </IconButton>
-                </Grid>
+                </GridElement>
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
+                    <RoundButton icon="add" size="30" onClick={handleOpenSee} style={{ margin: "auto" }} />
+                    <RoundButton icon="delete" size="30" onClick={unsetSee} style={{ margin: "auto" }} />
+                </GridElement>
             </Grid>
 
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-
-
-
-
-
-
-
-
-                    <h5> See also
-                    <IconButton color="primary" component="span" onClick={handleOpenSee_Also}>
-                            <Add />
-                        </IconButton>
+            <Grid>
+                <GridElement s={12}>
+                    <h5> See also &nbsp;
+                        <RoundButton icon="add" size="30" onClick={handleOpenSee_Also} />
                     </h5>
 
                     <SeeAlsoComponent categorys={inputs.See_also} removeSeeAlso={handleOpen} />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox label="Authority number"
                         name="Authority_number"
                         value={inputs.Authority_number}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid>
+                <GridElement s={12}>
                     <TextBox label="URL of thumbnail"
                         name="URL_thumbnail"
                         value={inputs.URL_thumbnail}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
 
             <h5> Linked Auhorities
-                <IconButton color="primary" component="span" onClick={handleOpen}>
-                    <Add />
-                </IconButton>
+            &nbsp;
+                <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
+
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
                 OnAuthorityLinkChange={OnAuthorityLinkChange} />
-
-
-
             <br />
 
             <Button variant="contained">Cancel</Button>
@@ -176,4 +145,4 @@ const AddCategoryForm = ({ onAddHandler }) => {
         </React.Fragment>
     )
 }
-export default AddCategoryForm 
+export default withApollo({ ssr: true })(AddCategoryForm)

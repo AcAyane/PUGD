@@ -1,18 +1,18 @@
 import React from 'react'
-import { Card, CardContent } from '@material-ui/core';
-import FaCircle from '@material-ui/icons/FiberManualRecord';
+import Card from '../../../ui/Card/Card'
 const AuthorityHeader = ({ Authority }) => {
 
     return (
 
-        <Card  >
-            <CardContent >
+        <React.Fragment>
+            <Card  >
                 <div className="header-container">
-                    <FaCircle style={{ margin: "auto" }} />
-                    <h2 className="uk-icon">Gestion des autorités : {Authority}</h2>
+                    <i className="material-icons pink-text" style={{ margin: "auto" }}>
+                        fiber_manual_record
+               </i>
+                    <h6 className="uk-icon">Gestion des autorités : {Authority}</h6>
                 </div>
-
-            </CardContent>
+            </Card>
             <style jsx>
                 {`
                     .uk-icon { 
@@ -26,7 +26,7 @@ const AuthorityHeader = ({ Authority }) => {
                 `
                 }
             </style>
-        </Card>)
+        </React.Fragment>)
 
 
 

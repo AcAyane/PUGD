@@ -20,7 +20,7 @@ mutation(
 
 const UPDATE_CLASS_NUMBER = gql`
 mutation(
-  $ID :String!,
+  $Id :String!,
   $Name:String,
   $Subject_description:String,
   $Url_thumbnail:String,
@@ -28,7 +28,7 @@ mutation(
 ){
 
 UpdateClassNumber(
-  _id:$ID,
+  _id:$Id,
   Name: $Name ,
   Url_thumbnail: $Url_thumbnail ,
   Subject_description: $Subject_description ,

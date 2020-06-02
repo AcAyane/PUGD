@@ -23,43 +23,70 @@ query(
     Parent_series: $Parent_series,
     Linked_authorities: $Linked_authorities,
   )
-    {
-      _id
-      comment
-      issn
-      linked_authorities
-      name
-      parent_series
-      publisher
-      url_thumbnail
-      website
-  }
-  }
-`;
-const GET_SUB_SERIES_ALL_FIELDS = gql`
- 
-query(
-  $all_fields : String!,
-){
-  sub_series_all_fields(
-  all_fields:$all_fields
-)
   {
-    _id
-    comment
-    issn
-    linked_authorities
-    name
-    parent_series
-    publisher
-    url_thumbnail
-    website
+ 
+ _id
+ comment
+ issn
+parent_series {
+ _id
+ comment
+ issn
+ publisher
+ title
+ url_thumbnail
+ website
 }
+linked_authorities {
+_id
+comment
+end
+linked_authority_id
+linked_authority_type
+linktype
+root_authority_id
+root_authority_type
+start
 }
+ publisher {
+   _id
+   address1
+   address2
+   city
+   country
+   name
+   note
+   post_code
+   supplier
+   url_thumbnail
+   website
+ }
+ name
+ url_thumbnail
+ website
 
+}
+}
 `;
 
+const GET_SUB_SERIES_ALL_FIELDS = gql`
+query($All_fields: String!){
+  sub_series_all_fields(all_fields:$All_fields){
+    
+ _id
+ comment
+ issn
+parent_series  
+linked_authorities 
+ publisher  
+ name
+ url_thumbnail
+ website
 
+}
+   
+}
+`;
 module.exports = {
   GET_SUB_SERIES,
   GET_SUB_SERIES_ALL_FIELDS

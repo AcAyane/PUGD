@@ -1,14 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 const rightNav = () => {
-
   const rightNavElement = useRef();
   useEffect(() => {
 
-    console.log(rightNavElement.current)
     var instance = M.Sidenav.init(rightNavElement.current, {
       edge: "right"
-    });
-
+    }); 
+    
   }, [])
 
   return (

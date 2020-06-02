@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
- 
-import FaCircle from '@material-ui/icons/FiberManualRecord';
+import React, { useState } from 'react';  
+import AdminLayout from '../../../components/adminLayout'; 
 import { useMutation } from '@apollo/react-hooks'
 import Router from 'next/router'
 import { REGISTER_MUTATION } from '../../../graphql/mutations/user.mutation'; 
+import TextBox from "../../../components/ui/TextBox"
+import Button from "../../../components/ui/Button"
+
 export function signup() {
 
   const [register] = useMutation(REGISTER_MUTATION);
@@ -14,6 +14,8 @@ export function signup() {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
   const onSubmitHandler = (e)=>{
+    console.log("dfdsfdsf");
+    
     e.preventDefault();
     if (password === password2) {
       register({
@@ -38,36 +40,21 @@ export function signup() {
 
       <div className="card animate">
         <div className="card-content " >
-          <FaCircle />
-          <h5 className="uk-icon">Add user</h5>
-        </div>
-      </div>
-
-      <div className="card animate">
-        <div className="card-content " >
 
           <form onSubmit={onSubmitHandler}>
-            <TextField margin="normal"
-              required
-              fullWidth
+            <TextBox
+            type="text"
               label="Username"
-              autoFocus
               onChange={event => { setUsername(event.target.value) }}
               value={username}
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+            <TextBox
               type="password"
               label="password"
               onChange={event => setPassword(event.target.value)}
               value={password}
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+            <TextBox
               type="password"
               label="password"
               onChange={event => setPassword2(event.target.value)}
@@ -106,5 +93,5 @@ export function signup() {
 
 
 
-
+signup.Layout = AdminLayout
 export default signup ;

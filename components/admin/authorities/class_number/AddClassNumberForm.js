@@ -1,63 +1,80 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { Button, IconButton } from '@material-ui/core';
+import Grid from '../../../ui/Grid/Grid';
+import GridElement from '../../../ui/Grid/GridElement';
+import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Button from '../../../ui/Button';
 
 import SimpleModal from '../shared/SearchAuthor'
-import { Add } from '@material-ui/icons';
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useClassNumberForm from './useClassNumberForm';
 import TextBox from '../../../ui/TextBox';
+import { withApollo } from '../../../../shared/apollo';
 
-const AddClassNumberForm = ({ onAddHandler }) => {
+
+const AddClassNumberForm = () => {
 
     const {
-        inputs, 
-        handleInputChange, 
+        inputs,
+        handleInputChange,
         ModalAuthorityType,
         HandleChosenAuthority,
         handleClose,
         OnAuthorityLinkChange,
         handleOpen,
-        open
-         } = useClassNumberForm();
+        open,
+        onAddHandler
+    } = useClassNumberForm();
+
+
+    const onSubmitForm = (event) => {
+        event.preventDefault();
+        onAddHandler(
+            inputs.Name,
+            inputs.Subject_description,
+            inputs.URL_thumbnail,
+            inputs.Linked_authorities)
+    }
 
     return (
         <React.Fragment>
 
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox  required label="Name"
+            <Grid>
+                <GridElement s={6}>
+                    <TextBox
+                        label="Name"
                         name="Name"
                         value={inputs.Name}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <TextBox  required label="Subject description"
+            <Grid>
+                <GridElement s={6}>
+                    <TextBox
+                        label="Subject description"
                         name="Subject_description"
                         value={inputs.Subject_description}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <TextBox label="URL of thumbnail"
+            <Grid>
+                <GridElement s={12}>
+                    <TextBox
+                        label="URL of thumbnail"
                         name="URL_thumbnail"
                         value={inputs.URL_thumbnail}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
 
             <h5> Linked Auhorities
-                <IconButton color="primary" component="span" onClick={handleOpen}>
-                    <Add />
-                </IconButton>
+            &nbsp;
+                <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
+            
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
                 OnAuthorityLinkChange={OnAuthorityLinkChange} />
@@ -68,11 +85,7 @@ const AddClassNumberForm = ({ onAddHandler }) => {
 
             <Button variant="contained">Cancel</Button>
             <Button variant="contained"
-                onClick={(e) => onAddHandler(e,
-                    inputs.Name,
-                    inputs.Subject_description,
-                    inputs.URL_thumbnail,
-                    inputs.Linked_authorities)}>Save</Button>
+                onClick={onSubmitForm}>Save</Button>
 
             <SimpleModal
                 open={open}
@@ -83,4 +96,4 @@ const AddClassNumberForm = ({ onAddHandler }) => {
         </React.Fragment>
     )
 }
-export default AddClassNumberForm 
+export default withApollo({ ssr: true })(AddClassNumberForm)

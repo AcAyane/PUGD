@@ -1,14 +1,19 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { Button, IconButton } from '@material-ui/core';
+import Grid from '../../../ui/Grid/Grid';
+import GridElement from '../../../ui/Grid/GridElement';
+
+import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Button from '../../../ui/Button';
+
 import SimpleModal from '../shared/SearchAuthor'
-import { Add, RemoveCircle } from '@material-ui/icons';
+
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useSubSeriesForm from './useSubSeriesForm';
 import TextBox from '../../../ui/TextBox';
+import { withApollo } from '../../../../shared/apollo';
 
-const AddSubSeriesForm = ({ onAddHandler }) => {
-    
+const AddSubSeriesForm = () => {
+
     const onSubmitHandler = (event) => {
         event.preventDefault()
         onAddHandler(
@@ -21,7 +26,7 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
             inputs.URL_thumbnail,
             inputs.Linked_authorities)
     }
-    const { 
+    const {
         inputs,
         open,
         handleInputChange,
@@ -33,30 +38,31 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
         handleOpenPublisher,
         unsetPublisher,
         handleOpenParent_series,
-        unsetParent_series,} = useSubSeriesForm();
+        unsetParent_series,
+        onAddHandler } = useSubSeriesForm();
 
     return (
         <React.Fragment>
 
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox required label="Name"
                         name="Name"
                         value={inputs.Name}
                         onChange={handleInputChange}
                     />
-                </Grid>
-                <Grid item xs={6}>
+                </GridElement>
+                <GridElement s={6}>
                     <TextBox required label="ISSN"
                         name="Issn"
                         value={inputs.Issn}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
 
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={5}>
+            <Grid>
+                <GridElement s={5}>
                     <TextBox label="Publisher"
                         name="Publisher"
                         value={inputs.Publisher.Label}
@@ -65,21 +71,15 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
                             readOnly: true,
                         }}
                     />
-                </Grid>
-                <Grid item xs={2} style={{ display: "flex" }}>
-                    <IconButton color="primary" component="span"
-                        onClick={handleOpenPublisher}
-                        style={{ margin: "auto" }}
-                    >
-                        <Add />
-                    </IconButton>
-                    <IconButton color="primary" component="span" onClick={unsetPublisher} style={{ margin: "auto" }}>
-                        <RemoveCircle />
-                    </IconButton>
-                </Grid>
+                </GridElement>
+
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
+                    <RoundButton icon="add" size="30" onClick={handleOpenPublisher} />
+                    <RoundButton icon="delete" size="30" onClick={unsetPublisher} />
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={5}>
+            <Grid>
+                <GridElement s={5}>
                     <TextBox label="Sub-series of"
                         name="Parent_series"
                         value={inputs.Parent_series.Label}
@@ -88,30 +88,24 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
                             readOnly: true,
                         }}
                     />
-                </Grid>
-                <Grid item xs={2} style={{ display: "flex" }}>
-                    <IconButton color="primary" component="span"
-                        onClick={handleOpenParent_series}
-                        style={{ margin: "auto" }}
-                    >
-                        <Add />
-                    </IconButton>
-                    <IconButton color="primary" component="span" onClick={unsetParent_series} style={{ margin: "auto" }}>
-                        <RemoveCircle />
-                    </IconButton>
-                </Grid>
+                </GridElement>
+
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
+                    <RoundButton icon="add" size="30" onClick={handleOpenParent_series} />
+                    <RoundButton icon="delete" size="30" onClick={unsetParent_series} />
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox label="Website"
                         name="Website"
                         value={inputs.Website}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox label="Comment"
                         name="Comment"
                         value={inputs.Comment}
@@ -119,22 +113,21 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
                         multiline
                         rows="4"
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid>
+                <GridElement s={12}>
                     <TextBox label="URL of thumbnail"
                         name="URL_thumbnail"
                         value={inputs.URL_thumbnail}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
 
             <h5> Linked Auhorities
-                <IconButton color="primary" component="span" onClick={handleOpen}>
-                    <Add />
-                </IconButton>
+            &nbsp;
+                <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
@@ -158,4 +151,4 @@ const AddSubSeriesForm = ({ onAddHandler }) => {
         </React.Fragment>
     )
 }
-export default AddSubSeriesForm 
+export default withApollo({ ssr: true })(AddSubSeriesForm)
