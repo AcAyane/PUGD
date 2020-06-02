@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
-import { Formik, Form, Field, FieldArray } from "formik";
+import { Formik, Form, Field } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import Router from "next/router";
 import DatePicker from "../../../components/ui/DatePicker/DatePicker";
@@ -59,10 +59,7 @@ const options = [
   { value: "20/3/2020", label: "20/3/2020" },
   { value: "1/3/2020", label: "1/3/2020" },
 ];
-const options1 = [
-  { value: "provider1", label: "provider1" },
-  { value: "provider2", label: "provider2" },
-];
+
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const AddQuotation = () => {

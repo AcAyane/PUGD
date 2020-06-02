@@ -84,15 +84,16 @@ const UpdateOrders = () => {
       });
     }
   }
+  function splitfunction(e) {
+    return e
+      .split("(")[1]
+      .split(")")[0]
+      .replace(/^"(.*)"$/, "$1");
+  }
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 
-  const splitfunction = (e) =>
-    e
-      .split("(")[1]
-      .split(")")[0]
-      .replace(/^"(.*)"$/, "$1");
   return (
     <Container>
       <Formik
@@ -371,11 +372,21 @@ const UpdateOrders = () => {
               </div>
             </Grid>
             <br></br>
-            <Grid>
-              <button className="SubmitButton" type="submit">
-                Submit
-              </button>
-            </Grid>
+            <div>
+              <Grid>
+                <button className="SubmitButton" type="submit">
+                  Submit
+                </button>
+              </Grid>
+              <Grid>
+                <a
+                  href={`/admin/acquisition/facturation?id=${Router.query.id}`}
+                  className="invoice-action-edit"
+                >
+                  <i className="SubmitButton">Facturation</i>
+                </a>
+              </Grid>
+            </div>
             <br></br>
           </Form>
         )}

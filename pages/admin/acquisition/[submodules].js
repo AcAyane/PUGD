@@ -2,7 +2,7 @@ import React from "react";
 import SidebarItems from "../../../components/admin/SidebarItems";
 import AdminLayout from "../../../components/adminLayout";
 import { useRouter } from "next/router";
-import Addpro from "./Addpro";
+import Addpro from "./Addprovider";
 import AllProviders from "./AllProviders";
 
 const sideBar = () => {
