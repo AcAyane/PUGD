@@ -7,14 +7,14 @@ const InsertOrder = gql`
     $name: String
     $quotation_number: String
     $order_number: String
-    $financial_year: String!
-    $date: String!
-    $delivery_address: String!
-    $billing_address: String!
-    $notes: String!
-    $status: String!
-    $type: String!
-    $provider: String!
+    $financial_year: String
+    $date: String
+    $delivery_address: String
+    $billing_address: String
+    $notes: String
+    $status: String
+    $type: String
+    $provider: String
     $order_lines: [String!]!
   ) {
     insertOrder(
@@ -52,6 +52,7 @@ const UpdateOrder = gql`
     $type: String
     $provider: String
     $order_lines: [String]
+    $orders: [String]
   ) {
     updateOrder(
       _id: $_id
@@ -68,6 +69,7 @@ const UpdateOrder = gql`
       type: $type
       provider: $provider
       order_lines: $order_lines
+      orders: $orders
     )
   }
 `;

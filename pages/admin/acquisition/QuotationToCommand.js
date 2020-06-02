@@ -3,6 +3,7 @@ import Router from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GetOrder } from "../../../graphql/queries/acquisition/order";
 import { GetAllOrderLines } from "../../../graphql/queries/acquisition/orderline";
+import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { UpdateOrder } from "../../../graphql/mutations/acquisition/order";
 import {
   InsertOrderLine,
@@ -12,6 +13,7 @@ import {
 import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
+import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 import GridElement from "../../../components/ui/Grid/GridElement";
@@ -19,6 +21,7 @@ import Grid from "../../../components/ui/Grid/grid";
 import Container from "../../../components/ui/Container";
 import MaterialTable from "material-table-formik";
 import AdminLayout from "../../../components/adminLayout";
+import Link from "next/link";
 
 const options = [
   { value: "20/3/2020", label: "20/3/2020" },
@@ -32,7 +35,9 @@ const ObjectId = (
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
-const UpdateQuotation = () => {
+var OrderID = ObjectId();
+
+const QuotationToCommand = () => {
   const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onCompleted: () => {
@@ -47,13 +52,19 @@ const UpdateQuotation = () => {
       alert(error.message);
     },
   });
+
+  const [updateOrder] = useMutation(UpdateOrder, {
+    onError: (error) => {
+      alert(error.message);
+    },
+  });
   const [deleteOrderLine] = useMutation(DeleteOrderLine, {
     onError: (error) => {
       alert(error.message);
     },
   });
 
-  const [updateOrder] = useMutation(UpdateOrder, {
+  const [insertOrder] = useMutation(InsertOrder, {
     onError: (error) => {
       alert(error.message);
     },
@@ -97,23 +108,24 @@ const UpdateQuotation = () => {
       <Formik
         enableReinitialize
         initialValues={{
-          id: Router.query.id,
+          id: OrderID,
           quotation_number: data_order.getOrder.quotation_number,
+          order_number: "",
+          name: "",
           establishement: data_order.getOrder.establishement,
-          name: data_order.getOrder.name,
           financial_year: data_order.getOrder.financial_year,
-          date: new Date(),
+          date: data_order.getOrder.date,
           delivery_address: data_order.getOrder.delivery_address,
           billing_address: data_order.getOrder.billing_address,
           notes: data_order.getOrder.notes,
-          status: data_order.getOrder.status,
-          type: data_order.getOrder.type,
+          status: "pending",
+          type: "order",
           provider: data_order.getOrder.provider,
         }}
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
           name: Yup.string().required("name is required"),
-          quotation_number: Yup.string().required("id is required"),
+          order_number: Yup.string().required("order number is required"),
           financial_year: Yup.string().required("financial year is required"),
 
           provider: Yup.string().required("provider is required"),
@@ -127,49 +139,48 @@ const UpdateQuotation = () => {
             initord.push(order_line[i]._id);
           }
 
-          updateOrder({
+          insertOrder({
             variables: {
-              _id: Router.query.id,
-              name: values.name,
+              id: values.id,
+              establishement: values.establishement,
+              type: values.type,
+              financial_year: values.financial_year,
+              provider: values.provider,
+              date: values.date,
               quotation_number: values.quotation_number,
+              order_number: values.order_number,
+              name: values.name,
               status: values.status,
+              delivery_address: values.delivery_address,
+              billing_address: values.billing_address,
+              notes: values.notes,
               order_lines: initord,
             },
+          }).then(() => {
+            let tab = [];
+            for (var i = 0; i < data_order.getOrder.orders.length; i++) {
+              tab.push(splitfunction(data_order.getOrder.orders[i]));
+            }
+            tab.push(values.id);
+
+            updateOrder({
+              variables: {
+                _id: Router.query.id,
+                orders: tab,
+              },
+            });
           });
           setTimeout(() => {
             console.log(JSON.stringify(values, null, 2));
             actions.setSubmitting(false);
           }, 1000);
 
-          alert("Quotation updated succesfully");
+          alert("Order added succesfully");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <GridElement className="col s12 m6" name="Quotation number">
-                {touched.quotation_number && errors.quotation_number && (
-                  <p className="alert alert-danger">
-                    {errors.quotation_number}
-                  </p>
-                )}
-                <Field
-                  type="text"
-                  name="quotation_number"
-                  placeholder="Enter quotation number"
-                  className="form-control"
-                />
-              </GridElement>
-              <GridElement className="col s12 m6" name="Status">
-                <Field
-                  type="text"
-                  name="status"
-                  placeholder="pending"
-                  className="form-control"
-                />
-              </GridElement>
-            </Grid>
-            <Grid>
-              <GridElement className="col s12 m6" name="Establishement">
+              <GridElement className="col s12 m6 l4" name="Establishement">
                 {touched.establishement && errors.establishement && (
                   <p className="alert alert-danger">{errors.establishement}</p>
                 )}
@@ -180,26 +191,37 @@ const UpdateQuotation = () => {
                   className="form-control"
                 />
               </GridElement>
-              {Providers()}
-              {/* {AllOrderLines()} */}
-              <GridElement className="col s12 m6" name="Provider">
-                {touched.id_Provider && errors.id_Provider && (
-                  <p className="alert alert-danger">{errors.id_Provider}</p>
+              <GridElement className="col s12 m6 l4" name="Financial-Year">
+                {touched.financial_year && errors.financial_year && (
+                  <p className="alert alert-danger">{errors.financial_year}</p>
                 )}
-                <Select
-                  id="provider"
-                  name="provider"
-                  options={ListPro}
-                  multi={true}
-                  selected={values.provider}
-                  onChange={(provider) =>
-                    setFieldValue("provider", provider.value)
-                  }
+                <Field
+                  type="text"
+                  name="financial_year"
+                  className="form-control"
                 />
+              </GridElement>
+              <GridElement className="col s12 m6 l4" name="Provider">
+                <Field type="text" name="provider" />
               </GridElement>
             </Grid>
             <Grid>
-              <GridElement className="col s12 m6" name="Name">
+              <GridElement className="col s12 m6 l3" name="Date">
+                <Field type="text" name="date" className="form-control" />
+              </GridElement>
+
+              <GridElement className="col s12 m6 l3" name="Order number">
+                {touched.order_number && errors.order_number && (
+                  <p className="alert alert-danger">{errors.order_number}</p>
+                )}
+                <Field
+                  type="text"
+                  name="order_number"
+                  placeholder="Order Number"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6 l3" name="Name">
                 {touched.name && errors.name && (
                   <p className="alert alert-danger">{errors.name}</p>
                 )}
@@ -210,29 +232,17 @@ const UpdateQuotation = () => {
                   className="form-control"
                 />
               </GridElement>
-              <GridElement className="col s12 m6" name="Financial-Year">
-                {touched.financial_year && errors.financial_year && (
-                  <p className="alert alert-danger">{errors.financial_year}</p>
-                )}
-                <Select
-                  id="financial_year"
-                  name="financial_year"
-                  options={options}
-                  selected={values.financial_year}
-                  onChange={(year) =>
-                    setFieldValue("financial_year", year.value)
-                  }
-                />
+              <GridElement className="col s12 m6 l3" name="Status">
+                <Field type="text" name="status" className="form-control" />
               </GridElement>
             </Grid>
+
             <Grid>
-              <GridElement className="col s12 m6" name="Date">
-                <DatePicker
-                  className="date-control"
-                  name="date"
-                  showPopperArrow={false}
-                  selected={values.date}
-                  onChange={(date) => setFieldValue("date", date)}
+              <GridElement className="col s12 m6" name="Quotation_number">
+                <Field
+                  type="text"
+                  name="quotation_number"
+                  className="form-control"
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Delivery Address">
@@ -313,7 +323,7 @@ const UpdateQuotation = () => {
                         setTimeout(() => {
                           setOrder_line(() => {
                             newData._id = ObjectId();
-                            newData.order = Router.query.id;
+                            newData.order = OrderID;
                             const order_line1 = [...order_line, newData];
                             return order_line1;
                           });
@@ -376,7 +386,9 @@ const UpdateQuotation = () => {
               <button className="SubmitButton" type="submit">
                 Submit
               </button>
-              <button className="SubmitButton"> Place an order</button>
+              <Link href={`/admin/acquisition/AllQuotations`}>
+                <button className="SubmitButton"> Annuler</button>
+              </Link>
             </Grid>
             <br></br>
           </Form>
@@ -386,5 +398,5 @@ const UpdateQuotation = () => {
   );
 };
 
-UpdateQuotation.Layout = AdminLayout;
-export default UpdateQuotation;
+QuotationToCommand.Layout = AdminLayout;
+export default QuotationToCommand;
