@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-const GetAllBro = gql`
+const ALL_BORROWERS = gql`
     query{
      GetAllBro{
             _id,
@@ -28,6 +28,6 @@ const BorrowersByName = gql`
     }
 `;
 module.exports = {
-    GetAllBro,
+    ALL_BORROWERS,
     BorrowersByName
 }

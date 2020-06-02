@@ -38,10 +38,7 @@ const Groups = () => {
     if(data != null){
         console.log(data.GetGroupsByName)
     }
-
-
-
-
+    
     return <Circulation>
         <CirculationHeader CirculationModule=" => Group"
 
