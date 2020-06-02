@@ -1,18 +1,19 @@
-import React from 'react';
-import SidebarItems from '../../../components/admin/authorities/SidebarItems';
-import AdminLayout from '../../../components/adminLayout';
+import React from 'react'
+import AdminLayout from '../../../components/adminLayout'
+import Modal from '../../../components/ui/Modal/Modal'
+const AuthoritiesHome = () => {
 
 
-const sideBar = () => {
+    return <div>
+        <Modal  label="Open" onClose={()=>console.log("whaat")}>
+            sdfdsf
+            </Modal>
 
-
-    return (
-        <div>this is the authorities page</div>
-    )
+    this is the authorities module main page
+    </div >
 }
-
+AuthoritiesHome.Layout = AdminLayout
  
-AdminLayout.SidebarItems=SidebarItems
-sideBar.Layout = AdminLayout
+export default AuthoritiesHome
 
-export default sideBar
+

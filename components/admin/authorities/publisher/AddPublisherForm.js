@@ -1,15 +1,18 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { TextField, Button, IconButton } from '@material-ui/core';
+import Grid from '../../../ui/Grid/Grid';
+import GridElement from '../../../ui/Grid/GridElement';
+import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Button from '../../../ui/Button';
+
 
 import SimpleModal from '../shared/SearchAuthor'
-import { Add, RemoveCircle } from '@material-ui/icons';
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
-import usePublisherForm from './usePublisherForm'; 
+import usePublisherForm from './usePublisherForm';
 import TextBox from '../../../ui/TextBox';
+import { withApollo } from '../../../../shared/apollo';
 
-const AddCategoryForm = ({ onAddHandler }) => {
+const AddPublisherForm = () => {
 
     const {
         inputs,
@@ -21,56 +24,57 @@ const AddCategoryForm = ({ onAddHandler }) => {
         handleOpen,
         handleOpenSupplier,
         unsetSupplier,
-        open } = usePublisherForm();
+        open,
+        onAddHandler } = usePublisherForm();
 
-        const onSubmitForm = (event) => {
-            event.preventDefault();
-            onAddHandler(
-                inputs.Name ,
-                inputs.Address1 ,
-                inputs.Address2 ,
-                inputs.Post_code ,
-                inputs.Country ,
-                inputs.City ,
-                inputs.Website , 
-                inputs.note ,
-                inputs.url_thumbnail ,
-                inputs.Supplier.id ,
-                inputs.Linked_authorities 
-                )
-        }
+    const onSubmitForm = (event) => {
+        event.preventDefault();
+        onAddHandler(
+            inputs.Name,
+            inputs.Address1,
+            inputs.Address2,
+            inputs.Post_code,
+            inputs.Country,
+            inputs.City,
+            inputs.Website,
+            inputs.note,
+            inputs.url_thumbnail,
+            inputs.Supplier.id,
+            inputs.Linked_authorities
+        )
+    }
 
     return (
         <React.Fragment>
 
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox required label="Name"
                         name="Name"
                         value={inputs.Name}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox required label="Address 1"
                         name="Address1"
                         value={inputs.Address1}
                         onChange={handleInputChange}
 
                     />
-                </Grid>
-                <Grid item xs={6}>
+                </GridElement>
+                <GridElement s={6}>
                     <TextBox required label="Address 2"
                         name="Address2"
                         value={inputs.Address2}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={5}>
+            <Grid>
+                <GridElement s={5}>
                     <TextBox label="Supplier"
                         name="Supplier"
                         value={inputs.Supplier.Label}
@@ -79,55 +83,49 @@ const AddCategoryForm = ({ onAddHandler }) => {
                             readOnly: true,
                         }}
                     />
-                </Grid>
-                <Grid item xs={2} style={{ display: "flex" }}>
-                    <IconButton color="primary" component="span"
-                        onClick={handleOpenSupplier}
-                        style={{ margin: "auto" }}
-                    >
-                        <Add />
-                    </IconButton>
-                    <IconButton color="primary" component="span" onClick={unsetSupplier} style={{ margin: "auto" }}>
-                        <RemoveCircle />
-                    </IconButton>
-                </Grid>
+                </GridElement>
+                <GridElement s={2} style={{ display: "flex" , height: "84px" }}>
+                    <RoundButton icon="add" size="30" onClick={handleOpenSupplier} />
+                    <RoundButton icon="delete" size="30" onClick={unsetSupplier} />
+
+                </GridElement>
             </Grid>
 
-            <Grid container spacing={3}>
-                <Grid item xs={4}>
+            <Grid>
+                <GridElement s={4}>
                     <TextBox label="Country"
                         name="Country"
                         value={inputs.Country}
                         onChange={handleInputChange}
                     />
-                </Grid>
-                <Grid item xs={4}>
+                </GridElement>
+                <GridElement s={4}>
                     <TextBox label="City"
                         name="City"
                         value={inputs.City}
                         onChange={handleInputChange}
                     />
-                </Grid>
-                <Grid item xs={4}>
+                </GridElement>
+                <GridElement s={4}>
                     <TextBox label="Postal code"
                         name="Post_code"
                         value={inputs.Post_code}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
 
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid>
+                <GridElement s={12}>
                     <TextBox label="Website"
                         name="Website"
                         value={inputs.Website}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid>
+                <GridElement s={12}>
                     <TextBox label="note"
                         name="note"
                         value={inputs.note}
@@ -135,24 +133,23 @@ const AddCategoryForm = ({ onAddHandler }) => {
                         multiline
                         rows="4"
                     />
-                </Grid>
+                </GridElement>
             </Grid>
 
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
+            <Grid>
+                <GridElement s={12}>
                     <TextBox label="url_thumbnail"
                         name="url_thumbnail"
                         value={inputs.url_thumbnail}
                         onChange={handleInputChange}
                     />
-                </Grid>
+                </GridElement>
             </Grid>
 
 
             <h5> Linked Auhorities
-                <IconButton color="primary" component="span" onClick={handleOpen}>
-                    <Add />
-                </IconButton>
+            &nbsp;
+                <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
@@ -175,4 +172,4 @@ const AddCategoryForm = ({ onAddHandler }) => {
         </React.Fragment>
     )
 }
-export default AddCategoryForm 
+export default withApollo({ ssr: true })(AddPublisherForm)

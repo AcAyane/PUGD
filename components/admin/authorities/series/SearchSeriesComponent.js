@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import Grid from '@material-ui/core/Grid';
+import Grid from '../../../ui/Grid/Grid';
+import GridElement from '../../../ui/Grid/GridElement';
 
-import { Button } from '@material-ui/core';
-import MenuItem from '@material-ui/core/MenuItem';
-import Link from 'next/Link';
+import Button from '../../../ui/Button';
+
+import Link from 'next/link';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
 
@@ -27,22 +28,22 @@ const SearchSeriesComponent = ({ getSeriesAllFields, SearchOnly }) => {
     return (
         <React.Fragment>
             <h4 className="card-title">Recherche : Series</h4>
-            <Grid container spacing={3}>
-                <Grid item xs={6}>
+            <Grid>
+                <GridElement s={6}>
                     <TextBox label="Series name"
                         value={All_Fields}
                         onChange={e => { setAll_Fields(e.target.value) }}
                     />
-                </Grid>
-                <Grid item xs={6}>
+                </GridElement>
+                <GridElement s={6}>
                     <SelectBox
                         label="Status"
                         value={Status}
                         onChange={e => { setStatus(e.target.value) }}
                     >
-                        <MenuItem value={10}>All Statuses</MenuItem>
+                        <option value={10}>All Statuses</option>
                     </SelectBox>
-                </Grid>
+                </GridElement>
 
             </Grid>
 

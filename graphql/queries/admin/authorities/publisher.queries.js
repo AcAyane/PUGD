@@ -32,10 +32,23 @@ publisher(
     city
     country
     website
-    supplier
+    supplier {
+      _id
+      name
+    }
     note
     url_thumbnail
-    linked_authorities
+    linked_authorities {
+      _id
+      comment
+      end
+      linked_authority_id
+      linked_authority_type
+      linktype
+      root_authority_id
+      root_authority_type
+      start
+    }
 }
 }
 `;

@@ -30,9 +30,9 @@ const Modal = ({label, children, open,onClose, ...props }) => {
     }
     return (
         <React.Fragment>
-            <a className="waves-effect waves-light btn modal-trigger" href={`#${id}`}>
+            {/* <a className="waves-effect waves-light btn modal-trigger" href={`#${id}`}>
                 {label}
-            </a>
+            </a> */}
             <div id={`${id}`} className="modal custom-modal" ref={modalElement}>
                 <div className="modal-content">
                     {children}

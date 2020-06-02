@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-const SelectBox = ({ children, label, ...props }) => {
+const SelectBox = ({ children, constrainWidth, label, ...props }) => {
 
   const selectElement = useRef();
   useEffect(() => {
@@ -9,8 +9,9 @@ const SelectBox = ({ children, label, ...props }) => {
 
 
   return (
+
     <div className="input-field col s12">
-      <select ref={selectElement} { ...props}>
+      <select ref={selectElement} {...props}>
         {children}
       </select>
       <label>{label}</label>
