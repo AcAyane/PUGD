@@ -14,7 +14,7 @@ const notice = () => {
 
     const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(EXAMPLAIR_BY_CODE);
 
-    const [codBar, setCodeBar] = useState('');
+    const [ISBN, setISBN] = useState('');
 
     if (loading) {return <div>Loading...</div>;}
 
@@ -26,7 +26,8 @@ const notice = () => {
         e.preventDefault();
         GetExamplaireByCodeBar({
             variables: {
-                code: codBar,
+
+                isbn: ISBN,
             }
         });
     }
@@ -45,8 +46,8 @@ const notice = () => {
                                     <TextBox
                                         label="Code Bar Notice"
                                         type="text"
-                                        onChange={event => { setCodeBar(event.target.value) }}
-                                        value={codBar}
+                                        onChange={event => { setISBN(event.target.value) }}
+                                        value={ISBN}
                                     />
                                     <Button
                                         onClick={onSearchHandler}

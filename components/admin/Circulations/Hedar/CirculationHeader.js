@@ -8,11 +8,11 @@ import {route} from "next/dist/next-server/server/router";
 const CirculationHeader = ({ CirculationModule, children }) => {
 
     const module = Router.route.split('/')[2]
-    console.log("router : ",AuthoritiesSideItems[module][1].Children[1].Label)
+    /*console.log("router : ",AuthoritiesSideItems[module][1].Children[1].Label)
     // eslint-disable-next-line no-undef
     console.log("router : ",AuthoritiesSideItems[module][1].Children.source)
     console.log("router : ",Router.router.components)
-    //const value = AuthoritiesSideItems[module]
+    //const value = AuthoritiesSideItems[module]*/
     return (
 
         <React.Fragment>

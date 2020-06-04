@@ -13,7 +13,8 @@ const ListNotice = (props) => {
                                     <div className="card">
                                         <div className="card-content">
                                             <h4 className="card-title mb-0">Details Examplaire :
-                                                <a key={props.data._id}>{props.data.Record.Title}</a>
+                                                <a key={props.data._id}>{props.data.ISBN}</a>
+                                                <a key={props.data._id}>{props.data.Title}</a>
 
                                                 <a className="mb-6 chip float-right" type="button">
                                                     <i className="material-icons">chat</i>
@@ -96,15 +97,15 @@ const ListNotice = (props) => {
                                                     <tbody>
                                                         <tr>
                                                             <td>Identifiant de la notice </td>
-                                                            <td>80</td>
+                                                            <td>{props.data.ISBN}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Localisation</td>
-                                                            <td>Bibliothèque PMB Services</td>
+                                                            <td>{props.data.Title}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Section</td>
-                                                            <td>Romans Jeunes</td>
+                                                            <td>{props.data.OtherTitle}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Cote</td>

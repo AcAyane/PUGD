@@ -1,82 +1,68 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AdminLayout from '../../../../../components/adminLayout'
-import Card from "../../../../../components/ui/card/card";
+
 import TextBox from "../../../../../components/ui/TextBox";
+import Button from "../../../../../components/ui/Button";
 
-import {GetAllBro} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
-import {useQuery} from "@apollo/react-hooks";
+import {useLazyQuery} from "@apollo/react-hooks";
+import {BorrowersByName} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
+import Circulation from "../../../../../components/admin/Circulations/Body/Body";
+import Null from "../../../../../components/admin/Circulations/Handerls/Null";
+import CirculationHeader from "../../../../../components/admin/Circulations/Hedar/CirculationHeader";
 
+import ListDoc from "./ListDoc";
 
 const pretDoc = () => {
-    const { loading, error, data } = useQuery(GetAllBro);
-    if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+
+    const [GetBorrowersByName, { loading, error, data }] = useLazyQuery(BorrowersByName);
+
+    const [Name, setName] = useState('');
+
+    if (loading) {return <div>Loading...</div>;}
+
+    if(error){
+        console.log(error)
+        console.log(data)
+    }
+
+    if(data != null || data !== undefined){
+        console.log("donne",data.GetBorrowersByName)
+    }
+    const onSearchHandler = (e) => {
+        e.preventDefault();
+        GetBorrowersByName({
+            variables: {
+                fullname: Name,
+            }
+        });
+    }
+    return <Circulation>
+        <CirculationHeader CirculationModule="Documents prêter"
+                           children={
+                               <from>
+                                   <span>Recherche borrowers</span>
+                                   <div className="row">
+                                       <TextBox label={"Search by Name"}
+                                                type="text"
+                                                onChange={event => {setName(event.target.value)}}
+                                                value={Name}
+                                       />
+                                       <Button
+                                           onClick={onSearchHandler}
+                                           rounded={4}>Search</Button>
+                                   </div>
+                               </from>
+                           }/>
 
 
+        { data != null || data !== undefined ?
+            <ListDoc data = {data.BorrowersByName}/>
+            :
 
-    return <div className="container">
-        <div className="row">
-            <div className="col s12">
-                <Card>
-                    <h5>Prêt de documents</h5>
-                    <span>Recherche emprunteur</span>
-                    <div className="row">
-                        <TextBox label={"Search by Code bar"}/>
-                        {/*<Button rounded={2}>Search </Button>*/}
-                    </div>
-                    <table>
-                        <thead>
-                        <tr>
-                            {/*<th>Code-Barres</th>*/}
-                            {/*<th>Nom et Prénom</th>*/}
-                            {/*<th>Adresse</th>*/}
-                            {/*<th>Ville</th>*/}
-                            {/*<th>Année de naissance</th>*/}
-                            {/*<th>Statut</th>*/}
-                            <th>Nom et Prénom</th>
-                            <th>Adresse</th>
-                            <th>Email</th>
-                            <th>Date de naissance</th>
-                            <th>Genre</th>
+            <Null children="No data" />
+        }
 
-                        </tr>
-
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{data.GetAllBro.map((items)=>(
-                                <option value={items._id}>{items.fullname}</option>
-                            ))}</td>
-                            <td>{data.GetAllBro.map((items)=>(
-                                <option value={items._id}>{items.address}</option>
-                            ))}</td>
-                            <td>{data.GetAllBro.map((items)=>(
-                                <option value={items._id}>{items.email}</option>
-                            ))}</td>
-                            <td>{data.GetAllBro.map((items)=>(
-                                <option value={items._id}>{items.birthday}</option>
-                            ))}</td>
-                            <td>{data.GetAllBro.map((items)=>(
-                                <option value={items._id}>{items.gender}</option>
-                            ))}</td>
-                        </tr>
-
-
-
-                        </tbody>
-
-
-
-
-
-                    </table>
-                </Card>
-            </div>
-        </div>
-    </div>
-
-
+    </Circulation>
 }
-
 pretDoc.Layout = AdminLayout
 export default pretDoc
