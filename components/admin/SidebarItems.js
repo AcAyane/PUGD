@@ -340,8 +340,8 @@ const SidebarItems = {
             Icon: "settings_applications",
             Children: [
                 {
-                    Label: "Plank Models",
-                    href: "/admin/reporting/plankModels"
+                    Label: "Patterns Of Stickers Sheets",
+                    href: "/admin/reporting/patternsOfStickersSheets"
                 },
             ]
         },

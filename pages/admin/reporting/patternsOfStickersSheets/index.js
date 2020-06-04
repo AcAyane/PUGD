@@ -2,24 +2,25 @@ import React from 'react'
 import AdminLayout from '../../../../components/adminLayout'
 import ReportingHeader from "../../../../components/admin/reporting/header/reportingHeader"
 import Reporting from "../../../../components/admin/reporting/body/body"
-import Button from "../../../../components/ui/Button";
 import Table from "../../../../components/ui/Table/Table";
+import Button from "../../../../components/ui/Button";
 const CopyHome = () => {
     return <Reporting>
-        <ReportingHeader ReportingModule="Circulation List" />
+        <ReportingHeader ReportingModule="Patterns Of Stickers Sheets" />
+
 
         <Table
             Thead={
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
+                    <th>Label</th>
+                    <th>PageFormat</th>
+                    <th>PageOrientation</th>
                 </tr>
-            }
-        />
+                    }
+                    />
 
         <Button rounded={2}>
-            Add Template
+            Add
         </Button>
     </Reporting>
 

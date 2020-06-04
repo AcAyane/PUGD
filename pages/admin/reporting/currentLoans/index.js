@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 import Table from "../../../../components/ui/Table/Table";
 import AdminLayout from '../../../../components/adminLayout'
 import {GET_LOANS} from "../../../../graphql/queries/admin/Reporting/loans.queries"
@@ -22,22 +22,22 @@ const laonsHome = () => {
                                 </div>
 </Card>
 <Table
-Thead={
-                    <tr>
-                      <th>BareCode</th>
-                    
-                     <th> date de retour</th>
-                     <th> date de réservation</th>
-                     <th> Title</th>
-                    </tr>
-                  }
-                  />   
-        {error ? <div l color="danger">{String(error)}   test</div> : null}
+                                Thead={
+                                    <tr>
+                                        <th>BareCode</th>
+
+                                        <th> date de retour</th>
+                                        <th> date de réservation</th>
+                                        <th> Title</th>
+                                    </tr>
+                                }
+                            />
+                        {error ? <div l color="danger">{String(error)}   test</div> : null}
                         {data == null ? (
-                    null
-                  ) : (
-                  
-                    <TableLoans  getLoans={data.GetLoans} ></TableLoans>
+                            null
+                            ) : (
+
+                            <TableLoans  getLoans={data.GetLoans} ></TableLoans>
                     
                            
                    ) }
