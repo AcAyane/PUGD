@@ -15,11 +15,11 @@ import { Formik, Form, Field } from "formik";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-import GridElement from "../../../components/ui/Grid/GridElement";
-import Grid from "../../../components/ui/Grid/grid";
-import Container from "../../../components/ui/Container";
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
+import Container from "@/components/ui/Container";
 import MaterialTable from "material-table-formik";
-import AdminLayout from "../../../components/adminLayout";
+import AdminLayout from "@/components/adminLayout";
 
 const options = [
   { value: "20/3/2020", label: "20/3/2020" },

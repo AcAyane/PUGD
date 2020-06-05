@@ -1,7 +1,7 @@
 import React from 'react';
-import AddSubSeriesForm from '../../../../components/admin/authorities/sub_series/AddSubSeriesForm';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader'; 
-import Card from '../../../../components/ui/Card/Card';
+import AddSubSeriesForm from '../@/components/admin/authorities/sub_series/AddSubSeriesForm';
+import AuthorityHeader from '../@/components/admin/authorities/shared/authorityHeader'; 
+import Card from '../@/components/ui/Card/Card';
 
 
 const AddSubSeries = () => {
@@ -21,7 +21,7 @@ const AddSubSeries = () => {
 };
 
  
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '../@/components/adminLayout';
 AddSubSeries.Layout = AdminLayout
 export default AddSubSeries; 
  

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LinkedAuthorityView from '../../../../components/admin/authorities/shared/LinkedAuthorityView';
+import LinkedAuthorityView from '@/components/admin/authorities/shared/LinkedAuthorityView';
 import Card from '../../../ui/Card/Card';
 
 

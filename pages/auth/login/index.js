@@ -4,8 +4,8 @@ import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
 import Router from 'next/router'
 import { withApollo } from '../../../shared/apollo';
 import Head from 'next/head';
-import TextBox from '../../../components/ui/TextBox';
-import Button from '../../../components/ui/Button';
+import TextBox from '@/components/ui/TextBox';
+import Button from '@/components/ui/Button';
 function SignIn() {
 
   const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);

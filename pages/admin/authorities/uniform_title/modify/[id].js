@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
+import AuthorityHeader from '../../@/components/admin/authorities/shared/authorityHeader';
 
-import ModifyCategoryForm from '../../../../../components/admin/authorities/category/ModifyCategoryForm';
+import ModifyCategoryForm from '../../@/components/admin/authorities/category/ModifyCategoryForm';
 
-import Card from '../../../../../components/ui/Card/Card'; 
+import Card from '../../@/components/ui/Card/Card'; 
 
 // import {parse} from 'graphql';
 
@@ -22,7 +22,7 @@ const ModifyAuthorPage = () => {
     );
 };
 
-import AdminLayout from '../../../../../components/adminLayout';
+import AdminLayout from '../../@/components/adminLayout';
 ModifyAuthorPage.Layout = AdminLayout
 export default ModifyAuthorPage; 
  

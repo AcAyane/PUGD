@@ -1,10 +1,10 @@
 import React from 'react';
-import AdminLayout from '../../../../../components/adminLayout';
+import AdminLayout from '../../@/components/adminLayout';
 import { GET_BASKET } from '../../../../../graphql/queries/admin/authorities/basket.queries';
 import { useQuery } from '@apollo/react-hooks';
 
-import ListBasketComponent from '../../../../../components/admin/authorities/basket/ListBasketComponent';
-import Card from '../../../../../components/ui/Card/Card';
+import ListBasketComponent from '../../@/components/admin/authorities/basket/ListBasketComponent';
+import Card from '../../@/components/ui/Card/Card';
 import WithAdminLayout from '../../../../../shared/WithAdminLayout';
 import { withApollo } from '../../../../../shared/apollo';
 

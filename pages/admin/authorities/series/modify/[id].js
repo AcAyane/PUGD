@@ -1,9 +1,9 @@
 import React from 'react';
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
+import AuthorityHeader from '../../@/components/admin/authorities/shared/authorityHeader';
 
-import ModifySeriesForm from '../../../../../components/admin/authorities/series/ModifySeriesForm';
+import ModifySeriesForm from '../../@/components/admin/authorities/series/ModifySeriesForm';
 
-import Card from '../../../../../components/ui/Card/Card'; 
+import Card from '../../@/components/ui/Card/Card'; 
 // import {parse} from 'graphql';
 
 const ModifySeriesPage = () => {
@@ -22,7 +22,7 @@ const ModifySeriesPage = () => {
 };
 
  
-import AdminLayout from '../../../../../components/adminLayout';
+import AdminLayout from '../../@/components/adminLayout';
 ModifySeriesPage.Layout = AdminLayout
 export default ModifySeriesPage; 
  

@@ -1,8 +1,8 @@
 import React from 'react'; 
-import Card from '../../../../components/ui/Card/Card';
+import Card from '../@/components/ui/Card/Card';
 
-import AddPublisherForm from '../../../../components/admin/authorities/publisher/AddPublisherForm';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
+import AddPublisherForm from '../@/components/admin/authorities/publisher/AddPublisherForm';
+import AuthorityHeader from '../@/components/admin/authorities/shared/authorityHeader';
  
 
 const AuthorPage = () => {
@@ -20,7 +20,7 @@ const AuthorPage = () => {
 };
 
  
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '../@/components/adminLayout';
 AuthorPage.Layout = AdminLayout
 export default AuthorPage; 
  

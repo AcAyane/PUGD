@@ -19,6 +19,7 @@ export const initOnContext = (ctx) => {
 
   // We consider installing `withApollo({ ssr: true })` on global App level
   // as antipattern since it disables project wide Automatic Static Optimization.
+  // eslint-disable-next-line no-undef
   if (process.env.NODE_ENV === "development") {
     if (inAppContext) {
       console.warn(

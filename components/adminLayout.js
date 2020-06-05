@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SideBar from '../components/Layout/sidenav/sideBar'
+import SideBar from '@/components/Layout/sidenav/sideBar'
 import HeaderBar from './Layout/header/headerNav'
 import RightNav from './Layout/rightNav';
 const AdminLayout = (props) => {

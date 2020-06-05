@@ -1,8 +1,8 @@
 import React from "react";
-import SidebarItems from "../../../components/admin/SidebarItems";
-import AdminLayout from "../../../components/adminLayout";
+import SidebarItems from "@/components/admin/SidebarItems";
+import AdminLayout from "@/components/adminLayout";
 import { useRouter } from "next/router";
-import Addpro from "./Addpro";
+import Addprovider from "./Addprovider";
 import AllProviders from "./AllProviders";
 
 const sideBar = () => {
@@ -16,7 +16,7 @@ const sideBar = () => {
   else if (router.query.submodules == "AddProvider")
     return (
       <div>
-        <Addpro></Addpro>
+        <Addprovider></Addprovider>
       </div>
     );
 };
