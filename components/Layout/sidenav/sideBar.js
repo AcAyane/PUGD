@@ -82,29 +82,32 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
         {sidebarItems && (
           <React.Fragment>
             {Object.keys(menuBuilder).map((e) => {
-              return (
-                <SideBarNavigationHeader key={e} Label={menuBuilder[e].label} />
+              return (<React.Fragment key={e}>
+                <SideBarNavigationHeader Label={menuBuilder[e].label} />
+                {menuBuilder[e].menu.map((item, index) => {
+                  return (
+                    <SideBarDropDown
+                      Label={item.Label}
+                      key={index}
+                      icon={item.Icon}
+                    >
+                      {item.Children.map((subItem, index) => {
+                        return (
+                          <SideBarDropDownItem
+                            Label={subItem.Label}
+                            key={index}
+                            href={subItem.href}
+                          />
+                        );
+                      })}
+                    </SideBarDropDown>
+                  );
+                })}
+              </React.Fragment>
+
               );
             })}
-            {/* {childrenItems.map((item, index) => {
-              return (
-                <SideBarDropDown
-                  Label={item.Label}
-                  key={index}
-                  icon={item.Icon}
-                >
-                  {item.Children.map((subItem, index) => {
-                    return (
-                      <SideBarDropDownItem
-                        Label={subItem.Label}
-                        key={index}
-                        href={subItem.href}
-                      />
-                    );
-                  })}
-                </SideBarDropDown>
-              );
-            })} */}
+
           </React.Fragment>
         )}
       </ul>

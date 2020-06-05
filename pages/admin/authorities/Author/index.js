@@ -1,10 +1,10 @@
 import React from 'react';
 import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
-import AuthorityHeader from '../@/components/admin/authorities/shared/authorityHeader'
-import SearchAuthorComponent from '../@/components/admin/authorities/author/SearchAuthorComponent';
-import ListAuthorComponent from '../@/components/admin/authorities/author/ListAuthorComponent';
-import Card from '../@/components/ui/Card/Card'; 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader'
+import SearchAuthorComponent from '@/components/admin/authorities/author/SearchAuthorComponent';
+import ListAuthorComponent from '@/components/admin/authorities/author/ListAuthorComponent';
+import Card from '@/components/ui/Card/Card'; 
 
 
 
@@ -29,6 +29,6 @@ const AuthorPage = (props) => {
         </div>
     );
 };
-import AdminLayout from '../@/components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 AuthorPage.Layout = AdminLayout
 export default AuthorPage  
