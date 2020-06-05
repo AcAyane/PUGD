@@ -4,6 +4,9 @@
     "paths": {
       "@/components/*": [
         "components/*"
+      ],
+      "@/static_api/*": [
+        "static_api/*"
       ]
     },
     "target": "es5",

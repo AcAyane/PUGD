@@ -2,7 +2,7 @@
   "name": "PUGD",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",

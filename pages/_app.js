@@ -1,6 +1,5 @@
 import React from "react";
 import App from "next/app";
-
 import Protect from "../shared/protect";
 import { withApollo } from "../shared/apollo";
 // import AdminLayout from '../components/adminLayout';

@@ -3,8 +3,9 @@ import SideBarDropDown from "./sideBarDropDown";
 import SideBarNavigationHeader from "./sideBarNavigationHeader";
 import SideBarDropDownItem from "./sideBarDropDownItem";
 import AuthoritiesSideItems from "../../admin/SidebarItems";
-import getMenu from "../../../setup/buildMenu";
 import Router from "next/router";
+import menuBuilder from "@/static_api/menu.json";
+
 const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
   // State : Side nav hovred
   const [hoverClass, setHoverClass] = useState("");
@@ -42,6 +43,7 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
   useEffect(() => {
     var instances = M.Collapsible.init(collapsibleHeader.current);
   }, []);
+
   return (
     <aside
       className={`sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded ${collapsedClass} ${hoverClass}`}
@@ -77,11 +79,14 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
         data-collapsible="menu-accordion"
         ref={collapsibleHeader}
       >
-        {JSON.stringify(getMenu())}
         {sidebarItems && (
           <React.Fragment>
-            <SideBarNavigationHeader Label={header} />
-            {childrenItems.map((item, index) => {
+            {Object.keys(menuBuilder).map((e) => {
+              return (
+                <SideBarNavigationHeader key={e} Label={menuBuilder[e].label} />
+              );
+            })}
+            {/* {childrenItems.map((item, index) => {
               return (
                 <SideBarDropDown
                   Label={item.Label}
@@ -99,7 +104,7 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
                   })}
                 </SideBarDropDown>
               );
-            })}
+            })} */}
           </React.Fragment>
         )}
       </ul>
@@ -114,4 +119,5 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
     </aside>
   );
 };
+
 export default sideBar;
