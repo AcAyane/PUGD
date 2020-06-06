@@ -1,6 +1,6 @@
 import React from 'react';
 import HeaderDropDown from './headerDropDown';
-import DropDownItem from '../../ui/dropdown/dropdownItem';
+import DropDownItem from '@/components/ui/dropdown/dropdownItem';
 import  Router   from 'next/router';
 const headerNav = () => {
 const logoutHandle = ()=>{

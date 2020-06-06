@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '@/components/ui/Card/Card';
+import Card from '@/components/ui/card/card';
 
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import AddAuthorForm from '@/components/admin/authorities/author/AddAuthorForm';

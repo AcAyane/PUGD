@@ -1,7 +1,7 @@
 /*
 import React, {useState} from 'react'
 import AdminLayout from '@/components/adminLayout'
-import Card from "@/components/ui/Card\Card";
+import Card from "@/components/ui/card/card";
 import Grid from "@/components/ui/Grid/grid";
 import GridElement from "@/components/ui/Grid/GridElement";
 import TextBox from "@/components/ui/TextBox";

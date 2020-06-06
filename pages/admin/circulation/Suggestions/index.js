@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from 'react'
 import AdminLayout from '@/components/adminLayout'
-import Card from "@/components/ui/Card\Card";
+import Card from "@/components/ui/card/card";
 import {useMutation} from "@apollo/react-hooks";
 
 import {ADD_SUGGESTION} from "@/graphql/mutations/admin/circulation/Suggestion.mutation";

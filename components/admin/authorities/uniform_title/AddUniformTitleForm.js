@@ -1,16 +1,16 @@
 import React from 'react';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import Button from '../../../ui/Button';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import Button from '@/components/ui/Button';
+import SimpleModal from '@/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/shared/LinkedAuthorityListView';
 import useUniformTitleForm from './useUniformTitleForm';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import SelectBox from '../../../ui/SelectBox';
-import DatePicker from '../../../ui/DatePicker/DatePicker';
-import MultipleTextinputs from '../shared/MultipleTextinputs';
+import TextBox from '@/components/ui/TextBox';
+import { withApollo } from '@/shared/apollo';
+import SelectBox from '@/components/ui/SelectBox';
+import DatePicker from '@/components/ui/DatePicker/DatePicker';
+import MultipleTextinputs from '@/shared/MultipleTextinputs';
 
 const AddUniformTitleForm = () => {
 
@@ -550,4 +550,4 @@ const AddUniformTitleForm = () => {
         </React.Fragment >
     )
 }
-export default withApollo({ ssr: true })(AddUniformTitleForm)
+export default AddUniformTitleForm

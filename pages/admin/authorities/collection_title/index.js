@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchCollectionTitleComponent from '@/components/admin/authorities/collection_title/SearchCollectionTitleComponent';
 import ListCollectionTitleComponent from '@/components/admin/authorities/collection_title/ListCollectionTitleComponent';
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 const CollectionTitlePage = () => {
 

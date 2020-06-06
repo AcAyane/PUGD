@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import Button from '../../../ui/Button';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import TextBox from '../../../ui/TextBox';
-import SelectBox from '../../../ui/SelectBox';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
 
 const SearchSubSeriesComponent = ({ getSubSeriesAllFields, SearchOnly }) => {
 

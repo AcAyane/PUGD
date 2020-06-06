@@ -4,7 +4,7 @@ import AuthorityHeader from '@/components/admin/authorities/shared/authorityHead
 
 import ModifyAuthorForm from '@/components/admin/authorities/author/ModifyAuthorForm';
 
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 // import {parse} from 'graphql';
 

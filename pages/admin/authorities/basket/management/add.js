@@ -7,7 +7,7 @@ import AuthorityHeader from '@/components/admin/authorities/shared/authorityHead
 
 import Router from 'next/router';
 import AddBasketForm from '@/components/admin/authorities/basket/AddBasketForm';
-import Card from '@/components/ui/Card/Card';
+import Card from '@/components/ui/card/card';
 
 
 

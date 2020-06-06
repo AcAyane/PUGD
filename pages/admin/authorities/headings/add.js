@@ -3,7 +3,7 @@ import React from 'react';
 import AddCategoryForm from '@/components/admin/authorities/category/AddCategoryForm';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 const CategoryPage = () => {
 

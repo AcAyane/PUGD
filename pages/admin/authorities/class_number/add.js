@@ -1,5 +1,5 @@
 import React from 'react'; 
-import Card from '@/components/ui/Card/Card';
+import Card from '@/components/ui/card/card';
 
 
 import AddClassNumberForm from '@/components/admin/authorities/class_number/AddClassNumberForm';

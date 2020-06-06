@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchUniformTitleComponent from '@/components/admin/authorities/uniform_title/SearchUniformTitleComponent';
 import ListUniformTitleComponent from '@/components/admin/authorities/uniform_title/ListUniformTitleComponent';
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 const UniformTitlePage = () => {
 

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import AdminLayout from '@/components/adminLayout'
 import TextBox from "@/components/ui/TextBox";
 import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card\Card";
+import Card from "@/components/ui/card/card";
 import {useLazyQuery} from "@apollo/react-hooks";
 import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.query";
 import Examplaire from "./Examplaire";

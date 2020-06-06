@@ -2,8 +2,8 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
 import { GetOrders } from "@/graphql/queries/acquisition/order";
-import CardTitle from "@/components/ui/Card\CardTitle";
-import Card from "@/components/ui/Card\Card";
+import CardTitle from "@/components/ui/card/cardTitle";
+import Card from "@/components/ui/card/card";
 import AdminLayout from "@/components/adminLayout";
 import Button from "@/components/ui/Button";
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import Icon from '../../../ui/Icon/Icon';
-import GridElement from '../../../ui/Grid/GridElement';
-import Grid from '../../../ui/Grid/Grid';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Icon from '@/components/ui/Icon/Icon';
+import GridElement from '@/components/ui/Grid/GridElement';
+import Grid from '@/components/ui/Grid/Grid';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
 import Router from 'next/router';
 
 const ListSubSeriesComponent = ({ sub_series, AddAuthorityLink }) => {

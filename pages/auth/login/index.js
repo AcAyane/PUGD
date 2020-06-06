@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks'
 import { LOGIN_QUERY } from '@/graphql/queries/user.query';
 import Router from 'next/router'
-import { withApollo } from '../../../shared/apollo';
 import Head from 'next/head';
 import TextBox from '@/components/ui/TextBox';
 import Button from '@/components/ui/Button';
@@ -49,14 +48,14 @@ function SignIn() {
                   </div>
                   <div className="row margin">
                     <TextBox icon="person_outline" label="Username"
-                    name="sdfds"
-                    onClick={
-                      (event)=>{
-                        event.target.valid=false
-                        console.log(event.target);
-                        
+                      name="sdfds"
+                      onClick={
+                        (event) => {
+                          event.target.valid = false
+                          console.log(event.target);
+
+                        }
                       }
-                    }
                       onChange={event => { setUsername(event.target.value) }}
                       value={username}
                       required />
@@ -88,111 +87,14 @@ function SignIn() {
                   <div className="row" style={{ margin: "20px 0" }}>
                     <Button rounded fullwidth >Login</Button>
                   </div>
-
-
-
-
-
                 </form>
               </div>
             </div>
           </div>
           <div className="content-overlay"></div>
         </div>
-
-
       </div>
-
     </React.Fragment>
-
-
-
-    //  <div className="login-container float-right" >
-    //       <div className="float-right login-form">
-    //         <div className="margin-auto">
-    //           <div className="col-sm-12 my-auto">
-    //             <Container component="main" maxWidth="xs">
-    //               <CssBaseline />
-    //               <div className="paper">
-
-    //                 <Typography component="h1" variant="h5">
-    //                   Sign in
-    //                 </Typography>
-    //                 <form className="form" noValidate
-    //                   onSubmit={onSubmitHandler}
-    //                 >
-    //                   <TextField
-    //                     margin="normal"
-    //                     required
-    //                     fullWidth
-    //                     label="Username"
-    //                     autoFocus
-    //                     onChange={event => { setUsername(event.target.value) }}
-    //                     value={username}
-    //                   />
-    //                   <TextField
-    //                     margin="normal"
-    //                     required
-    //                     fullWidth
-    //                     label="Password"
-    //                     type="password"
-    //                     onChange={event => setPassword(event.target.value)}
-    //                     value={password}
-    //                   />
-    //                   <FormControlLabel
-    //                     control={<Checkbox value="remember" color="primary" />}
-    //                     label="Remember me"
-    //                   />
-    //                   <Button
-    //                     type="submit"
-    //                     fullWidth
-    //                     variant="contained"
-    //                     color="primary"
-    //                   >
-    //                     Sign In
-    //                   </Button>
-    //                   {error ? <div  >{String(error.message)}</div> : null}
-    //                 </form>
-    //               </div>
-
-    //             </Container>
-    //           </div>
-    //         </div>
-    //       </div>
-    //       <style jsx >
-    //         {`
-
-    //         .login-form{
-    //             width:400px;
-    //             background:white;
-    //             padding:50px 0;
-    //             height:100%;
-    //             float:right;
-    //             display:flex;
-    //         }
-    //         .margin-auto{
-    //            margin:auto
-    //         }
-    //         .login-container{
-    //           height:100vh;
-    //           background-image: url(/images/flat-bg.jpg);
-    //           background-repeat: no-repeat;
-    //           background-size: cover;
-    //        } 
-    //        .paper {
-    //         display: flex;
-    //         // margin-top: 64px;
-    //         align-items: center;
-    //         flex-direction: column;
-    //       }
-    //       .form {
-    //         width: 100%;
-    //         // margin-top: 8px;
-    //       },
-    //         `}
-    //       </style>
-    //     </div>
-
   );
 }
-export default withApollo({ ssr: true })(SignIn);
+export default SignIn;

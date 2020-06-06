@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader'
 import SearchAuthorComponent from '@/components/admin/authorities/author/SearchAuthorComponent';
 import ListAuthorComponent from '@/components/admin/authorities/author/ListAuthorComponent';
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 
 

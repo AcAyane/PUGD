@@ -3,7 +3,7 @@ import AuthorityHeader from '@/components/admin/authorities/shared/authorityHead
 
 import ModifyPublisherForm from '@/components/admin/authorities/publisher/ModifyPublisherForm';
 
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 const ModifyPublisherPage = () => {
 
     return (

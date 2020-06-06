@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Icon from '../../../ui/Icon/Icon';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Icon from '@/components/ui/Icon/Icon';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
 import Router from 'next/router';
-import Grid from '../../../ui/Grid/Grid';
+import Grid from '@/components/ui/Grid/Grid';
 
 const ListCollectionTitleComponent = ({ collection_titles, AddAuthorityLink }) => {
     return (

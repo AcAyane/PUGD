@@ -3,7 +3,7 @@ import React from 'react';
 import AddUniformTitleForm from '@/components/admin/authorities/uniform_title/AddUniformTitleForm';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 
 const UniformTitlePage = () => {

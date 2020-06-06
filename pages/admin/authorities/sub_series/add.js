@@ -1,7 +1,7 @@
 import React from 'react';
 import AddSubSeriesForm from '@/components/admin/authorities/sub_series/AddSubSeriesForm';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader'; 
-import Card from '@/components/ui/Card/Card';
+import Card from '@/components/ui/card/card';
 
 
 const AddSubSeries = () => {

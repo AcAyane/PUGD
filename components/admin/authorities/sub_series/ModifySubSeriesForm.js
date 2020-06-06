@@ -1,15 +1,15 @@
 import React from 'react';
-import Button from '../../../ui/Button';
+import Button from '@/components/ui/Button';
 import { UPDATE_SUB_SERIES } from '@/graphql/mutations/admin/authorities/sub_series.mutations';
 import { GET_SUB_SERIES } from '@/graphql/queries/admin/authorities/sub_series.queries';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import SimpleModal from '@/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/shared/LinkedAuthorityListView';
 import useSubSeriesForm from './useSubSeriesForm';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
+import TextBox from '@/components/ui/TextBox';
+import { withApollo } from '@/shared/apollo';
 import { useMutation, useQuery, } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
@@ -213,4 +213,4 @@ const ModifySeriesForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifySeriesForm)
+export default ModifySeriesForm

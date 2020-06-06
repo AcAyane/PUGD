@@ -1,6 +1,6 @@
 import React from 'react'
 import AdminLayout from '@/components/adminLayout'
-import Card from "@/components/ui/Card\Card";
+import Card from "@/components/ui/card/card";
 import ListReservation from "./listReservation";
 import {useQuery} from "@apollo/react-hooks";
 import {GET_ALL_RESERVATIONS} from "@/graphql/queries/admin/Ciruclation/Reservation.query";

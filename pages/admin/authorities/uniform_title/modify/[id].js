@@ -3,7 +3,7 @@ import AuthorityHeader from '@/components/admin/authorities/shared/authorityHead
 
 import ModifyCategoryForm from '@/components/admin/authorities/category/ModifyCategoryForm';
 
-import Card from '@/components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
 
 // import {parse} from 'graphql';
 
