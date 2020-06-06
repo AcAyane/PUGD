@@ -8,7 +8,6 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 
 const AddCategoryForm = () => {
 
@@ -145,4 +144,4 @@ const AddCategoryForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddCategoryForm)
+export default AddCategoryForm

@@ -9,7 +9,6 @@ import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import usePublisherForm from './usePublisherForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
@@ -67,15 +66,15 @@ const ModifyPublisherForm = () => {
         const publisher = {
             ID: Router.query.id,
             // Supplier: "",
-            note:inputs.note,
-            Name:inputs.Name,
-            Address1:inputs.Address1,
-            Country:inputs.Country,
-            Address2:inputs.Address2,
-            Post_code:inputs.Post_code,
-            City:inputs.City,
-            url_thumbnail:inputs.url_thumbnail,
-            Linked_authorities:inputs.Linked_authorities,
+            note: inputs.note,
+            Name: inputs.Name,
+            Address1: inputs.Address1,
+            Country: inputs.Country,
+            Address2: inputs.Address2,
+            Post_code: inputs.Post_code,
+            City: inputs.City,
+            url_thumbnail: inputs.url_thumbnail,
+            Linked_authorities: inputs.Linked_authorities,
 
             // Linked_authorities: inputs.Linked_authorities.map((authority) => {
             //     return {
@@ -87,11 +86,11 @@ const ModifyPublisherForm = () => {
             //         LinkType: authority.LinkType,
             //     }
             // }) 
-         
+
         }
         if (inputs.Supplier.id !== "") {
             publisher.Supplier = inputs.Supplier.id
-        } 
+        }
 
         // console.log({ variables: publisher })
 
@@ -228,4 +227,4 @@ const ModifyPublisherForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyPublisherForm)
+export default ModifyPublisherForm

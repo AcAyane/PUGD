@@ -11,7 +11,6 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useCollectionTitleForm from './useCollectionTitleForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 
 const AddCollectionTitleForm = () => {
 
@@ -74,4 +73,4 @@ const AddCollectionTitleForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddCollectionTitleForm)
+export default AddCollectionTitleForm

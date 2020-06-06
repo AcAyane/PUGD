@@ -9,8 +9,7 @@ import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useSubSeriesForm from './useSubSeriesForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import { useMutation, useQuery, } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifySeriesForm = () => {
@@ -213,4 +212,4 @@ const ModifySeriesForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifySeriesForm)
+export default ModifySeriesForm

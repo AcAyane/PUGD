@@ -10,7 +10,6 @@ import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useSubSeriesForm from './useSubSeriesForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 
 const AddSubSeriesForm = () => {
 
@@ -151,4 +150,4 @@ const AddSubSeriesForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddSubSeriesForm)
+export default AddSubSeriesForm

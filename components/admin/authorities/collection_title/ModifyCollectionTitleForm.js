@@ -9,8 +9,7 @@ import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useCollectionTitleForm from './useCollectionTitleForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyCollectionTitleForm = () => {
@@ -67,7 +66,7 @@ const ModifyCollectionTitleForm = () => {
 
         const collection_title = {
             Id: Router.query.id,
-            Title: inputs.Title, 
+            Title: inputs.Title,
             Url_thumbnail: inputs.URL_thumbnail,
             // Linked_authorities: inputs.Linked_authorities.map((authority) => {
             //     return {
@@ -135,4 +134,4 @@ const ModifyCollectionTitleForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyCollectionTitleForm)
+export default ModifyCollectionTitleForm

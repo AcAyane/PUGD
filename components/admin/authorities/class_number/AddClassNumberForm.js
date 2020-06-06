@@ -9,7 +9,6 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useClassNumberForm from './useClassNumberForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 
 
 const AddClassNumberForm = () => {
@@ -74,7 +73,7 @@ const AddClassNumberForm = () => {
             &nbsp;
                 <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
-            
+
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
                 OnAuthorityLinkChange={OnAuthorityLinkChange} />
@@ -96,4 +95,4 @@ const AddClassNumberForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddClassNumberForm)
+export default AddClassNumberForm

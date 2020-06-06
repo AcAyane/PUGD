@@ -9,9 +9,8 @@ import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import TextBox from '../../../ui/TextBox'; 
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyCategoryForm = () => {
@@ -216,4 +215,4 @@ const ModifyCategoryForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyCategoryForm)
+export default ModifyCategoryForm

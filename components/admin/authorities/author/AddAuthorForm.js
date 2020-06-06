@@ -7,7 +7,6 @@ import useAuthorForm from './useAuthorForm';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
 import RoundButton from '../../../ui/RoundButton/RoundButton';
-import { withApollo } from '../../../../shared/apollo';
 import i18next from '../../../../components/admin/localisation/i18nextInit';
 const AddAuthorForm = () => {
     const {
@@ -25,7 +24,7 @@ const AddAuthorForm = () => {
         onAddHandler()
     }
 
-   
+
     return (
         <React.Fragment>
             <div className="row">
@@ -158,4 +157,4 @@ const AddAuthorForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddAuthorForm)
+export default AddAuthorForm

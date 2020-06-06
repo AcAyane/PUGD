@@ -10,7 +10,6 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import usePublisherForm from './usePublisherForm';
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 
 const AddPublisherForm = () => {
 
@@ -84,7 +83,7 @@ const AddPublisherForm = () => {
                         }}
                     />
                 </GridElement>
-                <GridElement s={2} style={{ display: "flex" , height: "84px" }}>
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
                     <RoundButton icon="add" size="30" onClick={handleOpenSupplier} />
                     <RoundButton icon="delete" size="30" onClick={unsetSupplier} />
 
@@ -172,4 +171,4 @@ const AddPublisherForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddPublisherForm)
+export default AddPublisherForm

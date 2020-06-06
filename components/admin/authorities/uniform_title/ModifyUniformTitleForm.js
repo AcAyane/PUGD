@@ -10,7 +10,6 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useUniformTitleForm from './useUniformTitleForm';
 
 import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
@@ -633,4 +632,4 @@ const ModifyUniformTitleForm = () => {
         </React.Fragment >
     )
 }
-export default withApollo({ ssr: true })(ModifyUniformTitleForm)
+export default ModifyUniformTitleForm
