@@ -1,8 +1,8 @@
 import React from 'react';
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
-import ModifyAuthorForm from '../../../../../components/admin/authorities/author/ModifyAuthorForm';
-import Card from '../../../../../components/ui/Card/Card';
-import i18next from '../../../../../components/admin/localisation/i18nextInit';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import ModifyAuthorForm from '@/components/admin/authorities/author/ModifyAuthorForm';
+import Card from '@/components/ui/Card/Card';
+import i18next from '@/components/admin/localisation/i18nextInit';
 // import {parse} from 'graphql';
 
 const ModifyAuthorPage = () => {
@@ -20,7 +20,7 @@ const ModifyAuthorPage = () => {
     );
 };
 
-import AdminLayout from '../../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 ModifyAuthorPage.Layout = AdminLayout
 export default ModifyAuthorPage;
 

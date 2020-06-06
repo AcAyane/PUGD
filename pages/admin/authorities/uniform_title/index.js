@@ -1,10 +1,10 @@
 import React from 'react';
-import { GET_UNIFORM_TITLE } from '../../../../graphql/queries/admin/authorities/uniform_title.queries';
+import { GET_UNIFORM_TITLE } from '@/graphql/queries/admin/authorities/uniform_title.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import SearchUniformTitleComponent from '../../../../components/admin/authorities/uniform_title/SearchUniformTitleComponent';
-import ListUniformTitleComponent from '../../../../components/admin/authorities/uniform_title/ListUniformTitleComponent';
-import Card from '../../../../components/ui/Card/Card'; 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchUniformTitleComponent from '@/components/admin/authorities/uniform_title/SearchUniformTitleComponent';
+import ListUniformTitleComponent from '@/components/admin/authorities/uniform_title/ListUniformTitleComponent';
+import Card from '@/components/ui/Card/Card'; 
 
 const UniformTitlePage = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Router from 'next/router';
-import { INSERT_PUBLISHER } from '../../../../graphql/mutations/admin/authorities/publisher.mutations';
+import { INSERT_PUBLISHER } from '@/graphql/mutations/admin/authorities/publisher.mutations';
 import { useMutation } from '@apollo/react-hooks';
 const useCategoryForm = (callback) => {
 

@@ -1,13 +1,13 @@
 import React from 'react';
-import Button from '../../../ui/Button';
+import Button from '@/components/ui/Button';
 
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import SearchAuthority from "../shared/SearchAuthor"
 import useAuthorForm from './useAuthorForm';
-import TextBox from '../../../ui/TextBox';
-import SelectBox from '../../../ui/SelectBox';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import i18next from '../../../../components/admin/localisation/i18nextInit';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import i18next from '@/components/admin/localisation/i18nextInit';
 const AddAuthorForm = () => {
     const {
         inputs,

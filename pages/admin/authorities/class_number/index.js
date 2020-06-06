@@ -1,10 +1,10 @@
 import React from 'react';
-import { GET_CLASS_NUMBER } from '../../../../graphql/queries/admin/authorities/class_number.queries';
+import { GET_CLASS_NUMBER } from '@/graphql/queries/admin/authorities/class_number.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import SearchClassNumberComponent from '../../../../components/admin/authorities/class_number/SearchClassNumberComponent';
-import ListClassNumberComponent from '../../../../components/admin/authorities/class_number/ListClassNumberComponent';
-import Card from '../../../../components/ui/Card/Card'; 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchClassNumberComponent from '@/components/admin/authorities/class_number/SearchClassNumberComponent';
+import ListClassNumberComponent from '@/components/admin/authorities/class_number/ListClassNumberComponent';
+import Card from '@/components/ui/Card/Card'; 
 const ClassNumberPage = () => {
 
     const [getClassNumberAllFields, ClassNumberResponse] = useLazyQuery(GET_CLASS_NUMBER);
@@ -27,6 +27,6 @@ const ClassNumberPage = () => {
     );
 };
 
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 ClassNumberPage.Layout = AdminLayout
 export default ClassNumberPage; 

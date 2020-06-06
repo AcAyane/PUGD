@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import AdminLayout from '../../../../../components/adminLayout';
-import { GET_BASKET } from '../../../../../graphql/queries/admin/authorities/basket.queries';
+import AdminLayout from '@/components/adminLayout';
+import { GET_BASKET } from '@/graphql/queries/admin/authorities/basket.queries';
 import { useQuery } from '@apollo/react-hooks';
 
-import ListBasketComponent from '../../../../../components/admin/authorities/basket/ListBasketComponent';
-import Card from '../../../../../components/ui/Card/Card';
+import ListBasketComponent from '@/components/admin/authorities/basket/ListBasketComponent';
+import Card from '@/components/ui/Card/Card';
 import WithAdminLayout from '../../../../../shared/WithAdminLayout';
 import { withApollo } from '../../../../../shared/apollo';
-import CollapsibleHeader from '../../../../../components/ui/Collapsible/CollapsibleHeader';
-import Collapsible from '../../../../../components/ui/Collapsible/Collapsible';
-import CollapsibleBody from '../../../../../components/ui/Collapsible/CollapsibleBody';
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
-import Table from '../../../../../components/ui/Table/Table';
-import RoundButton from '../../../../../components/ui/RoundButton/RoundButton';
+import CollapsibleHeader from '@/components/ui/Collapsible/CollapsibleHeader';
+import Collapsible from '@/components/ui/Collapsible/Collapsible';
+import CollapsibleBody from '@/components/ui/Collapsible/CollapsibleBody';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import Table from '@/components/ui/Table/Table';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
 
 
 // const BasketPage = ({ basket }) => {

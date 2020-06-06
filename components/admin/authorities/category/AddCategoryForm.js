@@ -1,13 +1,13 @@
 import React from 'react';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import Button from '../../../ui/Button';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import Button from '@/components/ui/Button';
 import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
-import TextBox from '../../../ui/TextBox';
+import TextBox from '@/components/ui/TextBox';
 
 const AddCategoryForm = () => {
 

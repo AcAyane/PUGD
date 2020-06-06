@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import Grid from '../../../ui/Grid/Grid';
-import Button from '../../../ui/Button';
+import Grid from '@/components/ui/Grid/Grid';
+import Button from '@/components/ui/Button';
 import Link from 'next/link';
-import TextBox from '../../../ui/TextBox';
-import SelectBox from '../../../ui/SelectBox';
-import GridElement from '../../../ui/Grid/GridElement';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
+import GridElement from '@/components/ui/Grid/GridElement';
 const SearchAuthorComponent = ({ SearchOnly, getAuthorAllFields }) => { 
     
     const [All_Fields, setAll_Fields] = useState("")

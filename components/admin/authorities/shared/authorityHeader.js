@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../../../ui/Card/Card'
+import Card from '@/components/ui/Card/Card'
 const AuthorityHeader = ({ Authority }) => {
 
     return (
