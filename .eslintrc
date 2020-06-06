@@ -1,11 +1,12 @@
-
 {
   "env": {
     "browser": true,
     "es6": true,
     "commonjs": true
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended"
@@ -13,7 +14,9 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["./"]
+        "paths": [
+          "./"
+        ]
       }
     }
   },

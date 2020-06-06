@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
-import AdminLayout from '@/components/adminLayout'
-import Card from "@/components/ui/card/card";
-import Grid from "@/components/ui/Grid/grid";
-import GridElement from "@/components/ui/Grid/GridElement";
-import TextBox from "@/components/ui/TextBox";
-import SelectBox from "@/components/ui/SelectBox";
+import AdminLayout from '@components/adminLayout'
+import Card from "@components/ui/card/card";
+import Grid from "@components/ui/Grid/grid";
+import GridElement from "@components/ui/Grid/GridElement";
+import TextBox from "@components/ui/TextBox";
+import SelectBox from "@components/ui/SelectBox";
 
-import Checkbox from "@/components/ui/Checkbox";
-import Button from "@/components/ui/Button";
+import Checkbox from "@components/ui/Checkbox";
+import Button from "@components/ui/Button";
 import {useMutation, useQuery} from "@apollo/react-hooks";
-import {ALL_BORROWERS} from "@/graphql/queries/admin/Ciruclation/Borrowers.query";
-import Circulation from "@/components/admin/Circulations/Body/Body";
-import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
+import {ALL_BORROWERS} from "@graphql/queries/admin/Ciruclation/Borrowers.query";
+import Circulation from "@components/admin/Circulations/Body/Body";
+import CirculationHeader from "@components/admin/Circulations/Hedar/CirculationHeader";
 
 // todo add Mebmer filter rapide
 const addGroups = () => {

@@ -1,8 +1,8 @@
 import React from 'react'
-import Card from '@/components/ui/card/card'
-import Router from "next/router";
-import AuthoritiesSideItems from "../../SidebarItems";
-const CirculationHeader = ({ CirculationModule, children }) => {
+import Card from '@components/ui/card/card'
+
+
+const CirculationHeader = ({CirculationModule, children}) => {
 
     /*const module = Router.route.split('/')[2]*/
     /*console.log("router : ",AuthoritiesSideItems[module][1].Children[1].Label)
@@ -15,11 +15,12 @@ const CirculationHeader = ({ CirculationModule, children }) => {
         <React.Fragment>
             <Card>
                 <div className="header-container card-header mb-2">
-                    <i className="material-icons pink-text-blue" style={{ margin: "auto" }}>
-                    fiber_manual_record
+                    <i className="material-icons pink-text-blue" style={{margin: "auto"}}>
+                        fiber_manual_record
                     </i>
                     {/*todo fix it*/}
-                    <h5 className=" uk-icon"> {/*{AuthoritiesSideItems[module][1].Label}*/} Circulation Module >> {CirculationModule}</h5>
+                    <h5 className=" uk-icon"> {/*{AuthoritiesSideItems[module][1].Label}*/} Circulation Module
+                        >> {CirculationModule}</h5>
                     <br/>
                 </div>
                 {children}

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import Icon from "@/components/ui/Icon/Icon";
+import Icon from "@components/ui/Icon/Icon";
 
 
 

@@ -1,7 +1,6 @@
 import React from "react";
 import App from "next/app";
-import Protect from "@/shared/protect";
-import withApollo from "@/shared/apollo";
+import apolloClient from '@shared/apollo';
 // import AdminLayout from '../components/adminLayout';
 const Nolayout = ({ children }) => <React.Fragment>{children}</React.Fragment>;
 class MyApp extends App {
@@ -19,4 +18,4 @@ class MyApp extends App {
 }
 
 // export default withApollo({ ssr: true })(Protect(MyApp));
-export default withApollo({ ssr: true })(MyApp);
+export default apolloClient({ ssr: true })(MyApp);
