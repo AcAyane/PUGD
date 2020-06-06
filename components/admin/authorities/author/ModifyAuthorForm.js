@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '@/components/ui/Button';
 import { UPDATE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
 import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
-import LinkedAuthorityListView from '@/shared/LinkedAuthorityListView';
-import SearchAuthority from "@/shared/SearchAuthor"
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+import SearchAuthority from "@/components/admin/authorities/shared/SearchAuthor"
 import useAuthorForm from './useAuthorForm';
 import TextBox from '@/components/ui/TextBox';
 import SelectBox from '@/components/ui/SelectBox';

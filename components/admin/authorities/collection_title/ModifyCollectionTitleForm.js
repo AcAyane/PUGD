@@ -5,8 +5,8 @@ import { GET_COLLECTION_TITLE } from '@/graphql/queries/admin/authorities/collec
 import Grid from '@/components/ui/Grid/Grid';
 import GridElement from '@/components/ui/Grid/GridElement';
 import RoundButton from '@/components/ui/RoundButton/RoundButton';
-import SimpleModal from '@/shared/SearchAuthor'
-import LinkedAuthorityListView from '@/shared/LinkedAuthorityListView';
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useCollectionTitleForm from './useCollectionTitleForm';
 import TextBox from '@/components/ui/TextBox';
 import { withApollo } from '@/shared/apollo';
