@@ -78,6 +78,7 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
         data-menu="menu-navigation"
         data-collapsible="menu-accordion"
         ref={collapsibleHeader}
+        style={{"overflow-y":"scroll"}}
       >
         {sidebarItems && (
           <React.Fragment>
