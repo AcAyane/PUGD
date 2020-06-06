@@ -6,7 +6,8 @@ query(
   $Author_Type : Int,
   $Name_Auth : String,
   $IndexName_Auth : String,
-  $Year_Auth : String,
+  $Year_Birth : Int,
+  $Year_Death : Int,
   $City_Auth : String,
   $Note_Auth : String,
   $Country_Auth : String,
@@ -14,13 +15,17 @@ query(
   $ISNI_Auth : String,
   $Subdivision_Auth : String,
   $UrlThumbnail_Auth : String,   
+  $All_Fields : String,   
+  
+
 ){
   author(
     id:$Id,
     author_type:$Author_Type,
     name_auth:$Name_Auth,
     indexname_auth:$IndexName_Auth,
-    year_auth:$Year_Auth,
+    year_birth:$Year_Birth,
+    year_death:$Year_Death,
     city_auth:$City_Auth,
     note_auth:$Note_Auth,
     country_auth:$Country_Auth,
@@ -28,6 +33,7 @@ query(
     isni_auth:$ISNI_Auth,
     subdivision_auth:$Subdivision_Auth,
     urlthumbnail_auth:$UrlThumbnail_Auth,
+    all_fields:$All_Fields,
   ){
     _id
     author_type
@@ -40,7 +46,8 @@ query(
     subdivision_auth
     urlthumbnail_auth
     website_auth
-    year_auth
+    year_birth
+    year_death
     linked_authoritiess {
       _id
       comment
@@ -70,7 +77,8 @@ query($all_fields: String!){
     subdivision_auth
     urlthumbnail_auth
     website_auth
-    year_auth
+    year_death
+    year_birth
   }
 }
 

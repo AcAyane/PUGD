@@ -1,20 +1,30 @@
 import gql from 'graphql-tag';
 
-const GET_CLASS_NUMBER = gql`
+const GET_COLLECTION_TITLE = gql`
 query(
-    $id: String,
+    $Id: String,
     $Title: String,
     $Url_thumbnail: String,
     $Linked_authorities: [String] ,
   ){
   collection_title(  
-    id:$id,
+    Id:$Id,
     Title:$Title,
     Url_thumbnail:$Url_thumbnail,
     Linked_authorities:$Linked_authorities)
     {
         _id
-        linked_authorities
+        linked_authorities {
+          _id
+          comment
+          end
+          linked_authority_id
+          linked_authority_type
+          linktype
+          root_authority_id
+          root_authority_type
+          start
+        }
         title
         url_thumbnail
     }
@@ -23,6 +33,6 @@ query(
 
 
 module.exports = {
-  GET_CLASS_NUMBER
+  GET_COLLECTION_TITLE
 
 }

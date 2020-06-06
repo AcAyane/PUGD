@@ -22,14 +22,31 @@ query(
     Linked_authorities : $Linked_authorities,
   )
     {
+ 
       _id
       comment
       issn
-      linked_authorities
-      publisher
+  linked_authorities {
+    _id
+    comment
+    end
+    linked_authority_id
+    linked_authority_type
+    linktype
+    root_authority_id
+    root_authority_type
+    start
+  }
+      publisher {
+        _id
+ 
+        name
+       
+      }
       title
       url_thumbnail
       website
+ 
   }
   }
 `;

@@ -4,8 +4,8 @@ import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
 import Router from 'next/router'
 import { withApollo } from '../../../shared/apollo';
 import Head from 'next/head';
-import TextBox from '../../../components/ui/TextBox';
-import Button from '../../../components/ui/Button';
+import TextBox from '@/components/ui/TextBox';
+import Button from '@/components/ui/Button';
 function SignIn() {
 
   const [login, { error, data }] = useLazyQuery(LOGIN_QUERY);
@@ -14,7 +14,7 @@ function SignIn() {
 
 
   const onSubmitHandler = (e) => {
- 
+
     e.preventDefault();
     login({
       variables: {
@@ -41,24 +41,32 @@ function SignIn() {
           <div className="container">
             <div id="login-page" className="row">
               <div className="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
-                <form className="login-form">
+                <form className="login-form" onSubmit={onSubmitHandler}>
                   <div className="row">
                     <div className="input-field col s12">
                       <h5 className="ml-4">Sign in</h5>
                     </div>
                   </div>
                   <div className="row margin">
-                    <TextBox icon="person_outline" type="text" label="Username"
+                    <TextBox icon="person_outline" label="Username"
+                    name="sdfds"
+                    onClick={
+                      (event)=>{
+                        event.target.valid=false
+                        console.log(event.target);
+                        
+                      }
+                    }
                       onChange={event => { setUsername(event.target.value) }}
-                      value={username} />
+                      value={username}
+                      required />
                   </div>
                   <div className="row margin">
 
                     <TextBox icon="lock_outline" type="password" label="Password"
                       onChange={event => { setPassword(event.target.value) }}
-                      value={password} /> 
+                      value={password} />
 
-                  
                   </div>
                   <div className="row">
                     <div className="col s12 m12 l12 ml-2 mt-1">
@@ -70,9 +78,21 @@ function SignIn() {
                       </p>
                     </div>
                   </div>
+                  {error ?
+                    <div className="card-alert card gradient-45deg-red-pink">
+                      <div className="card-content white-text">
+                        <p>
+                          <i className="material-icons">error</i> {String(error.message)}</p>
+                      </div>
+                    </div> : null}
                   <div className="row" style={{ margin: "20px 0" }}>
-                    <Button rounded fullwidth onClick={onSubmitHandler}>Login</Button>
+                    <Button rounded fullwidth >Login</Button>
                   </div>
+
+
+
+
+
                 </form>
               </div>
             </div>
