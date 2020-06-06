@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
-import Card from '../../../../../components/ui/Card/Card'
-import Grid from '../../../../../components/ui/Grid/grid';
-import GridElement from '../../../../../components/ui/Grid/GridElement';
-import TextBox from "../../../../../components/ui/TextBox";
-import Button from "../../../../../components/ui/Button";
+import AdminLayout from '@/components/adminLayout'
+import Card from '@/components/ui/Card/Card'
+import Grid from '@/components/ui/Grid/grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import TextBox from "@/components/ui/TextBox";
+import Button from "@/components/ui/Button";
 
 import {useLazyQuery} from "@apollo/react-hooks";
-import {GroupsByName} from "../../../../../graphql/queries/admin/Ciruclation/groups.query";
+import {GroupsByName} from "@/graphql/queries/admin/Ciruclation/groups.query";
 import ResGroup from "./resGroups";
-import Null from "../../../../../components/admin/Circulations/Handerls/Null";
-import Circulation from "../../../../../components/admin/Circulations/Body/Body";
-import CirculationHeader from "../../../../../components/admin/Circulations/Hedar/CirculationHeader";
+import Null from "@/components/admin/Circulations/Handerls/Null";
+import Circulation from "@/components/admin/Circulations/Body/Body";
+import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
 import Link from "next/link";
 
 const Groups = () => {

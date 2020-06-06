@@ -1,7 +1,7 @@
 import React from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
+import AdminLayout from '@/components/adminLayout'
 import moment from "moment";
-import Icon from "../../../../../components/ui/Icon/Icon";
+import Icon from "@/components/ui/Icon/Icon";
 
 
 const info = (props) => {

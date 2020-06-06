@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
-import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
-import { DeleteProvider } from "../../../graphql/mutations/acquisition/provider";
-import CardTitle from "@/components/ui/card/cardTitle";
-import Card from "@/components/ui/card/card";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
+import { DeleteProvider } from "@/graphql/mutations/acquisition/provider";
+import CardTitle from "@/components/ui/Card\CardTitle";
+import Card from "@/components/ui/Card\Card";
 import AdminLayout from "@/components/adminLayout";
 import Button from "@/components/ui/Button";
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../ui/Button';
-import { UPDATE_SUB_SERIES } from '../../../../graphql/mutations/admin/authorities/sub_series.mutations';
-import { GET_SUB_SERIES } from '../../../../graphql/queries/admin/authorities/sub_series.queries';
+import { UPDATE_SUB_SERIES } from '@/graphql/mutations/admin/authorities/sub_series.mutations';
+import { GET_SUB_SERIES } from '@/graphql/queries/admin/authorities/sub_series.queries';
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';

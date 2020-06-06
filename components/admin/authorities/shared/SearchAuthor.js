@@ -4,10 +4,10 @@ import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import Card from '../../../ui/Card/Card';
 import { useLazyQuery } from '@apollo/react-hooks';
-import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
-import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
-import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
-import { GET_SERIES_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/series.queries'; 
+import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
+import { GET_CATEGORY_ALL_FIELDS } from '@/graphql/queries/admin/authorities/category.queries';
+import { GET_PUBLISHER_ALL_FIELDS } from '@/graphql/queries/admin/authorities/publisher.queries';
+import { GET_SERIES_ALL_FIELDS } from '@/graphql/queries/admin/authorities/series.queries'; 
 import dynamic from 'next/dynamic'
 
 import SelectBox from '../../../ui/SelectBox';

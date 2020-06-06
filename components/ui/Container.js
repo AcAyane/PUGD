@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./card/card";
+import Card from "./Card\Card";
 const Container = ({ children, Title, ...props }) => {
   return (
     <div className="container" {...props}>

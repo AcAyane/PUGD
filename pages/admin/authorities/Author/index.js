@@ -1,5 +1,5 @@
 import React from 'react';
-import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
+import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader'
 import SearchAuthorComponent from '@/components/admin/authorities/author/SearchAuthorComponent';

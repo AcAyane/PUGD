@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../ui/Button';
-import { UPDATE_CLASS_NUMBER } from '../../../../graphql/mutations/admin/authorities/class_number.mutations';
-import { GET_CLASS_NUMBER } from '../../../../graphql/queries/admin/authorities/class_number.queries';
+import { UPDATE_CLASS_NUMBER } from '@/graphql/mutations/admin/authorities/class_number.mutations';
+import { GET_CLASS_NUMBER } from '@/graphql/queries/admin/authorities/class_number.queries';
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';

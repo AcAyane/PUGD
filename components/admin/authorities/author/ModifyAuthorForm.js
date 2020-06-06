@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../ui/Button';
-import { UPDATE_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
-import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
+import { UPDATE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
+import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import SearchAuthority from "../shared/SearchAuthor"
 import useAuthorForm from './useAuthorForm';

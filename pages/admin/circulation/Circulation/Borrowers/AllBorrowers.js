@@ -1,9 +1,9 @@
 import React from 'react'
 import {useQuery} from "@apollo/react-hooks";
-import Table from "../../../../../components/ui/Table/Table";
+import Table from "@/components/ui/Table/Table";
 
 
-import {GetAllBro} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
+import {GetAllBro} from "@/graphql/queries/admin/Ciruclation/Borrowers.query";
 
 const AllBorrewors = () => {
     const { loading, error, data } = useQuery(GetAllBro);

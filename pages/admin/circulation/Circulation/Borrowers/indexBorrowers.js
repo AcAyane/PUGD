@@ -1,11 +1,11 @@
 import React from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
-import Card from '../../../../../components/ui/card/card'
-import Grid from '../../../../../components/ui/Grid/grid';
-import GridElement from '../../../../../components/ui/Grid/GridElement';
-import TextBox from "../../../../../components/ui/TextBox";
-import Button from "../../../../../components/ui/Button";
-import ButtonPopUp from "../../../../../components/ui/ButtonPopUp";
+import AdminLayout from '@/components/adminLayout'
+import Card from '@/components/ui/Card\Card'
+import Grid from '@/components/ui/Grid/grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import TextBox from "@/components/ui/TextBox";
+import Button from "@/components/ui/Button";
+import ButtonPopUp from "@/components/ui/ButtonPopUp";
 import AllBorrewors from "./AllBorrowers";
 
 const indexBorrowers = () => {

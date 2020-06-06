@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from "../../../../../components/ui/Table/Table";
+import Table from "@/components/ui/Table/Table";
 import moment from "moment";
 
 const ListReservation = (props) => {

@@ -5,7 +5,7 @@ import Grid from '../../../ui/Grid/Grid';
 import RoundButton from '../../../ui/RoundButton/RoundButton';
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
-import { DELETE_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
+import { DELETE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
 
 const ListAuthorComponent = ({ authors, AddAuthorityLink, updateCache }) => {
     const [deleteAuthor] = useMutation(DELETE_AUTHOR, {

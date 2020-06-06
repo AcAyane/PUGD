@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdminLayout from "@/components/adminLayout";
 import { useMutation } from "@apollo/react-hooks";
 import Router from "next/router";
-import { REGISTER_MUTATION } from "../../../graphql/mutations/user.mutation";
+import { REGISTER_MUTATION } from "@/graphql/mutations/user.mutation";
 import TextBox from "@/components/ui/TextBox";
 import Button from "@/components/ui/Button";
 

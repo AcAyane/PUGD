@@ -1,9 +1,9 @@
 import React from 'react'; 
-import Card from '../@/components/ui/Card/Card';
+import Card from '@/components/ui/Card/Card';
 
 
-import AddClassNumberForm from '../@/components/admin/authorities/class_number/AddClassNumberForm';
-import AuthorityHeader from '../@/components/admin/authorities/shared/authorityHeader';
+import AddClassNumberForm from '@/components/admin/authorities/class_number/AddClassNumberForm';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
  
 
 const AddClassNumber = () => {
@@ -20,7 +20,7 @@ const AddClassNumber = () => {
         </div>
     );
 };
-import AdminLayout from '../@/components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 AddClassNumber.Layout = AdminLayout
 export default AddClassNumber; 
  

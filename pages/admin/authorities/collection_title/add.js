@@ -1,8 +1,8 @@
 import React from 'react'; 
-import Card from '../@/components/ui/Card/Card';
+import Card from '@/components/ui/Card/Card';
 
-import AddCollectionTitleForm from '../@/components/admin/authorities/collection_title/AddCollectionTitleForm';
-import AuthorityHeader from '../@/components/admin/authorities/shared/authorityHeader';
+import AddCollectionTitleForm from '@/components/admin/authorities/collection_title/AddCollectionTitleForm';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
  
 
 
@@ -22,7 +22,7 @@ const AddCollectionTitle = () => {
 };
 
  
-import AdminLayout from '../@/components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 AddCollectionTitle.Layout = AdminLayout
 export default AddCollectionTitle; 
  

@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
-import Card from "../../../../../components/ui/card/card";
-import TextBox from "../../../../../components/ui/TextBox";
-import Button from "../../../../../components/ui/Button";
-import Table from "../../../../../components/ui/Table/Table";
+import AdminLayout from '@/components/adminLayout'
+import Card from "@/components/ui/Card\Card";
+import TextBox from "@/components/ui/TextBox";
+import Button from "@/components/ui/Button";
+import Table from "@/components/ui/Table/Table";
 import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
-import Circulation from "../../../../../components/admin/Circulations/Body/Body";
-import Null from "../../../../../components/admin/Circulations/Handerls/Null";
-import CirculationHeader from "../../../../../components/admin/Circulations/Hedar/CirculationHeader";
-import Profile from "../../../../../components/admin/Circulations/Borrwer/Profile";
-import BtnBadge from "../../../../../components/ui/ui_badge";
+import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.query";
+import Circulation from "@/components/admin/Circulations/Body/Body";
+import Null from "@/components/admin/Circulations/Handerls/Null";
+import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
+import Profile from "@/components/admin/Circulations/Borrwer/Profile";
+import BtnBadge from "@/components/ui/ui_badge";
 
 const traitDoc = () => {
 

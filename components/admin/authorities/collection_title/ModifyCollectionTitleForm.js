@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../ui/Button';
-import { UPDATE_COLLECTION_TITLE } from '../../../../graphql/mutations/admin/authorities/collection_title.mutations';
-import { GET_COLLECTION_TITLE } from '../../../../graphql/queries/admin/authorities/collection_title.queries';
+import { UPDATE_COLLECTION_TITLE } from '@/graphql/mutations/admin/authorities/collection_title.mutations';
+import { GET_COLLECTION_TITLE } from '@/graphql/queries/admin/authorities/collection_title.queries';
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';

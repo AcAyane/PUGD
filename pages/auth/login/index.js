@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLazyQuery } from '@apollo/react-hooks'
-import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
+import { LOGIN_QUERY } from '@/graphql/queries/user.query';
 import Router from 'next/router'
 import { withApollo } from '../../../shared/apollo';
 import Head from 'next/head';

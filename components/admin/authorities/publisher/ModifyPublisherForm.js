@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../ui/Button';
-import { UPDATE_PUBLISHER } from '../../../../graphql/mutations/admin/authorities/publisher.mutations';
-import { GET_PUBLISHER } from '../../../../graphql/queries/admin/authorities/publisher.queries';
+import { UPDATE_PUBLISHER } from '@/graphql/mutations/admin/authorities/publisher.mutations';
+import { GET_PUBLISHER } from '@/graphql/queries/admin/authorities/publisher.queries';
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';

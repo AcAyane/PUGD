@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
+import AdminLayout from '@/components/adminLayout'
 import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
+import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.query";
 
 const Examplaire = (props) => {
 

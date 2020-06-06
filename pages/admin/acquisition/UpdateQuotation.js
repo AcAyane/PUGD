@@ -1,15 +1,15 @@
 import React, { useState, useMemo } from "react";
 import Router from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { GetOrder } from "../../../graphql/queries/acquisition/order";
-import { GetAllOrderLines } from "../../../graphql/queries/acquisition/orderline";
-import { UpdateOrder } from "../../../graphql/mutations/acquisition/order";
+import { GetOrder } from "@/graphql/queries/acquisition/order";
+import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
+import { UpdateOrder } from "@/graphql/mutations/acquisition/order";
 import {
   InsertOrderLine,
   UpdateOrderLine,
   DeleteOrderLine,
-} from "../../../graphql/mutations/acquisition/orderline";
-import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
+} from "@/graphql/mutations/acquisition/orderline";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import DatePicker from "react-datepicker";

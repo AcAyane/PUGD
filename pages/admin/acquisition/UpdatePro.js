@@ -1,8 +1,8 @@
 import React from "react";
 import Router from "next/router";
 import { Formik, Form, Field } from "formik";
-import { GetOneProvider } from "../../../graphql/queries/acquisition/provider";
-import { UpdateProvider } from "../../../graphql/mutations/acquisition/provider";
+import { GetOneProvider } from "@/graphql/queries/acquisition/provider";
+import { UpdateProvider } from "@/graphql/mutations/acquisition/provider";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import * as Yup from "yup";
 import GridElement from "@/components/ui/Grid/GridElement";
