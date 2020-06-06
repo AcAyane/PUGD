@@ -58,7 +58,7 @@ const Groups = () => {
                                         onClick={onSearchHandler}
                                         rounded={4}>Search
                                     </Button>
-                                    <Button href="/admin/circulation/Circulations/groups/addGroups" rounded={4}>add group</Button>
+                                    <Button href="/admin/circulation/Circulation/groups/addGroups" rounded={4}>add group</Button>
                                 </GridElement>
                             </Grid>
                         </div>
