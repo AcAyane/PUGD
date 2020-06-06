@@ -3,9 +3,7 @@ import AuthorityHeader from '../../../../../components/admin/authorities/shared/
 
 import ModifyClassNumberForm from '../../../../../components/admin/authorities/class_number/ModifyClassNumberForm';
 
-import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
+import Card from '../../../../../components/ui/Card/Card'; 
 
 // import {parse} from 'graphql';
 
@@ -24,8 +22,9 @@ const ModifyClassNumberPage = () => {
     );
 };
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyClassNumberPage))
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyClassNumberPage.Layout = AdminLayout
+export default ModifyClassNumberPage; 
 
 
 

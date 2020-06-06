@@ -31,17 +31,19 @@ const AddUniformTitleForm = () => {
         HandlePropertyChange,
         DeleteAtIndex,
         AddString } = useUniformTitleForm();
-
+    const onSubmit = (e) => {
+        e.preventDefault();
+        onAddHandler()
+    }
     return (
         <React.Fragment>
-
             <Grid>
                 <GridElement s={6}>
 
                     <SelectBox
                         label="Type of work"
-                        name="Type_Work"
-                        value={inputs.Type_Work}
+                        name="type"
+                        value={inputs.type}
                         onChange={handleInputChange}>
                         <option value={10}>Musicale</option>
                         <option value={20}>Littéraire</option>
@@ -54,8 +56,8 @@ const AddUniformTitleForm = () => {
 
                     <SelectBox
                         label="Nature of work"
-                        name="Nature_Work"
-                        value={inputs.Nature_Work}
+                        name="nature"
+                        value={inputs.nature}
                         onChange={handleInputChange}>
                         <option value={10}>Oeuvre</option>
                         <option value={20}>Expresssion</option>
@@ -68,13 +70,14 @@ const AddUniformTitleForm = () => {
                 <GridElement s={6}>
                     <TextBox required
                         label="Name of uniform title"
-                        name="Name"
-                        value={inputs.Name}
+                        name="name"
+                        value={inputs.name}
                         onChange={handleInputChange}
                     />
                 </GridElement>
             </Grid>
 
+            {/* **********  Expression Of *************** */}
             <Grid>
                 <GridElement s={12}>
                     <h5> Expression Of &nbsp;
@@ -84,7 +87,7 @@ const AddUniformTitleForm = () => {
                     </h5>
 
                     {
-                        inputs.ExpressionOf.map((UniformTitle, index) => {
+                        inputs.expression_of.map((UniformTitle, index) => {
                             return <Grid key={index}>
                                 <GridElement s={5}>
                                     <TextBox label="See also (related term)"
@@ -95,7 +98,7 @@ const AddUniformTitleForm = () => {
                                     <SelectBox
                                         label="Expression type"
                                         // name="Type_Work"
-                                        value={inputs.Type_Work}
+                                        value={inputs.type_work}
                                         defaultValue={20}
                                     // onChange={handleInputChange}
                                     >
@@ -114,6 +117,7 @@ const AddUniformTitleForm = () => {
                     }
                 </GridElement>
             </Grid>
+            {/* ********** Has for expression *************** */}
             <Grid>
                 <GridElement s={12}>
                     <h5> Has for expression &nbsp;
@@ -123,7 +127,7 @@ const AddUniformTitleForm = () => {
                     </h5>
 
                     {
-                        inputs.HasExpression.map((UniformTitle, index) => {
+                        inputs.has_expression.map((UniformTitle, index) => {
                             return <Grid key={index}>
                                 <GridElement s={5}>
                                     <TextBox label="See also (related term)"
@@ -153,6 +157,7 @@ const AddUniformTitleForm = () => {
                     }
                 </GridElement>
             </Grid>
+            {/* ********** Other links *************** */}
             <Grid>
                 <GridElement s={12}>
                     <h5> Other links  &nbsp;
@@ -162,7 +167,7 @@ const AddUniformTitleForm = () => {
                     </h5>
 
                     {
-                        inputs.HasExpression.map((UniformTitle, index) => {
+                        inputs.other_links.map((UniformTitle, index) => {
                             return <Grid key={index}>
                                 <GridElement s={5}>
                                     <TextBox label="See also (related term)"
@@ -192,6 +197,7 @@ const AddUniformTitleForm = () => {
                     }
                 </GridElement>
             </Grid>
+            {/* ********** Authors *************** */}
             <Grid>
                 <GridElement s={12}>
                     <h5> Authors  &nbsp;
@@ -201,7 +207,7 @@ const AddUniformTitleForm = () => {
                     </h5>
 
                     {
-                        inputs.HasExpression.map((UniformTitle, index) => {
+                        inputs.authors.map((UniformTitle, index) => {
                             return <Grid key={index}>
                                 <GridElement s={5}>
                                     <TextBox label="See also (related term)"
@@ -231,6 +237,7 @@ const AddUniformTitleForm = () => {
                     }
                 </GridElement>
             </Grid>
+            {/* ********** Interpreters *************** */}
             <Grid>
                 <GridElement s={12}>
                     <h5> Interpreters  &nbsp;
@@ -240,7 +247,7 @@ const AddUniformTitleForm = () => {
                     </h5>
 
                     {
-                        inputs.HasExpression.map((UniformTitle, index) => {
+                        inputs.interpreters.map((UniformTitle, index) => {
                             return <Grid key={index}>
                                 <GridElement s={5}>
                                     <TextBox label="See also (related term)"
@@ -274,8 +281,8 @@ const AddUniformTitleForm = () => {
                 <GridElement s={6}>
                     <TextBox required
                         label="Form of work(Free hand)"
-                        name="Name"
-                        value={inputs.Name}
+                        name="form_of_work_text"
+                        value={inputs.form_of_work_text}
                         onChange={handleInputChange}
                     />
                 </GridElement>
@@ -297,32 +304,29 @@ const AddUniformTitleForm = () => {
                 <GridElement s={6}>
                     <DatePicker
                         label="Date of the work"
-                    // value={Authority.Start && Authority.Start.toISOString().split("T")[0] || ""}
-                    // onChange={(e) => {
-                    //     e.persist();
-                    //     OnAuthorityLinkChange(index, { "Start": new Date(e.target.value) })
-                    // }}
+                        value={inputs.date_of_work && inputs.date_of_work.toISOString().split("T")[0] || ""}
+                        onChange={(e) => {
+                            e.persist();
+                            HandlePropertyChange("date_of_work", new Date(e.target.value))
+                        }}
                     />
 
                 </GridElement>
                 <GridElement s={6}>
                     <TextBox label="Original place of the work"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
-
+                        name="original_place_of_work"
+                        value={inputs.original_place_of_work}
+                        onChange={handleInputChange}
                     />
                 </GridElement>
             </Grid>
             <Grid>
 
                 <GridElement s={12}>
-                    <TextBox label="Original place of the work"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                    <TextBox label="Subject of the work"
+                        name="subject_of_work"
+                        value={inputs.subject_of_work}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
@@ -332,9 +336,9 @@ const AddUniformTitleForm = () => {
                 <GridElement s={6}>
 
                     <SelectBox
-                        label="Type of work"
-                        name="Type_Work"
-                        value={inputs.Type_Work}
+                        label="Targeted Completeness"
+                        name="targeted_completeness"
+                        value={inputs.targeted_completeness}
                         onChange={handleInputChange}>
                         <option value={0}>--------</option>
                         <option value={20}>Finished work</option>
@@ -346,10 +350,9 @@ const AddUniformTitleForm = () => {
 
                 <GridElement s={12}>
                     <TextBox label="Target audience"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="targeted_audience"
+                        value={inputs.targeted_audience}
+                        onChange={handleInputChange}
 
                     />
                 </GridElement>
@@ -358,38 +361,36 @@ const AddUniformTitleForm = () => {
 
                 <GridElement s={12}>
                     <TextBox label="History of the work"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="history_of_work"
+                        value={inputs.history_of_work}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
             </Grid>
-            <Grid>
+            {/* <Grid>
 
                 <GridElement s={12}>
                     <TextBox label="Context of the work"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="context_of_work"
+                        value={inputs.context_of_work}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
-            </Grid>
+            </Grid> */}
             <MultipleTextinputs
                 Title="Medium of performance (for music)"
-                ItemsList={inputs.MediumOfPerformance}
+                ItemsList={inputs.medium_of_performance}
                 onElementChange={
-                    (newValue) => HandlePropertyChange("MediumOfPerformance", newValue)
+                    (newValue) => HandlePropertyChange("medium_of_performance", newValue)
                 }
             />
             <MultipleTextinputs
                 Title="Numeric designation (for music)"
-                ItemsList={inputs.NumericDesignation}
+                ItemsList={inputs.numeric_designation}
                 onElementChange={
-                    (newValue) => HandlePropertyChange("NumericDesignation", newValue)
+                    (newValue) => HandlePropertyChange("numeric_designation", newValue)
                 }
             />
             {/* 
@@ -418,10 +419,9 @@ const AddUniformTitleForm = () => {
 
                 <GridElement s={12}>
                     <TextBox label="Key(Saisie libre)"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="key_text"
+                        value={inputs.key_text}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
@@ -433,7 +433,7 @@ const AddUniformTitleForm = () => {
                         //  onClick={handleOpenSee_Also} 
                         />
                     </h5>
-
+                    {/* 
                     {
                         inputs.HasExpression.map((UniformTitle, index) => {
                             return <Grid key={index}>
@@ -462,15 +462,15 @@ const AddUniformTitleForm = () => {
                                 </GridElement>
                             </Grid>
                         })
-                    }
+                    } */}
                 </GridElement>
             </Grid>
             <Grid>
                 <GridElement s={6}>
                     <TextBox required
                         label="Coordinate system (cartographic work)"
-                        name="Name"
-                        value={inputs.Name}
+                        name="coordinate_system"
+                        value={inputs.coordinate_system}
                         onChange={handleInputChange}
                     />
                 </GridElement>
@@ -479,27 +479,26 @@ const AddUniformTitleForm = () => {
                 <GridElement s={6}>
                     <TextBox required
                         label="Equinox (cartographic work)"
-                        name="Name"
-                        value={inputs.Name}
+                        name="equinox"
+                        value={inputs.equinox}
                         onChange={handleInputChange}
                     />
                 </GridElement>
             </Grid>
             <MultipleTextinputs
                 Title="Form subdivision"
-                ItemsList={inputs.FormSubdivision}
+                ItemsList={inputs.form_subdivision}
                 onElementChange={
-                    (newValue) => HandlePropertyChange("FormSubdivision", newValue)
+                    (newValue) => HandlePropertyChange("form_subdivision", newValue)
                 } />
 
             <Grid>
 
                 <GridElement s={12}>
                     <TextBox label="Other distinctive features"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="other_features"
+                        value={inputs.other_features}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
@@ -508,10 +507,9 @@ const AddUniformTitleForm = () => {
 
                 <GridElement s={12}>
                     <TextBox label="Comment"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="comment"
+                        value={inputs.comment}
+                        onChange={handleInputChange}
                         Multiline
                     />
                 </GridElement>
@@ -520,10 +518,9 @@ const AddUniformTitleForm = () => {
 
                 <GridElement s={12}>
                     <TextBox label="URL of thumbnail"
-                        name="Broader_term"
-                        // value={inputs.Broader_term.Label}
-                        // onChange={handleInputChange}
-                        defaultValue="test form of work"
+                        name="url_thumbnail"
+                        value={inputs.url_thumbnail}
+                        onChange={handleInputChange}
 
                     />
                 </GridElement>
@@ -535,22 +532,13 @@ const AddUniformTitleForm = () => {
             </h5>
 
             <LinkedAuthorityListView
-                Linked_authorities={inputs.Linked_authorities}
+                Linked_authorities={inputs.linked_authorities}
                 OnAuthorityLinkChange={OnAuthorityLinkChange} />
             <br />
 
             <Button variant="contained">Cancel</Button>
             <Button variant="contained"
-                onClick={(e) => onAddHandler(e,
-                    inputs.Name,
-                    inputs.Scope_note,
-                    inputs.Comment,
-                    inputs.Broader_term.id,
-                    inputs.See.id,
-                    inputs.See_also,
-                    inputs.Authority_number,
-                    inputs.URL_thumbnail,
-                    inputs.Linked_authorities)}>Save</Button>
+                onClick={onSubmit}>Save</Button>
 
             <SimpleModal
                 open={open}

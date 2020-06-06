@@ -1,12 +1,12 @@
 import React  from 'react';
 
-const SideBarDropDown = ({ active, Label,icon,...props }) => {
+const SideBarDropDown = ({ Label,icon,...props }) => {
 
   return (
-    <li className={`bold ${active}`} >
+    <li >
       <a className="collapsible-header waves-effect waves-cyan " href="#" >
         <i className="material-icons">{icon}</i>
-        <span className="menu-title" data-i18n="Dashboard">
+        <span className="menu-title">
           {Label}
         </span>
         

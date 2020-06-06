@@ -10,7 +10,7 @@ const AuthorityHeader = ({ Authority }) => {
                     <i className="material-icons pink-text" style={{ margin: "auto" }}>
                         fiber_manual_record
                </i>
-                    <h6 className="uk-icon">Gestion des autorités : {Authority}</h6>
+                    <h6 className="uk-icon">{Authority}</h6>
                 </div>
             </Card>
             <style jsx>

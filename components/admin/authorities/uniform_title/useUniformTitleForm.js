@@ -1,46 +1,45 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
-import { INSERT_CATEGORY } from '../../../../graphql/mutations/admin/authorities/category.mutations';
-import { Router } from "next/router";
+import { INSERT_UNIFORM_TITLE } from '../../../../graphql/mutations/admin/authorities/uniform_title.mutations';
+import Router from "next/router";
 const useCategoryForm = (callback) => {
 
 
     // Handle the state State of the inputs
     const [inputs, setInputs] = useState({
-        Type: 6,
-        Nature: 6,
-        Name: "name",
-        ExpressionOf: [],
-        HasExpression: [],
-        OtherLinks: [],
-        Authors: [],
-        Interpreters: [],
-        FormOfWorkText: "FormOfWorkText",
-        FormOfWorkId: "FormOfWorkId",
-        DateOfWork: "DateOfWork",
-        OriginalPlaceOfWork: "OriginalPlaceOfWork",
-        SubjectOfWork: "SubjectOfWork",
-        TargetedCompleteness: "TargetedCompleteness",
-        TargetedAudience: "TargetedAudience",
-        HistoryOfWork: "HistoryOfWork",
-        MediumOfPerformance: [],
-        NumericDesignation: [],
-        KeyText: "KeyText",
-        KeyId: "KeyId",
-        CoordinateSystem: "CoordinateSystem",
-        Equinox: "Equinox",
-        FormSubdivision: [],
-        OtherFeatures: "OtherFeatures",
-        Comment: "Comment",
-        UrlThumbnail: "UrlThumbnail",
-        Linked_authorities: [],
+        type: 10,
+        nature: 10,
+        name: "name",
+        expression_of: [],
+        has_expression: [],
+        other_links: [],
+        authors: [],
+        interpreters: [],
+        form_of_work_text: "FormOfWorkText",
+        form_of_work_id: "5ed6021e538de5df3857bd9f",
+        date_of_work: new Date(),
+        original_place_of_work: "OriginalPlaceOfWork",
+        subject_of_work: "SubjectOfWork",
+        targeted_completeness: 0,
+        targeted_audience: "TargetedAudience",
+        history_of_work: "HistoryOfWork",
+        // context_of_work: "",
+        medium_of_performance: [],
+        numeric_designation: [],
+        key_text: "KeyText",
+        key_id: "5ed6021e538de5df3857bd9f",
+        coordinate_system: "CoordinateSystem",
+        equinox: "Equinox",
+        form_subdivision: [],
+        other_features: "OtherFeatures",
+        comment: "Comment",
+        url_thumbnail: "UrlThumbnail",
+        linked_authorities: [],
 
     })
 
 
     const setInputValue = (newInputs) => {
-
-
         setInputs({
             Name: newInputs.name,
             Scope_note: newInputs.scope_note,
@@ -98,72 +97,14 @@ const useCategoryForm = (callback) => {
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
     }
 
-    // Handle the adding of an authority to inputs.Linked_authorities
-    const addLinked_authorities = (author) => {
-        setInputs(inputs => ({ ...inputs, Linked_authorities: [...inputs.Linked_authorities, author] }));
-    }
-    const addSee_Also = (category) => {
-        setInputs(inputs => ({ ...inputs, See_also: [...inputs.See_also, category] }));
-    }
-
-    const setBroader_term = (authority) => {
-        setInputs(inputs => (
-            {
-                ...inputs,
-                Broader_term: {
-                    id: authority.id.split('"')[1],
-                    Label: authority.AuthorityName
-                }
-            }
-        )
-        )
-    }
-    const unsetBroader_term = () => {
-        setInputs(inputs => (
-            {
-                ...inputs,
-                Broader_term: {
-                    id: "",
-                    Label: ""
-                }
-            }
-        )
-        )
-    }
-
-    const setSee = (authority) => {
-        setInputs(inputs => (
-            {
-                ...inputs,
-                See: {
-                    id: authority.id.split('"')[1],
-                    Label: authority.AuthorityName
-                }
-            }
-        )
-        )
-    }
-    const unsetSee = () => {
-        setInputs(inputs => (
-            {
-                ...inputs,
-                See: {
-                    id: "",
-                    Label: ""
-                }
-            }
-        )
-        )
-    }
     // Handle state change of the authority links
     const OnAuthorityLinkChange = (index, authorityLink) => {
-
         const Linked_authoritiesMutated = [...inputs.Linked_authorities]
         Linked_authoritiesMutated[index] = authorityLink
         setInputs(inputs => ({ ...inputs, Linked_authorities: Linked_authoritiesMutated }));
     }
     // a state containing which callback will be used when an authority is selected in the modal
-    const [HandleChosenAuthority, setHandleChosenAuthority] = useState(() => addLinked_authorities)
+    const [HandleChosenAuthority, setHandleChosenAuthority] = useState(() => console.log("called"))
 
     // a state containing which authity type is seleced in the modal
     const [ModalAuthorityType, setModalAuthorityType] = useState(0)
@@ -172,38 +113,19 @@ const useCategoryForm = (callback) => {
     const [open, setOpen] = React.useState(false);
 
     // if the modal is opened to add authority links
-    const handleOpen = () => {
-        setModalAuthorityType(0)
-        setHandleChosenAuthority(() => addLinked_authorities)
+    const handleOpen = (authorityType, HandleChoosenAuthority, ) => {
+        setModalAuthorityType(authorityType)
+        setHandleChosenAuthority(() => HandleChoosenAuthority)
         setOpen(true);
     };
 
-    // if the modal is opened to set a broader term
-    const handleOpenBroader_term = () => {
-        setModalAuthorityType(20)
-        setHandleChosenAuthority(() => setBroader_term)
-        setOpen(true);
-    };
-    // if the modal is opened to set the See field
-    const handleOpenSee = () => {
-        setModalAuthorityType(20)
-        setHandleChosenAuthority(() => setSee)
-        setOpen(true);
-    };
-
-    const handleOpenSee_Also = () => {
-        setModalAuthorityType(20)
-        setHandleChosenAuthority(() => addSee_Also)
-        setOpen(true);
-    };
     const handleClose = () => {
         setOpen(false);
     };
 
-    const [insertCategory] = useMutation(INSERT_CATEGORY, {
+    const [insertUniformTitle] = useMutation(INSERT_UNIFORM_TITLE, {
         onCompleted: () => {
-            Router.push("/admin/authorities/headings")
-
+            Router.push("/admin/authorities/uniform_title")
         },
         onError: (error) => {
             alert(error.message);
@@ -212,51 +134,16 @@ const useCategoryForm = (callback) => {
 
 
 
-    const onAddHandler = (e,
-        Name,
-        Scope_note,
-        Comment,
-        Broader_term,
-        See,
-        See_also,
-        Authority_number,
-        URL_thumbnail,
-        Linked_authorities) => {
-        e.preventDefault();
-
-        const category = {
-            Name,
-            Scope_note,
-            Comment,
-            See_also: See_also.map((authority) => {
-                return authority.id.split('"')[1]
-            }),
-            Authority_number,
-            URL_thumbnail,
-            Linked_authorities: Linked_authorities.map((authority) => {
-                return {
-                    Linked_Authority_Id: authority.id.split('"')[1],
-                    Linked_Authority_Type: authority.Authority_Type,
-                    Start: authority.Start,
-                    End: authority.End,
-                    Comment: authority.Comment,
-                    LinkType: authority.LinkType,
-                }
-            }),
-        }
-
-
-        if (Broader_term !== "") {
-            category.Broader_term = Broader_term
-        }
-        if (See !== "") {
-            category.See = See
-        }
-
-
-        insertCategory({
-            variables: category
+    const onAddHandler = () => {
+        const uniformTitle = inputs
+        console.log("uniformTitle",uniformTitle);
+        
+        insertUniformTitle({
+            variables: {
+                UniformTitle: uniformTitle
+            }
         });
+        
     }
     return {
         inputs,
@@ -266,11 +153,6 @@ const useCategoryForm = (callback) => {
         handleClose,
         OnAuthorityLinkChange,
         handleOpen,
-        handleOpenSee,
-        handleOpenBroader_term,
-        handleOpenSee_Also,
-        unsetBroader_term,
-        unsetSee,
         open,
         onAddHandler,
         setInputValue,

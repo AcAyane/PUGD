@@ -35,8 +35,8 @@ const DatePicker = ({ label, value, ...props }) => {
 
 
         <div className="input-field col s12">
-            <input id={id} type="text" className="datepicker" ref={datePickerElement} {...props} value={value}/>
-   
+            <input id={id} type="text" className="datepicker" ref={datePickerElement} {...props} value={value} />
+
             <label htmlFor={id} className={value !== "" ? "active" : ""}>{label}</label>
         </div>
 

@@ -3,9 +3,7 @@ import React from 'react';
 import AddCategoryForm from '../../../../components/admin/authorities/category/AddCategoryForm';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 
-import Card from '../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
-
+import Card from '../../../../components/ui/Card/Card'; 
 
 const CategoryPage = () => {
 
@@ -25,4 +23,7 @@ const CategoryPage = () => {
 
 
 
-export default WithAdminLayout(CategoryPage);
+import AdminLayout from '../../../../components/adminLayout';
+CategoryPage.Layout = AdminLayout
+export default CategoryPage; 
+ 

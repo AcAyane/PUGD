@@ -1,11 +1,9 @@
 import React from 'react';
 import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
 
-import ModifyCategoryForm from '../../../../../components/admin/authorities/category/ModifyCategoryForm';
+import ModifyUniformTitleForm from '../../../../../components/admin/authorities/uniform_title/ModifyUniformTitleForm';
 
 import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
 
 // import {parse} from 'graphql';
 
@@ -13,10 +11,10 @@ const ModifyAuthorPage = () => {
 
     return (
         <div className="animate fadeLeft">
-            <AuthorityHeader Authority="Authors" />
+            <AuthorityHeader Authority="Uniform Title" />
             <Card >
-                <h5 >Modification d'un auteur</h5>
-                <ModifyCategoryForm />
+                <h5 >Modification d'un Uniform Title</h5>
+                <ModifyUniformTitleForm />
                 <br /><br />
             </Card>
         </div> || <div>Please provide a valid Id</div>
@@ -24,10 +22,9 @@ const ModifyAuthorPage = () => {
     );
 };
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyAuthorPage))
-
-
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyAuthorPage.Layout = AdminLayout
+export default ModifyAuthorPage;
 
 //     const GET_AUTHOR = parse(`
 //     query(

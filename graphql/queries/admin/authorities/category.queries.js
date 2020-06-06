@@ -9,7 +9,7 @@ query(
   $Authority_number : Int,
   $URL_thumbnail : String,
 ){
-category(
+  category_authority(
   Id:$Id
   Name:$Name,
   Scope_note:$Scope_note,

@@ -15,6 +15,8 @@ const ListUniformTitleComponent = ({ uniform_titles, AddAuthorityLink }) => {
     //         alert(error.message);
     //     }
     // });
+    console.log(uniform_titles);
+    
     return (
         <React.Fragment>
             {

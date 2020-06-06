@@ -3,9 +3,7 @@ import AuthorityHeader from '../../../../../components/admin/authorities/shared/
 
 import ModifyCategoryForm from '../../../../../components/admin/authorities/category/ModifyCategoryForm';
 
-import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
+import Card from '../../../../../components/ui/Card/Card'; 
 
 // import {parse} from 'graphql';
 
@@ -23,10 +21,12 @@ const ModifyAuthorPage = () => {
 
     );
 };
+ 
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyAuthorPage.Layout = AdminLayout
+export default ModifyAuthorPage; 
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyAuthorPage))
-
+ 
 
 
 //     const GET_AUTHOR = parse(`

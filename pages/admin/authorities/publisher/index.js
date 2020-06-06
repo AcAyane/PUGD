@@ -4,9 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchPublisherComponent from '../../../../components/admin/authorities/publisher/SearchPublisherComponent';
 import ListPublisherComponent from '../../../../components/admin/authorities/publisher/ListPublisherComponent';
-import Card from '../../../../components/ui/Card/Card'
-import { withApollo } from '../../../../shared/apollo';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
+import Card from '../../../../components/ui/Card/Card' 
 
 const PublisherPage = () => {
 
@@ -34,5 +32,7 @@ const PublisherPage = () => {
 };
 
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(PublisherPage));
+import AdminLayout from '../../../../components/adminLayout';
+PublisherPage.Layout = AdminLayout
+export default PublisherPage; 
+  

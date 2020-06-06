@@ -4,9 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchCategoryComponent from '../../../../components/admin/authorities/category/SearchCategoryComponent';
 import ListCategoryComponent from '../../../../components/admin/authorities/category/ListCategoryComponent';
-import Card from '../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../shared/apollo';
+import Card from '../../../../components/ui/Card/Card'; 
 
 const CategoryPage = () => {
 
@@ -29,4 +27,8 @@ const CategoryPage = () => {
         </div>
     );
 }; 
-export default WithAdminLayout(withApollo({ ssr: true })((CategoryPage)));
+
+import AdminLayout from '../../../../components/adminLayout';
+CategoryPage.Layout = AdminLayout
+export default CategoryPage; 
+ 

@@ -3,9 +3,7 @@ import Card from '../../../../components/ui/Card/Card';
 
 import AddPublisherForm from '../../../../components/admin/authorities/publisher/AddPublisherForm';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
-
+ 
 
 const AuthorPage = () => {
 
@@ -22,5 +20,7 @@ const AuthorPage = () => {
 };
 
  
-
-export default  WithAdminLayout(AuthorPage);
+import AdminLayout from '../../../../components/adminLayout';
+AuthorPage.Layout = AdminLayout
+export default AuthorPage; 
+ 

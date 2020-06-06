@@ -1,35 +1,28 @@
 import React from 'react';
-import { UPDATE_AUTHOR } from '../../../../../graphql/mutations/admin/authorities/author.mutations';
-import { GET_AUTHOR } from '../../../../../graphql/queries/admin/authorities/author.queries';
-import { useMutation, useQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
-
 import ModifyAuthorForm from '../../../../../components/admin/authorities/author/ModifyAuthorForm';
-import Router from 'next/router';
 import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
-
+import i18next from '../../../../../components/admin/localisation/i18nextInit';
 // import {parse} from 'graphql';
 
 const ModifyAuthorPage = () => {
- 
+
     return (
         <div className="animate fadeLeft">
             <AuthorityHeader Authority="Authors" />
             <Card >
-                <h5 >Modification d'un auteur</h5>
+                <h5 >{i18next.t("modifyAuthor")}</h5>
                 <ModifyAuthorForm />
                 <br /><br />
             </Card>
-        </div> || <div>Please provide a valid Id</div>
+        </div> || <div>{i18next.t("validId")}</div>
 
     );
 };
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyAuthorPage))
-
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyAuthorPage.Layout = AdminLayout
+export default ModifyAuthorPage;
 
 
 //     const GET_AUTHOR = parse(`

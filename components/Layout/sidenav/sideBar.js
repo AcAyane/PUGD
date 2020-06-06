@@ -42,7 +42,15 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
   // Element ref to init the collapsible
   const collapsibleHeader = useRef();
   useEffect(() => {
-    var instances = M.Collapsible.init(collapsibleHeader.current);
+    var instances = M.Collapsible.init(collapsibleHeader.current,
+      {
+        accordion:false,
+        onOpenStart: ()=>disableWindowScroll(),
+        onOpenEnd: ()=>enableWindowScroll(),
+        onCloseStart: ()=>disableWindowScroll(),
+        onCloseEnd: ()=>enableWindowScroll(),
+
+      });
   }, [])
   return (
     <aside className={`sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full sidenav-active-rounded ${collapsedClass} ${hoverClass}`}
@@ -71,7 +79,7 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
         data-collapsible="menu-accordion"
         ref={collapsibleHeader}
       >
-      
+
         {sidebarItems &&
           <React.Fragment>
             <SideBarNavigationHeader Label={header} />
@@ -99,3 +107,21 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
   )
 }
 export default sideBar
+
+if(typeof window !== "undefined"){
+  var winX = null, winY = null;
+window.addEventListener('scroll', function () {
+  if (winX !== null && winY !== null) {
+    window.scrollTo(winX, winY);
+  }
+});
+
+}
+function disableWindowScroll() { 
+  winX = window.scrollX;
+  winY = window.scrollY;
+}
+function enableWindowScroll() {
+  winX = null;
+  winY = null;
+}

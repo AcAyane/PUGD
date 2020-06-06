@@ -4,10 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchClassNumberComponent from '../../../../components/admin/authorities/class_number/SearchClassNumberComponent';
 import ListClassNumberComponent from '../../../../components/admin/authorities/class_number/ListClassNumberComponent';
-import Card from '../../../../components/ui/Card/Card';
-import { withApollo } from '../../../../shared/apollo';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
-
+import Card from '../../../../components/ui/Card/Card'; 
 const ClassNumberPage = () => {
 
     const [getClassNumberAllFields, ClassNumberResponse] = useLazyQuery(GET_CLASS_NUMBER);
@@ -30,5 +27,6 @@ const ClassNumberPage = () => {
     );
 };
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ClassNumberPage));
+import AdminLayout from '../../../../components/adminLayout';
+ClassNumberPage.Layout = AdminLayout
+export default ClassNumberPage; 

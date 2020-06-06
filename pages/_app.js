@@ -1,18 +1,28 @@
-import React from 'react';
-import App from 'next/app';
-import protect from '../shared/protect'; 
+import React from "react";
+import App from "next/app";
+
+import Protect from "../shared/protect";
+import { withApollo } from "../shared/apollo";
+
+
+
+
+
+
+const Nolayout = ({ children }) => <React.Fragment>{children}</React.Fragment>;
 class MyApp extends App {
   render() {
-
-
-    const { Component, pageProps, router } = this.props;
-
-
+    const { Component, pageProps, router } = this.props; 
+    
+    const Layout = Component.Layout || Nolayout;
 
     return (
-      <Component {...pageProps} />
-    )
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    );
   }
-} 
-// export default protect(MyApp);
-export default MyApp;
+}
+
+// export default withApollo({ ssr: true })(Protect(MyApp));
+export default withApollo({ ssr: true })(MyApp);

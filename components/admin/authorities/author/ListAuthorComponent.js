@@ -18,7 +18,7 @@ const ListAuthorComponent = ({ authors, AddAuthorityLink, updateCache }) => {
     });
     return (
         <React.Fragment>
-            {
+            {authors &&
                 authors.map((row) => (
 
                     <Grid key={row._id}>

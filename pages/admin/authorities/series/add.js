@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../../../../components/ui/Card/Card';
 import AddSeriesForm from '../../../../components/admin/authorities/series/AddSeriesForm';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
+ 
 
 const AuthorPage = () => {
     return (
@@ -18,6 +18,9 @@ const AuthorPage = () => {
     );
 };
 
-
-
-export default WithAdminLayout(AuthorPage);
+ 
+import AdminLayout from '../../../../components/adminLayout';
+AuthorPage.Layout = AdminLayout
+export default AuthorPage; 
+ 
+ 

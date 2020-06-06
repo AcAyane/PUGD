@@ -5,13 +5,17 @@ import Link from 'next/link';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
 import GridElement from '../../../ui/Grid/GridElement';
-const SearchAuthorComponent = ({ SearchOnly, getAuthorAllFields }) => {
+const SearchAuthorComponent = ({ SearchOnly, getAuthorAllFields }) => { 
+    
     const [All_Fields, setAll_Fields] = useState("")
     // const [Index_Name, setIndex_Name] = useState("")
     const [Author_Type, setAuthor_Type] = useState(0)
     const [searchWith, setSearchWith] = useState(10)
     const SearchClickHandler = (e) => {
+
+
         e.preventDefault();
+        e.stopPropagation();
         const Author = { Author_Type }
         Author_Type !== 0 ? Author.Author_Type = Author_Type : undefined
         searchWith !== 10 ? Author.All_Fields = All_Fields : Author.IndexName_Auth = All_Fields
@@ -72,12 +76,10 @@ const SearchAuthorComponent = ({ SearchOnly, getAuthorAllFields }) => {
 
             </Grid>
             <br />
-            <Button onClick={(e) => SearchClickHandler(e)}>Rechercher</Button>
+            <Button onClick={(e) => SearchClickHandler(e)}>Rechercher</Button> 
             {!SearchOnly &&
                 <Link href="/admin/authorities/author/add">
-
                     <Button >Ajouter Auteur</Button>
-
                 </Link>
             }
         </React.Fragment>

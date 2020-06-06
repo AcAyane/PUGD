@@ -3,9 +3,7 @@ import AuthorityHeader from '../../../../../components/admin/authorities/shared/
 
 import ModifyCollectionTitleForm from '../../../../../components/admin/authorities/collection_title/ModifyCollectionTitleForm';
 
-import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
+import Card from '../../../../../components/ui/Card/Card'; 
 
 // import {parse} from 'graphql';
 
@@ -23,6 +21,8 @@ const ModifyCollectionTitlePage = () => {
 
     );
 };
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyCollectionTitlePage.Layout = AdminLayout
+export default ModifyCollectionTitlePage; 
 
-
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyCollectionTitlePage))
+ 

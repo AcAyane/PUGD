@@ -3,10 +3,7 @@ import AuthorityHeader from '../../../../../components/admin/authorities/shared/
 
 import ModifyPublisherForm from '../../../../../components/admin/authorities/publisher/ModifyPublisherForm';
 
-import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
-
+import Card from '../../../../../components/ui/Card/Card'; 
 const ModifyPublisherPage = () => {
 
     return (
@@ -22,5 +19,9 @@ const ModifyPublisherPage = () => {
     );
 };
 
+ 
+import AdminLayout from '../../../../../components/adminLayout';
+ModifyPublisherPage.Layout = AdminLayout
+export default ModifyPublisherPage; 
 
-export default WithAdminLayout(withApollo({ ssr: true })(ModifyPublisherPage))
+ 

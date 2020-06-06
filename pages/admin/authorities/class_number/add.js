@@ -4,7 +4,7 @@ import Card from '../../../../components/ui/Card/Card';
 
 import AddClassNumberForm from '../../../../components/admin/authorities/class_number/AddClassNumberForm';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
+ 
 
 const AddClassNumber = () => {
 
@@ -20,6 +20,7 @@ const AddClassNumber = () => {
         </div>
     );
 };
+import AdminLayout from '../../../../components/adminLayout';
+AddClassNumber.Layout = AdminLayout
+export default AddClassNumber; 
  
-
-export default WithAdminLayout(AddClassNumber);

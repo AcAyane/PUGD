@@ -5,21 +5,23 @@ import AuthorityHeader from '../../../../components/admin/authorities/shared/aut
 import SearchAuthorComponent from '../../../../components/admin/authorities/author/SearchAuthorComponent';
 import ListAuthorComponent from '../../../../components/admin/authorities/author/ListAuthorComponent';
 import Card from '../../../../components/ui/Card/Card';
-import { withApollo } from '../../../../shared/apollo';
-import WithAdminLayout from '../../../../shared/WithAdminLayout';
+import i18next from '../../../../components/admin/localisation/i18nextInit';
 
-const AuthorPage = (props) => { 
-    const [getAuthorAllFields, { error, data ,refetch}] = useLazyQuery(GET_AUTHOR);
+
+
+const AuthorPage = (props) => {
+
+    const [getAuthorAllFields, { error, data, refetch }] = useLazyQuery(GET_AUTHOR);
     return (
         <div className="animate fadeLeft">
 
-            <AuthorityHeader Authority="Authors" />
+            <AuthorityHeader Authority={i18next.t("authorHeader")} />
 
             <Card  >
                 <SearchAuthorComponent getAuthorAllFields={getAuthorAllFields} />
             </Card>
             <Card  >
-                <h4 className="card-title">Recherche : Auteurs</h4>
+                <h4 className="card-title">{i18next.t("findAuthor")}</h4> 
                 {error ? <div color="danger">{String(error)}</div> : null}
                 {data &&
                     <ListAuthorComponent authors={data.author} updateCache={refetch} />
@@ -29,4 +31,6 @@ const AuthorPage = (props) => {
         </div>
     );
 };
-export default WithAdminLayout(withApollo({ ssr: true })(AuthorPage)); 
+import AdminLayout from '../../../../components/adminLayout';
+AuthorPage.Layout = AdminLayout
+export default AuthorPage  

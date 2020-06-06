@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
-import Router from 'next/router';
+import  Router from 'next/router';
 
 
 const Home = () => {
 
-
-  if (typeof window !== "undefined")
-    Router.push("/admin/authorities")
-
+  useEffect(() => {
+    if (typeof window !== "undefined")
+    Router.push("/admin/circulation")
+  })
   return (
     <div>
-      Main platform page
+        Main platform page
     </div>
 
 

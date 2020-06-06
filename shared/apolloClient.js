@@ -28,15 +28,6 @@ export default function createApolloClient(initialState, ctx) {
     ssrMode: Boolean(ctx),
     link:httpLink,
     cache: new InMemoryCache().restore(initialState),
-    defaultOptions:{
-      watchQuery: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-      query: {
-        fetchPolicy: 'no-cache',
-        errorPolicy: 'all',
-      },
-    }
+    
   })
 }
