@@ -45,11 +45,7 @@ const SidebarItems = {
         },
         {
           Label: "Uniform Titles",
-<<<<<<< HEAD
           href: "/admin/authorities/uniform_title",
-=======
-          href: "/admin/authorities/uniform-titles",
->>>>>>> develop
         },
         {
           Label: "Class number",

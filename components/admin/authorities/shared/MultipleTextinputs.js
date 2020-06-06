@@ -1,19 +1,8 @@
 import React from 'react';
-
-
-<<<<<<< HEAD
 import RoundButton from '../../../ui/RoundButton/RoundButton';
 import GridElement from '../../../ui/Grid/GridElement';
 import TextBox from '../../../ui/TextBox';
 import Grid from '../../../ui/Grid/Grid';
-=======
-import RoundButton from '@/components/ui/RoundButton/RoundButton';
-import GridElement from '@/components/ui/Grid/GridElement';
-import TextBox from '@/components/ui/TextBox';
-import Grid from '@/components/ui/Grid/Grid';
->>>>>>> develop
-
-
 const MultipleTextinputs = ({ Title = "Title", ItemsList = [], onElementChange }) => {
 
     const handleInputChange = (e) => {

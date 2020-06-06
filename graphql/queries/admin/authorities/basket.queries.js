@@ -3,7 +3,6 @@ import gql from 'graphql-tag';
 const GET_BASKET = gql`
 query($Basket:BasketInputType){
   basket(basket:$Basket){
-<<<<<<< HEAD
 		_id
     basket_name
     basket_color
@@ -22,14 +21,6 @@ query($Basket:BasketInputType){
           } 
       }
     }
-=======
-    _id
-    basket_name
-    basket_note
-    basket_type
-    basket_color
-    basket_elements
->>>>>>> develop
   }
 }
 `;

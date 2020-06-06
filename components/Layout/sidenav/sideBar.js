@@ -126,5 +126,21 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
     </aside>
   );
 };
+if(typeof window !== "undefined"){
+  var winX = null, winY = null;
+window.addEventListener('scroll', function () {
+  if (winX !== null && winY !== null) {
+    window.scrollTo(winX, winY);
+  }
+});
 
+}
+function disableWindowScroll() { 
+  winX = window.scrollX;
+  winY = window.scrollY;
+}
+function enableWindowScroll() {
+  winX = null;
+  winY = null;
+}
 export default sideBar;

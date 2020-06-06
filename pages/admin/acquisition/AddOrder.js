@@ -3,7 +3,6 @@ import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import * as Yup from "yup";
-<<<<<<< HEAD
 import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -15,19 +14,6 @@ import MaterialTable from "material-table-formik";
 import Container from "../../../components/ui/Container";
 import ButtonS from "../../../components/ui/ButtonSubmit";
 import AdminLayout from "../../../components/adminLayout";
-=======
-import { InsertOrder } from "@/graphql/mutations/acquisition/order";
-import { InsertOrderLine } from "@/graphql/mutations/acquisition/orderline";
-import { useMutation, useQuery } from "@apollo/react-hooks";
-import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
-import DatePicker from "@/components/ui/DatePicker/DatePicker";
-import GridElement from "@/components/ui/Grid/GridElement";
-import Grid from "@/components/ui/Grid/grid";
-import MaterialTable from "material-table-formik";
-import Container from "@/components/ui/Container";
-import ButtonS from "@/components/ui/ButtonSubmit";
-import AdminLayout from "@/components/adminLayout";
->>>>>>> develop
 import Router from "next/router";
 
 const ObjectId = (
@@ -55,10 +41,6 @@ const initialFormData = {
   provider: "zaeaze",
   order_lines: [OrderID2],
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 // $order_lines: [String!]!
 const b1 = {
   _id: OrderID2,

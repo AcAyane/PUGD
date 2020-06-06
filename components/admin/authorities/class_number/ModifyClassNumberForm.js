@@ -1,17 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-import Button from '../../../ui/Button';
-import { UPDATE_CLASS_NUMBER } from '../../../../graphql/mutations/admin/authorities/class_number.mutations';
-import { GET_CLASS_NUMBER } from '../../../../graphql/queries/admin/authorities/class_number.queries';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
-import useClassNumberForm from './useClassNumberForm';
-import TextBox from '../../../ui/TextBox';
-import { useMutation, useQuery } from '@apollo/react-hooks';
-=======
 import Button from '@/components/ui/Button';
 import { UPDATE_CLASS_NUMBER } from '@/graphql/mutations/admin/authorities/class_number.mutations';
 import { GET_CLASS_NUMBER } from '@/graphql/queries/admin/authorities/class_number.queries';
@@ -22,9 +9,7 @@ import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
 import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useClassNumberForm from './useClassNumberForm';
 import TextBox from '@/components/ui/TextBox';
-import { withApollo } from '@/shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
->>>>>>> develop
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyClassNumberForm = () => {
@@ -97,12 +82,6 @@ const ModifyClassNumberForm = () => {
 
 
         }
-<<<<<<< HEAD
-
-=======
-     
->>>>>>> develop
-
         console.log({ variables: class_number })
 
         updateClassNumber({ variables: class_number })

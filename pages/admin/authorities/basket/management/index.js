@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import AdminLayout from '../../../../../components/adminLayout';
-import { GET_BASKET } from '../../../../../graphql/queries/admin/authorities/basket.queries';
-import { useQuery } from '@apollo/react-hooks';
-
-import ListBasketComponent from '../../../../../components/admin/authorities/basket/ListBasketComponent';
-import Card from '../../../../../components/ui/Card/Card';
-import WithAdminLayout from '../../../../../shared/WithAdminLayout';
-import { withApollo } from '../../../../../shared/apollo';
-import CollapsibleHeader from '../../../../../components/ui/Collapsible/CollapsibleHeader';
-import Collapsible from '../../../../../components/ui/Collapsible/Collapsible';
-import CollapsibleBody from '../../../../../components/ui/Collapsible/CollapsibleBody';
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
-import Table from '../../../../../components/ui/Table/Table';
-=======
 import React from 'react';
 import AdminLayout from '@/components/adminLayout';
 import { GET_BASKET } from '@/graphql/queries/admin/authorities/basket.queries';
@@ -23,13 +7,9 @@ import ListBasketComponent from '@/components/admin/authorities/basket/ListBaske
 import Card from '@/components/ui/card/card';
 import WithAdminLayout from '@/shared/WithAdminLayout';
 import { withApollo } from '@/shared/apollo';
->>>>>>> develop
 
 
 const AuthorPage = () => {
-
-<<<<<<< HEAD
-    
     const [baskets, setBaskets] = useState({})
 
     const { loading, error, data } = useQuery(
@@ -52,38 +32,18 @@ const AuthorPage = () => {
                 setBaskets(object);
                 console.log(object);
 
-=======
-    const { loading, error, data } = useQuery(
-        GET_BASKET,
-        {
-            variables: {
-                Basket: {
-                    basket_name: "test"
-                }
-            },
-            onCompleted: (data) => {
-                console.log(data);
-
->>>>>>> develop
             }
         });
 
     return (
-<<<<<<< HEAD
-
         <div className="animate fadeLeft">
             <AuthorityHeader Authority="Paniers Gestion : Gestion des paniers" />
             {/* <Card  >
-=======
-        <div className="animate fadeLeft">
-            <Card  >
->>>>>>> develop
                 <h4 className="card-title">Baskets</h4>
                 {error ? <div color="danger">{String(error)}</div> : null}
                 {data &&
                     <ListBasketComponent Baskets={data.basket} />
                 }
-<<<<<<< HEAD
             </Card> */}
 
 
@@ -125,9 +85,6 @@ const AuthorPage = () => {
                 }
             </Card>
 
-=======
-            </Card>
->>>>>>> develop
         </div>
     );
 };
@@ -136,9 +93,4 @@ const AuthorPage = () => {
 AuthorPage.Layout = AdminLayout
 
 // export default withApollo({ ssr: true })(AuthorPage);
-<<<<<<< HEAD
-export default WithAdminLayout(withApollo({ ssr: true })(AuthorPage));
-=======
-export default WithAdminLayout(withApollo({ ssr: true })(AuthorPage)); 
- 
->>>>>>> develop
+export default AuthorPage;

@@ -1,10 +1,6 @@
 li .collapsible-header .collapsible-icon{
 transition: .3s;
-<<<<<<< HEAD
 /* line-height: 84px; */
-=======
-line-height: 84px;
->>>>>>> develop
 }
 li.active .collapsible-header .collapsible-icon{
     transform: rotate(90deg);
