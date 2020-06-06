@@ -18,7 +18,7 @@ const AuthorityHeader = ({ Authority }) => {
                     .uk-icon { 
                         margin-left:10px;
                     display:inline-block;
-                    } 
+                    }  
                     .header-container{
                         display: flex;
                     width: fit-content;
