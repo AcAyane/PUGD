@@ -1,9 +1,10 @@
 import React from 'react';
 
-import AddUniformTitleForm from '../../../../components/admin/authorities/uniform_title/AddUniformTitleForm';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
+import AddUniformTitleForm from '@/components/admin/authorities/uniform_title/AddUniformTitleForm';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 
-import Card from '../../../../components/ui/Card/Card'; 
+import Card from '@/components/ui/card/card'; 
+
 
 
 const UniformTitlePage = () => {
@@ -21,8 +22,6 @@ const UniformTitlePage = () => {
         </div>
     );
 };
-
-
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 UniformTitlePage.Layout = AdminLayout
 export default UniformTitlePage;  

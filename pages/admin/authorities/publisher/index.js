@@ -1,10 +1,10 @@
 import React from 'react';
-import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
+import { GET_PUBLISHER_ALL_FIELDS } from '@/graphql/queries/admin/authorities/publisher.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import SearchPublisherComponent from '../../../../components/admin/authorities/publisher/SearchPublisherComponent';
-import ListPublisherComponent from '../../../../components/admin/authorities/publisher/ListPublisherComponent';
-import Card from '../../../../components/ui/Card/Card' 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchPublisherComponent from '@/components/admin/authorities/publisher/SearchPublisherComponent';
+import ListPublisherComponent from '@/components/admin/authorities/publisher/ListPublisherComponent';
+import Card from '@/components/ui/Card/Card' 
 
 const PublisherPage = () => {
 
@@ -32,7 +32,7 @@ const PublisherPage = () => {
 };
 
 
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 PublisherPage.Layout = AdminLayout
 export default PublisherPage; 
   

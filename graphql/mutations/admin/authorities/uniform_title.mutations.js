@@ -10,21 +10,8 @@ $UniformTitle:UniformTitleInputType
 `;
 
 const UPDATE_UNIFORM_TITLE = gql`
-mutation(
-  $Id :String!,
-  $Name:String,
-  $Subject_description:String,
-  $Url_thumbnail:String,
-  $Linked_authorities: [AuthorityLinkInputType],
-){
-
-UpdateClassNumber(
-  _id:$Id,
-  Name: $Name ,
-  Url_thumbnail: $Url_thumbnail ,
-  Subject_description: $Subject_description ,
-  Linked_authorities: $Linked_authorities ,
-)
+mutation($Id: String!,$UniformTitle:UniformTitleInputType ){
+  UpdateUniformTitle(Id:$Id,UniformTitle:$UniformTitle)
 }
 `;
 

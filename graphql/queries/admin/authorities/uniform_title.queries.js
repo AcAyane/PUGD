@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const GET_UNIFORM_TITLE = gql`
 query(
-  $other_features: String
+$other_features: String
 $expression_of: [ID]
 $history_of_work: String
 $targeted_audience: String
@@ -62,7 +62,35 @@ targeted_completeness:$targeted_completeness,
 medium_of_performance:$medium_of_performance,
 interpreters:$interpreters,
 other_links:$other_links,}){
-_id
+  _id
+type
+nature
+name
+expression_of
+has_expression
+other_links
+authors
+interpreters
+form_text_of_work
+form_of_work_id
+date_of_work
+original_place_of_work
+subject_of_work
+targeted_completeness
+targeted_audience
+history_of_work
+medium_of_performance
+numeric_designation
+key_text
+key_id
+coordinate_system
+equinox
+form_subdivision
+other_features
+Comment
+url_thumbnail
+linked_authorities
+
   }
 }
 `;

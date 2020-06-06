@@ -1,9 +1,8 @@
 import React from 'react'; 
-import Card from '../../../../components/ui/Card/Card';
+import Card from '@/components/ui/card/card';
 
-import AddCollectionTitleForm from '../../../../components/admin/authorities/collection_title/AddCollectionTitleForm';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
- 
+import AddCollectionTitleForm from '@/components/admin/authorities/collection_title/AddCollectionTitleForm';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 
 
 const AddCollectionTitle = () => {
@@ -20,9 +19,7 @@ const AddCollectionTitle = () => {
         </div>
     );
 };
-
- 
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 AddCollectionTitle.Layout = AdminLayout
 export default AddCollectionTitle; 
  

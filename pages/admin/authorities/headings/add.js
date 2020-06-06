@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AddCategoryForm from '../../../../components/admin/authorities/category/AddCategoryForm';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
+import AddCategoryForm from '@/components/admin/authorities/category/AddCategoryForm';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 
-import Card from '../../../../components/ui/Card/Card'; 
+import Card from '@/components/ui/Card/Card'; 
 
 const CategoryPage = () => {
 
@@ -23,7 +23,7 @@ const CategoryPage = () => {
 
 
 
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 CategoryPage.Layout = AdminLayout
 export default CategoryPage; 
  

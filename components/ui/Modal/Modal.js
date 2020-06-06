@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-
 const Modal = ({label, children, open,onClose, ...props }) => {
     //The modal needs a unique id to work properly 
     const id = "modal" + Math.floor(Math.random() * 100000)

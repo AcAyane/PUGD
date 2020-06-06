@@ -1,11 +1,8 @@
 import React from 'react';
-
-import AuthorityHeader from '../../../../../components/admin/authorities/shared/authorityHeader';
-
-import ModifyAuthorForm from '../../../../../components/admin/authorities/author/ModifyAuthorForm';
-
-import Card from '../../../../../components/ui/Card/Card'; 
-
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import ModifyAuthorForm from '@/components/admin/authorities/author/ModifyAuthorForm';
+import Card from '@/components/ui/Card/Card';
+import i18next from '@/components/admin/localisation/i18nextInit';
 // import {parse} from 'graphql';
 
 const ModifyAuthorPage = () => {
@@ -14,19 +11,19 @@ const ModifyAuthorPage = () => {
         <div className="animate fadeLeft">
             <AuthorityHeader Authority="Authors" />
             <Card >
-                <h5 >Modification d'un auteur</h5>
+                <h5 >{i18next.t("modifyAuthor")}</h5>
                 <ModifyAuthorForm />
                 <br /><br />
             </Card>
-        </div> || <div>Please provide a valid Id</div>
+        </div> || <div>{i18next.t("validId")}</div>
 
     );
 };
 
-import AdminLayout from '../../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 ModifyAuthorPage.Layout = AdminLayout
 export default ModifyAuthorPage;
- 
+
 
 //     const GET_AUTHOR = parse(`
 //     query(

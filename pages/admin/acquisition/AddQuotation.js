@@ -3,18 +3,18 @@ import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import Router from "next/router";
-import DatePicker from "../../../components/ui/DatePicker/DatePicker";
+import DatePicker from "@/components/ui/DatePicker/DatePicker";
 import * as Yup from "yup";
-import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
-import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
+import { InsertOrder } from "@/graphql/mutations/acquisition/order";
+import { InsertOrderLine } from "@/graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
-import GridElement from "../../../components/ui/Grid/GridElement";
-import Grid from "../../../components/ui/Grid/grid";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
 import MaterialTable from "material-table-formik";
-import Container from "../../../components/ui/Container";
-import ButtonS from "../../../components/ui/ButtonSubmit";
-import AdminLayout from "../../../components/adminLayout";
+import Container from "@/components/ui/Container";
+import ButtonS from "@/components/ui/ButtonSubmit";
+import AdminLayout from "@/components/adminLayout";
 
 const ObjectId = (
   m = Math,

@@ -1,11 +1,11 @@
 import React from 'react';
-import { GET_SERIES_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/series.queries';
+import { GET_SERIES_ALL_FIELDS } from '@/graphql/queries/admin/authorities/series.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
 
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import SearchSeriesComponent from '../../../../components/admin/authorities/series/SearchSeriesComponent';
-import ListSeriesComponent from '../../../../components/admin/authorities/series/ListSeriesComponent';
-import Card from '../../../../components/ui/Card/Card' 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchSeriesComponent from '@/components/admin/authorities/series/SearchSeriesComponent';
+import ListSeriesComponent from '@/components/admin/authorities/series/ListSeriesComponent';
+import Card from '@/components/ui/Card/Card' 
 const SeriesPage = () => {
 
     const [getSeriesAllFields, SeriesResponse] = useLazyQuery(GET_SERIES_ALL_FIELDS);
@@ -29,7 +29,7 @@ const SeriesPage = () => {
 
 
  
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 SeriesPage.Layout = AdminLayout
 export default SeriesPage; 
  

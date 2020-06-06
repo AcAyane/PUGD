@@ -1,10 +1,10 @@
 import React from 'react';
-import { GET_SUB_SERIES_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/sub_series.queries';
+import { GET_SUB_SERIES_ALL_FIELDS } from '@/graphql/queries/admin/authorities/sub_series.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import SearchSubSeriesComponent from '../../../../components/admin/authorities/sub_series/SearchSubSeriesComponent';
-import ListSubSeriesComponent from '../../../../components/admin/authorities/sub_series/ListSubSeriesComponent';
-import Card from '../../../../components/ui/Card/Card'; 
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchSubSeriesComponent from '@/components/admin/authorities/sub_series/SearchSubSeriesComponent';
+import ListSubSeriesComponent from '@/components/admin/authorities/sub_series/ListSubSeriesComponent';
+import Card from '@/components/ui/Card/Card'; 
 
 const CategoryPage = () =>  { 
 
@@ -31,7 +31,7 @@ console.log(SubSeriesResponse);
     );
 };
  
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 CategoryPage.Layout = AdminLayout
 export default CategoryPage; 
  

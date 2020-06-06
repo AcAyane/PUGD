@@ -1,11 +1,12 @@
 import React from 'react';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import Button from '../../../ui/Button';
+
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import Button from '@/components/ui/Button';
 
 import useBasketForm from './useBasketForm';
-import TextBox from '../../../ui/TextBox';
-import SelectBox from '../../../ui/SelectBox';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
 
 const AddBasketForm = ({ onAddHandler, author }) => {
 
@@ -77,9 +78,8 @@ const AddBasketForm = ({ onAddHandler, author }) => {
                         <option value={6}>Panier de sous-collections</option>
                         <option value={7}>Panier de titres de série</option>
                         <option value={8}>Panier de titres uniformes</option>
-                        <option value={9}>Panier d'indexations décimales</option>
-                        <option value={10}>Panier de concepts</option>
-                        <option value={11}>Panier d'autorités personnalisées</option>
+                        <option value={9}>Panier d'indexations décimales</option> 
+
                     </SelectBox>
                 </GridElement>
 

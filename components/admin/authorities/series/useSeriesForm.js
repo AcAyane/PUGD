@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { INSERT_SERIES } from '../../../../graphql/mutations/admin/authorities/series.mutations';
+import { INSERT_SERIES } from '@/graphql/mutations/admin/authorities/series.mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 const useSeriesForm = (callback) => {

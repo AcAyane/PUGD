@@ -1,19 +1,19 @@
 import React from 'react';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import TextBox from '../../../ui/TextBox';
-import SelectBox from '../../../ui/SelectBox';
-import Collapsible from '../../../ui/Collapsible/Collapsible';
-import CollapsibleHeader from '../../../ui/Collapsible/CollapsibleHeader';
-import CollapsibleBody from '../../../ui/Collapsible/CollapsibleBody';
-import DatePicker from '../../../ui/DatePicker/DatePicker';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
+import Collapsible from '@/components/ui/Collapsible/Collapsible';
+import CollapsibleHeader from '@/components/ui/Collapsible/CollapsibleHeader';
+import CollapsibleBody from '@/components/ui/Collapsible/CollapsibleBody';
+import DatePicker from '@/components/ui/DatePicker/DatePicker';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
 const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => { 
     
     return <div>
         <Collapsible >
             <li>
-                <CollapsibleHeader>
+                <CollapsibleHeader headerHeight={83}>
                     <Grid>
                         <GridElement s={3}>
                             <TextBox

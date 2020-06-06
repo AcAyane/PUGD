@@ -1,22 +1,22 @@
 import React from 'react';
-import Card from '../../../../components/ui/Card/Card';
-
-import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
-import AddAuthorForm from '../../../../components/admin/authorities/author/AddAuthorForm';
+import Card from '@/components/ui/Card/Card';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import AddAuthorForm from '@/components/admin/authorities/author/AddAuthorForm';
+import i18next from '@/components/admin/localisation/i18nextInit';
 
 const AddAuthorPage = () => {
 
     return (
         <div className="animate fadeLeft">
-            <AuthorityHeader Authority="Authors" />
+            <AuthorityHeader Authority={i18next.t("authorHeader")} />
             <Card >
-                <h4 >Création d'un auteur</h4>
+                <h4 >{i18next.t("createAuthor")}</h4>
                 <AddAuthorForm />
                 <br /><br />
             </Card>
         </div>
     );
 };
-import AdminLayout from '../../../../components/adminLayout';
+import AdminLayout from '@/components/adminLayout';
 AddAuthorPage.Layout = AdminLayout
 export default AddAuthorPage;

@@ -1,9 +1,9 @@
 import React from 'react'
-import Icon from '../../../ui/Icon/Icon';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import GridElement from '../../../ui/Grid/GridElement';
+import Icon from '@/components/ui/Icon/Icon';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import GridElement from '@/components/ui/Grid/GridElement';
 import Router from 'next/router';
-import Grid from '../../../ui/Grid/Grid';
+import Grid from '@/components/ui/Grid/Grid';
 
 const ListCategoryComponent = ({ publishers, AddAuthorityLink }) => {
     return (

@@ -1,13 +1,13 @@
 import { Formik, Form, Field } from "formik";
 import React from "react";
 import * as Yup from "yup";
-import { InsertProvider } from "../../../graphql/mutations/acquisition/provider";
+import { InsertProvider } from "@/graphql/mutations/acquisition/provider";
 import { useMutation } from "@apollo/react-hooks";
-import GridElement from "../../../components/ui/Grid/GridElement";
-import Grid from "../../../components/ui/Grid/grid";
-import ButtonSubmit from "../../../components/ui/ButtonSubmit";
-import Container from "../../../components/ui/Container";
-import AdminLayout from "../../../components/adminLayout";
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
+import ButtonSubmit from "@/components/ui/ButtonSubmit";
+import Container from "@/components/ui/Container";
+import AdminLayout from "@/components/adminLayout";
 import Router from "next/router";
 
 const phoneRegExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
