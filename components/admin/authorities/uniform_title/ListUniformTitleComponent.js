@@ -1,8 +1,15 @@
 import React from 'react'
+<<<<<<< HEAD
 import Icon from '../../../ui/Icon/Icon';
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';
+=======
+import Icon from '@/components/ui/Icon/Icon';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+>>>>>>> develop
 import Router from 'next/router';
 import { useMutation } from '@apollo/react-hooks';
 
@@ -15,8 +22,11 @@ const ListUniformTitleComponent = ({ uniform_titles, AddAuthorityLink }) => {
     //         alert(error.message);
     //     }
     // });
+<<<<<<< HEAD
     console.log(uniform_titles);
     
+=======
+>>>>>>> develop
     return (
         <React.Fragment>
             {

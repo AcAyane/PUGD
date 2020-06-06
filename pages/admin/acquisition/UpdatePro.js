@@ -1,6 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import { Formik, Form, Field } from "formik";
+<<<<<<< HEAD
 import { GetOneProvider } from "../../../graphql/queries/acquisition/provider";
 import { UpdateProvider } from "../../../graphql/mutations/acquisition/provider";
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -10,6 +11,17 @@ import Grid from "../../../components/ui/Grid/grid";
 import ButtonSubmit from "../../../components/ui/ButtonSubmit";
 import Container from "../../../components/ui/Container";
 import AdminLayout from "../../../components/adminLayout";
+=======
+import { GetOneProvider } from "@/graphql/queries/acquisition/provider";
+import { UpdateProvider } from "@/graphql/mutations/acquisition/provider";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import * as Yup from "yup";
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
+import ButtonSubmit from "@/components/ui/ButtonSubmit";
+import Container from "@/components/ui/Container";
+import AdminLayout from "@/components/adminLayout";
+>>>>>>> develop
 
 const phoneRegExp = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 

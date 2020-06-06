@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+<<<<<<< HEAD
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 
@@ -7,6 +8,16 @@ import Button from '../../../ui/Button';
 import Link from 'next/link';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
+=======
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+
+import Button from '@/components/ui/Button';
+
+import Link from 'next/link';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
+>>>>>>> develop
 
 const SearchCollectionTitleComponent = ({ getCollectionTitleAllFields, SearchOnly }) => {
 

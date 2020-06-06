@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Button from '../../../ui/Button';
 import { UPDATE_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
 import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
@@ -8,6 +9,17 @@ import useAuthorForm from './useAuthorForm';
 import TextBox from '../../../ui/TextBox';
 import SelectBox from '../../../ui/SelectBox';
 import RoundButton from '../../../ui/RoundButton/RoundButton'; 
+=======
+import Button from '@/components/ui/Button';
+import { UPDATE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
+import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+import SearchAuthority from "@/components/admin/authorities/shared/SearchAuthor"
+import useAuthorForm from './useAuthorForm';
+import TextBox from '@/components/ui/TextBox';
+import SelectBox from '@/components/ui/SelectBox';
+import RoundButton from '@/components/ui/RoundButton/RoundButton'; 
+>>>>>>> develop
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 const ModifyAuthorForm = () => {

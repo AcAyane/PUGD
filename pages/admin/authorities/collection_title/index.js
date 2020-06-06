@@ -1,10 +1,19 @@
 import React from 'react';
+<<<<<<< HEAD
 import { GET_COLLECTION_TITLE } from '../../../../graphql/queries/admin/authorities/collection_title.queries';
 import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '../../../../components/admin/authorities/shared/authorityHeader';
 import SearchCollectionTitleComponent from '../../../../components/admin/authorities/collection_title/SearchCollectionTitleComponent';
 import ListCollectionTitleComponent from '../../../../components/admin/authorities/collection_title/ListCollectionTitleComponent';
 import Card from '../../../../components/ui/Card/Card'; 
+=======
+import { GET_COLLECTION_TITLE } from '@/graphql/queries/admin/authorities/collection_title.queries';
+import { useLazyQuery } from '@apollo/react-hooks';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+import SearchCollectionTitleComponent from '@/components/admin/authorities/collection_title/SearchCollectionTitleComponent';
+import ListCollectionTitleComponent from '@/components/admin/authorities/collection_title/ListCollectionTitleComponent';
+import Card from '@/components/ui/card/card'; 
+>>>>>>> develop
 
 const CollectionTitlePage = () => {
 
@@ -26,7 +35,11 @@ const CollectionTitlePage = () => {
         </div>
     );
 };
+<<<<<<< HEAD
 import AdminLayout from '../../../../components/adminLayout';
+=======
+import AdminLayout from '@/components/adminLayout';
+>>>>>>> develop
 CollectionTitlePage.Layout = AdminLayout
 export default CollectionTitlePage; 
   

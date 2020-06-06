@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import Button from '../../../ui/Button';
 import { UPDATE_SERIES } from '../../../../graphql/mutations/admin/authorities/series.mutations';
 import { GET_SERIES } from '../../../../graphql/queries/admin/authorities/series.queries';
@@ -10,6 +11,20 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useSeriesForm from './useSeriesForm';
 import TextBox from '../../../ui/TextBox';
 import { useMutation, useQuery } from '@apollo/react-hooks';
+=======
+import Button from '@/components/ui/Button';
+import { UPDATE_SERIES } from '@/graphql/mutations/admin/authorities/series.mutations';
+import { GET_SERIES } from '@/graphql/queries/admin/authorities/series.queries';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+import useSeriesForm from './useSeriesForm';
+import TextBox from '@/components/ui/TextBox';
+import { withApollo } from '@/shared/apollo';
+import { useMutation, useQuery, } from '@apollo/react-hooks';
+>>>>>>> develop
 import { useRouter } from 'next/router';
 
 const ModifySeriesForm = () => {

@@ -1,11 +1,20 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+<<<<<<< HEAD
 import Table from "../../../components/ui/Table/Table";
 import { GetOrders } from "../../../graphql/queries/acquisition/order";
 import CardTitle from "../../../components/ui/card/cardTitle";
 import Card from "../../../components/ui/card/card";
 import AdminLayout from "../../../components/adminLayout";
 import Button from "../../../components/ui/Button";
+=======
+import Table from "@/components/ui/Table/Table";
+import { GetOrders } from "@/graphql/queries/acquisition/order";
+import CardTitle from "@/components/ui/card/cardTitle";
+import Card from "@/components/ui/card/card";
+import AdminLayout from "@/components/adminLayout";
+import Button from "@/components/ui/Button";
+>>>>>>> develop
 
 const AllOrders = () => {
   function splitfunction(e) {

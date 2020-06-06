@@ -1,5 +1,6 @@
 import React from 'react';
 
+<<<<<<< HEAD
 import Grid from '../../../ui/Grid/Grid';
 import GridElement from '../../../ui/Grid/GridElement';
 import RoundButton from '../../../ui/RoundButton/RoundButton';
@@ -11,6 +12,19 @@ import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useCollectionTitleForm from './useCollectionTitleForm';
 import TextBox from '../../../ui/TextBox';
+=======
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import Button from '@/components/ui/Button';
+
+
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+
+import useCollectionTitleForm from './useCollectionTitleForm';
+import TextBox from '@/components/ui/TextBox'; 
+>>>>>>> develop
 
 const AddCollectionTitleForm = () => {
 

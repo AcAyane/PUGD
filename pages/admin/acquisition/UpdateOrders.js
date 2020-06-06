@@ -1,25 +1,44 @@
 import React, { useState, useMemo } from "react";
 import Router from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+<<<<<<< HEAD
 import { GetOrder } from "../../../graphql/queries/acquisition/order";
 import { GetAllOrderLines } from "../../../graphql/queries/acquisition/orderline";
 import { UpdateOrder } from "../../../graphql/mutations/acquisition/order";
+=======
+import { GetOrder } from "@/graphql/queries/acquisition/order";
+import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
+import { UpdateOrder } from "@/graphql/mutations/acquisition/order";
+>>>>>>> develop
 import {
   InsertOrderLine,
   UpdateOrderLine,
   DeleteOrderLine,
+<<<<<<< HEAD
 } from "../../../graphql/mutations/acquisition/orderline";
 import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
+=======
+} from "@/graphql/mutations/acquisition/orderline";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
+>>>>>>> develop
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
+<<<<<<< HEAD
 import GridElement from "../../../components/ui/Grid/GridElement";
 import Grid from "../../../components/ui/Grid/grid";
 import Container from "../../../components/ui/Container";
 import MaterialTable from "material-table-formik";
 import AdminLayout from "../../../components/adminLayout";
+=======
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
+import Container from "@/components/ui/Container";
+import MaterialTable from "material-table-formik";
+import AdminLayout from "@/components/adminLayout";
+>>>>>>> develop
 
 const options = [
   { value: "20/3/2020", label: "20/3/2020" },

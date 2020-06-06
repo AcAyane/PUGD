@@ -2,7 +2,11 @@ import gql from 'graphql-tag';
 
 const GET_UNIFORM_TITLE = gql`
 query(
+<<<<<<< HEAD
 $other_features: String
+=======
+  $other_features: String
+>>>>>>> develop
 $expression_of: [ID]
 $history_of_work: String
 $targeted_audience: String
@@ -62,6 +66,7 @@ targeted_completeness:$targeted_completeness,
 medium_of_performance:$medium_of_performance,
 interpreters:$interpreters,
 other_links:$other_links,}){
+<<<<<<< HEAD
   _id
 type
 nature
@@ -91,6 +96,9 @@ Comment
 url_thumbnail
 linked_authorities
 
+=======
+_id
+>>>>>>> develop
   }
 }
 `;

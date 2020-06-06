@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import AdminLayout from '../../../../../components/adminLayout';
 
 import { INSERT_BASKET } from '../../../../../graphql/mutations/admin/authorities/basket.mutations';
@@ -8,6 +9,17 @@ import AuthorityHeader from '../../../../../components/admin/authorities/shared/
 import Router from 'next/router';
 import AddBasketForm from '../../../../../components/admin/authorities/basket/AddBasketForm';
 import Card from '../../../../../components/ui/Card/Card';
+=======
+import AdminLayout from '@/components/adminLayout';
+
+import { INSERT_BASKET } from '@/graphql/mutations/admin/authorities/basket.mutations';
+import { useMutation } from '@apollo/react-hooks';
+import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
+
+import Router from 'next/router';
+import AddBasketForm from '@/components/admin/authorities/basket/AddBasketForm';
+import Card from '@/components/ui/card/card';
+>>>>>>> develop
 
 
 

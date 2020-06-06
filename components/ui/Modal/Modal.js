@@ -1,8 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react'
 
+<<<<<<< HEAD
 const Modal = React.memo(({label, children, open,onClose, ...props }) => { 
     //The modal needs a unique id to work properly 
     const id = "modal100"
+=======
+const Modal = ({label, children, open,onClose, ...props }) => {
+    //The modal needs a unique id to work properly 
+    const id = "modal" + Math.floor(Math.random() * 100000)
+>>>>>>> develop
     // the ref for the modal
     const modalElement = useRef();
     // initialize the modal
@@ -47,8 +53,12 @@ const Modal = React.memo(({label, children, open,onClose, ...props }) => {
             </style>
         </React.Fragment>
     )
+<<<<<<< HEAD
 },(p,n)=>{
     return false
 })  
+=======
+}
+>>>>>>> develop
 export default Modal
 
