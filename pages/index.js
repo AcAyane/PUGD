@@ -6,7 +6,7 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined")
-    Router.push("/admin/circulation")
+    Router.push("/admin/reporting")
   })
   return (
     <div>
