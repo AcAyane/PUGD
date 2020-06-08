@@ -1,6 +1,6 @@
 import React from 'react'
-import AdminLayout from '@/components/adminLayout'
-import Modal from '@/components/ui/Modal/Modal'
+import AdminLayout from 'components/adminLayout'
+import Modal from 'components/ui/Modal/Modal'
 const AuthoritiesHome = () => {
 
 

@@ -2,13 +2,10 @@ import gql from 'graphql-tag';
 
 const ALL_BORROWERS = gql`
     query{
-     GetAllBro{
+     getAllBorrowers{
             _id,
-            fullname,
-            gender,
-            email,
-            address,
-            birthday
+            last_name,
+            first_name,
         }
     }
 `;

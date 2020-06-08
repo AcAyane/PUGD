@@ -1,5 +1,4 @@
 import React from 'react'
-import BtnBadge from "@/components/ui/ui_badge";
 
 const Profile = ({ children,...props }) => {
 

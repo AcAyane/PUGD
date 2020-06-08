@@ -2,10 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
+      "components/*": [
         "components/*"
       ],
-      "@graphql/*": [
+      "graphql/*": [
         "graphql/*"
       ],
       "@shared/*": [

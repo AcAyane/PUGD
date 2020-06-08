@@ -1,6 +1,12 @@
 
 
-const formatdate = (DateObject) => {
+export const formatdate = (DateObject) => {
     return DateObject.getDate()+"-"+DateObject.getMonth()+"-"+DateObject.getFullYear()
 }
-export  default  formatdate
+
+export const splitfunction = (e) => {
+    return e
+        .split("(")[1]
+        .split(")")[0]
+        .replace(/^"(.*)"$/, "$1");
+}

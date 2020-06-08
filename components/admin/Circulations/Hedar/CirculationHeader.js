@@ -1,8 +1,8 @@
 import React from 'react'
-import Card from '@components/ui/card/card'
+import Card from 'components/ui/card/card'
 
 
-const CirculationHeader = ({CirculationModule, children}) => {
+const CirculationHeader = ({Title, children}) => {
 
     /*const module = Router.route.split('/')[2]*/
     /*console.log("router : ",AuthoritiesSideItems[module][1].Children[1].Label)
@@ -20,7 +20,7 @@ const CirculationHeader = ({CirculationModule, children}) => {
                     </i>
                     {/*todo fix it*/}
                     <h5 className=" uk-icon"> {/*{AuthoritiesSideItems[module][1].Label}*/} Circulation Module
-                        >> {CirculationModule}</h5>
+                        >> {Title}</h5>
                     <br/>
                 </div>
                 {children}

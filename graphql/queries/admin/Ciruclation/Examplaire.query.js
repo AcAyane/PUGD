@@ -1,12 +1,14 @@
 import gql from "graphql-tag";
-
+//todo complet this
 const EXAMPLAIR_BY_CODE = gql`
-    query($isbn: String!){
-        GetExamplaireByCodeBar(ISBN:$isbn){
+    query($code: String){
+        GetExamplaireByCodeBar(code_bar:$code){
             _id,
-            ISBN,
-          Title,
-          OtherTitle
+            BareCode,
+          Record{
+            Title
+          }
+         
         }
     }
 `;

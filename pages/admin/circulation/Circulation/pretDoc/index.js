@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import AdminLayout from '@/components/adminLayout'
+import AdminLayout from 'components/adminLayout'
 
-import TextBox from "@/components/ui/TextBox";
-import Button from "@/components/ui/Button";
+import TextBox from "components/ui/TextBox";
+import Button from "components/ui/Button";
 
 import {useLazyQuery} from "@apollo/react-hooks";
-import {BorrowersByName} from "@/graphql/queries/admin/Ciruclation/Borrowers.query";
-import Circulation from "@/components/admin/Circulations/Body/Body";
-import Null from "@/components/admin/Circulations/Handerls/Null";
-import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
+import {BorrowersByName} from "graphql/queries/admin/Ciruclation/Borrowers.query";
+import Circulation from "components/admin/Circulations/Body/Body";
+import Null from "components/admin/Circulations/Handerls/Null";
+import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
 
 import ListDoc from "./ListDoc";
 
