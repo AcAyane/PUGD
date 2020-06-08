@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import App from "next/app";
+import Router from "next/router";
 import Protect from "@/shared/protect";
 import withApollo from "@/shared/apollo";
 // import AdminLayout from '../components/adminLayout';
@@ -18,5 +19,5 @@ class MyApp extends App {
   }
 }
 
-// export default withApollo({ ssr: true })(Protect(MyApp));
-export default withApollo({ ssr: true })(MyApp);
+ export default withApollo({ ssr: true })(Protect(MyApp));
+//export default withApollo({ ssr: true })(MyApp);

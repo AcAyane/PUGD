@@ -1,10 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
 import AdminLayout from "@/components/adminLayout";
+import Router from "next/router";
 
 // import Router from "next/router";
 
 const Home = () => {
-  return <div>Main platform page</div>;
+  useEffect(() => {
+    console.log(Router.pathname)
+
+    if(Router.pathname === '/' ){
+      Router.push('/admin')
+    }
+    });
+
+
+
+  return null;
 };
 
 Home.Layout = AdminLayout;
