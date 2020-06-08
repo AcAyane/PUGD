@@ -10,7 +10,6 @@ import AddBasketForm from '@/components/admin/authorities/basket/AddBasketForm';
 import Card from '@/components/ui/card/card';
 
 
-
 const AuthorPage = () => {
 
     const [insertBasket] = useMutation(INSERT_BASKET, {

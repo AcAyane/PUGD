@@ -2,9 +2,12 @@ import React from "react";
 import Router from "next/router";
 
 const allowedRoutes = ["/auth/login", "/auth/register"];
+
 const protect = function(Child) {
+
   return class Higher extends React.Component {
     static async getInitialProps({ ctx }) {
+      console.log(ctx.pathname)
       if (allowedRoutes.includes(ctx.pathname)) {
         return { allowed: true };
       }

@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchCategoryComponent from '@/components/admin/authorities/category/SearchCategoryComponent';
 import ListCategoryComponent from '@/components/admin/authorities/category/ListCategoryComponent';
-import Card from '@/components/ui/card/card'; 
+import Card from '@/components/ui/Card/Card'; 
 
 const CategoryPage = () => {
 

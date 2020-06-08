@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchPublisherComponent from '@/components/admin/authorities/publisher/SearchPublisherComponent';
 import ListPublisherComponent from '@/components/admin/authorities/publisher/ListPublisherComponent';
-import Card from '@/components/ui/card/card' 
+import Card from '@/components/ui/Card/Card' 
 
 const PublisherPage = () => {
 

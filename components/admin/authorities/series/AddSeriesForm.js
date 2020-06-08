@@ -5,13 +5,12 @@ import GridElement from '@/components/ui/Grid/GridElement';
 import RoundButton from '@/components/ui/RoundButton/RoundButton';
 import Button from '@/components/ui/Button';
 
-import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor' 
-import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+import SimpleModal from '../shared/SearchAuthor'
+import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 import useSeriesForm from './useSeriesForm';
 import TextBox from '@/components/ui/TextBox';
-import { withApollo } from '@/shared/apollo';
 
-const AddSeriesForm = ( ) => {
+const AddSeriesForm = () => {
     const onSubmitHandler = (event) => {
         event.preventDefault()
         onAddHandler(
@@ -23,7 +22,7 @@ const AddSeriesForm = ( ) => {
             inputs.URL_thumbnail,
             inputs.Linked_authorities)
     }
-    const { 
+    const {
         inputs,
         open,
         handleInputChange,

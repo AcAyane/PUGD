@@ -21,7 +21,6 @@ const ModifyAuthorPage = () => {
 
     );
 };
- 
 import AdminLayout from '@/components/adminLayout';
 ModifyAuthorPage.Layout = AdminLayout
 export default ModifyAuthorPage; 

@@ -136,6 +136,7 @@ const useCategoryForm = (callback) => {
 
     const onAddHandler = () => {
         const uniformTitle = inputs
+        console.log("uniformTitle",uniformTitle);
         insertUniformTitle({
             variables: {
                 UniformTitle: uniformTitle

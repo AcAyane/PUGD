@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Grid from '@/components/ui/Grid/Grid';
 import GridElement from '@/components/ui/Grid/GridElement';
 import RoundButton from '@/components/ui/RoundButton/RoundButton';

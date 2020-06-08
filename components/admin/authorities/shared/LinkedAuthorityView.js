@@ -13,7 +13,7 @@ const LinkedAuthorityView = ({ Authority, OnAuthorityLinkChange, index }) => {
     return <div>
         <Collapsible >
             <li>
-                <CollapsibleHeader>
+                <CollapsibleHeader headerHeight={83}>
                     <Grid>
                         <GridElement s={3}>
                             <TextBox

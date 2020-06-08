@@ -9,7 +9,6 @@ import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
 import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useSubSeriesForm from './useSubSeriesForm';
 import TextBox from '@/components/ui/TextBox';
-import { withApollo } from '@/shared/apollo';
 import { useMutation, useQuery, } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 

@@ -4,11 +4,11 @@ import GridElement from '@/components/ui/Grid/GridElement';
 import RoundButton from '@/components/ui/RoundButton/RoundButton';
 import Button from '@/components/ui/Button';
 
-import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
-import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
+import SimpleModal from '../shared/SearchAuthor'
+import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import useClassNumberForm from './useClassNumberForm';
-import TextBox from '@/components/ui/TextBox'; 
+import TextBox from '@/components/ui/TextBox';
 
 
 const AddClassNumberForm = () => {
@@ -73,7 +73,7 @@ const AddClassNumberForm = () => {
             &nbsp;
                 <RoundButton icon="add" size="30" onClick={handleOpen} />
             </h5>
-            
+
             <LinkedAuthorityListView
                 Linked_authorities={inputs.Linked_authorities}
                 OnAuthorityLinkChange={OnAuthorityLinkChange} />

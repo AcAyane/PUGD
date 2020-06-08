@@ -10,8 +10,7 @@ import LinkedAuthorityListView from '@/components/admin/authorities/shared/Linke
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
 import TextBox from '@/components/ui/TextBox';
-import { withApollo } from '@/shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyCategoryForm = () => {

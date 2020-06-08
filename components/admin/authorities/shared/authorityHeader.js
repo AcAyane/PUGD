@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '@/components/ui/card/card'
+import Card from '@/components/ui/Card/Card'
 const AuthorityHeader = ({ Authority }) => {
 
     return (
@@ -10,7 +10,7 @@ const AuthorityHeader = ({ Authority }) => {
                     <i className="material-icons pink-text" style={{ margin: "auto" }}>
                         fiber_manual_record
                </i>
-                    <h6 className="uk-icon">Gestion des autorités : {Authority}</h6>
+                    <h6 className="uk-icon">{Authority}</h6>
                 </div>
             </Card>
             <style jsx>
@@ -18,7 +18,7 @@ const AuthorityHeader = ({ Authority }) => {
                     .uk-icon { 
                         margin-left:10px;
                     display:inline-block;
-                    }  
+                    } 
                     .header-container{
                         display: flex;
                     width: fit-content;

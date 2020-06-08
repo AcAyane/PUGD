@@ -9,8 +9,7 @@ import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
 import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useClassNumberForm from './useClassNumberForm';
 import TextBox from '@/components/ui/TextBox';
-import { withApollo } from '@/shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyClassNumberForm = () => {
@@ -83,8 +82,6 @@ const ModifyClassNumberForm = () => {
 
 
         }
-     
-
         console.log({ variables: class_number })
 
         updateClassNumber({ variables: class_number })

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import LinkedAuthorityView from '@/components/admin/authorities/shared/LinkedAuthorityView';
-import Card from '@/components/ui/card/card';
+import Card from '@/components/ui/Card/Card';
 
 
 const LinkedAuthorityListView = ({ Linked_authorities, OnAuthorityLinkChange }) => {

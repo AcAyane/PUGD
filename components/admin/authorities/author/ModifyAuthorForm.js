@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Button from '@/components/ui/Button';
 import { UPDATE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
 import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';

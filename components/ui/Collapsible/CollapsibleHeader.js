@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 import Icon from '../Icon/Icon'
-const CollapsibleHeader = ({ children, ...props }) => {
+const CollapsibleHeader = ({ children, headerHeight,...props }) => {
 
 
     const reff = useRef();
@@ -15,7 +15,7 @@ const CollapsibleHeader = ({ children, ...props }) => {
         <div ref={reff}  style={{width:"100%"}}>
             {children}
         </div>
-        <Icon className="collapsible-icon" style={{ marginLeft: "auto" }}>keyboard_arrow_right</Icon>
+        <Icon className="collapsible-icon" style={{ marginLeft: "auto","line-height":headerHeight }}>keyboard_arrow_right</Icon>
 
     </div>
 

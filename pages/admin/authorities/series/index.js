@@ -5,7 +5,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchSeriesComponent from '@/components/admin/authorities/series/SearchSeriesComponent';
 import ListSeriesComponent from '@/components/admin/authorities/series/ListSeriesComponent';
-import Card from '@/components/ui/card/card' 
+import Card from '@/components/ui/Card/Card' 
 const SeriesPage = () => {
 
     const [getSeriesAllFields, SeriesResponse] = useLazyQuery(GET_SERIES_ALL_FIELDS);

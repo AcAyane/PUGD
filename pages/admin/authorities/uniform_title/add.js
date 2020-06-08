@@ -6,6 +6,7 @@ import AuthorityHeader from '@/components/admin/authorities/shared/authorityHead
 import Card from '@/components/ui/card/card'; 
 
 
+
 const UniformTitlePage = () => {
 
     return (
@@ -21,8 +22,6 @@ const UniformTitlePage = () => {
         </div>
     );
 };
-
-
 import AdminLayout from '@/components/adminLayout';
 UniformTitlePage.Layout = AdminLayout
 export default UniformTitlePage;  

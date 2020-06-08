@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Grid from '@/components/ui/Grid/Grid';
 import GridElement from '@/components/ui/Grid/GridElement';
 import Button from '@/components/ui/Button';
@@ -77,9 +78,8 @@ const AddBasketForm = ({ onAddHandler, author }) => {
                         <option value={6}>Panier de sous-collections</option>
                         <option value={7}>Panier de titres de série</option>
                         <option value={8}>Panier de titres uniformes</option>
-                        <option value={9}>Panier d'indexations décimales</option>
-                        <option value={10}>Panier de concepts</option>
-                        <option value={11}>Panier d'autorités personnalisées</option>
+                        <option value={9}>Panier d'indexations décimales</option> 
+
                     </SelectBox>
                 </GridElement>
 

@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import AuthorityHeader from '@/components/admin/authorities/shared/authorityHeader';
 import SearchClassNumberComponent from '@/components/admin/authorities/class_number/SearchClassNumberComponent';
 import ListClassNumberComponent from '@/components/admin/authorities/class_number/ListClassNumberComponent';
-import Card from '@/components/ui/card/card'; 
+import Card from '@/components/ui/Card/Card'; 
 const ClassNumberPage = () => {
 
     const [getClassNumberAllFields, ClassNumberResponse] = useLazyQuery(GET_CLASS_NUMBER);
