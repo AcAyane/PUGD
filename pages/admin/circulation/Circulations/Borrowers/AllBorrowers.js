@@ -6,7 +6,7 @@ import Table from "../../../../../components/ui/Table/Table";
 import {GetAllBro} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
 
 const AllBorrewors = () => {
-    const { loading, error, data } = useQuery(GetAllBro);
+
 
     /*     ulisé logrque on'a un button , il ne s'execute pas automatiquement
         const [getGroups, { called, loading, data }] = useLazyQuery(
