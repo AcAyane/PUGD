@@ -11,7 +11,7 @@ import Link from "next/link";
 
 
 const onDocHandler = (e) => {
-   /* alert("hello");*/
+    /* alert("hello");*/
     Router.push("/admin/circulation/Circulations/pretDoc/allDoc");
 }
 
@@ -19,7 +19,7 @@ const predoc = () => {
 
     const [ getAllBorrowers, { loading, error, data }] = useLazyQuery(AllBorrowers);
 
-  /*  const [codBar, setCodeBar] = useState('');*/
+    /*  const [codBar, setCodeBar] = useState('');*/
     const [id] = useState('');
     const [nom, setNom] = useState('');
 
@@ -37,7 +37,7 @@ const predoc = () => {
         e.preventDefault();
         getAllBorrowers({
             variables: {
-               /* bar_code: codBar,*/
+                /* bar_code: codBar,*/
                 full_name: nom,
             }
         });
@@ -55,11 +55,11 @@ const predoc = () => {
 
                         <div className="row display-flex">
                             <TextBox
-                            label="Chercher avec le nom"
-                            type="text"
-                            onChange={event => { setNom(event.target.value)}}
-                            value={nom}
-                        />
+                                label="Chercher avec le nom"
+                                type="text"
+                                onChange={event => { setNom(event.target.value)}}
+                                value={nom}
+                            />
                             <Button
                                 onClick={onSearchHandler}
                                 rounded={4}>Search</Button>
@@ -90,15 +90,8 @@ const predoc = () => {
                             <td>
                                 <Link href={{ pathname: '/admin/circulation/Circulations/pretDoc/allDoc', query: { id :item._id } }}><a>Détails</a></Link>
 
-                               {/* <link
-                                    href={`/admin/circulation/Circulations/pretDoc/allDoc?id=${
-                                        item._id
-                                    }`}
-                                    className="invoice-action-edit"
-                                >
-                                    <i className="material-icons">visibility</i>
-                                </link>*/}</td>
-                    </tr>
+                                </td>
+                        </tr>
                     ) ): <p>false</p> }
                     </tbody>
                 </table>

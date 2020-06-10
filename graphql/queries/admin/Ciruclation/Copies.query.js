@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 const GetOneCopy = gql`
-    query{
+    
      query ($id: String!){
     copy (id:$id){
   _id
@@ -39,7 +39,7 @@ const GetOneCopy = gql`
     }
 `;
 const GetOneCopyByCode = gql`
-    query{
+   
      query ($code_bar: String!){
      GetExamplaireByCodeBar(code_bar:$code_bare){
   _id
