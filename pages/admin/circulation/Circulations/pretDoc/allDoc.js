@@ -3,16 +3,17 @@ import AdminLayout from '../../../../../components/adminLayout'
 import {useRouter} from "next/router";
 import {useQuery} from "@apollo/react-hooks";
 import {GetBorrower} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query"
+import Link from "next/link";
 
 const Alldoc = () => {
 
     const router = useRouter()
     const id = router.query.id;
+
     console.log(id);
     const {loading, error, data} = useQuery(GetBorrower, {
         variables: {id: id},
     });
-    console.log(data)
     return <React.Fragment>
 
 
@@ -23,14 +24,15 @@ const Alldoc = () => {
                     <div className="col s12 ">
                         <div className="card">
                             <div className="card-content">
-                                <h2 className="card-title mb-0">Détails Emprunteur:</h2>
+                                <h2 >Détails Emprunteur</h2>
                                 <div className="card-content">
                                     <div className="row">
 
                                         <div className="col s12 m4 l2">
                                             <h5><u>Nom</u>: {data && data.getOneBorrower.last_name}</h5>
                                             <h5><u>Prénom</u>: {data && data.getOneBorrower.first_name}</h5>
-                                            <h5><u>Email</u>:{data && data.getOneBorrower.email}</h5>
+                                            <h5><u>Sexe</u> : {data && data.getOneBorrower.gender}</h5>
+
                                         </div>
 
                                         <div className="col s12 m4 push-xl2">
@@ -39,8 +41,8 @@ const Alldoc = () => {
                                             <h5><u>Code Barre</u> : {data && data.getOneBorrower.bar_code}</h5>
                                         </div>
                                         <div className="col s12 m4 push-xl2">
+                                            <h5><u>Email</u>:{data && data.getOneBorrower.email}</h5>
                                             <h5><u>Opac</u> : {data && data.getOneBorrower.opaclogin}</h5>
-                                            <h5><u>Sexe</u> : {data && data.getOneBorrower.gender}</h5>
                                             <h5><u>Date de naissance</u> : {data && data.getOneBorrower.birthday}</h5>
                                         </div>
 
@@ -69,7 +71,9 @@ const Alldoc = () => {
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <th scope="row">no.</th>
+
+                                        <th scope="row"></th>
+                                        <td>no.</td>
                                         <td>titre</td>
                                         <td>supp.</td>
                                         <td>localisation</td>
