@@ -3,7 +3,7 @@ import AdminLayout from '../../../../../components/adminLayout'
 import {useRouter} from "next/router";
 import {useQuery} from "@apollo/react-hooks";
 import {GetBorrower} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query"
-import Link from "next/link";
+import PretTable from "./pretTable";
 
 const Alldoc = () => {
 
@@ -54,8 +54,8 @@ const Alldoc = () => {
                     </div>
                     <div className="col s12 m8 l8 animate fadeLeft">
                         <div className="card">
-                            <div className="card-content">
-                                <h4 className="card-title mb-0">Table des prêts:</h4>
+                            <div className="card-content"><PretTable/></div>
+                                {/*<h4 className="card-title mb-0">Table des prêts:</h4>
                                 <table className="table table-bordered table-dark">
                                     <thead>
                                     <tr>
@@ -85,8 +85,8 @@ const Alldoc = () => {
                                     </tr>
 
                                     </tbody>
-                                </table>
-                            </div>
+                                </table>*/}
+
 
                         </div>
                     </div>

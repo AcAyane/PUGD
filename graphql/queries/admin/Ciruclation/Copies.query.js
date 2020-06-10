@@ -40,8 +40,8 @@ const GetOneCopy = gql`
 `;
 const GetOneCopyByCode = gql`
    
-     query ($code_bar: String!){
-     GetExamplaireByCodeBar(code_bar:$code_bare){
+     query ($code_bar: Int!){
+     GetExamplaireByCodeBar(code_bar:$code_bar){
   _id
   BareCode
   CopyNumber
