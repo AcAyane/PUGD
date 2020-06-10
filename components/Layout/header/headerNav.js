@@ -1,15 +1,14 @@
 import React from 'react';
 import HeaderDropDown from './headerDropDown';
-import DropDownItem from '../../ui/dropdown/dropdownItem';
+import DropDownItem from '@/components/ui/dropdown/dropdownItem';
 import  Router   from 'next/router';
-import Icon from "../../ui/Icon/Icon";
 const headerNav = () => {
 const logoutHandle = ()=>{
   localStorage.removeItem("token")
   Router.push("/")
   console.log("loggn out");
-
-
+  
+  
 }
 
   return (
@@ -20,17 +19,17 @@ const logoutHandle = ()=>{
             className={`"navbar-main navbar-color nav-collapsible navbar-dark gradient-45deg-purple-deep-orange gradient-shadow nav-expanded"`}>
             <div className="nav-wrapper">
               <ul className="navbar-list right">
-                <HeaderDropDown icon={<span className="flag-icon flag-icon-gb" style={{lineHeight: "64px"}}/>} id="translation-dropdown" >
+                <HeaderDropDown icon={<span className="flag-icon flag-icon-gb" style={{ lineHeight: "64px" }}></span>} id="translation-dropdown" >
                   <DropDownItem className="dropdown-item black-text" href="#!">
-                    <i className="flag-icon flag-icon-gb"/>
+                    <i className="flag-icon flag-icon-gb"></i>
                     <span className="grey-text text-darken-1">English</span>
                   </DropDownItem>
                   <DropDownItem className="dropdown-item black-text" href="#!">
-                    <i className="flag-icon flag-icon-fr"/>
+                    <i className="flag-icon flag-icon-fr"></i>
                     <span className="grey-text text-darken-1">French</span>
                   </DropDownItem>
                   <DropDownItem className="dropdown-item black-text" href="#!">
-                    <i className="flag-icon flag-icon-pt"/>
+                    <i className="flag-icon flag-icon-pt"></i>
                     <span className="grey-text text-darken-1">Portuguese</span>
                   </DropDownItem>
                 </HeaderDropDown>
@@ -38,8 +37,7 @@ const logoutHandle = ()=>{
                 <li className="hide-on-med-and-down"><a className="waves-effect waves-block waves-light toggle-fullscreen"
                   href="#"><i className="material-icons">settings_overscan</i></a></li>
 
-                {/* eslint-disable-next-line react/no-children-prop */}
-                <HeaderDropDown icon={<Icon children="notifications_none"/>} id="notification-dropdown">
+                <HeaderDropDown icon={<i className="material-icons" >notifications_none</i>} id="notification-dropdown">
                   <DropDownItem className="dropdown-item black-text" href="#!">
                     <h6>NOTIFICATIONS<span className="new badge">5</span></h6>
                   </DropDownItem>
@@ -64,13 +62,8 @@ const logoutHandle = ()=>{
                 </HeaderDropDown>
 
 
-                <li>
-                  <a className="waves-effect waves-block waves-light sidenav-trigger"
-                  data-target="slide-out-right"
-                     href="#"
-                  ><i className="material-icons">format_indent_increase</i>
-                  </a>
-                </li>
+                <li><a className="waves-effect waves-block waves-light sidenav-trigger" href="#"
+                  data-target="slide-out-right"><i className="material-icons">format_indent_increase</i></a></li>
               </ul>
 
 

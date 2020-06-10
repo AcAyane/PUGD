@@ -8,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { useLazyQuery } from '@apollo/react-hooks'
-import { LOGIN_QUERY } from '../../../graphql/queries/user.query';
+import { LOGIN_QUERY } from '@/graphql/queries/user.query';
 import Router from 'next/router'  
 
 function SignInComponent() {

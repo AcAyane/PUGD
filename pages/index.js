@@ -1,21 +1,23 @@
-import React, { useEffect } from 'react';
-import  Router from 'next/router';
+import React, {useEffect} from "react";
+import AdminLayout from "@/components/adminLayout";
+import Router from "next/router";
 
+// import Router from "next/router";
 
 const Home = () => {
-
   useEffect(() => {
-    if (typeof window !== "undefined")
-    Router.push("/admin/reporting")
-  })
-  return (
-    <div>
-        Main platform page
-    </div>
+    console.log(Router.pathname)
+
+    if(Router.pathname === '/' ){
+      Router.push('/admin')
+    }
+    });
 
 
-  );
+
+  return null;
 };
 
-export default Home;
+Home.Layout = AdminLayout;
 
+export default Home;

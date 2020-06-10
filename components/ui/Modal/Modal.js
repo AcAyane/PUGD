@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react'
-
 const Modal = ({label, children, open,onClose, ...props }) => {
     //The modal needs a unique id to work properly 
     const id = "modal" + Math.floor(Math.random() * 100000)
@@ -30,9 +29,9 @@ const Modal = ({label, children, open,onClose, ...props }) => {
     }
     return (
         <React.Fragment>
-            <a className="waves-effect waves-light btn modal-trigger" href={`#${id}`}>
+            {/* <a className="waves-effect waves-light btn modal-trigger" href={`#${id}`}>
                 {label}
-            </a>
+            </a> */}
             <div id={`${id}`} className="modal custom-modal" ref={modalElement}>
                 <div className="modal-content">
                     {children}

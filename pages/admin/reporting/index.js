@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminLayout from '../../../components/adminLayout'
+import AdminLayout from '@/components/adminLayout'
 const ReportingHome = () => {
     return <div>
         this is reporting module main page
