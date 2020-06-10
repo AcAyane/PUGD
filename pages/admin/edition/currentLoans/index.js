@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from "@apollo/react-hooks";
 import Table from "../../../../components/ui/Table/Table";
 import AdminLayout from '../../../../components/adminLayout'
-import {GET_LOANS} from "../../../../graphql/queries/admin/Reporting/loans.queries"
+import {GET_LOANS} from "../../../../graphql/queries/admin/reporting/loans.queries"
 import ReportingHeader from "../../../../components/admin/reporting/header/reportingHeader";
 import Reporting from "../../../../components/admin/reporting/body/body";
 import Card from "../../../../components/ui/card/card";

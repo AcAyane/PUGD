@@ -7,9 +7,9 @@ import ReportingSideItems from "../../SidebarItems";
 import {route} from "next/dist/next-server/server/router";
 const ReportingHeader = ({ ReportingModule, children }) => {
     const module = Router.route.split('/')[2]
-    console.log("router : ",ReportingSideItems[module][1].Children[1].Label)
+    //console.log("router : ",ReportingSideItems[module][1].Children[1].Label)
 
-    console.log("router : ",ReportingSideItems[module][1].Children.source)
+    //console.log("router : ",ReportingSideItems[module][1].Children.source)
 
     return (
         <React.Fragment>
@@ -18,7 +18,7 @@ const ReportingHeader = ({ ReportingModule, children }) => {
                     <i className="material-icons pink-text-blue" style={{ margin: "auto" }}>
                         fiber_manual_record
                     </i>
-                    <h5 className="uk-icon"> {ReportingSideItems[module][1].Label} => {ReportingModule} </h5>
+                    <h5 className="uk-icon"> Edition </h5>
                 </div>
                 {children}
             </Card>
