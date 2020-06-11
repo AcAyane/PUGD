@@ -7,9 +7,8 @@ import Table from "../../../../components/ui/Table/Table";
 import {useQuery} from "@apollo/react-hooks";
 import {ALL_BORROWERS} from "../../../../graphql/queries/admin/reporting/borrowers.queries";
 
-const Borrowers = () => {
-    const nul = <span style={{color:'#d60e28'}}>No Group finder</span>;
-    const show = false;
+const CurReaders = () => {
+
     const {loading, error, data} = useQuery(ALL_BORROWERS)
     //console.log("data",data.getAllBorrowers && data.getAllBorrowers.first_name )
 
@@ -19,7 +18,8 @@ const Borrowers = () => {
         <Table Thead={
             <tr>
                 <td>Barcode</td>
-                <td>LastName & firstName</td>
+                <td>LastName</td>
+                <td>FirstName</td>
                 <td>Address </td>
                 <td>City</td>
                 <td>Birthday</td>
@@ -34,13 +34,13 @@ const Borrowers = () => {
                    // eslint-disable-next-line react/jsx-key
                    return <React.Fragment>
                    <tr>
-                   <td>{item.first_name}</td>
+                   <td>{item.bar_code}</td>
                    <td>{item.last_name}</td>
                    <td>{item.first_name}</td>
+                   <td>{item.address}</td>
+                   <td>{item.birthday}</td>
                    <td>{item.last_name}</td>
-                   <td>{item.first_name}</td>
-                   <td>{item.last_name}</td>
-                   <td>{item.first_name}</td>
+                   <td>{item.status}</td>
                    </tr>
                    </React.Fragment>
                })
@@ -56,5 +56,5 @@ const Borrowers = () => {
     </Reporting>
 
 }
-Borrowers.Layout = AdminLayout
-export default Borrowers
+CurReaders.Layout = AdminLayout
+export default CurReaders
