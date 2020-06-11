@@ -53,6 +53,8 @@ const UpdateOrder = gql`
     $provider: String
     $order_lines: [String]
     $orders: [String]
+    $received: Boolean
+    $factured: Boolean
   ) {
     updateOrder(
       _id: $_id
@@ -70,6 +72,8 @@ const UpdateOrder = gql`
       provider: $provider
       order_lines: $order_lines
       orders: $orders
+      received: $received
+      factured: $factured
     )
   }
 `;

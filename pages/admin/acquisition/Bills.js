@@ -1,24 +1,26 @@
 import React, { useState, useMemo } from "react";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { GetOrder } from "@/graphql/queries/acquisition/order";
-import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
-import { UpdateOrder } from "@/graphql/mutations/acquisition/order";
+import { GetOrder } from "../../../graphql/queries/acquisition/order";
+import { GetAllOrderLines } from "../../../graphql/queries/acquisition/orderline";
+import { UpdateOrder } from "../../../graphql/mutations/acquisition/order";
 import {
   InsertOrderLine,
   UpdateOrderLine,
   DeleteOrderLine,
-} from "@/graphql/mutations/acquisition/orderline";
-import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
+} from "../../../graphql/mutations/acquisition/orderline";
+import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
+import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-import GridElement from "@/components/ui/Grid/GridElement";
-import Grid from "@/components/ui/Grid/grid";
-import Container from "@/components/ui/Container";
-import MaterialTable from "material-table";
-import AdminLayout from "@/components/adminLayout";
+import GridElement from "../../../components/ui/Grid/GridElement";
+import Grid from "../../../components/ui/Grid/grid";
+import Container from "../../../components/ui/Container";
+import MaterialTable from "material-table-formik";
+import AdminLayout from "../../../components/adminLayout";
+
 const options = [
   { value: "20/3/2020", label: "20/3/2020" },
   { value: "1/3/2020", label: "1/3/2020" },
@@ -31,8 +33,7 @@ const ObjectId = (
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
-const UpdateOrders = () => {
-  const Router = useRouter();
+const Bills = () => {
   const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onCompleted: () => {
@@ -282,7 +283,6 @@ const UpdateOrders = () => {
                     {
                       title: "title",
                       field: "title",
-                      editable: "onAdd",
                     },
                     {
                       title: "author",
@@ -314,7 +314,6 @@ const UpdateOrders = () => {
                           setOrder_line(() => {
                             newData._id = ObjectId();
                             newData.order = Router.query.id;
-                            newData.quantityreceived = 0;
                             const order_line1 = [...order_line, newData];
                             return order_line1;
                           });
@@ -348,7 +347,6 @@ const UpdateOrders = () => {
                             price: newData.price,
                             discount: newData.discount,
                             status: newData.status,
-                            quantityreceived: 0,
                           },
                         });
                       }),
@@ -397,5 +395,5 @@ const UpdateOrders = () => {
   );
 };
 
-UpdateOrders.Layout = AdminLayout;
-export default UpdateOrders;
+Bills.Layout = AdminLayout;
+export default Bills;

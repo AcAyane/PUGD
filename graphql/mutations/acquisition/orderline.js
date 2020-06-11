@@ -36,6 +36,7 @@ const UpdateOrderLine = gql`
     $price: Float
     $discount: Float
     $status: String
+    $quantityreceived: Int
   ) {
     updateOrderLine(
       _id: $_id
@@ -46,6 +47,7 @@ const UpdateOrderLine = gql`
       price: $price
       discount: $discount
       status: $status
+      quantityreceived: $quantityreceived
     )
   }
 `;

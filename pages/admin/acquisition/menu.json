@@ -19,11 +19,19 @@
         },
         {
           "Label": "Receivings",
-          "href": "/admin/acquisition/Receivings"
+          "href": "/admin/acquisition/AllReceiving"
         },
         {
           "Label": "Deliveries",
-          "href": "/admin/acquisition/Deliveries"
+          "href": "/admin/acquisition/AllDelivery"
+        },
+        {
+          "Label": "Bills",
+          "href": "/admin/acquisition/Bills"
+        },
+        {
+          "Label": "Budgets",
+          "href": "/admin/acquisition/Budgets"
         }
       ]
     },

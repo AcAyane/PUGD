@@ -10,6 +10,7 @@ const GetAllOrderLines = gql`
       price
       discount
       status
+      quantityreceived
     }
   }
 `;
