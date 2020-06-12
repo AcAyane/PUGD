@@ -5,11 +5,13 @@
     "commonjs": true
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "settings": {
     "import/resolver": {
@@ -39,6 +41,8 @@
     "no-underscore-dangle": 0,
     "react/no-find-dom-node": 0,
     "react/prop-types": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }

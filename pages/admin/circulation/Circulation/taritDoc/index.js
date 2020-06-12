@@ -9,7 +9,7 @@ import {EXAMPLAIR_BY_CODE} from "graphql/queries/admin/Ciruclation/Examplaire.qu
 import Circulation from "components/admin/Circulations/Body/Body";
 import Null from "components/admin/Circulations/Handerls/Null";
 import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
-import Profile from "components/admin/Circulations/Borrwer/Profile";
+import Profile from "components/admin/Circulations/Borrwer/Add/Profile";
 import BtnBadge from "components/ui/ui_badge";
 
 const traitDoc = () => {

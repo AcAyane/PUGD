@@ -1,6 +1,5 @@
 import React from "react";
-import AdminLayout from "@/components/adminLayout";
-// import AddQuotation from "./AddQuotation";
+import AdminLayout from "components/adminLayout";
 
 const admin = () => {
     return <React.Fragment>

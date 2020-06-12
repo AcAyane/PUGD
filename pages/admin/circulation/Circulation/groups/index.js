@@ -11,16 +11,14 @@ import ResGroup from "./resGroups";
 import Null from "components/admin/Circulations/Handerls/Null";
 import Circulation from "components/admin/Circulations/Body/Body";
 import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
+import Members from "../../../../../components/admin/Circulations/Group/Members";
+import Responsable from "../../../../../components/admin/Circulations/Group/Responsable";
 
 const Groups = () => {
     const [GetGroupsByName, {loading, error, data}] = useLazyQuery(GroupsByName);
     const [name, setName] = useState('');
     if (loading) {
         return <div>Loading...</div>;
-    }
-    if (error) {
-        console.log(error)
-        console.log(data)
     }
 
     const onSearchHandler = (e) => {
@@ -73,11 +71,19 @@ const Groups = () => {
             error ? <Null children="No group Finder"/> : (data == null || undefined) ?
 
 
-                <ResGroup/> :
+            //    <ResGroup/> :
 
                 ('')
 
-            // : ( <ResGroup datas={data.GetGroupsByName}/> )
+
+
+                : ( <React.Fragment>
+                    <div className="row vertical-modern-dashboard">
+                        <Members dataset={data.GetGroupsByName}/>
+                        <Responsable dataset={data.GetGroupsByName}/>
+                    </div>
+                    </React.Fragment>
+                 )
 
         }
 

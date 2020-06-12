@@ -9,7 +9,7 @@ import BtnBadge from "components/ui/ui_badge";
 import Circulation from "components/admin/Circulations/Body/Body";
 import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
 import Null from "components/admin/Circulations/Handerls/Null";
-import Profile from "components/admin/Circulations/Borrwer/Profile";
+import Profile from "components/admin/Circulations/Borrwer/Add/Profile";
 
 
 const retDoc = () => {

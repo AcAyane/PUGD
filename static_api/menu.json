@@ -57,7 +57,7 @@
         "Children": [
           {
             "Label": "All authorities",
-            "href": "/admin/authorities/allAuth"
+            "href": "/admin/authorities/Author/index"
           },
           {
             "Label": "Predefined",
@@ -236,7 +236,7 @@
         "Children": [
           {
             "Label": "Reservation Encour",
-            "href": "/admin/Circulation/Reservation/En_cour"
+            "href": "/admin/circulation/Reservation/En_cour"
           },
           {
             "Label": "Reservation depassé",

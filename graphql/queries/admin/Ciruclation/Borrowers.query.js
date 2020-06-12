@@ -20,7 +20,15 @@ const BorrowersByName = gql`
         }
     }
 `;
+const CHECK_CODE_BAR = gql`
+    query($code: String){
+        getAllBorrowers(bar_code : $code){
+            bar_code
+        }
+    }
+`;
 module.exports = {
     ALL_BORROWERS,
-    BorrowersByName
+    BorrowersByName,
+    CHECK_CODE_BAR
 }
