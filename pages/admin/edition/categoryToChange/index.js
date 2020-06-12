@@ -66,3 +66,4 @@ const CatToChange = () => {
 
 CatToChange.Layout = AdminLayout
 export default CatToChange
+
