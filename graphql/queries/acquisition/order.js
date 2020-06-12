@@ -12,6 +12,7 @@ const GetOrders = gql`
       billing_address
       order_lines
       orders
+      name
     }
   }
 `;
