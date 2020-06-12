@@ -2,10 +2,11 @@ import gql from "graphql-tag";
 
 const ADD_GROUP = gql`
 mutation(
-        $nameGroup                                  :                 String,
+        $name                                 :                 String!,
         $message                                    :                 String,
-        $responsable                                :                 String,
+        $respo                                :                 String!,
         $members                                    :                 [String],
+        $sendLetterRappelToResponsable              :                 Boolean
         $addResponsableToGroup                      :                 Boolean,
         $sendMailReservationToResponsable           :                 Boolean,
         $sendMailRappelToResponsable                :                 Boolean,
@@ -15,10 +16,11 @@ mutation(
     ){
     
         InsertOneGroup(
-            name                                    :         $nameGroup,
+            name                                    :         $name,
             message                                 :         $message,
-            responsable                             :         $responsable,
+            responsable                             :         $respo,
             members                                 :         $members,
+            sendLetterRappelToResponsable           :         $sendLetterRappelToResponsable
             addResponsableToGroup                   :         $addResponsableToGroup,
             sendMailReservationToResponsable        :         $sendMailReservationToResponsable,
             sendMailRappelToResponsable             :         $sendMailRappelToResponsable,           

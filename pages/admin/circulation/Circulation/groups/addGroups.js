@@ -14,6 +14,7 @@ import Circulation from "components/admin/Circulations/Body/Body";
 import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
 import {splitfunction} from "../../../../../shared/_herlpersCirculation/_helpers";
 import {ADD_GROUP} from "../../../../../graphql/mutations/admin/circulation/Groups.mutation";
+import  Router from "next/router";
 
 /*// todo add Mebmer filter rapide
 class AddGroup extends  React.Component{
@@ -129,20 +130,11 @@ const addGroups = () => {
 
     const {loading, error, data} = useQuery(ALL_BORROWERS);
 
-    { data !== undefined ?
-        data.getAllBorrowers.map(t =>{
-            console.log( t.first_name)
-        }) :  "error"
-    }
-
-
-
-
-
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
     const [responsable, setResponsableGroup] = useState('')
     const [members, setMembers] = useState([])
+    // checkbox
     const [addResponsableToGroup, setAddResponsableToGroup] = useState(false)
     const [sendMailReservationToResponsable, setSendMailReservationToResponsable] = useState(false)
     const [sendMailRappelToResponsable, setSendMailRappelToResponsable] = useState(false)
@@ -152,52 +144,35 @@ const addGroups = () => {
     const [imprimeNameGroupOneLetterReservation, setImprimeNameGroupOneLetterReservation] = useState(false)
 
 
-
-    const updateMembers = (member) => {
-
-        if (members.includes(member)) {
-            setMembers(members.filter(tool => tool.value !== member));
-        } else {
-            setMembers([...members, member]);// or push
-        }
-    };
-
-    const checkHandler = e => {
-        const value = e.target.value; //Checkbox value
-        console.log("value :",value)
-        updateMembers(value);
-    };
-
-    console.log("add respo to group ->:", addResponsableToGroup)
-    console.log("respo ->:", responsable)
-    console.log("Mebmber  ->:", responsable)
     const [AddGroup] = useMutation(ADD_GROUP,{
-        onCompleted(data) {
-            const {_id} = data
-            console.log("id user is:", _id)
-            // Router.push("/");
+        onCompleted() {
+            // Router.reload(window.location.pathname);
         }
     });
     const onSubmitHandler = ()=>{
         console.log("name group", name)
 
-        console.log("add respo to group ", addResponsableToGroup)
-        console.log("send Mail Reservation To Responsable", sendMailReservationToResponsable)
-        console.log("send Mail Rappel To Responsable", sendMailRappelToResponsable)
-        console.log("send Letter Rappel To Responsable ", sendLetterRappelToResponsable)
-        console.log("send letter reservation", sendLetterReservationToResponsable)
-        console.log("imrime name group", imprimeNameGroupOneLetter)
-        console.log("imprim name group2:", imprimeNameGroupOneLetterReservation)
+        console.log("add message ", message)
+        console.log("add respo id ", responsable.valueOf())
+        console.log("------------\n")
+
+        console.log("addResponsableToGroup : ", addResponsableToGroup)
+        console.log("sendLetterRappelToResponsable : ", sendLetterRappelToResponsable)
+        console.log("sendMailReservationToResponsable : ", sendMailReservationToResponsable)
+        console.log("sendMailRappelToResponsable : ", sendMailRappelToResponsable)
+        console.log("sendLetterReservationToResponsable : ", sendLetterReservationToResponsable)
+        console.log("imprimeNameGroupOneLetter : ", imprimeNameGroupOneLetter)
+        console.log("imprimeNameGroupOneLetterReservation: ", imprimeNameGroupOneLetterReservation)
 
         AddGroup({
             variables: {
                 name: name,
                 message: message,
-                responsable: responsable,
+                respo: responsable.valueOf(),
+                sendLetterRappelToResponsable: sendLetterRappelToResponsable,
                 addResponsableToGroup: addResponsableToGroup,
                 sendMailReservationToResponsable: sendMailReservationToResponsable,
                 sendMailRappelToResponsable: sendMailRappelToResponsable,
-                sendLetterRappelToResponsable: sendLetterRappelToResponsable,
                 sendLetterReservationToResponsable: sendLetterReservationToResponsable,
                 imprimeNameGroupOneLetter: imprimeNameGroupOneLetter,
                 imprimeNameGroupOneLetterReservation: imprimeNameGroupOneLetterReservation,

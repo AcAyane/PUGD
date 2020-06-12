@@ -2,6 +2,7 @@ import React from 'react'
 
 
 import Icon from "components/ui/Icon/Icon";
+import Table from "../../../../../components/ui/Table/Table";
 
 
 
@@ -11,11 +12,10 @@ const ResGroup = (props) => {
     const show = false;
 
     return <React.Fragment>
-                <div className="row">
-                    <div className="col s12">
+
                         <div className="row vertical-modern-dashboard">
                             {/*Member gorups */}
-                        {/*<div className="col s12 m8 l8 animate fadeRight">
+                        <div className="col s12 m8 l8 animate fadeLeft">
                             <div className="card">
                                 <div className="card-content">
                                     <h4 className="card-title mb-0">Member Groups
@@ -24,23 +24,8 @@ const ResGroup = (props) => {
                                     </h4>
                                     <p className="medium-small">This month transaction</p>
                                 <div className="total-transaction-container">
-                                    } Tbody={
-                                    {
-                                        props.datas.MembersBrrowers.map((item)=>{
-                                            // eslint-disable-next-line react/jsx-key
-                                            return <React.Fragment>
-                                                <td></td>
-                                                <td></td>
-                                                <td>{item.fullname}</td>
-                                                <td>{item.barcode}</td>
-                                                <td>{item.fullname}</td>
-                                                <td>{item.fullname}</td>
-                                            </React.Fragment>
-                                        })
-                                    }}
-                                    }
-                                    <tr>
-                                    </tr>
+
+
                                     <Table Thead={
                                         <tr>
                                             <td></td>
@@ -50,14 +35,31 @@ const ResGroup = (props) => {
                                             <td>Pret</td>
                                             <td>Reservation</td>
                                         </tr>
-                                            }/>
+                                            }
+                                    Tbody={
+
+                                        props.dataset.members.map((item)=>{
+                                            // eslint-disable-next-line react/jsx-key
+                                            return <React.Fragment>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>{item.first_name}</td>
+                                                    <td>{item.last_name}</td>
+                                                    <td>{item.last_name}</td>
+                                                    <td>{item.last_name}</td>
+                                                </tr>
+                                            </React.Fragment>
+                                        })
+                                    }
+                                    />
                                 </div>
                                 </div>
                             </div>
-                        </div>*/}
+                        </div>
                             {/*Cart gorups */}
                             <div className="col s12 m4 l4">
-                                <div className="card recent-buyers-card animate fadeLeft">
+                                <div className="card recent-buyers-card animate fadeRight">
                                     <div className="card-content">
                                         <h4 className="card-title mb-0">hello {/*{props.datas.namegroups}*/}
                                             <i className="material-icons float-right">more_vert</i>
@@ -105,8 +107,7 @@ const ResGroup = (props) => {
 
                             </div>
                     </div>
-                </div>
-            </div>
+
     </React.Fragment>
 
 }
