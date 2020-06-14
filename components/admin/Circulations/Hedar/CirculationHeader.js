@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../../../ui/Card/Card'
+import Card from '@/components/ui/card/card'
 import Router from "next/router";
 import AuthoritiesSideItems from "../../SidebarItems";
 const CirculationHeader = ({ CirculationModule, children }) => {

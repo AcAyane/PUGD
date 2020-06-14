@@ -1,14 +1,14 @@
 import React, {Fragment, useState} from 'react'
-import AdminLayout from '../../../../components/adminLayout'
-import Card from "../../../../components/ui/card/card";
+import AdminLayout from '@/components/adminLayout'
+import Card from "@/components/ui/card/card";
 import {useMutation} from "@apollo/react-hooks";
 
-import {ADD_SUGGESTION} from "../../../../graphql/mutations/admin/circulation/Suggestion.mutation";
-import Button from "../../../../components/ui/Button";
-import DatePicker from "../../../../components/ui/DatePicker/DatePicker";
-import CirculationHeader from "../../../../components/admin/Circulations/Hedar/CirculationHeader";
-import CirculationBody from "../../../../components/admin/Circulations/Body/Body";
-import Circulation from "../../../../components/admin/Circulations/Body/Body";
+import {ADD_SUGGESTION} from "@/graphql/mutations/admin/circulation/Suggestion.mutation";
+import Button from "@/components/ui/Button";
+import DatePicker from "@/components/ui/DatePicker/DatePicker";
+import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
+import CirculationBody from "@/components/admin/Circulations/Body/Body";
+import Circulation from "@/components/admin/Circulations/Body/Body";
 
 
 const Suggestion = () => {

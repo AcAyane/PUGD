@@ -1,16 +1,15 @@
 import React from 'react';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import Button from '../../../ui/Button';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import Button from '@/components/ui/Button';
 
 
 import SimpleModal from '../shared/SearchAuthor'
 import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
 
 import usePublisherForm from './usePublisherForm';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
+import TextBox from '@/components/ui/TextBox';
 
 const AddPublisherForm = () => {
 
@@ -84,7 +83,7 @@ const AddPublisherForm = () => {
                         }}
                     />
                 </GridElement>
-                <GridElement s={2} style={{ display: "flex" , height: "84px" }}>
+                <GridElement s={2} style={{ display: "flex", height: "84px" }}>
                     <RoundButton icon="add" size="30" onClick={handleOpenSupplier} />
                     <RoundButton icon="delete" size="30" onClick={unsetSupplier} />
 
@@ -172,4 +171,4 @@ const AddPublisherForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(AddPublisherForm)
+export default AddPublisherForm

@@ -1,7 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import React from "react";
 import * as Yup from "yup";
-import { InsertProvider } from "../../../graphql/mutations/acquisition/provider";
+import { InsertProvider } from "@/graphql/mutations/acquisition/provider";
 import { useMutation } from "@apollo/react-hooks";
 import GridElement from "@/components/ui/Grid/GridElement";
 import Grid from "@/components/ui/Grid/grid";

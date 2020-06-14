@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { INSERT_CLASS_NUMBER } from '../../../../graphql/mutations/admin/authorities/class_number.mutations';
+import { INSERT_CLASS_NUMBER } from '@/graphql/mutations/admin/authorities/class_number.mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 const useCollectionTitleForm = (callback) => {

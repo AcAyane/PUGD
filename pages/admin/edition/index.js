@@ -1,17 +1,9 @@
-import React from 'react';
-import SidebarItems from '@/components/admin/authorities/SidebarItems';
-import AdminLayout from '@/components/adminLayout';
-
-const sideBar = () => {
-
-
-    return (
-        <div>this is the Edition page</div>
-    )
+import React from 'react'
+import AdminLayout from '@/components/adminLayout'
+const ReportingHome = () => {
+    return <div>
+        this is reporting module main page
+    </div>
 }
-
-
-AdminLayout.SidebarItems=SidebarItems
-sideBar.Layout = AdminLayout
-
-export default sideBar
+ReportingHome.Layout = AdminLayout
+export default ReportingHome

@@ -1,17 +1,16 @@
 import React from 'react';
-import Button from '../../../ui/Button';
-import { UPDATE_CATEGORY } from '../../../../graphql/mutations/admin/authorities/category.mutations';
-import { GET_CATEGORY } from '../../../../graphql/queries/admin/authorities/category.queries';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
+import Button from '@/components/ui/Button';
+import { UPDATE_CATEGORY } from '@/graphql/mutations/admin/authorities/category.mutations';
+import { GET_CATEGORY } from '@/graphql/queries/admin/authorities/category.queries';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useCategoryForm from './useCategoryForm';
 import SeeAlsoComponent from './SeeAlsoComponent';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import TextBox from '@/components/ui/TextBox';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyCategoryForm = () => {
@@ -216,4 +215,4 @@ const ModifyCategoryForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyCategoryForm)
+export default ModifyCategoryForm

@@ -1,18 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import Modal from '../../../ui/Modal/Modal';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import Card from '../../../ui/Card/Card';
+import Modal from '@/components/ui/Modal/Modal';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import Card from '@/components/ui/Card/Card';
 import { useLazyQuery } from '@apollo/react-hooks';
-import { GET_AUTHOR } from '../../../../graphql/queries/admin/authorities/author.queries';
-import { GET_CATEGORY_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/category.queries';
-import { GET_PUBLISHER_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/publisher.queries';
-import { GET_SERIES_ALL_FIELDS } from '../../../../graphql/queries/admin/authorities/series.queries'; 
+import { GET_AUTHOR } from '@/graphql/queries/admin/authorities/author.queries';
+import { GET_CATEGORY_ALL_FIELDS } from '@/graphql/queries/admin/authorities/category.queries';
+import { GET_PUBLISHER_ALL_FIELDS } from '@/graphql/queries/admin/authorities/publisher.queries';
+import { GET_SERIES_ALL_FIELDS } from '@/graphql/queries/admin/authorities/series.queries';
 import dynamic from 'next/dynamic'
 
-import SelectBox from '../../../ui/SelectBox';
+import SelectBox from '@/components/ui/SelectBox';
+import SearchAuthorComponent from '../author/SearchAuthorComponent';
+import ListAuthorComponent from '../author/ListAuthorComponent';
+
+import SearchCategoryComponent from '../category/SearchCategoryComponent'
+import ListCategoryComponent from '../category/ListCategoryComponent'
+import SearchPublisherComponent from '../publisher/SearchPublisherComponent'
+import ListPublisherComponent from '../publisher/ListPublisherComponent'
+import SearchSeriesComponent from '../series/SearchSeriesComponent'
+import ListSeriesComponent from '../series/ListSeriesComponent'
+
 const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
-    const [getAuthorAllFields, { error, data }] = useLazyQuery(GET_AUTHOR);
+    const [getAuthorAllFields, { loading, error, data }] = useLazyQuery(GET_AUTHOR);
+ 
+
+
     const [getCategoryAllFields, CategoryResponse] = useLazyQuery(GET_CATEGORY_ALL_FIELDS);
     const [getPublisherAllFields, PublisherResponse] = useLazyQuery(GET_PUBLISHER_ALL_FIELDS);
     const [getSeriesAllFields, SeriesResponse] = useLazyQuery(GET_SERIES_ALL_FIELDS);
@@ -35,8 +48,7 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
         switch (Authority_Type) {
             case 10:
                 {
-                    const SearchAuthorComponent = dynamic(() => import('../author/SearchAuthorComponent'))
-                    const ListAuthorComponent = dynamic(() => import('../author/ListAuthorComponent'))
+
                     return <React.Fragment>
                         <Card  >
                             <SearchAuthorComponent
@@ -46,17 +58,16 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
                         <Card  >
                             <h4 className="card-title">Recherche : Auteurs</h4>
                             {error ? <div color="danger">{String(error.message)}</div> : null}
-                            {data &&
-                                <ListAuthorComponent authors={data.author} AddAuthorityLink={AddAuthorityLink} />
-                            }
+
+                            <ListAuthorComponent authors={data && data.author} AddAuthorityLink={AddAuthorityLink} />
+
                         </Card>
                     </React.Fragment>
                 }
             case 20:
                 {
 
-                    const SearchCategoryComponent = dynamic(() => import('../category/SearchCategoryComponent'))
-                    const ListCategoryComponent = dynamic(() => import('../category/ListCategoryComponent'))
+
                     return <React.Fragment>
                         <Card  >
                             <SearchCategoryComponent getCategoryAllFields={getCategoryAllFields} SearchOnly />
@@ -72,8 +83,7 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
                 }
             case 30:
                 {
-                    const SearchPublisherComponent = dynamic(() => import('../publisher/SearchPublisherComponent'))
-                    const ListPublisherComponent = dynamic(() => import('../publisher/ListPublisherComponent'))
+
                     return <React.Fragment>
                         <Card  >
                             <SearchPublisherComponent getPublisherAllFields={getPublisherAllFields} SearchOnly />
@@ -90,8 +100,6 @@ const SearchAuthority = ({ addAuthor, open, handleClose, AuthorityType }) => {
             case 40:
                 {
 
-                    const SearchSeriesComponent = dynamic(() => import('../series/SearchSeriesComponent'))
-                    const ListSeriesComponent = dynamic(() => import('../series/ListSeriesComponent'))
                     return <React.Fragment>
                         <Card  >
                             <SearchSeriesComponent getSeriesAllFields={getSeriesAllFields} SearchOnly />

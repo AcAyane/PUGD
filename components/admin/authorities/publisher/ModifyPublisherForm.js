@@ -1,15 +1,14 @@
 import React from 'react';
-import Button from '../../../ui/Button';
-import { UPDATE_PUBLISHER } from '../../../../graphql/mutations/admin/authorities/publisher.mutations';
-import { GET_PUBLISHER } from '../../../../graphql/queries/admin/authorities/publisher.queries';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
+import Button from '@/components/ui/Button';
+import { UPDATE_PUBLISHER } from '@/graphql/mutations/admin/authorities/publisher.mutations';
+import { GET_PUBLISHER } from '@/graphql/queries/admin/authorities/publisher.queries';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import usePublisherForm from './usePublisherForm';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
+import TextBox from '@/components/ui/TextBox';
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
@@ -67,15 +66,15 @@ const ModifyPublisherForm = () => {
         const publisher = {
             ID: Router.query.id,
             // Supplier: "",
-            note:inputs.note,
-            Name:inputs.Name,
-            Address1:inputs.Address1,
-            Country:inputs.Country,
-            Address2:inputs.Address2,
-            Post_code:inputs.Post_code,
-            City:inputs.City,
-            url_thumbnail:inputs.url_thumbnail,
-            Linked_authorities:inputs.Linked_authorities,
+            note: inputs.note,
+            Name: inputs.Name,
+            Address1: inputs.Address1,
+            Country: inputs.Country,
+            Address2: inputs.Address2,
+            Post_code: inputs.Post_code,
+            City: inputs.City,
+            url_thumbnail: inputs.url_thumbnail,
+            Linked_authorities: inputs.Linked_authorities,
 
             // Linked_authorities: inputs.Linked_authorities.map((authority) => {
             //     return {
@@ -87,11 +86,11 @@ const ModifyPublisherForm = () => {
             //         LinkType: authority.LinkType,
             //     }
             // }) 
-         
         }
         if (inputs.Supplier.id !== "") {
             publisher.Supplier = inputs.Supplier.id
-        } 
+        }
+
 
         // console.log({ variables: publisher })
 
@@ -228,4 +227,4 @@ const ModifyPublisherForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyPublisherForm)
+export default ModifyPublisherForm

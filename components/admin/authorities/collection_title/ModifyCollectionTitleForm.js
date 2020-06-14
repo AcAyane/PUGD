@@ -1,16 +1,15 @@
 import React from 'react';
-import Button from '../../../ui/Button';
-import { UPDATE_COLLECTION_TITLE } from '../../../../graphql/mutations/admin/authorities/collection_title.mutations';
-import { GET_COLLECTION_TITLE } from '../../../../graphql/queries/admin/authorities/collection_title.queries';
-import Grid from '../../../ui/Grid/Grid';
-import GridElement from '../../../ui/Grid/GridElement';
-import RoundButton from '../../../ui/RoundButton/RoundButton';
-import SimpleModal from '../shared/SearchAuthor'
-import LinkedAuthorityListView from '../shared/LinkedAuthorityListView';
+import Button from '@/components/ui/Button';
+import { UPDATE_COLLECTION_TITLE } from '@/graphql/mutations/admin/authorities/collection_title.mutations';
+import { GET_COLLECTION_TITLE } from '@/graphql/queries/admin/authorities/collection_title.queries';
+import Grid from '@/components/ui/Grid/Grid';
+import GridElement from '@/components/ui/Grid/GridElement';
+import RoundButton from '@/components/ui/RoundButton/RoundButton';
+import SimpleModal from '@/components/admin/authorities/shared/SearchAuthor'
+import LinkedAuthorityListView from '@/components/admin/authorities/shared/LinkedAuthorityListView';
 import useCollectionTitleForm from './useCollectionTitleForm';
-import TextBox from '../../../ui/TextBox';
-import { withApollo } from '../../../../shared/apollo';
-import { useMutation, useQuery, useLazyQuery } from '@apollo/react-hooks';
+import TextBox from '@/components/ui/TextBox';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useRouter } from 'next/router';
 
 const ModifyCollectionTitleForm = () => {
@@ -67,7 +66,7 @@ const ModifyCollectionTitleForm = () => {
 
         const collection_title = {
             Id: Router.query.id,
-            Title: inputs.Title, 
+            Title: inputs.Title,
             Url_thumbnail: inputs.URL_thumbnail,
             // Linked_authorities: inputs.Linked_authorities.map((authority) => {
             //     return {
@@ -135,4 +134,4 @@ const ModifyCollectionTitleForm = () => {
         </React.Fragment>
     )
 }
-export default withApollo({ ssr: true })(ModifyCollectionTitleForm)
+export default ModifyCollectionTitleForm

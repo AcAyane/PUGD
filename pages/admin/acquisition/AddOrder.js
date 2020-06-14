@@ -3,10 +3,10 @@ import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import html2canvas from "../../../helpers/html2canvas";
 import * as Yup from "yup";
-import { InsertOrder } from "../../../graphql/mutations/acquisition/order";
-import { InsertOrderLine } from "../../../graphql/mutations/acquisition/orderline";
+import { InsertOrder } from "@/graphql/mutations/acquisition/order";
+import { InsertOrderLine } from "@/graphql/mutations/acquisition/orderline";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
 import DatePicker from "@/components/ui/DatePicker/DatePicker";
 import GridElement from "@/components/ui/Grid/GridElement";
 import Grid from "@/components/ui/Grid/grid";
@@ -41,7 +41,6 @@ const initialFormData = {
   provider: "zaeaze",
   order_lines: [OrderID2],
 };
-
 // $order_lines: [String!]!
 const b1 = {
   _id: OrderID2,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { INSERT_SUB_SERIES } from '../../../../graphql/mutations/admin/authorities/sub_series.mutations';
+import { INSERT_SUB_SERIES } from '@/graphql/mutations/admin/authorities/sub_series.mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 const useSubSeriesForm = (callback) => {

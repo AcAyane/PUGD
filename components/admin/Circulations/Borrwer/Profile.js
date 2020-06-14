@@ -1,5 +1,5 @@
 import React from 'react'
-import BtnBadge from "../../../ui/ui_badge";
+import BtnBadge from "@/components/ui/ui_badge";
 
 const Profile = ({ children,...props }) => {
 

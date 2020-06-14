@@ -1,13 +1,13 @@
 import React from 'react'
-import AdminLayout from '../../../../../components/adminLayout'
-import Card from "../../../../../components/ui/card/card";
-import Grid from "../../../../../components/ui/Grid/grid";
-import GridElement from "../../../../../components/ui/Grid/GridElement";
-import TextBox from "../../../../../components/ui/TextBox";
-import Button from "../../../../../components/ui/Button";
+import AdminLayout from '@/components/adminLayout'
+import Card from "@/components/ui/card/card";
+import Grid from "@/components/ui/Grid/grid";
+import GridElement from "@/components/ui/Grid/GridElement";
+import TextBox from "@/components/ui/TextBox";
+import Button from "@/components/ui/Button";
 import ListReservation from "./listReservation";
 import {useLazyQuery, useQuery} from "@apollo/react-hooks";
-import {GET_ALL_RESERVATIONS} from "../../../../../graphql/queries/admin/Ciruclation/Reservation.query";
+import {GET_ALL_RESERVATIONS} from "@/graphql/queries/admin/Ciruclation/Reservation.query";
 
 
 const resv = () => {

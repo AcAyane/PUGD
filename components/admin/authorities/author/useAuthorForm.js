@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { INSERT_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
-// import { UPDATE_AUTHOR } from '../../../../graphql/mutations/admin/authorities/author.mutations';
+import { INSERT_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
+// import { UPDATE_AUTHOR } from '@/graphql/mutations/admin/authorities/author.mutations';
 import { useMutation } from '@apollo/react-hooks';
 import Router from 'next/router';
 const useAuthorForm = () => {
