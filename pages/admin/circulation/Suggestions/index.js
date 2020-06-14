@@ -9,6 +9,10 @@ import DatePicker from "@/components/ui/DatePicker/DatePicker";
 import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
 import CirculationBody from "@/components/admin/Circulations/Body/Body";
 import Circulation from "@/components/admin/Circulations/Body/Body";
+import Input from "../../../../components/ui/Input";
+import Section from "../../../../components/ui/card/Section";
+import Router from "next/router";
+import Alert from "../../../../components/ui/Alert/Alert";
 
 
 const Suggestion = () => {
@@ -23,14 +27,15 @@ const Suggestion = () => {
     const [commentaires, setCommentaires] = useState('')
     const [commentairesGestion, setCommentairesGestion] = useState('')
 
-    const [addSuggestion,{error}] = useMutation(ADD_SUGGESTION,{
+    const [addSuggestion, {error}] = useMutation(ADD_SUGGESTION, {
         onCompleted(data) {
             const {_id} = data
             console.log("id user is:", _id)
-            // Router.push("/");
+             Router.push("/");
+            return <Alert Title="Success Add" Message="Votre Suggesttion est bien ajouter"/>
         }
     });
-    const onSubmitHandler = ()=>{
+    const onSubmitHandler = () => {
         console.log(titreOrDescriptionFile)
 
         addSuggestion({
@@ -48,132 +53,142 @@ const Suggestion = () => {
         });
     }
     return <Circulation>
-                <CirculationHeader CirculationModule="Suggestion" />
-                <Card>
-                    <div className="card-header">
-                        <h4 className="card-title">Suggestion</h4>
-                    </div>
-                    <p>Creation de Suggestion</p>
-                    <div id="sidebar-list" className="row contact-sidenav ml-0 mr-0">
-                        <div className="col s12 m12 l8 contact-form margin-top-contact">
-                            <div className="row">
-                                <form className="col s12" >
-                                    <div className="row">
-                                        <div className="input-field col m6 s12">
-                                            <input className="validate"
-                                                   id="tireOrDesc"
-                                                   type="text"
-                                                   onChange={e => setTitreOrDescriptionFile(e.target.value)}
-                                                   value={titreOrDescriptionFile}
-                                            />
-                                            <label htmlFor="tireOrDesc">Titre/Description du fichier</label>
-                                        </div>
-                                        <div className="input-field col m6 s12">
-                                            <input className="validate"
-                                                   id="editeur" type="text"
-                                                   onChange={e => setEditeur(e.target.value)}
-                                                   value={editeur}
-                                            />
-                                            <label htmlFor="editeur">Editeur</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col m6 s12">
-                                            <input  className="validate"
-                                                    id="auteur"
-                                                    type="text"
-                                                    onChange={e => setAuteur(e.target.value)}
-                                                    value={auteur}
-                                            />
-                                            <label htmlFor="auteur">Auteur</label>
-                                        </div>
-                                        <div className="input-field col m6 s12">
-                                            <input className="validate"
-                                                   id="isbn" type="text"
-                                                   onChange={e => setIsbn(e.target.value)}
-                                                   value={isbn}
-                                            />
-                                            <label htmlFor="isbn">ISBN</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col m6 s12">
-                                            <input className="validate" id="prix"
-                                                   type="number"
-                                                   onChange={e => setPrix(e.target.value)}
-                                                   value={prix}
-                                            />
-                                            <label htmlFor="prix">Prix</label>
-                                        </div>
-                                        <div className="input-field col m6 s12">
-                                            <input className="validate"
-                                                   id="URL" type="text"
-                                                   onChange={e => setUrl(e.target.value)}
-                                                   value={url}
-                                            />
-                                            <label htmlFor="URL">URL Associéel</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="">
-                                            <DatePicker label="Date de publication"
-                                                        onChange={e => setDatepub(new Date(e.target.value))}
-                                                        value={datepub}
-                                            />
-
-                                            {/*<DatePicker
-                                                label="Date de publication"
-                                                value={Authority.Start && Authority.Start.toISOString().split("T")[0] || ""}
-                                                onChange={(e) => {
-                                                    e.persist();
-                                                    OnAuthorityLinkChange(index, { "Start": new Date(e.target.value) })
-                                                }}
-                                            />*/}
-                                        </div>
-                                        <div className="input-field col m6 s12">
-                                            <input id="pice" type="text" className="validate"
-                                                   onChange={e => setPice(e.target.value)}
-                                                   value={pice}
-                                            />
-                                            <label htmlFor="Piece">Pièce jointe</label>
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="input-field col s12 width-100">
-                                            <textarea id="commentaires" className="materialize-textarea"
-                                                      onChange={e => setCommentaires(e.target.value)}
-                                                      value={commentaires}
-                                            />
-                                            <label htmlFor="commentaires">Commentaires</label>
-                                        </div>
-                                        <div className="input-field col s12 width-100">
-                                            <textarea id="commentairesGestion" className="materialize-textarea"
-                                                      onChange={e => setCommentairesGestion(e.target.value)}
-                                                      value={commentairesGestion}
-                                            />
-                                            <label htmlFor="commentairesGestion">Commentaires de Gestion</label>
-                                        </div>
-                                    </div>
-
-                                    <Button
-                                        type="submit"
-                                        fullWidth
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={onSubmitHandler}
-                                    >
-                                        SAVE
-                                    </Button>
-
-                                    {error ? <div  >{String(error)}</div> : null}
-                                </form>
-                            </div>
+        <CirculationHeader CirculationModule="Suggestion"/>
+        <Section>
+            <form>
+                <div className="col s12 m12 l12">
+                    <ul id="projects-collection" className="collection z-depth-1 animate fadeLeft">
+                        <li className="collection-item avatar">
+                            <i className="material-icons yellow darken-3 circle">lightbulb_outline</i>
+                            <h6 className="collection-header m-0">Suggestion</h6>
+                            <p>Creation de Suggestion</p>
+                        </li>
+                        <li className="input-field col s12 m6 l4 ">
+                            <Input
+                                icon="sort"
+                                label="Titre/Description du fichier"
+                                type="text"
+                                className="validate"
+                                required
+                                onChange={e => setTitreOrDescriptionFile(e.target.value)}
+                                value={titreOrDescriptionFile}
+                            />
+                        </li>
+                        <div className="input-field col s12 m6 l4 ">
+                            <Input
+                                icon="account_circle"
+                                label="Editeur"
+                                type="text"
+                                className="validate"
+                                required
+                                onChange={e => setEditeur(e.target.value)}
+                                value={editeur}
+                            />
                         </div>
-                    </div>
+                        <div className="input-field col s12 m6 l4 ">
+                            <Input
+                                icon="account_circle"
+                                label="Auteur"
+                                type="text"
+                                className="validate"
+                                required
+                                onChange={e => setAuteur(e.target.value)}
+                                value={auteur}
 
-                </Card>
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4 ">
+                            <Input
+                                icon="filter_center_focus"
+                                label="ISBN"
+                                type="text"
+                                className="validate"
+                                required
+                                onChange={e => setIsbn(e.target.value)}
+                                value={isbn}
 
-            </Circulation>
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4 ">
+                            <Input
+                                icon="euro_symbol"
+                                label="Prix"
+                                type="number"
+                                className="validate"
+                                required
+                                onChange={e => setPrix(e.target.value)}
+                                value={prix}
+
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4  ">
+                            <Input
+                                icon="insert_link"
+                                label="URL"
+                                type="text"
+                                className="validate"
+                                required
+                                onChange={e => setUrl(e.target.value)}
+                                value={url}
+
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4  ">
+                            <DatePicker label="Date de publication"
+                                        icon="today"
+                                        className="validate"
+                                        required
+                                        onChange={e => setDatepub(new Date(e.target.value))}
+                                        value={datepub}
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4  ">
+                            <Input label="Pice Jointé"
+                                   icon="link"
+                                   className="validate"
+                                   required
+                                   onChange={e => setPice(e.target.value)}
+                                   value={pice}
+                            />
+                        </div>
+                        <div className="input-field col s12 m6 l4  ">
+                            <Input
+
+                                icon="chat"
+                                label="commentaires"
+                                className="materialize-textarea"
+                                onChange={e => setCommentaires(e.target.value)}
+                                value={commentaires}
+                            />
+                        </div>
+                        <div className="input-field col s12 m12 l12  ">
+                            <Input
+
+                                icon="chat"
+                                label="Commentaires de Gestion"
+                                className="materialize-textarea"
+                                onChange={e => setCommentairesGestion(e.target.value)}
+                                value={commentairesGestion}
+                            />
+                        </div>
+
+                        <Button
+                            className=" center col s12 m12 l12  "
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            onClick={onSubmitHandler}
+                        >
+                            SAVE
+                        </Button>
+
+                        {error ? <div>{String(error)}</div> : null}
+                    </ul>
+                </div>
+            </form>
+        </Section>
+    </Circulation>
 }
 Suggestion.Layout = AdminLayout
 export default Suggestion

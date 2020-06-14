@@ -46,6 +46,7 @@
   "devDependencies": {
     "@apollo/react-components": "^3.1.5",
     "@next/bundle-analyzer": "^9.4.1",
+    "@types/react-select": "^3.0.13",
     "babel-eslint": "^10.1.0",
     "babel-plugin-graphql-tag": "^2.5.0",
     "babel-plugin-styled-components": "^1.10.7",

@@ -11,9 +11,10 @@ const ALL_BORROWERS = gql`
 `;
 const BorrowersByName = gql`
     query($fullname: String!){
-       GetBorrowersByName(fullname : $fullname){
+       GetBorrowersByName(first_name : $fullname){
          _id,
-            fullname,
+            first_name,
+            last_name,
             email,
             gender
       

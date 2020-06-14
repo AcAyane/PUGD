@@ -1,0 +1,10 @@
+{
+  "circulation": {
+    "label": "en",
+    "titles": [
+      {
+        "Hello": "User"
+      }
+    ]
+  }
+}
