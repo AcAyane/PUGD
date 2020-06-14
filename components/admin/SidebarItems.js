@@ -108,36 +108,36 @@ const SidebarItems = {
       Children: [
         {
           Label: "Prêt de documents",
-          href: "/admin/circulation/pretDoc",
+          href: "/admin/circulation/Circulations/pretDoc",
         },
         {
           Label: "Retour de documents",
-          href: "/admin/circulation/retDoc",
+          href: "/admin/circulation/Circulations/retDoc",
         },
         {
           Label: "Documents À traiter",
-          href: "/admin/circulation/taritDoc",
+          href: "/admin/circulation/Circulations/taritDoc",
         },
 
         {
           Label: "Groupes de lecteurs",
-          href: "/admin/circulation/groups",
+          href: "/admin/circulation/Circulations/groups",
         },
         {
           Label: "Nouveau lecteur",
-          href: "/admin/circulation/Borrowers",
+          href: "/admin/circulation/Circulations/Borrowers",
         },
         {
           Label: "Périodiques",
-          href: "/admin/circulation/periodique",
+          href: "/admin/circulation/Circulations/periodique",
         },
         {
           Label: "Recharch Personalisé",
-          href: "/admin/circulation/recharch",
+          href: "/admin/circulation/Circulations/recharch",
         },
         {
           Label: "List lecteur (Borrows)",
-          href: "/admin/circulation/Borrowers",
+          href: "/admin/circulation/Circulations/Borrowers",
         },
       ],
     },

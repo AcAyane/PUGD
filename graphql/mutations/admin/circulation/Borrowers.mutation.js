@@ -91,7 +91,14 @@ const UPDATE_BRROWERS = gql`
 
 `;
 
+const DELETE_BORROWER = gql`
+  mutation($_id: String!) {
+    DeleteOneBorrower(_id: $_id)
+  }
+`;
+
 module.exports = {
     INSERT_BORROWERS,
     UPDATE_BRROWERS,
+    DELETE_BORROWER
 }
