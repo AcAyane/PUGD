@@ -44,20 +44,11 @@ const Delivery = () => {
     if (
       data_lines &&
       data_lines.getAllOrderLines &&
-      data_delivery &&
-      data_delivery.getAllDeliveryLines
     )
-      clone1 = JSON.parse(data_lines.getAllOrderLines);
-    clone2 = JSON.parse(data_delivery.getAllDeliveryLines);
-    for (var i = 0; i < clone1.length; i++) {
-      for (var j = 0; i < clone2.length; j++) {
-        // if (
-        //   data_delivery.getAllDeliveryLines[j].orderline ==
-        //   data_lines.getAllOrderLines[i]._id
-        // )
-        Listdelivery.push(clone2[j]);
-      }
+    {
+      
     }
+
   }, [data_lines, data_delivery]);
 
   // for (var i = 0; i < data_lines.getAllOrderLines.length; i++) {

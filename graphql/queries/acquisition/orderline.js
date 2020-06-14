@@ -15,6 +15,19 @@ const GetAllOrderLines = gql`
   }
 `;
 
+const FilteredOrderLines = gql`
+  query($ids: [ID!]!) {
+    getAllOrderLines(filter: { id_in: $ids }) {
+      ...OrderLineInfo
+    }
+  }
+
+  fragment OrderLineInfo on OrderLine {
+    isbn
+    title
+  }
+`;
 module.exports = {
   GetAllOrderLines,
+  FilteredOrderLines,
 };

@@ -1,30 +1,19 @@
 import React, { useState, useMemo } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { GetOrder } from "../../../graphql/queries/acquisition/order";
-import { GetAllOrderLines } from "../../../graphql/queries/acquisition/orderline";
-import { UpdateOrder } from "../../../graphql/mutations/acquisition/order";
-import {
-  InsertOrderLine,
-  UpdateOrderLine,
-  DeleteOrderLine,
-} from "../../../graphql/mutations/acquisition/orderline";
-import { GetAllProviders } from "../../../graphql/queries/acquisition/provider";
-import Select from "react-select";
+import { GetOrder } from "@/graphql/queries/acquisition/order";
+import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
+import { InsertFacture } from "@/graphql/mutations/acquisition/facture";
+import { UpdateOrder } from "@/graphql/mutations/acquisition/order";
+import { UpdateOrderLine } from "@/graphql/mutations/acquisition/orderline";
 import { Formik, Form, Field } from "formik";
-import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-import GridElement from "../../../components/ui/Grid/GridElement";
-import Grid from "../../../components/ui/Grid/grid";
-import Container from "../../../components/ui/Container";
-import MaterialTable from "material-table-formik";
-import AdminLayout from "../../../components/adminLayout";
-
-const options = [
-  { value: "20/3/2020", label: "20/3/2020" },
-  { value: "1/3/2020", label: "1/3/2020" },
-];
+import GridElement from "@/components/ui/Grid/GridElement";
+import Grid from "@/components/ui/Grid/grid";
+import Container from "@/components/ui/Container";
+import MaterialTable from "material-table";
+import AdminLayout from "@/components/adminLayout";
 
 const ObjectId = (
   m = Math,
@@ -32,29 +21,28 @@ const ObjectId = (
   h = 16,
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
-
-const Bills = () => {
+function splitfunction(e) {
+  return e
+    .split("(")[1]
+    .split(")")[0]
+    .replace(/^"(.*)"$/, "$1");
+}
+const Billing = () => {
+  const Router = useRouter();
   const [order_line, setOrder_line] = useState([]);
-  const [insertOrderLine] = useMutation(InsertOrderLine, {
-    onCompleted: () => {
-      window.alert(`Order Line inserted !!`);
-    },
-    onError: (error) => {
-      alert(error.message);
-    },
-  });
+
   const [updateOrderLine] = useMutation(UpdateOrderLine, {
     onError: (error) => {
       alert(error.message);
     },
   });
-  const [deleteOrderLine] = useMutation(DeleteOrderLine, {
+  const [updateOrder] = useMutation(UpdateOrder, {
     onError: (error) => {
       alert(error.message);
     },
   });
 
-  const [updateOrder] = useMutation(UpdateOrder, {
+  const [insertFacture] = useMutation(InsertFacture, {
     onError: (error) => {
       alert(error.message);
     },
@@ -65,31 +53,13 @@ const Bills = () => {
   const { data: data_lines } = useQuery(GetAllOrderLines, {
     variables: { order: Router.query.id },
   });
-
   useMemo(() => {
     if (data_lines && data_lines.getAllOrderLines) {
       setOrder_line(data_lines.getAllOrderLines);
     }
   }, [data_lines]);
 
-  const ListPro = [];
-  function Providers() {
-    const { loading, data, error } = useQuery(GetAllProviders);
-    if (loading) return "Loading...";
-    if (error) return `couldn't fetch data`;
-    for (var i = 0; i < data.getallproviders.length; i++) {
-      ListPro.push({
-        value: data.getallproviders[i].name,
-        label: data.getallproviders[i].name,
-      });
-    }
-  }
-  function splitfunction(e) {
-    return e
-      .split("(")[1]
-      .split(")")[0]
-      .replace(/^"(.*)"$/, "$1");
-  }
+  var listlines = [];
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
@@ -121,21 +91,16 @@ const Bills = () => {
           provider: Yup.string().required("provider is required"),
         })}
         onSubmit={(values, actions) => {
-          let initord = [];
-          for (var i = 0; i < order_line.length; i++) {
-            if (order_line[i]._id.startsWith("ObjectID")) {
-              order_line[i]._id = splitfunction(order_line[i]._id);
-            }
-            initord.push(order_line[i]._id);
-          }
-
-          updateOrder({
+          insertFacture({
             variables: {
-              _id: Router.query.id,
-              name: values.name,
-              order_number: values.order_number,
-              status: values.status,
-              order_lines: initord,
+              _id: ObjectId(),
+              NumFacture: 213123,
+              payementdate: new Date(),
+              total_ttc: 12,
+              currency: "$",
+              establishement: "haha",
+              date: new Date(),
+              order_lines: listlines,
             },
           });
           setTimeout(() => {
@@ -143,15 +108,12 @@ const Bills = () => {
             actions.setSubmitting(false);
           }, 1000);
 
-          alert("Order updated succesfully");
+          alert("Bill added succesfully");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
               <GridElement className="col s12 m6" name="Order number">
-                {touched.order_number && errors.order_number && (
-                  <p className="alert alert-danger">{errors.order_number}</p>
-                )}
                 <Field
                   type="text"
                   name="order_number"
@@ -170,9 +132,6 @@ const Bills = () => {
             </Grid>
             <Grid>
               <GridElement className="col s12 m6" name="Establishement">
-                {touched.establishement && errors.establishement && (
-                  <p className="alert alert-danger">{errors.establishement}</p>
-                )}
                 <Field
                   type="text"
                   name="establishement"
@@ -180,21 +139,14 @@ const Bills = () => {
                   className="form-control"
                 />
               </GridElement>
-              {Providers()}
+              {/* {Providers()} */}
               {/* {AllOrderLines()} */}
               <GridElement className="col s12 m6" name="Provider">
-                {touched.id_Provider && errors.id_Provider && (
-                  <p className="alert alert-danger">{errors.id_Provider}</p>
-                )}
-                <Select
-                  id="provider"
+                <Field
+                  type="text"
                   name="provider"
-                  options={ListPro}
-                  multi={true}
-                  selected={values.provider}
-                  onChange={(provider) =>
-                    setFieldValue("provider", provider.value)
-                  }
+                  placeholder="Provider"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
@@ -211,17 +163,11 @@ const Bills = () => {
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Financial-Year">
-                {touched.financial_year && errors.financial_year && (
-                  <p className="alert alert-danger">{errors.financial_year}</p>
-                )}
-                <Select
-                  id="financial_year"
+                <Field
+                  type="text"
                   name="financial_year"
-                  options={options}
-                  selected={values.financial_year}
-                  onChange={(year) =>
-                    setFieldValue("financial_year", year.value)
-                  }
+                  placeholder="financial_year"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
@@ -236,11 +182,6 @@ const Bills = () => {
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Delivery Address">
-                {touched.delivery_address && errors.delivery_address && (
-                  <p className="alert alert-danger">
-                    {errors.delivery_address}
-                  </p>
-                )}
                 <Field
                   type="text"
                   name="delivery_address"
@@ -251,9 +192,6 @@ const Bills = () => {
             </Grid>
             <Grid>
               <GridElement className="col s12 m6" name="Billing Address">
-                {touched.billing_address && errors.billing_address && (
-                  <p className="alert alert-danger">{errors.billing_address}</p>
-                )}
                 <Field
                   type="text"
                   name="billing_address"
@@ -262,9 +200,6 @@ const Bills = () => {
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Notes">
-                {touched.notes && errors.notes && (
-                  <p className="alert alert-danger">{errors.notes}</p>
-                )}
                 <Field
                   type="text"
                   name="notes"
@@ -279,54 +214,51 @@ const Bills = () => {
               <div style={{ width: "100%" }}>
                 <MaterialTable
                   columns={[
-                    { title: "Isbn", field: "isbn" },
+                    { title: "Code", field: "_id", editable: "never" },
+
+                    { title: "Isbn", field: "isbn", editable: "never" },
                     {
                       title: "title",
                       field: "title",
+                      editable: "never",
                     },
                     {
-                      title: "author",
-                      field: "author",
-                    },
-                    {
-                      title: "quantity",
-                      field: "quantity",
-                      type: "numeric",
-                    },
-                    {
-                      title: "price",
+                      title: "Price",
                       field: "price",
                       type: "numeric",
+                      editable: "never",
                     },
                     {
-                      title: "discount",
+                      title: "Discount",
                       field: "discount",
                       type: "numeric",
+                      editable: "never",
                     },
-                    { title: "status", field: "status" },
+                    {
+                      title: "Billed",
+                      field: "quantityfactured",
+                      type: "numeric",
+                    },
+                    {
+                      title: "To Be Billed",
+                      render: (rowData) =>
+                        rowData.quantity - rowData.quantityfactured,
+                      type: "numeric",
+                    },
+                    {
+                      title: "New Bill",
+                      field: "new_Qt",
+                      type: "numeric",
+                    },
                   ]}
                   data={order_line}
                   title="Order Lines"
                   editable={{
-                    onRowAdd: (newData) =>
-                      new Promise((resolve) => {
-                        setTimeout(() => {
-                          setOrder_line(() => {
-                            newData._id = ObjectId();
-                            newData.order = Router.query.id;
-                            const order_line1 = [...order_line, newData];
-                            return order_line1;
-                          });
-                          resolve();
-                        }, 1000);
-                      }).then(() => {
-                        insertOrderLine({ variables: newData });
-                        console.log(newData);
-                      }),
                     onRowUpdate: (newData, oldData) =>
                       new Promise((resolve) => {
                         setTimeout(() => {
                           setOrder_line(() => {
+                            newData.quantityfactured = newData.new_Qt;
                             const order_line1 = [
                               ...order_line.filter((x) => x !== oldData),
                               newData,
@@ -336,7 +268,11 @@ const Bills = () => {
                           resolve();
                         }, 1000);
                       }).then(() => {
+                        listlines.push(newData);
                         var a = splitfunction(newData._id);
+                        var j =
+                          parseInt(oldData.quantityfactured) +
+                          parseInt(newData.new_Qt);
                         updateOrderLine({
                           variables: {
                             _id: a,
@@ -347,25 +283,22 @@ const Bills = () => {
                             price: newData.price,
                             discount: newData.discount,
                             status: newData.status,
+                            quantityfactured: j,
                           },
-                        });
-                      }),
-                    onRowDelete: (oldData) =>
-                      new Promise((resolve) => {
-                        setTimeout(() => {
-                          setOrder_line(() => {
-                            const order_line1 = [
-                              ...order_line.filter((x) => x !== oldData),
-                            ];
-                            return order_line1;
-                          });
-                          resolve();
-                        }, 1000);
-                      }).then(() => {
-                        var a = splitfunction(oldData._id);
-                        deleteOrderLine({
-                          variables: { _id: a },
-                        });
+                          refetchQueries: [
+                            {
+                              query: GetAllOrderLines,
+                              variables: { order: Router.query.id },
+                            },
+                          ],
+                        }).then(
+                          updateOrder({
+                            variables: {
+                              _id: Router.query.id,
+                              factured: true,
+                            },
+                          })
+                        );
                       }),
                   }}
                 />
@@ -375,16 +308,8 @@ const Bills = () => {
             <div>
               <Grid>
                 <button className="SubmitButton" type="submit">
-                  Submit
+                  Create The Bill
                 </button>
-              </Grid>
-              <Grid>
-                <a
-                  href={`/admin/acquisition/facturation?id=${Router.query.id}`}
-                  className="invoice-action-edit"
-                >
-                  <i className="SubmitButton">Facturation</i>
-                </a>
               </Grid>
             </div>
             <br></br>
@@ -395,5 +320,5 @@ const Bills = () => {
   );
 };
 
-Bills.Layout = AdminLayout;
-export default Bills;
+Billing.Layout = AdminLayout;
+export default Billing;
