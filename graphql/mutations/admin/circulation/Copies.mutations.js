@@ -37,7 +37,7 @@ const  InsertCopy = gql`
   }
 `;
 
-const UpdateCopy = gql`
+/*const UpdateCopy = gql`
   mutation ($_id: String!)(
     $NewStatus: String!
     $WithDrawn: Boolean!
@@ -71,26 +71,17 @@ const UpdateCopy = gql`
     ReplacementPrice: $ReplacementPrice
     )
   }
+`;*/
+const DELETE_COPY = gql`
+  mutation($_id: String!) {
+    deleteOneCopy(_id: $_id)
+  }
 `;
 
-const DeleteOneCopy = gql`
-  mutation {
-  deleteOneCopy(_id:$_id)
-    
-
-  
-    
-  
-
-  
-}
-
-`;
 
 //important
 module.exports = {
     InsertCopy,
-    DeleteOneCopy,
-    UpdateCopy
+    DELETE_COPY
 };
 

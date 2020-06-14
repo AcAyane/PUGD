@@ -55,37 +55,6 @@ const Alldoc = () => {
                     <div className="col s12 m8 l8 animate fadeLeft">
                         <div className="card">
                             <div className="card-content"><PretTable/></div>
-                                {/*<h4 className="card-title mb-0">Table des prêts:</h4>
-                                <table className="table table-bordered table-dark">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">NO.</th>
-                                        <th scope="col">Titre</th>
-                                        <th scope="col">Support</th>
-                                        <th scope="col">Localisation Secteur</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Retour initial</th>
-                                        <th scope="col">Prologement</th>
-                                        <th scope="col">Retour</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-
-                                        <th scope="row"></th>
-                                        <td>no.</td>
-                                        <td>titre</td>
-                                        <td>supp.</td>
-                                        <td>localisation</td>
-                                        <td>date</td>
-                                        <td>retour initial</td>
-                                        <td>prolo.</td>
-                                        <td>retour</td>
-
-                                    </tr>
-
-                                    </tbody>
-                                </table>*/}
 
 
                         </div>

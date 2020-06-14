@@ -38,7 +38,7 @@ const AddCopy = () => {
                         actions.setSubmitting(false);
                     }, 1000);
                     alert("Document prêter added succesfully");
-                    Router.push("/admin/");
+                    Router.push("/admin/pretDoc/index");
                 }}
                 render={({ errors, touched }) => (
                     <Form>

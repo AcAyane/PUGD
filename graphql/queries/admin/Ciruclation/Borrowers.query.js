@@ -37,7 +37,7 @@ const GetBorrower = gql`
     }
 `;
 const AllBorrowers = gql`
-    query($full_name: String!){
+    query($full_name: String){
        getAllBorrowers(full_name : $full_name){
      _id, 
      last_name,

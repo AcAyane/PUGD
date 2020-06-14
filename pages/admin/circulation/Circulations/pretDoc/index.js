@@ -3,23 +3,31 @@ import AdminLayout from '../../../../../components/adminLayout'
 import TextBox from "../../../../../components/ui/TextBox";
 import Button from "../../../../../components/ui/Button";
 import Card from "../../../../../components/ui/card/card";
-import {useLazyQuery} from "@apollo/react-hooks";
+import {useLazyQuery, useMutation} from "@apollo/react-hooks";
 import {AllBorrowers} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
-import Router from "next/router";
 import Link from "next/link";
+import {DELETE_BORROWER} from "../../../../../graphql/mutations/admin/circulation/Borrowers.mutation";
+import Router from "next/router";
 
 
 
-const onDocHandler = (e) => {
-    /* alert("hello");*/
+
+
+
+/*const onDocHandler = (e) => {
+    /!* alert("hello");*!/
     Router.push("/admin/circulation/Circulations/pretDoc/allDoc");
-}
+}*/
+
 
 const predoc = () => {
 
-    const [ getAllBorrowers, { loading, error, data }] = useLazyQuery(AllBorrowers);
 
-    /*  const [codBar, setCodeBar] = useState('');*/
+    const [ getAllBorrowers, { loading, error, data }] = useLazyQuery(AllBorrowers);
+    const [DeleteOneBorrower] = useMutation(DELETE_BORROWER);
+
+
+
     const [id] = useState('');
     const [nom, setNom] = useState('');
 
@@ -39,6 +47,7 @@ const predoc = () => {
             variables: {
                 /* bar_code: codBar,*/
                 full_name: nom,
+
             }
         });
     }
@@ -76,6 +85,9 @@ const predoc = () => {
                         <th scope="col">Prénom</th>
                         <th scope="col">Email</th>
                         <th scope="col">Détails</th>
+                        <th scope="col">Delete</th>
+
+
 
 
                     </tr>
@@ -91,6 +103,33 @@ const predoc = () => {
                                 <Link href={{ pathname: '/admin/circulation/Circulations/pretDoc/allDoc', query: { id :item._id } }}><a>Détails</a></Link>
 
                                 </td>
+                            <a
+                                href="#"
+                                className="invoice-action-view mr-4"
+                                onClick={(e) =>
+                                    window.confirm("Are you sure you wish to delete this Borrower") &&
+                                    Router.push("/admin/circulation/Circulations/pretDoc")&&
+                                    DeleteOneBorrower({
+                                        variables: { _id: item._id },
+                                        refetchQueries: [
+                                            { query:  AllBorrowers },
+                                        ]
+
+                                    })
+
+                                }
+                            >
+                                <i className="material-icons">delete</i>
+                            </a>
+                            <a
+                                href={`/admin/circulation/Circulations/pretDoc/UpdateBorrowers?id=${(
+                                    item._id
+                                )}`}
+                                className="invoice-action-edit"
+                            >
+                                <i className="material-icons">edit</i>
+                            </a>
+
                         </tr>
                     ) ): <p>false</p> }
                     </tbody>
