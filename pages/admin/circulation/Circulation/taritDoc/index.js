@@ -5,16 +5,18 @@ import TextBox from "components/ui/TextBox";
 import Button from "components/ui/Button";
 import Table from "components/ui/Table/Table";
 import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "graphql/queries/admin/Ciruclation/Examplaire.query";
 import Circulation from "components/admin/Circulations/Body/Body";
 import Null from "components/admin/Circulations/Handerls/Null";
 import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
 import Profile from "components/admin/Circulations/Borrwer/Add/Profile";
 import BtnBadge from "components/ui/ui_badge";
+import {FIND_COPY} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
+import {EXAMPLAIR_BY_CODE} from "graphql/queries/admin/Ciruclation/Examplaire.query";
+
 
 const traitDoc = () => {
 
-    const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(EXAMPLAIR_BY_CODE);
+    const [findCopy, { loading, error, data }] = useLazyQuery(FIND_COPY);
 
     const [codBar, setCodeBar] = useState('');
 
@@ -25,19 +27,20 @@ const traitDoc = () => {
         console.log(data)
     }
 
+    //console.log(data.copies)
     if(data != null || data !== undefined){
-        console.log(data.GetExamplaireByCodeBar)
+        console.log(data.copies)
     }
     const onSearchHandler = (e) => {
         e.preventDefault();
-        GetExamplaireByCodeBar({
+        findCopy({
             variables: {
                 code: codBar,
             }
         });
     }
     return <Circulation>
-        <CirculationHeader CirculationModule="Documents a treté"
+        <CirculationHeader Title="Documents a treté"
                            children={
                                <from>
                                    <span>Recherche des document par leur Code-barres</span>
@@ -60,8 +63,9 @@ const traitDoc = () => {
                                     <div className="row">
                                         <a href="#" className="float-left">
                                             <h5 className="display-inline">
-                                                {data.GetExamplaireByCodeBar.Record.Title},
-                                                {data.GetExamplaireByCodeBar.Record.RecYear}
+                                                Record Tile
+                                                {/*{data.GetExamplaireByCodeBar.Record.Title},
+                                                {data.GetExamplaireByCodeBar.Record.RecYear}*/}
                                             </h5>
                                         </a>
                                         <span className="chip teal text-lighten-2 accent-4 float-right">Disponible à pret</span>
@@ -80,8 +84,8 @@ const traitDoc = () => {
                                         } Tbody={
                                             <tr>
                                                 <td>
-                                                    <a key={data.GetExamplaireByCodeBar._id}>
-                                                        {data.GetExamplaireByCodeBar.BareCode}
+                                                    <a key={data.copies._id}>
+                                                        {data.copies.BareCode}
                                                     </a>
                                                 </td>
                                                 <td ><span className="chip  teal-text" >960 DEP</span></td>
