@@ -15,6 +15,17 @@ const Alldoc = () => {
         variables: {id: id},
     });
     console.log(data);
+
+
+    const parseDat = (str) =>{
+        const parts = str.slice(0, -1).split('T');
+        const dateComponent = parts[0];
+        const timeComponent = parts[1];
+
+        //console.log(dateComponent);
+        //console.log(timeComponent);
+        return dateComponent
+    }
     return <React.Fragment>
 
 
@@ -44,7 +55,7 @@ const Alldoc = () => {
                                         <div className="col s12 m4 push-xl2">
                                             <h5><u>Email</u>:{data && data.getOneBorrower.email}</h5>
                                             <h5><u>Opac</u> : {data && data.getOneBorrower.opaclogin}</h5>
-                                            <h5><u>Date de naissance</u> : {data && data.getOneBorrower.birthday}</h5>
+                                            <h5><u>Date de naissance</u> : {data && parseDat(data.getOneBorrower.birthday)}</h5>
                                         </div>
 
                                     </div>
