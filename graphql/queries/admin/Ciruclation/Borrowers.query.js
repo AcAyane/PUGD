@@ -17,23 +17,28 @@ const ALL_BORROWERS = gql`
 const GetBorrower = gql`
     query ($id: String!){
      getOneBorrower(id:$id){
-  
-  _id
-  bar_code
-  last_name
-  email
-  address{
-    rue1
-    contry
-  }
-  first_name
-  gender
-  statues
-  phonenumber
-  opaclogin
-  birthday
-
-}
+         _id,
+         bar_code,
+         first_name,
+         last_name,
+         email,
+         phonenumber,
+         birthday,
+         gender,
+         statues,
+         username_opac,
+         password_opac,
+         lang_opac,
+         membershipstart,
+         membershipcanceled,
+         address{
+            rue1,
+            rue2,
+            city,
+            contry,
+            } 
+          
+      }
     }
 `;
 const AllBorrowers = gql`
