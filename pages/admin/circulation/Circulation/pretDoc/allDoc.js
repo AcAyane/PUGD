@@ -14,6 +14,7 @@ const Alldoc = () => {
     const {loading, error, data} = useQuery(GetBorrower, {
         variables: {id: id},
     });
+    console.log(data);
     return <React.Fragment>
 
 
