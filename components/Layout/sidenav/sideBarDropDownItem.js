@@ -1,5 +1,5 @@
 import React from 'react';
-import DropDownItem from '@/components/ui/dropdown/dropdownItem';
+import DropDownItem from 'components/ui/dropdown/dropdownItem';
 // import Router from 'next/router' ;
 // import styles from './sidebar.module.css' 
 

@@ -8,7 +8,7 @@
       "@/graphql/*": [
         "graphql/*"
       ],
-      "@/shared/*": [
+      "@shared/*": [
         "shared/*"
       ],
       "@/static_api/*": [

@@ -1,5 +1,5 @@
 import React from "react";
-import AdminLayout from "@/components/adminLayout";
+import AdminLayout from "components/adminLayout";
 import AllProviders from "./AllProviders";
 // import AddQuotation from "./AddQuotation";
 

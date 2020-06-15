@@ -1,19 +1,20 @@
 import React, {useState} from 'react'
-import AdminLayout from '@/components/adminLayout'
-import TextBox from "@/components/ui/TextBox";
-import Button from "@/components/ui/Button";
+import AdminLayout from 'components/adminLayout'
+import TextBox from "components/ui/TextBox";
+import Button from "components/ui/Button";
 import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.query";
-import Table from "@/components/ui/Table/Table";
-import BtnBadge from "@/components/ui/ui_badge";
-import Circulation from "@/components/admin/Circulations/Body/Body";
-import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
-import Null from "@/components/admin/Circulations/Handerls/Null";
-import Profile from "@/components/admin/Circulations/Borrwer/Profile";
+import {EXAMPLAIR_BY_CODE} from "graphql/queries/admin/Ciruclation/Examplaire.query";
+import Table from "components/ui/Table/Table";
+import BtnBadge from "components/ui/ui_badge";
+import Circulation from "components/admin/Circulations/Body/Body";
+import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHeader";
+import Null from "components/admin/Circulations/Handerls/Null";
+import Profile from "components/admin/Circulations/Borrwer/Add/Profile";
+import {FIND_COPY} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
 
 
 const retDoc = () => {
-    const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(EXAMPLAIR_BY_CODE);
+    const [findCopy, { loading, error, data }] = useLazyQuery(FIND_COPY);
 
     const [codBar, setCodeBar] = useState('');
 
@@ -25,7 +26,7 @@ const retDoc = () => {
     }
     const onSearchHandler = (e) => {
         e.preventDefault();
-        GetExamplaireByCodeBar({
+        findCopy({
             variables: {
                 code: codBar,
             }
@@ -33,15 +34,15 @@ const retDoc = () => {
     }
 
     if(data != null || data !== undefined){
-        console.log(data.GetExamplaireByCodeBar)
+        console.log(data.copies)
     }
     return <Circulation>
-                <CirculationHeader CirculationModule="Retour de documents"
+                <CirculationHeader Title="Retour de documents"
                 children={
                     <from>
                         <span>Recherche des document par leur Code-barres</span>
                         <div className="row">
-                            <TextBox label={"Search by Code bar doument"}
+                            <TextBox label={"Search Copies Of Document (Record) by Code bar "}
                                      type="text"
                                      onChange={event => {setCodeBar(event.target.value)}}
                                      value={codBar}
@@ -61,8 +62,9 @@ const retDoc = () => {
                                 <div className="row">
                                     <a href="#" className="float-left">
                                         <h5 className="display-inline">
-                                            {data.GetExamplaireByCodeBar.Record.Title},
-                                            {data.GetExamplaireByCodeBar.Record.RecYear}
+
+                                            {/*{data.GetExamplaireByCodeBar.Record.Title},
+                                            {data.GetExamplaireByCodeBar.Record.RecYear}*/}
                                         </h5>
                                     </a>
                                      <span className="chip teal text-lighten-2 accent-4 float-right">Disponible à pret</span>
@@ -81,8 +83,8 @@ const retDoc = () => {
                                     } Tbody={
                                         <tr>
                                             <td>
-                                                <a key={data.GetExamplaireByCodeBar._id}>
-                                                    {data.GetExamplaireByCodeBar.BareCode}
+                                                <a key={data.copies._id}>
+                                                    {data.copies.BareCode}
                                                 </a>
                                             </td>
                                             <td ><span className="chip  teal-text" >960 DEP</span></td>

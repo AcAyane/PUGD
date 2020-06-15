@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import AdminLayout from "@/components/adminLayout";
+import AdminLayout from "components/adminLayout";
 import Router from "next/router";
 
 // import Router from "next/router";
