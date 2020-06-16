@@ -21,12 +21,17 @@ const ObjectId = (
   h = 16,
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
-function splitfunction(e) {
-  return e
-    .split("(")[1]
-    .split(")")[0]
-    .replace(/^"(.*)"$/, "$1");
-}
+
+var today = new Date();
+var today1 =
+  today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
+
+var listlines = [];
+var listq = [];
+var ttc = 0;
+var r = Math.random()
+  .toString(36)
+  .substring(7);
 const Billing = () => {
   const Router = useRouter();
   const [order_line, setOrder_line] = useState([]);
@@ -59,7 +64,12 @@ const Billing = () => {
     }
   }, [data_lines]);
 
-  var listlines = [];
+  function splitfunction(e) {
+    return e
+      .split("(")[1]
+      .split(")")[0]
+      .replace(/^"(.*)"$/, "$1");
+  }
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
@@ -73,6 +83,7 @@ const Billing = () => {
           order_number: data_order.getOrder.order_number,
           establishement: data_order.getOrder.establishement,
           name: data_order.getOrder.name,
+          currency: data_order.getOrder.currency,
           financial_year: data_order.getOrder.financial_year,
           date: new Date(),
           delivery_address: data_order.getOrder.delivery_address,
@@ -81,6 +92,7 @@ const Billing = () => {
           status: data_order.getOrder.status,
           type: data_order.getOrder.type,
           provider: data_order.getOrder.provider,
+          payementDate: String(new Date()),
         }}
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
@@ -93,13 +105,17 @@ const Billing = () => {
         onSubmit={(values, actions) => {
           insertFacture({
             variables: {
-              _id: ObjectId(),
-              NumFacture: 213123,
-              payementdate: new Date(),
-              total_ttc: 12,
-              currency: "$",
-              establishement: "haha",
-              date: new Date(),
+              id: ObjectId(),
+              order: Router.query.id,
+              provider: Router.query.provider,
+              status: "recieved",
+              quantitiesFactured: listq,
+              numFacture: r,
+              payementDate: values.payementDate,
+              total_ttc: ttc,
+              currency: Router.query.currency,
+              establishement: String(Router.query.establishement),
+              date: today1,
               order_lines: listlines,
             },
           });
@@ -127,6 +143,26 @@ const Billing = () => {
                   name="status"
                   placeholder="pending"
                   className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6" name="Currency">
+                {touched.currency && errors.currency && (
+                  <p className="alert alert-danger">{errors.currency}</p>
+                )}
+                <Field
+                  type="text"
+                  name="currency"
+                  placeholder="Currency"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6" name="payementDate">
+                <DatePicker
+                  className="date-control"
+                  name="payementDate"
+                  showPopperArrow={false}
+                  selected={values.date}
+                  onChange={(date) => setFieldValue("payementDate", date)}
                 />
               </GridElement>
             </Grid>
@@ -214,7 +250,12 @@ const Billing = () => {
               <div style={{ width: "100%" }}>
                 <MaterialTable
                   columns={[
-                    { title: "Code", field: "_id", editable: "never" },
+                    {
+                      title: "Code",
+                      render: (rowData) =>
+                        splitfunction(rowData._id).substring(0, 7),
+                      editable: "never",
+                    },
 
                     { title: "Isbn", field: "isbn", editable: "never" },
                     {
@@ -268,8 +309,17 @@ const Billing = () => {
                           resolve();
                         }, 1000);
                       }).then(() => {
-                        listlines.push(newData);
+                        var b = true;
                         var a = splitfunction(newData._id);
+                        listq.push(newData.new_Qt);
+                        ttc += newData.new_Qt * (newData.price * 1.2);
+                        for (var i = 0; i < listlines.length; i++) {
+                          if (listlines[i] === a) {
+                            b = false;
+                          }
+                        }
+                        if (b) listlines.push(a);
+                        console.log(listlines);
                         var j =
                           parseInt(oldData.quantityfactured) +
                           parseInt(newData.new_Qt);

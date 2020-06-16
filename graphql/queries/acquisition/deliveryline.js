@@ -1,14 +1,15 @@
 import gql from "graphql-tag";
 
 const GetDeliveryLine = gql`
-  query($order: String!) {
-    getAllDeliveryLines(order: $order) {
+  query {
+    getAllDeliveryLines {
       _id
       isbn
       orderline
       order
       title
       newquantity
+      remainingquantity
       date
     }
   }

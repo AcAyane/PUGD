@@ -269,6 +269,8 @@ const Receiving = () => {
                         var j =
                           parseInt(oldData.quantityreceived) +
                           parseInt(newData.new_Qt);
+                        var r = parseInt(oldData.quantity) - j;
+
                         updateOrderLine({
                           variables: {
                             _id: a,
@@ -297,6 +299,7 @@ const Receiving = () => {
                               title: newData.title,
                               date: new Date(),
                               newquantity: newData.new_Qt,
+                              remainingquantity: r,
                             },
                           }).then(
                             updateOrder({

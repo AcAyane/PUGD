@@ -7,6 +7,7 @@ const InsertDeliveryLine = gql`
     $title: String
     $date: String
     $newquantity: Int
+    $remainingquantity: Int
     $order: String!
   ) {
     insertDeliveryLine(
@@ -17,6 +18,7 @@ const InsertDeliveryLine = gql`
       title: $title
       date: $date
       newquantity: $newquantity
+      remainingquantity: $remainingquantity
     )
   }
 `;

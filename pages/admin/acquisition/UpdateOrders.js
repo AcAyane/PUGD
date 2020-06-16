@@ -102,6 +102,7 @@ const UpdateOrders = () => {
           order_number: data_order.getOrder.order_number,
           establishement: data_order.getOrder.establishement,
           name: data_order.getOrder.name,
+          currency: data_order.getOrder.currency,
           financial_year: data_order.getOrder.financial_year,
           date: new Date(),
           delivery_address: data_order.getOrder.delivery_address,
@@ -163,6 +164,17 @@ const UpdateOrders = () => {
                   type="text"
                   name="status"
                   placeholder="pending"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6" name="Order number">
+                {touched.currency && errors.currency && (
+                  <p className="alert alert-danger">{errors.currency}</p>
+                )}
+                <Field
+                  type="text"
+                  name="currency"
+                  placeholder="Currency"
                   className="form-control"
                 />
               </GridElement>
@@ -349,6 +361,7 @@ const UpdateOrders = () => {
                             discount: newData.discount,
                             status: newData.status,
                             quantityreceived: 0,
+                            quantityfactured: 0,
                           },
                         });
                       }),
@@ -382,7 +395,13 @@ const UpdateOrders = () => {
               </Grid>
               <Grid>
                 <a
-                  href={`/admin/acquisition/facturation?id=${Router.query.id}`}
+                  href={`/admin/acquisition/Billing?id=${
+                    Router.query.id
+                  }&establishement=${
+                    data_order.getOrder.establishement
+                  }&currency=${String(data_order.getOrder.currency)}&provider=${
+                    data_order.getOrder.provider
+                  }`}
                   className="invoice-action-edit"
                 >
                   <i className="SubmitButton">Facturation</i>
