@@ -3,6 +3,7 @@ import Link from "next/link";
 import {AllBorrowers} from "../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
 import {useLazyQuery, useMutation, useQuery} from "@apollo/react-hooks";
 import {DELETE_BORROWER} from "../../../../graphql/mutations/admin/circulation/Borrowers.mutation";
+import Card from "../../../ui/Card/Card";
 
 
 const Borrowers = (props) => {
@@ -15,10 +16,12 @@ const Borrowers = (props) => {
         console.log(data.getAllBorrowers)
     }
     return <React.Fragment>
+        <Card>
         {
             dataSet != null || dataSet !== undefined ?
 
                 <React.Fragment>
+
                     <table className="table table-bordered">
                         <thead>
                         <tr>
@@ -137,7 +140,9 @@ const Borrowers = (props) => {
                     </table>
                 </React.Fragment>
         }
+        </Card>
     </React.Fragment>
+
 }
 
 export default Borrowers
