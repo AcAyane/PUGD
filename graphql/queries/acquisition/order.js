@@ -13,6 +13,7 @@ const GetOrders = gql`
       order_lines
       orders
       name
+      currency
     }
   }
 `;
@@ -29,6 +30,7 @@ const GetOrdersCours = gql`
       billing_address
       order_lines
       orders
+      currency
     }
   }
 `;
@@ -45,6 +47,7 @@ const GetOrdersReceived = gql`
       billing_address
       order_lines
       orders
+      currency
     }
   }
 `;
@@ -65,6 +68,7 @@ const GetOrder = gql`
       order_lines
       name
       orders
+      currency
     }
   }
 `;

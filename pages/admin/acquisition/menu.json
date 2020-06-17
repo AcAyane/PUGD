@@ -27,7 +27,7 @@
         },
         {
           "Label": "Bills",
-          "href": "/admin/acquisition/Bills"
+          "href": "/admin/acquisition/AllBills"
         },
         {
           "Label": "Budgets",

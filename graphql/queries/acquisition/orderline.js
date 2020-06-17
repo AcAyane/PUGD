@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 const GetOrderLine = gql`
   query($id: String!) {
     getOneOrderLine(id: $id) {
+      order
       quantityreceived
     }
   }
@@ -19,10 +20,23 @@ const GetAllOrderLines = gql`
       discount
       status
       quantityreceived
+      quantityfactured
     }
   }
 `;
 
+const FilteredOrderLines = gql`
+  query($ids: [ID!]!) {
+    getAllOrderLines(filter: { id_in: $ids }) {
+      ...OrderLineInfo
+    }
+  }
+
+  fragment OrderLineInfo on OrderLine {
+    isbn
+    title
+  }
+`;
 const GetOrderLines = gql`
   query {
     getAllOrderLines {
@@ -42,5 +56,6 @@ const GetOrderLines = gql`
 module.exports = {
   GetOrderLines,
   GetAllOrderLines,
+  FilteredOrderLines,
   GetOrderLine,
 };

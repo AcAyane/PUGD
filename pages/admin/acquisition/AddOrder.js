@@ -32,6 +32,7 @@ const initialFormData = {
   establishement: "hahahaa",
   name: "haha",
   financial_year: "10",
+  currency: "$",
   date: new Date(),
   delivery_address: "zaeaze",
   billing_address: "zaeaze",
@@ -171,6 +172,17 @@ const AddOrder = () => {
                     type="text"
                     name="status"
                     placeholder="pending"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6" name="Order number">
+                  {touched.currency && errors.currency && (
+                    <p className="alert alert-danger">{errors.currency}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="currency"
+                    placeholder="Currency"
                     className="form-control"
                   />
                 </GridElement>
