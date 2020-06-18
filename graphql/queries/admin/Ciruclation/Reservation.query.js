@@ -5,17 +5,20 @@ const GET_ALL_RESERVATIONS = gql`
         GetAllReservation{
             Borrwore{
               _id,
-              first_name,
+              first_name
+              last_name,
+              localisation{
+                Name
+              },
             },
-        
             Record{
-              _id,
-              Title,
+              Title
+              _id
             }
-            Rank,
             dateres,
-            confirmed,
-          }
+            Rank,        
+        }
+      
     }
 `;
 

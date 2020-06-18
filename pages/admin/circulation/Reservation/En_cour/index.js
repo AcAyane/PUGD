@@ -7,30 +7,13 @@ import TextBox from "@/components/ui/TextBox";
 import Button from "@/components/ui/Button";
 import ListReservation from "./listReservation";
 import {useLazyQuery, useQuery} from "@apollo/react-hooks";
-import {GET_ALL_RESERVATIONS} from "@/graphql/queries/admin/Ciruclation/Reservation.query";
+import {GET_ALL_RESERVATIONS} from "graphql/queries/admin/Ciruclation/Reservation.query";
 
 
 const resv = () => {
     const NO_RESERVATION = <span style={{color:'#d60e28'}}>No data is finder</span>;
 
-    const  { loading, error, data } = useQuery(GET_ALL_RESERVATIONS);
 
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (data != null || data !== undefined){
-        console.log(" data = ", data.GetAllReservation.confirmed)
-       /* data.getAllReservation.map((items) =>
-                console.log("lecteur name : ",items.Borrwore.fullname),
-            //console.log("Create At : ",moment(items.CreatAt).format("DD-MM-YYYY HH:mm"))
-        )*/
-    }
-
-    if(error !== null){
-        console.log("Error type:\n",error)
-    }
 
     /*const onSearchHandler = (e) => {
 
@@ -68,9 +51,9 @@ const resv = () => {
                     </Card>
                 </form>
                 {/*list des Reservation*/}
-                {  data != null || data !== undefined ?
-                    <ListReservation datamap={data.GetAllReservation} />
-                    : NO_RESERVATION }
+
+                    <ListReservation  />
+
 
                {/* { data != null || data !== undefined ? <pa>sur </pa> : NO_RESERVATION}*/}
                 {/*<ListReservation datamap={data.getAllReservation} />*/}

@@ -10,3 +10,12 @@ export const splitfunction = (e) => {
         .split(")")[0]
         .replace(/^"(.*)"$/, "$1");
 }
+export const FullDate = (str) =>{
+    const parts = str.slice(0, -1).split('T');
+    const dateComponent = parts[0];
+    const timeComponent = parts[1];
+
+    //console.log(dateComponent);
+    //console.log(timeComponent);
+    return dateComponent
+}
