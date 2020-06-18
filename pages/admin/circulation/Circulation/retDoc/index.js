@@ -11,6 +11,7 @@ import CirculationHeader from "components/admin/Circulations/Hedar/CirculationHe
 import Null from "components/admin/Circulations/Handerls/Null";
 import Profile from "components/admin/Circulations/Borrwer/Add/Profile";
 import {FIND_COPY} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
+import DocumentTable from "../../../../../components/admin/Circulations/Retour_Document/DocumentTable";
 
 
 const retDoc = () => {
@@ -37,12 +38,12 @@ const retDoc = () => {
         console.log(data.copies)
     }
     return <Circulation>
-                <CirculationHeader Title="Retour de documents"
+                <CirculationHeader Title="Retour d'Examplaire de Documment"
                 children={
                     <from>
                         <span>Recherche des document par leur Code-barres</span>
                         <div className="row">
-                            <TextBox label={"Search Copies Of Document (Record) by Code bar "}
+                            <TextBox label={"Search Copies Of Document (Copies) by Code bar "}
                                      type="text"
                                      onChange={event => {setCodeBar(event.target.value)}}
                                      value={codBar}
@@ -58,45 +59,7 @@ const retDoc = () => {
 
                         (
                             <div>
-                                <div className="card-panel">
-                                <div className="row">
-                                    <a href="#" className="float-left">
-                                        <h5 className="display-inline">
-
-                                            {/*{data.GetExamplaireByCodeBar.Record.Title},
-                                            {data.GetExamplaireByCodeBar.Record.RecYear}*/}
-                                        </h5>
-                                    </a>
-                                     <span className="chip teal text-lighten-2 accent-4 float-right">Disponible à pret</span>
-                                </div>
-                                <div className="row">
-                                    <Table Thead={
-                                        <tr>
-                                            <th>NO.</th>
-                                            <th>COTE</th>
-                                            <th>SUPPORT</th>
-                                            <th>LOCALISATION</th>
-                                            <th>SECTION</th>
-                                            <th>STATUT</th>
-                                            <th>PROPRIÉTAIRE</th>
-                                        </tr>
-                                    } Tbody={
-                                        <tr>
-                                            <td>
-                                                <a key={data.copies._id}>
-                                                    {data.copies.BareCode}
-                                                </a>
-                                            </td>
-                                            <td ><span className="chip  teal-text" >960 DEP</span></td>
-                                            <td>Livre</td>
-                                            <td>Bibliothèque PMB Services</td>
-                                            <td>Documentaires</td>
-                                            <td>Empruntable</td>
-                                            <td>BDP</td>
-                                        </tr>
-                                    }/>
-                                </div>
-                            </div>
+                                <DocumentTable dataSet={data}/>
 
                             <div className="card-panel">
                                 <div className="row">

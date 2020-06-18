@@ -10,9 +10,28 @@ const EXAMPLAIR_BY_CODE = gql`
 `;
 const FIND_COPY = gql`
     query($code: String){
-        copies(BareCode:$code){
-            _id,
-            BareCode,
+        GetExamplaireByCodeBar(code_bar:$code){
+           _id,
+            BareCode, 
+            Record{
+                Title,
+                RecYear,
+            },
+            MediaType{
+                media_types_name
+            },
+            Status{
+                status_name,
+            }
+            Localisation{
+                Name
+            }
+            Owner{
+                owner_name
+            }
+            Section{
+                section_name
+            }
         }
     }
 `;
