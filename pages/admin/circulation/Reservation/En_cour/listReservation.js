@@ -82,6 +82,7 @@ const ListReservation = (props) => {
                             <td className="" width="40">
                                 <span className="task-cat teal accent-4 display-block">{FullDate(res.dateres)}</span>
                             </td>
+                            {/*TODO fix calcule logique*/}
                             <td >
                                 <span className="task-cat red accent-2 display-block">24-05-2020</span>
                             </td>
