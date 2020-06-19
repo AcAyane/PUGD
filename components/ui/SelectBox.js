@@ -1,10 +1,13 @@
 import React, { useRef, useEffect } from 'react'
 
-const SelectBox = ({ children, constrainWidth, label, ...props }) => {
+const SelectBox = ({ children, constrainWidth, setInstance, label, ...props }) => {
 
   const selectElement = useRef();
   useEffect(() => {
     var instances = M.FormSelect.init(selectElement.current);
+    if (setInstance) {
+      setInstance(instances)
+    }
   }, [])
 
 

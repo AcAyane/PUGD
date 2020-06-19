@@ -216,7 +216,83 @@ const SidebarItems = {
       ],
     },
   ],
+  
+   Cataloguing: [
+    "Cataloguing",
+    {
+      Label: "Search",
+      Icon: "home",
+      Children: [
+        {
+          Label: "All Libraries",
+          href: "/admin/cataloguing/Library/libraries"
+      },
+      {
+          Label: "All Branches",
+          href: "/admin/cataloguing/Branch/branches"
+      },
+      {
+          Label: "All Records",
+          href: "/admin/cataloguing/Record/Records"
+      },
+      {
+          Label: "All Copies",
+          href: "/admin/cataloguing/Copy/copies"
+      },
 
+      {
+          Label: "All Serials",
+          href: "/admin/cataloguing/Serial/Serials"
+      },
+      {
+          Label: "All KeyWords",
+          href: "/admin/cataloguing/KeyWord/KeyWords"
+      },
+      {
+          Label: "All Languages",
+          href: "/admin/cataloguing/Language/Languages"
+      },
+
+      ],
+    },
+    {
+      Label: "Search2",
+      Icon: "home",
+      Children: [
+        {
+          Label: "All Libraries",
+          href: "/admin/cataloguing/Library/libraries"
+      },
+      {
+          Label: "All Branches",
+          href: "/admin/cataloguing/Branch/branches"
+      },
+      {
+          Label: "All Records",
+          href: "/admin/cataloguing/Record/Records"
+      },
+      {
+          Label: "All Copies",
+          href: "/admin/cataloguing/Copy/copies"
+      },
+
+      {
+          Label: "All Serials",
+          href: "/admin/cataloguing/Serial/Serials"
+      },
+      {
+          Label: "All KeyWords",
+          href: "/admin/cataloguing/KeyWord/KeyWords"
+      },
+      {
+          Label: "All Languages",
+          href: "/admin/cataloguing/Language/Languages"
+      },
+
+      ],
+    },
+  ],
+  
   reporting: [
     "reporting",
     {
