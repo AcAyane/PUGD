@@ -4,8 +4,9 @@ import TextBox from "@/components/ui/TextBox";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/card/card";
 import {useLazyQuery} from "@apollo/react-hooks";
-import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.query";
+import {EXAMPLAIR_BY_CODE} from "graphql/queries/admin/Ciruclation/Examplaire.query";
 import Examplaire from "./Examplaire";
+import {FIND_COPY} from "../../../../../graphql/queries/admin/Ciruclation/Examplaire.query";
 
 
 const visual = () => {
@@ -13,7 +14,7 @@ const visual = () => {
 
 
 
-    const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(EXAMPLAIR_BY_CODE);
+    const [GetExamplaireByCodeBar, { loading, error, data }] = useLazyQuery(FIND_COPY);
 
     const [codBar, setCodeBar] = useState('');
 
@@ -33,7 +34,7 @@ const visual = () => {
     }
 
     if(data != null || data !== undefined){
-        console.log(data.GetExamplaireByCodeBar)
+        console.log("copies",data.GetExamplaireByCodeBar)
     }
     return <div className="container">
                 <div className="row">
@@ -57,7 +58,7 @@ const visual = () => {
                             </Card>
                         </form>
                         {  data != null || data !== undefined ?
-                            <Examplaire data = {data.GetExamplaireByCodeBar}/>
+                            <Examplaire dataSet = {data.GetExamplaireByCodeBar}/>
                             : NO_Examplair }
 
                     </div>

@@ -5,6 +5,7 @@ import {EXAMPLAIR_BY_CODE} from "@/graphql/queries/admin/Ciruclation/Examplaire.
 
 const Examplaire = (props) => {
 
+    //console.log("Title :",props.dataSet.Record.Title)
     return <React.Fragment>
 
                     <div className="row">
@@ -15,7 +16,7 @@ const Examplaire = (props) => {
                                     <div className="card">
                                         <div className="card-content">
                                             <h4 className="card-title mb-0">Details Examplaire :
-                                                <a key={props.data._id}>{props.data.Record.Title}</a>
+                                                <a key={props.dataSet._id}>{props.dataSet && props.dataSet.Record.Title}</a>
 
                                                 <a className="mb-6 chip float-right" type="button">
                                                     <i className="material-icons">chat</i>

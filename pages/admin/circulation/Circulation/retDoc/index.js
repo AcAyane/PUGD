@@ -59,6 +59,7 @@ const retDoc = () => {
 
                         (
                             <div>
+
                                 <DocumentTable dataSet={data}/>
 
                             <div className="card-panel">

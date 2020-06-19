@@ -5,6 +5,10 @@ const EXAMPLAIR_BY_CODE = gql`
         copies(BareCode:$code){
             _id,
             BareCode,
+            Record{
+              Title,
+              ISBN,
+            },
         }
     }
 `;
