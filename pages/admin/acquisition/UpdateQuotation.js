@@ -3,17 +3,27 @@ import { useRouter } from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GetOrder } from "@/graphql/queries/acquisition/order";
 import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
-import { InsertFacture } from "@/graphql/mutations/acquisition/facture";
 import { UpdateOrder } from "@/graphql/mutations/acquisition/order";
-import { UpdateOrderLine } from "@/graphql/mutations/acquisition/orderline";
+import {
+  InsertOrderLine,
+  UpdateOrderLine,
+  DeleteOrderLine,
+} from "@/graphql/mutations/acquisition/orderline";
+import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
+import Select from "react-select";
 import { Formik, Form, Field } from "formik";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 import GridElement from "@/components/ui/Grid/GridElement";
 import Grid from "@/components/ui/Grid/grid";
 import Container from "@/components/ui/Container";
-import MaterialTable from "material-table";
+import MaterialTable from "material-table-formik";
 import AdminLayout from "@/components/adminLayout";
+
+const options = [
+  { value: "20/3/2020", label: "20/3/2020" },
+  { value: "1/3/2020", label: "1/3/2020" },
+];
 
 const ObjectId = (
   m = Math,
@@ -22,32 +32,29 @@ const ObjectId = (
   s = (s) => m.floor(s).toString(h)
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
-var today = new Date();
-var today1 =
-  today.getDate() + "-" + (today.getMonth() + 1) + "-" + today.getFullYear();
-
-var listlines = [];
-var listq = [];
-var ttc = 0;
-var r = Math.random()
-  .toString(36)
-  .substring(7);
-const Billing = () => {
+const UpdateQuotation = () => {
   const Router = useRouter();
   const [order_line, setOrder_line] = useState([]);
-
+  const [insertOrderLine] = useMutation(InsertOrderLine, {
+    onCompleted: () => {
+      window.alert(`Quotation Line inserted !!`);
+    },
+    onError: (error) => {
+      alert(error.message);
+    },
+  });
   const [updateOrderLine] = useMutation(UpdateOrderLine, {
     onError: (error) => {
       alert(error.message);
     },
   });
-  const [updateOrder] = useMutation(UpdateOrder, {
+  const [deleteOrderLine] = useMutation(DeleteOrderLine, {
     onError: (error) => {
       alert(error.message);
     },
   });
 
-  const [insertFacture] = useMutation(InsertFacture, {
+  const [updateOrder] = useMutation(UpdateOrder, {
     onError: (error) => {
       alert(error.message);
     },
@@ -58,32 +65,43 @@ const Billing = () => {
   const { data: data_lines } = useQuery(GetAllOrderLines, {
     variables: { order: Router.query.id },
   });
+
   useMemo(() => {
     if (data_lines && data_lines.getAllOrderLines) {
       setOrder_line(data_lines.getAllOrderLines);
     }
   }, [data_lines]);
 
-  function splitfunction(e) {
-    return e
-      .split("(")[1]
-      .split(")")[0]
-      .replace(/^"(.*)"$/, "$1");
+  const ListPro = [];
+  function Providers() {
+    const { loading, data, error } = useQuery(GetAllProviders);
+    if (loading) return "Loading...";
+    if (error) return `couldn't fetch data`;
+    for (var i = 0; i < data.getallproviders.length; i++) {
+      ListPro.push({
+        value: data.getallproviders[i].name,
+        label: data.getallproviders[i].name,
+      });
+    }
   }
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 
+  const splitfunction = (e) =>
+    e
+      .split("(")[1]
+      .split(")")[0]
+      .replace(/^"(.*)"$/, "$1");
   return (
     <Container>
       <Formik
         enableReinitialize
         initialValues={{
           id: Router.query.id,
-          order_number: data_order.getOrder.order_number,
+          quotation_number: data_order.getOrder.quotation_number,
           establishement: data_order.getOrder.establishement,
           name: data_order.getOrder.name,
-          currency: data_order.getOrder.currency,
           financial_year: data_order.getOrder.financial_year,
           date: new Date(),
           delivery_address: data_order.getOrder.delivery_address,
@@ -92,31 +110,31 @@ const Billing = () => {
           status: data_order.getOrder.status,
           type: data_order.getOrder.type,
           provider: data_order.getOrder.provider,
-          payementDate: String(new Date()),
         }}
         validationSchema={Yup.object().shape({
           establishement: Yup.string().required("establishement is required"),
           name: Yup.string().required("name is required"),
-          order_number: Yup.string().required("order num is required"),
+          quotation_number: Yup.string().required("id is required"),
           financial_year: Yup.string().required("financial year is required"),
 
           provider: Yup.string().required("provider is required"),
         })}
         onSubmit={(values, actions) => {
-          insertFacture({
+          let initord = [];
+          for (var i = 0; i < order_line.length; i++) {
+            if (order_line[i]._id.startsWith("ObjectID")) {
+              order_line[i]._id = splitfunction(order_line[i]._id);
+            }
+            initord.push(order_line[i]._id);
+          }
+
+          updateOrder({
             variables: {
-              id: ObjectId(),
-              order: Router.query.id,
-              provider: Router.query.provider,
-              status: "recieved",
-              quantitiesFactured: listq,
-              numFacture: r,
-              payementDate: values.payementDate,
-              total_ttc: ttc,
-              currency: Router.query.currency,
-              establishement: String(Router.query.establishement),
-              date: today1,
-              order_lines: listlines,
+              _id: Router.query.id,
+              name: values.name,
+              quotation_number: values.quotation_number,
+              status: values.status,
+              order_lines: initord,
             },
           });
           setTimeout(() => {
@@ -124,16 +142,21 @@ const Billing = () => {
             actions.setSubmitting(false);
           }, 1000);
 
-          alert("Bill added succesfully");
+          alert("Quotation updated succesfully");
         }}
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <GridElement className="col s12 m6" name="Order number">
+              <GridElement className="col s12 m6" name="Quotation number">
+                {touched.quotation_number && errors.quotation_number && (
+                  <p className="alert alert-danger">
+                    {errors.quotation_number}
+                  </p>
+                )}
                 <Field
                   type="text"
-                  name="order_number"
-                  placeholder="Enter order number"
+                  name="quotation_number"
+                  placeholder="Enter quotation number"
                   className="form-control"
                 />
               </GridElement>
@@ -145,29 +168,12 @@ const Billing = () => {
                   className="form-control"
                 />
               </GridElement>
-              <GridElement className="col s12 m6" name="Currency">
-                {touched.currency && errors.currency && (
-                  <p className="alert alert-danger">{errors.currency}</p>
-                )}
-                <Field
-                  type="text"
-                  name="currency"
-                  placeholder="Currency"
-                  className="form-control"
-                />
-              </GridElement>
-              <GridElement className="col s12 m6" name="payementDate">
-                <DatePicker
-                  className="date-control"
-                  name="payementDate"
-                  showPopperArrow={false}
-                  selected={values.date}
-                  onChange={(date) => setFieldValue("payementDate", date)}
-                />
-              </GridElement>
             </Grid>
             <Grid>
               <GridElement className="col s12 m6" name="Establishement">
+                {touched.establishement && errors.establishement && (
+                  <p className="alert alert-danger">{errors.establishement}</p>
+                )}
                 <Field
                   type="text"
                   name="establishement"
@@ -175,7 +181,7 @@ const Billing = () => {
                   className="form-control"
                 />
               </GridElement>
-              {/* {Providers()} */}
+              {Providers()}
               {/* {AllOrderLines()} */}
               <GridElement className="col s12 m6" name="Provider">
                 <Field
@@ -218,6 +224,11 @@ const Billing = () => {
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Delivery Address">
+                {touched.delivery_address && errors.delivery_address && (
+                  <p className="alert alert-danger">
+                    {errors.delivery_address}
+                  </p>
+                )}
                 <Field
                   type="text"
                   name="delivery_address"
@@ -228,6 +239,9 @@ const Billing = () => {
             </Grid>
             <Grid>
               <GridElement className="col s12 m6" name="Billing Address">
+                {touched.billing_address && errors.billing_address && (
+                  <p className="alert alert-danger">{errors.billing_address}</p>
+                )}
                 <Field
                   type="text"
                   name="billing_address"
@@ -236,6 +250,9 @@ const Billing = () => {
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Notes">
+                {touched.notes && errors.notes && (
+                  <p className="alert alert-danger">{errors.notes}</p>
+                )}
                 <Field
                   type="text"
                   name="notes"
@@ -250,57 +267,54 @@ const Billing = () => {
               <div style={{ width: "100%" }}>
                 <MaterialTable
                   columns={[
-                    {
-                      title: "Code",
-                      render: (rowData) =>
-                        splitfunction(rowData._id).substring(0, 7),
-                      editable: "never",
-                    },
-
-                    { title: "Isbn", field: "isbn", editable: "never" },
+                    { title: "Isbn", field: "isbn" },
                     {
                       title: "title",
                       field: "title",
-                      editable: "never",
                     },
                     {
-                      title: "Price",
+                      title: "author",
+                      field: "author",
+                    },
+                    {
+                      title: "quantity",
+                      field: "quantity",
+                      type: "numeric",
+                    },
+                    {
+                      title: "price",
                       field: "price",
                       type: "numeric",
-                      editable: "never",
                     },
                     {
-                      title: "Discount",
+                      title: "discount",
                       field: "discount",
                       type: "numeric",
-                      editable: "never",
                     },
-                    {
-                      title: "Billed",
-                      field: "quantityfactured",
-                      type: "numeric",
-                      editable: "never",
-                    },
-                    {
-                      title: "To Be Billed",
-                      render: (rowData) =>
-                        rowData.quantity - rowData.quantityfactured,
-                      type: "numeric",
-                    },
-                    {
-                      title: "New Bill",
-                      field: "new_Qt",
-                      type: "numeric",
-                    },
+                    { title: "status", field: "status" },
                   ]}
                   data={order_line}
                   title="Order Lines"
                   editable={{
+                    onRowAdd: (newData) =>
+                      new Promise((resolve) => {
+                        setTimeout(() => {
+                          setOrder_line(() => {
+                            newData._id = ObjectId();
+                            newData.order = Router.query.id;
+                            const order_line1 = [...order_line, newData];
+                            return order_line1;
+                          });
+                          resolve();
+                        }, 1000);
+                      }).then(() => {
+                        insertOrderLine({ variables: newData });
+                        console.log(newData);
+                      }),
                     onRowUpdate: (newData, oldData) =>
                       new Promise((resolve) => {
                         setTimeout(() => {
                           setOrder_line(() => {
-                            newData.quantityfactured = newData.new_Qt;
                             const order_line1 = [
                               ...order_line.filter((x) => x !== oldData),
                               newData,
@@ -310,20 +324,7 @@ const Billing = () => {
                           resolve();
                         }, 1000);
                       }).then(() => {
-                        var b = true;
                         var a = splitfunction(newData._id);
-                        listq.push(newData.new_Qt);
-                        ttc += newData.new_Qt * (newData.price * 1.2);
-                        for (var i = 0; i < listlines.length; i++) {
-                          if (listlines[i] === a) {
-                            b = false;
-                          }
-                        }
-                        if (b) listlines.push(a);
-                        console.log(listlines);
-                        var j =
-                          parseInt(oldData.quantityfactured) +
-                          parseInt(newData.new_Qt);
                         updateOrderLine({
                           variables: {
                             _id: a,
@@ -334,35 +335,37 @@ const Billing = () => {
                             price: newData.price,
                             discount: newData.discount,
                             status: newData.status,
-                            quantityfactured: j,
                           },
-                          refetchQueries: [
-                            {
-                              query: GetAllOrderLines,
-                              variables: { order: Router.query.id },
-                            },
-                          ],
-                        }).then(
-                          updateOrder({
-                            variables: {
-                              _id: Router.query.id,
-                              factured: true,
-                            },
-                          })
-                        );
+                        });
+                      }),
+                    onRowDelete: (oldData) =>
+                      new Promise((resolve) => {
+                        setTimeout(() => {
+                          setOrder_line(() => {
+                            const order_line1 = [
+                              ...order_line.filter((x) => x !== oldData),
+                            ];
+                            return order_line1;
+                          });
+                          resolve();
+                        }, 1000);
+                      }).then(() => {
+                        var a = splitfunction(oldData._id);
+                        deleteOrderLine({
+                          variables: { _id: a },
+                        });
                       }),
                   }}
                 />
               </div>
             </Grid>
             <br></br>
-            <div>
-              <Grid>
-                <button className="SubmitButton" type="submit">
-                  Create The Bill
-                </button>
-              </Grid>
-            </div>
+            <Grid>
+              <button className="SubmitButton" type="submit">
+                Submit
+              </button>
+              <button className="SubmitButton"> Place an order</button>
+            </Grid>
             <br></br>
           </Form>
         )}
@@ -371,5 +374,5 @@ const Billing = () => {
   );
 };
 
-Billing.Layout = AdminLayout;
-export default Billing;
+UpdateQuotation.Layout = AdminLayout;
+export default UpdateQuotation;

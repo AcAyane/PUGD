@@ -81,6 +81,7 @@ const AddQuotation = () => {
     },
   });
 
+  var a = 0;
   const ListPro = [];
   function Hello() {
     const { loading, data, error } = useQuery(GetAllProviders);

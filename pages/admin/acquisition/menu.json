@@ -41,7 +41,11 @@
       "Children": [
         {
           "Label": "Import Suggestion",
-          "href": "/admin/acquisition/ImportSuggestion"
+          "href": "/admin/acquisition/ImportSugg"
+        },
+        {
+          "Label": "All Suggestions",
+          "href": "/admin/acquisition/AllSuggestions"
         },
         {
           "Label": "Suggestion by reader",

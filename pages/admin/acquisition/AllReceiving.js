@@ -43,7 +43,7 @@ const AllReceiving = () => {
                 <Table
                   Thead={
                     <tr>
-                      <th>Number</th>
+                      <th>Order Name</th>
                       <th>Provider</th>
                       <th>Date Order</th>
                       <th>State</th>
@@ -56,7 +56,7 @@ const AllReceiving = () => {
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">
-                              {item.order_number}
+                              {item.name}
                             </span>
                           </td>
                           <td>{item.provider}</td>

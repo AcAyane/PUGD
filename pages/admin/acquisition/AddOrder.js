@@ -156,7 +156,7 @@ const AddOrder = () => {
 
             <Form>
               <Grid>
-                <GridElement className="col s12 m6" name="Order number">
+                <GridElement className="col s12 m6 l4" name="Order number">
                   {touched.order_number && errors.order_number && (
                     <p className="alert alert-danger">{errors.order_number}</p>
                   )}
@@ -167,22 +167,22 @@ const AddOrder = () => {
                     className="form-control"
                   />
                 </GridElement>
-                <GridElement className="col s12 m6" name="Status">
+                <GridElement className="col s12 m6 l4" name="Order Name">
+                  {touched.name && errors.name && (
+                    <p className="alert alert-danger">{errors.name}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Currency"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6 l2" name="Status">
                   <Field
                     type="text"
                     name="status"
                     placeholder="pending"
-                    className="form-control"
-                  />
-                </GridElement>
-                <GridElement className="col s12 m6" name="Order number">
-                  {touched.currency && errors.currency && (
-                    <p className="alert alert-danger">{errors.currency}</p>
-                  )}
-                  <Field
-                    type="text"
-                    name="currency"
-                    placeholder="Currency"
                     className="form-control"
                   />
                 </GridElement>
@@ -207,7 +207,6 @@ const AddOrder = () => {
                     <p className="alert alert-danger">{errors.id_Provider}</p>
                   )}
                   <Select
-                    className="input-field col s12"
                     id="provider"
                     name="provider"
                     options={ListPro}
@@ -220,14 +219,11 @@ const AddOrder = () => {
                 </GridElement>
               </Grid>
               <Grid>
-                <GridElement className="col s12 m6" name="Name">
-                  {touched.name && errors.name && (
-                    <p className="alert alert-danger">{errors.name}</p>
-                  )}
+                <GridElement className="col s12 m6" name="Currency">
                   <Field
                     type="text"
-                    name="name"
-                    placeholder="Enter Name"
+                    name="currency"
+                    placeholder="Enter Currency"
                     className="form-control"
                   />
                 </GridElement>
@@ -248,7 +244,6 @@ const AddOrder = () => {
               <Grid>
                 <GridElement className="col s12 m6" name="Date">
                   <DatePicker
-                    className="date-control"
                     name="date"
                     showPopperArrow={false}
                     selected={values.date}
@@ -295,6 +290,7 @@ const AddOrder = () => {
                   />
                 </GridElement>
               </Grid>
+              <br></br>
               <Grid>
                 <div style={{ width: "100%" }}>
                   <MaterialTable
