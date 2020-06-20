@@ -1,6 +1,6 @@
 import React from 'react'
 import {useMutation, useQuery} from "@apollo/react-hooks";
-import {GetAllCopies} from "../../../../../graphql/queries/admin/Ciruclation/Copies.query";
+import {GetOneCopy} from "../../../../../graphql/queries/admin/Ciruclation/Copies.query";
 import {useRouter} from "next/router";
 import {DELETE_COPY} from "../../../../../graphql/mutations/admin/circulation/Copies.mutations"
 import {GetAllProviders} from "../../../../../graphql/queries/acquisition/provider";
@@ -18,7 +18,7 @@ function PretTable() {
 
     const router = useRouter()
     const BareCode = router.query.BareCode;
-    const { loading, error, data } = useQuery(GetAllCopies, {
+    const { loading, error, data } = useQuery(GetOneCopy, {
         variables: {BareCode: BareCode},
     });
     const [deleteOneCopy] = useMutation(DELETE_COPY);
@@ -44,16 +44,17 @@ function PretTable() {
             </tr>
             </thead>
             <tbody>
-            { data != null || data !== undefined ?  data.copies.map((item) => (
+            { data != null || data !== undefined ?  data.copy.map((item) => (
                 <tr key={item._id} >
 
                     <span><td>{item.BareCode}</td></span>
                     <td>{item.CopyNumber}</td>
-                    <td>{item.Localisation}</td>
+                    <td>{item.Localisation.Name}</td>
                     <td>{item.Record.Format}</td>
                     <td>{item.Record.ISBN}</td>
-                    <td>{item.Restricted}</td>
                     <td>{item.Record.Title}</td>
+                    <td>{item.DateLastSeen}</td>
+                    <td>{item. DateLastBorrowed}</td>
 
                     <a
                         href="#"
@@ -62,7 +63,7 @@ function PretTable() {
                             deleteOneCopy({
                                 variables: { _id: splitfunction(item._id) },
                                 refetchQueries: [
-                                    { query: GetAllCopies},
+                                    { query: copy},
                                 ],
                             });
                         }}
