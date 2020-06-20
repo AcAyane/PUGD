@@ -31,6 +31,7 @@ const Borrowers = (props) => {
                             <th scope="col">Email</th>
                             <th scope="col">Détails</th>
                             <th scope="col">Delete</th>
+                            <th scope="col">Update</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,7 @@ const Borrowers = (props) => {
                                     }}><a>Détails</a></Link>
 
                                 </td>
+                                <td>
                                 <a
                                     href="#"
                                     className="invoice-action-view mr-4"
@@ -65,6 +67,8 @@ const Borrowers = (props) => {
                                 >
                                     <i className="material-icons">delete</i>
                                 </a>
+                                </td>
+                                <td>
                                 <a
                                     href={`/admin/circulation/Circulations/pretDoc/UpdateBorrowers?id=${(
                                         item._id
@@ -73,6 +77,7 @@ const Borrowers = (props) => {
                                 >
                                     <i className="material-icons">edit</i>
                                 </a>
+                                </td>
 
                             </tr>
                         )) : <p>false</p>}

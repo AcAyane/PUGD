@@ -9,6 +9,7 @@ import Link from "next/link";
 import {DELETE_BORROWER} from "../../../../../graphql/mutations/admin/circulation/Borrowers.mutation";
 import Router from "next/router";
 import Borrowers from "../../../../../components/admin/Circulations/Borrwer/Borrowers";
+import  UpdateBorrower from "../../Circulation/pretDoc/UpdateBorrower"
 
 
 
@@ -74,7 +75,7 @@ const predoc = () => {
                 {
                     data != null || data !== undefined ? <Borrowers dataSet={data}/> : <Borrowers/>
                 }
-
+<UpdateBorrower/>
             </div>
         </div>
     </div>
