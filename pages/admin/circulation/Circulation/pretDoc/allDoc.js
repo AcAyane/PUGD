@@ -55,7 +55,7 @@ const Alldoc = () => {
                     </div>
                     <div className="col s12 m8 l8 animate fadeLeft">
                         <div className="card">
-                            <div className="card-content"><PretTable/></div>
+                            {/*<div className="card-content"><PretTable/></div>*/}
 
 
                         </div>
