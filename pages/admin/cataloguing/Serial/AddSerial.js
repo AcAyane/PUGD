@@ -22,7 +22,7 @@ const AddSerial = () => {
     const [TitleProper, seTitleProper] = useState('')
     const [OtherTitleInfo, setOtherTitleInfo] = useState('')
     const [ParallelTitle, setParallelTitle] = useState('')
-    const [RecYear, setRecYear] = useState(0)
+    const [RecYear, setRecYear] = useState('')
     const [Type, setType] = useState('')
     const [Summary, setSummary] = useState('')
     const [VisibleInSerial, setVisibleInSerial] = useState('')
@@ -134,11 +134,29 @@ const AddSerial = () => {
               <div id="html-view-validations">
                 <form className="formValidate0" id="formValidate0" method="get">
                   <div className="row">
-                  <div className="input-field col s12">
-                      <label htmlFor="uname0">ISSN*</label>
-                      <input className="validate" required id="uname0" name="uname0" type="text" 
-                      onChange={e => setIssn(e.target.value)} value={issn}/>
-                    </div>
+                  <div className="input-field col s6">
+                      
+                      <SelectBox className="validate" required id="uname5" name="uname5" type="text" 
+                      onChange={e => setType(e.target.value)} value={Type}>
+                       <option value="a" selected="selected">printed text</option>
+                        <option value="b">manuscript text</option>
+                        <option value="c">musical score - printed</option>
+                        <option value="d">musical score - manuscript</option>
+                        <option value="e">cartographic document - printed</option>
+                        <option value="f">cartographic document - manuscript</option>
+                        <option value="g">video, projectable document</option>
+                        <option value="i">sound recording - non musical</option>
+                        <option value="j">sound recording - musical</option>
+                        <option value="k">2D graphical document</option>
+                        <option value="l">electronic document</option>
+                        <option value="m">multimedia document</option>
+                        <option value="r">3D object, artifact, ...</option>
+                        </SelectBox>
+                    </div> </div>
+
+                    
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Title</h6>
 
                     <div className="input-field col s12">
                       <label htmlFor="uname1">Title proper *</label>
@@ -146,38 +164,98 @@ const AddSerial = () => {
                       onChange={e => seTitleProper(e.target.value)} value={TitleProper}/>
                     </div>
 
-                    <div className="input-field col s12">
-                      <label htmlFor="uname2">Other title information*</label>
-                      <input className="validate" required id="uname2" name="uname2" type="text" 
-                      onChange={e => setOtherTitleInfo(e.target.value)} value={OtherTitleInfo}/>
-                    </div>
 
-
+                    
                     <div className="input-field col s12">
                       <label htmlFor="uname3">Parallel title*</label>
                       <input className="validate" required id="uname3" name="uname3" type="text" 
                       onChange={e => setParallelTitle(e.target.value)} value={ParallelTitle}/>
                     </div>
 
+                    <div className="input-field col s12">
+                      <label htmlFor="uname2">Other title information*</label>
+                      <input className="validate" required id="uname2" name="uname2" type="text" 
+                      onChange={e => setOtherTitleInfo(e.target.value)} value={OtherTitleInfo}/>
+                    </div> </div>
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Responsibility</h6>
+                    <div className="input-field col s12">
+                        <SelectBox   className="validate" label={"Responsibility"}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        
+                        </SelectBox >
+                    </div>
+                    </div>
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Publishers</h6>
+
+    
+              <div className="input-field col s6">
+                        <SelectBox  id="uname14" name="uname14"  className="validate" 
+                        label={"Publisher"} onChange={e => setPublishers(e.target.value)}
+                         required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        {data6.publisher.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.name} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div>
+
+
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname14" name="uname14"  className="validate" 
+                        label={"Other Publisher"} onChange={e => setOtherPublishers(e.target.value)}
+                         required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        {data6.publisher.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.name} </option>
+                            )) }
+                        </SelectBox >
+                    </div> 
 
                     <div className="input-field col s12">
-                      <label htmlFor="uname4">RecYear*</label>
+                      <label htmlFor="uname4">Year*</label>
                       <input type="number" id="quantity" name="quantity" onChange={e => setRecYear(e.target.value)} value={RecYear}/>
                     </div>
 
-                    <div className="input-field col s12">
-                      <label htmlFor="uname5">Type*</label>
-                      <input className="validate" required id="uname5" name="uname5" type="text" 
-                      onChange={e => setType(e.target.value)} value={Type}/>
                     </div>
 
 
+
+                    
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >ISSN</h6>
+
                     <div className="input-field col s12">
-                      <label htmlFor="uname8">Summary*</label>
-                      <input className="validate" required id="uname8" name="uname8" type="text" 
-                      onChange={e => setSummary(e.target.value)} value={Summary}/>
+                      <label htmlFor="uname0">ISSN*</label>
+                      <input className="validate" required id="uname0" name="uname0" type="text" 
+                      onChange={e => setIssn(e.target.value)} value={issn}/>
                     </div>
 
+                    </div>
+
+
+
+                    
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Notes</h6>
+                    <div className="input-field col s12">
+                      <label htmlFor="uname9">General note*</label>
+                      <input className="validate" required id="uname9" name="uname9" type="text" 
+                      onChange={e => setGenetalNote(e.target.value)} value={GenetalNote}/>
+                    </div>
+
+                    
                     <div className="input-field col s12">
                       <label htmlFor="uname15">Note On Contents*</label>
                       <input className="validate" required id="uname15" name="uname15" type="text" 
@@ -185,39 +263,23 @@ const AddSerial = () => {
                     </div> 
 
                     <div className="input-field col s12">
-                      <label htmlFor="uname9">General note*</label>
-                      <input className="validate" required id="uname9" name="uname9" type="text" 
-                      onChange={e => setGenetalNote(e.target.value)} value={GenetalNote}/>
+                      <label htmlFor="uname8">Summary*</label>
+                      <input className="validate" required id="uname8" name="uname8" type="text" 
+                      onChange={e => setSummary(e.target.value)} value={Summary}/>
                     </div>
 
-              
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname11" multiple="multiple" name="uname11" label={"Language"} className="validate" 
-                         setInstance={setLanguage} onChange={e => setLanguage1(Language.getSelectedValues())}>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        { data1.languages.map((items) => (
+                   </div>
 
-                            <option key={items._id}  value={items._id}> {items.Value} </option>
 
-                            )) }
-                        </SelectBox >
-                    </div>
 
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname12" name="uname12" multiple="multiple" className="validate" label={"Original Language"}
-                        setInstance={setOriginalLanguage} onChange={e => setOriginalLanguage1(OriginalLanguage.getSelectedValues())} required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        {  data1.languages.map((items) => (
+                    
 
-                            <option key={items._id}  value={items._id}> {items.Value} </option>
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Indexing</h6>
 
-                            )) }
-                        </SelectBox >
-                    </div>
 
-                    <div className="input-field col s12">
+
+                    <div className="input-field col s6">
                         <SelectBox  id="uname13" name="uname13" multiple={true} className="validate" label={"KeyWords"}
                          setInstance={setKeyWords} onChange={e => setKeyWords1(KeyWords.getSelectedValues())} required>
                             
@@ -230,7 +292,7 @@ const AddSerial = () => {
                         </SelectBox >
                     </div>
 
-                    <div className="input-field col s12">
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" multiple name="uname14" setInstance={setBranches} className="validate" 
                         label={"Branches"} onChange={e => setBranches1(Branches.getSelectedValues())}
                          required>
@@ -243,37 +305,11 @@ const AddSerial = () => {
                             )) }
                         </SelectBox >
                     </div>
-                
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname14" name="uname14"  className="validate" 
-                        label={"Publishers"} onChange={e => setPublishers(e.target.value)}
-                         required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        {data6.publisher.map((items) => (
+            
 
-                            <option key={items._id}  value={items._id}> {items.name} </option>
-
-                            )) }
-                        </SelectBox >
-                    </div>
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname14" name="uname14"  className="validate" 
-                        label={"OtherPublishers"} onChange={e => setOtherPublishers(e.target.value)}
-                         required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        {data6.publisher.map((items) => (
-
-                            <option key={items._id}  value={items._id}> {items.name} </option>
-
-                            )) }
-                        </SelectBox >
-                    </div>
-
-                    <div className="input-field col s12">
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" multiple name="uname14" setInstance={setClassNumber} className="validate" 
-                        label={"Class Number"} onChange={e => SetClassNumber1(ClassNumber.getSelectedValues())}
+                        label={"Class Numbers"} onChange={e => setClassNumber1(ClassNumber.getSelectedValues())}
                          required>
                             
                         <option value selected disabled >Choose your option</option>
@@ -285,6 +321,47 @@ const AddSerial = () => {
                         </SelectBox >
                     </div>
 
+                    <div className="input-field col s6">
+                        <SelectBox   className="validate" label={"Categories"}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        
+                        </SelectBox >
+                    </div> </div>
+
+
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Language of publication</h6>
+              
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname11" multiple="multiple" name="uname11" label={"Language"} className="validate" 
+                         setInstance={setLanguage} onChange={e => setLanguage1(Language.getSelectedValues())}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        { data1.languages.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div>
+
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname12" name="uname12" multiple="multiple" className="validate" label={"Original Language"}
+                        setInstance={setOriginalLanguage} onChange={e => setOriginalLanguage1(OriginalLanguage.getSelectedValues())} required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        {  data1.languages.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div></div>
+
+              
+                    <div className="row" >
 
         
                     <div className="input-field col s12">

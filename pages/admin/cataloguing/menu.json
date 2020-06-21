@@ -36,6 +36,18 @@
     }
 
     ]
+  },
+  {
+    "Label": "External",
+    "Icon": "settings_applications",
+    "Children": [
+      {
+        "Label": "Z39.50 ",
+        "href": "/admin/cataloguing/index"
+    }
+   
+
+    ]
   }
   ]
 }

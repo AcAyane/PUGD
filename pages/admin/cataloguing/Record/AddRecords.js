@@ -5,6 +5,7 @@ import {INSERT_RECORD} from '@../../../graphql/mutations/admin/cataloguing/Recor
 import {useQuery} from "@apollo/react-hooks";
 import {useMutation} from "@apollo/react-hooks";
 import SelectBox from "../../../../components/ui/SelectBox";
+
 import {GET_KEYWORD_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/KeyWordQuerie";
 import {GET_LANGUAGE_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/LanguageQuerie";
 import {GET_BRANCH_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/BranchQuerie";
@@ -29,8 +30,8 @@ const AddRecord = () => {
     const [title, seTitle] = useState('')
     const [OtherTitle, setOtherTitle] = useState('')
     const [ParallelTitle, setParallelTitle] = useState('')
-    const [RecYear, setRecYear] = useState(0)
-    const [Price, setPrice] = useState(0)
+    const [RecYear, setRecYear] = useState('')
+    const [Price, setPrice] = useState('')
     const [Type, setType] = useState('')
     const [EditionStatement, setEditionStatement] = useState('')
     const [OtherInformations, setOtherInformations] = useState('')
@@ -40,7 +41,7 @@ const AddRecord = () => {
     const [IsNum, setIsNum] = useState('')
     const [AccMaterial, setAccMaterial] = useState('')
     const [NoteAuthor, setNoteAuthor] = useState('')
-    const [NbPages, setNbPages] = useState(0)
+    const [NbPages, setNbPages] = useState('')
     const [Language, setLanguage] = useState([])
     const [OriginalLanguage, setOriginalLanguage] = useState([])
     const [KeyWords, setKeyWords] = useState([])
@@ -166,154 +167,71 @@ const AddRecord = () => {
                   <div className="col s12 m6 l10">
                     <h4 className="card-title">Add a new Record</h4>
                   </div>
-                  <div className="col s12 m6 l2">
-                  </div>
+                  
                 </div>
               </div>
+              
               <div id="html-view-validations">
                 <form className="formValidate0" id="formValidate0" method="get">
                   <div className="row">
-                    <div className="input-field col s12">
-                      <label htmlFor="uname0">ISBN*</label>
-                      <input className="validate" required id="uname0" name="uname0" type="text" 
-                      onChange={e => setIsbn(e.target.value)} value={isbn}/>
+                  
+                   
+                  <div className="input-field col s6">
+                      
+                      <SelectBox className="validate" required id="uname5" name="uname5" type="text" 
+                      onChange={e => setType(e.target.value)} value={Type}>
+                       <option value="a" selected="selected">printed text</option>
+                        <option value="b">manuscript text</option>
+                        <option value="c">musical score - printed</option>
+                        <option value="d">musical score - manuscript</option>
+                        <option value="e">cartographic document - printed</option>
+                        <option value="f">cartographic document - manuscript</option>
+                        <option value="g">video, projectable document</option>
+                        <option value="i">sound recording - non musical</option>
+                        <option value="j">sound recording - musical</option>
+                        <option value="k">2D graphical document</option>
+                        <option value="l">electronic document</option>
+                        <option value="m">multimedia document</option>
+                        <option value="r">3D object, artifact, ...</option>
+                        </SelectBox>
                     </div>
 
-                    <div className="input-field col s12">
-                      <label htmlFor="uname1">Title of the record *</label>
+                    <div className="input-field col s12" >
+                      <label htmlFor="uname1">Title proper*</label>
                       <input className="validate" required id="uname1" name="uname1" type="text" 
                       onChange={e => seTitle(e.target.value)} value={title}/>
                     </div>
-
+                   
                     <div className="input-field col s12">
-                      <label htmlFor="uname2">Other Title*</label>
+                      <label htmlFor="uname2">Other title information*</label>
                       <input className="validate" required id="uname2" name="uname2" type="text" 
                       onChange={e => setOtherTitle(e.target.value)} value={OtherTitle}/>
                     </div>
 
 
                     <div className="input-field col s12">
-                      <label htmlFor="uname3">Parallel Title*</label>
+                      <label htmlFor="uname3">Parallel title*</label>
                       <input className="validate" required id="uname3" name="uname3" type="text" 
                       onChange={e => setParallelTitle(e.target.value)} value={ParallelTitle}/>
                     </div>
-
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname4">RecYear*</label>
-                      <input type="number" id="quantity" name="quantity" onChange={e => setRecYear(e.target.value)} value={RecYear}/>
                     </div>
-
+                    
+                  
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Responsibility</h6>
                     <div className="input-field col s12">
-                      <label htmlFor="uname4">Price*</label>
-                      <input type="number" id="quantity" name="quantity" onChange={e => setPrice(e.target.value)} value={Price}/>
-                    </div>
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname5">Type*</label>
-                      <input className="validate" required id="uname5" name="uname5" type="text" 
-                      onChange={e => setType(e.target.value)} value={Type}/>
-                    </div>
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname5">Edition Statement*</label>
-                      <input className="validate" required id="uname5" name="uname5" type="text" 
-                      onChange={e => setEditionStatement(e.target.value)} value={EditionStatement}/>
-                    </div>
-
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname6">Other Informations*</label>
-                      <input className="validate" required id="uname6" name="uname6" type="text" 
-                      onChange={e => setOtherInformations(e.target.value)} value={OtherInformations}/>
-                    </div>
-
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname7">Format*</label>
-                      <input className="validate" required id="uname7" name="uname7" type="text" 
-                      onChange={e => setFormat(e.target.value)} value={Format}/>
-                    </div>
-
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname8">Summary*</label>
-                      <input className="validate" required id="uname8" name="uname8" type="text" 
-                      onChange={e => setSummary(e.target.value)} value={Summary}/>
-                    </div>
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname15">Note Author*</label>
-                      <input className="validate" required id="uname15" name="uname15" type="text" 
-                      onChange={e => setNoteAuthor(e.target.value)} value={NoteAuthor}/>
-                    </div> 
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname9">AccMaterial*</label>
-                      <input className="validate" required id="uname9" name="uname9" type="text" 
-                      onChange={e => setAccMaterial(e.target.value)} value={AccMaterial}/>
-                    </div>
-
-                    <div className="input-field col s12">
-                      <label htmlFor="uname10">Nember of Pages*</label>
-                      <input type="number" id="quantity" name="quantity" onChange={e => setNbPages(e.target.value)} value={NbPages}/>
-                    </div>
-
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname11" multiple="multiple" name="uname11" label={"Language"} className="validate" 
-                         setInstance={setLanguage} onChange={e => setLanguage1(Language.getSelectedValues())}>
+                        <SelectBox   className="validate" label={"Responsibility"}>
                             
                         <option value selected disabled >Choose your option</option>
-                        {data1.languages.map((items) => (
-
-                            <option key={items._id}  value={items._id}> {items.Value} </option>
-
-                            )) }
+                        
                         </SelectBox >
                     </div>
-
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname12" name="uname12" multiple="multiple" className="validate" label={"Original Language"}
-                        setInstance={setOriginalLanguage} onChange={e => setOriginalLanguage1(OriginalLanguage.getSelectedValues())} required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        {data1.languages.map((items) => (
-
-                            <option key={items._id}  value={items._id}> {items.Value} </option>
-
-                            )) }
-                        </SelectBox >
                     </div>
-
-
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname13" name="uname13" className="validate" label={"KeyWords"}
-                         setInstance={setKeyWords} multiple onChange={e => setKeyWords1(KeyWords.getSelectedValues())} required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        { data2.keywords.map((items) => (
-
-                            <option key={items._id}  value={items._id}> {items.Word} </option>
-
-                            )) }
-                        </SelectBox >
-                    </div>
-
-                    <div className="input-field col s12">
-                        <SelectBox  id="uname14" multiple name="uname14" setInstance={setBranches} className="validate" 
-                        label={"Branches"} onChange={e => setBranches1(Branches.getSelectedValues())}
-                         required>
-                            
-                        <option value selected disabled >Choose your option</option>
-                        { data3.branches.map((items) => (
-
-                            <option key={items._id}  value={items._id}> {items.BranchName} </option>
-
-                            )) }
-                        </SelectBox >
-                    </div>
-
-                    <div className="input-field col s12">
+                    
+                   
+              <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Imprint</h6>
+              <div className="input-field col s6">
                         <SelectBox  id="uname14" name="uname14"  className="validate" 
                         label={"Serie"} onChange={e => setSerie(e.target.value)}
                          required>
@@ -326,7 +244,7 @@ const AddRecord = () => {
                             )) }
                         </SelectBox >
                     </div>
-                    <div className="input-field col s12">
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" name="uname14"  className="validate" 
                         label={"SubSerie"} onChange={e => setSubSerie(e.target.value)}
                          required>
@@ -340,7 +258,7 @@ const AddRecord = () => {
                         </SelectBox >
                     </div>
 
-                    <div className="input-field col s12">
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" name="uname14"  className="validate" 
                         label={"Publishers"} onChange={e => setPublishers(e.target.value)}
                          required>
@@ -353,7 +271,7 @@ const AddRecord = () => {
                             )) }
                         </SelectBox >
                     </div>
-                    <div className="input-field col s12">
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" name="uname14"  className="validate" 
                         label={"OtherPublishers"} onChange={e => setOtherPublishers(e.target.value)}
                          required>
@@ -365,27 +283,125 @@ const AddRecord = () => {
 
                             )) }
                         </SelectBox >
+                        </div>
+                        <div className="input-field col s6">
+                      <label htmlFor="uname4">Year*</label>
+                      <input type="number" id="quantity" name="quantity" onChange={e => setRecYear(e.target.value)} value={RecYear}/>
+                    </div>
+                    <div className="input-field col s6">
+                      <label htmlFor="uname5">Edition Statement*</label>
+                      <input className="validate" required id="uname5" name="uname5" type="text" 
+                      onChange={e => setEditionStatement(e.target.value)} value={EditionStatement}/>
+                    </div>
+                        
+                        </div>
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >ISBN, EAN, Commercial no.</h6>
+              <div className="input-field col s12">
+                      <label htmlFor="uname0">ISBN, EAN, Commercial no.*</label>
+                      <input className="validate" required id="uname0" name="uname0" type="text" 
+                      onChange={e => setIsbn(e.target.value)} value={isbn}/>
+                    </div></div>
+                   
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Collation</h6>
+
+              <div className="input-field col s12">
+                      <label htmlFor="uname10">Extent of item (number of pages, elements...)*</label>
+                      <input type="number" id="quantity" name="quantity" onChange={e => setNbPages(e.target.value)} value={NbPages}/>
                     </div>
 
+                    
+                    <div className="input-field col s12">
+                      <label htmlFor="uname6">Other properties (illustrations, ...)*</label>
+                      <input className="validate" required id="uname6" name="uname6" type="text" 
+                      onChange={e => setOtherInformations(e.target.value)} value={OtherInformations}/>
+                    </div>
 
                     <div className="input-field col s12">
-                        <SelectBox  id="uname14" multiple name="uname14" setInstance={setCollectionTitle} className="validate" 
-                        label={"Collection Title"} onChange={e => setCollectionTitle1(CollectionTitle.getSelectedValues())}
-                         required>
+                      <label htmlFor="uname7">Format*</label>
+                      <input className="validate" required id="uname7" name="uname7" type="text" 
+                      onChange={e => setFormat(e.target.value)} value={Format}/>
+                    </div>
+
+                    <div className="input-field col s12">
+                      <label htmlFor="uname4">Price*</label>
+                      <input type="number" id="quantity" name="quantity" onChange={e => setPrice(e.target.value)} value={Price}/>
+                    </div>
+
+                    <div className="input-field col s12">
+                      <label htmlFor="uname9">Accompanying materials*</label>
+                      <input className="validate" required id="uname9" name="uname9" type="text" 
+                      onChange={e => setAccMaterial(e.target.value)} value={AccMaterial}/>
+                    </div> </div>
+
+                   
+
+
+                    
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Notes</h6>
+                    
+              <div className="input-field col s12">
+                      <label htmlFor="uname15">General note*</label>
+                      <textarea  data-length="120" className="materialize-textarea"
+                      onChange={e => setNoteAuthor(e.target.value)} value={NoteAuthor}/>
+                    </div> 
+
+                    <div className="input-field col s12">
+                      <label htmlFor="uname8">Summary*</label>
+                      <textarea  data-length="120" className="materialize-textarea"
+                      onChange={e => setSummary(e.target.value)} value={Summary}/>
+                    </div> </div>
+
+                    
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Indexing</h6>
+              <div className="input-field col s6">
+                        <SelectBox  id="uname13" name="uname13" className="validate" label={"KeyWords"}
+                         setInstance={setKeyWords} multiple onChange={e => setKeyWords1(KeyWords.getSelectedValues())} required>
                             
                         <option value selected disabled >Choose your option</option>
-                        { data7.collection_title.map((items) => (
+                        { data2.keywords.map((items) => (
 
-                            <option key={items._id}  value={items._id}> {items.title} </option>
+                            <option key={items._id}  value={items._id}> {items.Word} </option>
 
                             )) }
                         </SelectBox >
                     </div>
-        
 
-                    <div className="input-field col s12">
+
+
+                    <div className="input-field col s6">
+                        <SelectBox   className="validate" label={"Category"}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        
+                        </SelectBox >
+                    </div>
+
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname14" multiple name="uname14" setInstance={setBranches} className="validate" 
+                        label={"Branches"} onChange={e => setBranches1(Branches.getSelectedValues())}
+                         required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        { data3.branches.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.BranchName} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div>
+
+                    
+
+
+                 
+
+                    <div className="input-field col s6">
                         <SelectBox  id="uname14" multiple name="uname14" setInstance={setClassNumber} className="validate" 
-                        label={"Class Number"} onChange={e => SetClassNumber1(ClassNumber.getSelectedValues())}
+                        label={"Class Number"} onChange={e => setClassNumber1(ClassNumber.getSelectedValues())}
                          required>
                             
                         <option value selected disabled >Choose your option</option>
@@ -395,17 +411,63 @@ const AddRecord = () => {
 
                             )) }
                         </SelectBox >
+                    </div></div>
+
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+              <h6  >Uniform Titles</h6>
+                    <div className="input-field col s12">
+                        <SelectBox  id="uname14" multiple name="uname14" setInstance={setCollectionTitle} className="validate" 
+                        label={"Uniform Titles"} onChange={e => setCollectionTitle1(CollectionTitle.getSelectedValues())}
+                         required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        { data7.collection_title.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.title} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div> </div>
+
+
+                    <div className="row" style={{backgroundColor: "#F8F8F8"}}>
+                    <h6  >Language of publication</h6>
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname11" multiple="multiple" name="uname11" label={"Language of publication"} className="validate" 
+                         setInstance={setLanguage} onChange={e => setLanguage1(Language.getSelectedValues())}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        {data1.languages.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
+                        </SelectBox >
                     </div>
 
+                    <div className="input-field col s6">
+                        <SelectBox  id="uname12" name="uname12" multiple="multiple" className="validate" label={"Original Language"}
+                        setInstance={setOriginalLanguage} onChange={e => setOriginalLanguage1(OriginalLanguage.getSelectedValues())} required>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        {data1.languages.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div></div>
 
 
 
 
+                    <div className="row" >
 
                     <div className="input-field col s12">
                         <label>
                         <input type="checkbox" onChange={e => setIsNew(true)} value={IsNew} />
-                        <span>Is new</span>
+                        <span>Is New record</span>
                         </label>
                         <br />
                     
