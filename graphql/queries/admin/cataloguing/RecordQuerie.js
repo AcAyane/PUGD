@@ -1,0 +1,66 @@
+import gql from 'graphql-tag';
+
+const GET_RECORD = gql`
+query($Id : String){
+  record(Id : $Id){
+    ISBN
+    Title
+    OtherTitle
+    ParallelTitle
+    RecYear
+    EditionStatement
+    OtherInformations
+    Format
+    Summary
+    IsNew
+    IsNum
+    AccMaterial
+    NoteAuthor
+    NbPages
+    FkSeries
+    FkSubSeries
+    Language
+    OriginalLanguage
+    KeyWords
+    Branches
+    Publishers
+    AuthorityLink
+    CollectionTitle
+  }
+}
+`;
+const GET_RECORD_ALL_FIELDS = gql`
+ 
+query($ISBN : String){
+  records(ISBN : $ISBN){
+    _id
+    ISBN
+    Title
+    OtherTitle
+    ParallelTitle
+    RecYear
+    EditionStatement
+    OtherInformations
+    Format
+    Summary
+    IsNew
+    IsNum
+    AccMaterial
+    NoteAuthor
+    NbPages
+    FkSeries
+    FkSubSeries
+    Language
+    OriginalLanguage
+    KeyWords
+    Branches
+    Publishers
+    AuthorityLink
+    CollectionTitle
+  }
+}
+`;
+module.exports = {
+  GET_RECORD: GET_RECORD,
+  GET_RECORD_ALL_FIELDS: GET_RECORD_ALL_FIELDS,
+}

@@ -4,9 +4,6 @@ import {useRouter} from "next/router";
 import {useQuery} from "@apollo/react-hooks";
 import {GetBorrower} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query"
 import PretTable from "./pretTable";
-import AddBorrowers from "../Borrowers";
-import AddReservation from "../../../../../components/admin/Circulations/Reservation/AddReservation";
-import DocumentTable from "../../../../../components/admin/Circulations/Retour_Document/DocumentTable";
 
 const Alldoc = () => {
 
@@ -18,17 +15,6 @@ const Alldoc = () => {
         variables: {id: id},
     });
     console.log(data);
-
-
-    const parseDat = (str) =>{
-        const parts = str.slice(0, -1).split('T');
-        const dateComponent = parts[0];
-        const timeComponent = parts[1];
-
-        //console.log(dateComponent);
-        //console.log(timeComponent);
-        return dateComponent
-    }
     return <React.Fragment>
 
 
@@ -43,14 +29,12 @@ const Alldoc = () => {
                                 <div className="card-content">
                                     <div className="row">
 
-
                                         <div className="col s12 m4 l2">
                                             <h5><u>Nom</u>: {data && data.getOneBorrower.last_name}</h5>
                                             <h5><u>Prénom</u>: {data && data.getOneBorrower.first_name}</h5>
                                             <h5><u>Sexe</u> : {data && data.getOneBorrower.gender}</h5>
 
                                         </div>
-
 
                                         <div className="col s12 m4 push-xl2">
                                             <h5><u>Adresse</u> : {data && data.getOneBorrower.address.rue1}</h5>
@@ -60,7 +44,7 @@ const Alldoc = () => {
                                         <div className="col s12 m4 push-xl2">
                                             <h5><u>Email</u>:{data && data.getOneBorrower.email}</h5>
                                             <h5><u>Opac</u> : {data && data.getOneBorrower.opaclogin}</h5>
-                                            <h5><u>Date de naissance</u> : {data && parseDat(data.getOneBorrower.birthday)}</h5>
+                                            <h5><u>Date de naissance</u> : {data && data.getOneBorrower.birthday}</h5>
                                         </div>
 
                                     </div>
@@ -71,13 +55,7 @@ const Alldoc = () => {
                     </div>
                     <div className="col s12 m8 l8 animate fadeLeft">
                         <div className="card">
-                            <div className="card-content">
-
-
-                                <DocumentTable dataSet={data}/>
-                                {/*<PretTable/>*/}
-
-                            </div>
+                            <div className="card-content"><PretTable/></div>
 
 
                         </div>
