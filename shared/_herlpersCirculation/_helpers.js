@@ -1,9 +1,3 @@
-
-
-export const formatdate = (DateObject) => {
-    return DateObject.getDate()+"-"+DateObject.getMonth()+"-"+DateObject.getFullYear()
-}
-
 export const splitfunction = (e) => {
     return e
         .split("(")[1]
@@ -11,11 +5,15 @@ export const splitfunction = (e) => {
         .replace(/^"(.*)"$/, "$1");
 }
 export const FullDate = (str) =>{
-    const parts = str.slice(0, -1).split('T');
-    const dateComponent = parts[0];
-    const timeComponent = parts[1];
-
-    //console.log(dateComponent);
-    //console.log(timeComponent);
+    let d = new Date(str);
+    const dateComponent = d.getUTCDate() + "-" + (d.getUTCMonth()+1) +"-"+ d.getUTCFullYear();
+    /*let dateString =
+        d.getUTCDate() + "-" +
+        (d.getUTCMonth()+1) +"-"+
+        d.getUTCFullYear() +" "+
+        d.getUTCHours() + ":" +
+        d.getUTCMinutes() + ":" +
+        d.getUTCSeconds();
+    console.log("dateString :",dateString)*/
     return dateComponent
 }
