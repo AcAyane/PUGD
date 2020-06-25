@@ -4,18 +4,19 @@ import Table from "../../../ui/Table/Table";
 
 
 const DocumentTable = (props) => {
+    const {DataSet} = props
+    const {title}=props
 
-    console.log("data set docment: ",props.dataSet)
 
+
+    console.log("dataset : ",DataSet)
     return (
         <React.Fragment>
             <div className="card-panel">
                 <div className="row">
                     <a href="#" className="float-left">
                         <h5 className="display-inline">
-
-                            {props.dataSet.GetExamplaireByCodeBar.Record.Title},
-                                            {props.dataSet.GetExamplaireByCodeBar.Record.RecYear}
+                            {title}
                         </h5>
                     </a>
                     {/*TODO configeré la disparition selon l'eta du docuemnt*/}
@@ -38,17 +39,20 @@ const DocumentTable = (props) => {
                             <td></td>
 
                             <td>
-                                <a href={"#"}
-                                   key={props.dataSet.GetExamplaireByCodeBar._id}>
-                                    {props.dataSet.GetExamplaireByCodeBar.BareCode}
+                                <a href={"#"}>
+                                    {DataSet && DataSet.BareCode}
                                 </a>
                             </td>
                             <td ><span className="chip  teal-text" >960 DEP</span></td>
-                            <td>{props.dataSet.GetExamplaireByCodeBar.MediaType.media_types_name}</td>
-                            <td>{props.dataSet.GetExamplaireByCodeBar.Localisation.Name}</td>
+                            <td>{DataSet && DataSet.MediaType.media_types_name}</td>
+                            <td>{DataSet && DataSet.Localisation.Name}</td>
+                            <td>{DataSet && DataSet.Section.section_name}</td>
+                            <td>{DataSet && DataSet.Status.status_name}</td>
+                            <td>{DataSet && DataSet.Owner.owner_name}</td>
+                            {/*<td>{props.dataSet.GetExamplaireByCodeBar.Localisation.Name}</td>
                             <td>{props.dataSet.GetExamplaireByCodeBar.Section.section_name}</td>
                             <td>{props.dataSet.GetExamplaireByCodeBar.Status.status_name}</td>
-                            <td>{props.dataSet.GetExamplaireByCodeBar.Owner.owner_name}</td>
+                            <td>{props.dataSet.GetExamplaireByCodeBar.Owner.owner_name}</td>**/}
                         </tr>
                     }/>
                 </div>

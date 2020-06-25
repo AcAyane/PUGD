@@ -8,7 +8,7 @@ import Formulaire from "../../../../../components/admin/Circulations/Borrwer/Add
 class AddBorrowers extends React.Component{
     render() {
         return <Circulation>
-            <CirculationHeader Title="Add New Borrowers"/>
+            <CirculationHeader Title="Add New BorrowersList"/>
             <Formulaire/>
         </Circulation>
     }

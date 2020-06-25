@@ -43,18 +43,77 @@ const GetBorrower = gql`
 `;
 const AllBorrowers = gql`
     query($full_name: String){
-       getAllBorrowers(full_name : $full_name){
-     _id, 
-     last_name,
-    first_name,
-    bar_code,
-    email
-   
-}
+       getAllBorrowers(filter: $full_name){
+             _id
+            first_name,
+            last_name,
+            bar_code
+            birthday,
+            phonenumber,
+            email,
+            gender,
+       }
     }
 `;
+
+const BORROWER_WITH_PRET_AND_RSV = gql`
+    query($id: String!){
+       GetBorrowerWithPretAndReservation(id: $id){
+            Borrower{
+                  first_name,
+                  last_name,
+                  bar_code,
+                  address{
+                    rue1,
+                    rue2
+                    city,
+                    contry
+                  },
+                  birthday,
+                  phonenumber,
+                  categories{
+                    namecategoriesbrrowers
+                  }
+                },
+                All_Reservation{
+                  date_init
+                  Copy{
+                    BareCode
+                    Record{
+                      Title
+                    }
+                  },
+                  rank
+                },
+                
+                All_Pret{
+                  date_init
+                  Date_Retour
+                  Copy{
+                    BareCode,
+                    Cote,
+                    Record{
+                      Title,
+                    },
+                    Localisation{
+                      Name,
+                    },
+                    Section{
+                      section_name
+                    }
+                    MediaType{
+                      media_types_name
+                    }
+                  },
+                }
+                __typename
+              }
+    }
+`;
+
 module.exports = {
     ALL_BORROWERS,
     AllBorrowers,
     GetBorrower,
+    BORROWER_WITH_PRET_AND_RSV,
 };

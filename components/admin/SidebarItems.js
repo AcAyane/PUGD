@@ -125,7 +125,7 @@ const SidebarItems = {
         },
         {
           Label: "Nouveau lecteur",
-          href: "/admin/circulation/Circulations/Borrowers",
+          href: "/admin/circulation/Circulations/BorrowersList",
         },
         {
           Label: "Périodiques",
@@ -137,7 +137,7 @@ const SidebarItems = {
         },
         {
           Label: "List lecteur (Borrows)",
-          href: "/admin/circulation/Circulations/Borrowers",
+          href: "/admin/circulation/Circulations/BorrowersList",
         },
       ],
     },

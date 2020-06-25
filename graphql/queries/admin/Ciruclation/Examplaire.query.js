@@ -14,7 +14,7 @@ const EXAMPLAIR_BY_CODE = gql`
 `;
 const FIND_COPY = gql`
     query($code: String){
-        GetExamplaireByCodeBar(code_bar:$code){
+        GetCopyByCodeBar(code_bar:$code){
            _id,
             BareCode, 
             Record{

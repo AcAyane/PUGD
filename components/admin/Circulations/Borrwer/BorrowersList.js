@@ -6,14 +6,14 @@ import {DELETE_BORROWER} from "../../../../graphql/mutations/admin/circulation/B
 import Card from "../../../ui/Card/Card";
 
 
-const Borrowers = (props) => {
+const BorrowersList = (props) => {
     const {dataSet} = props
-    const [DeleteOneBorrower] = useMutation(DELETE_BORROWER);
-    const {data} = useQuery(AllBorrowers);
+    /*const [DeleteOneBorrower] = useMutation(DELETE_BORROWER);*/
 
-    console.log("data ", data)
-    if (data != null || data !== undefined) {
-        console.log(data.getAllBorrowers)
+
+
+    if (dataSet != null || dataSet !== undefined) {
+        console.log("dataSet : ", dataSet.getAllBorrowers)
     }
     return <React.Fragment>
         <Card>
@@ -30,7 +30,7 @@ const Borrowers = (props) => {
                             <th scope="col">Prénom</th>
                             <th scope="col">Email</th>
                             <th scope="col">Détails</th>
-                            <th scope="col">Delete</th>
+                            {/*<th scope="col">Delete</th>*/}
                             <th scope="col">Update</th>
                         </tr>
                         </thead>
@@ -43,12 +43,12 @@ const Borrowers = (props) => {
                                 <td>{item.email}</td>
                                 <td>
                                     <Link href={{
-                                        pathname: '/admin/circulation/Circulation/pretDoc/allDoc',
+                                        pathname: '/admin/circulation/Circulation/pretDoc/Borrower',
                                         query: {id: item._id}
                                     }}><a>Détails</a></Link>
 
                                 </td>
-                                <td>
+                                {/*<td>
                                 <a
                                     href="#"
                                     className="invoice-action-view mr-4"
@@ -67,7 +67,7 @@ const Borrowers = (props) => {
                                 >
                                     <i className="material-icons">delete</i>
                                 </a>
-                                </td>
+                                </td>*/}
                                 <td>
                                 <a
                                     href={`/admin/circulation/Circulations/pretDoc/UpdateBorrowers?id=${(
@@ -150,4 +150,4 @@ const Borrowers = (props) => {
 
 }
 
-export default Borrowers
+export default BorrowersList

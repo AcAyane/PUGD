@@ -23,7 +23,6 @@ const retDoc = () => {
 
     if(error){
         console.log(error)
-        console.log(data)
     }
     const onSearchHandler = (e) => {
         e.preventDefault();
@@ -33,10 +32,12 @@ const retDoc = () => {
             }
         });
     }
-
+    let Tiltes
     if(data != null || data !== undefined){
-        console.log(data.copies)
+        console.log("have :",data)
+        Tiltes = data.GetCopyByCodeBar && data.GetCopyByCodeBar.Record.Title +","+data.GetCopyByCodeBar.Record.RecYear
     }
+
     return <Circulation>
                 <CirculationHeader Title="Retour d'Examplaire de Documment"
                 children={
@@ -60,7 +61,7 @@ const retDoc = () => {
                         (
                             <div>
 
-                                <DocumentTable dataSet={data}/>
+                                <DocumentTable DataSet={data.GetCopyByCodeBar} title={Tiltes}/>
 
                             <div className="card-panel">
                                 <div className="row">

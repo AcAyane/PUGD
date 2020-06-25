@@ -151,7 +151,7 @@ const Add = () => {
                                         </SelectBox>
                                     </GridElement>
 
-                                    {/*todo Send Message to Borrowers*/}
+                                    {/*todo Send Message to BorrowersList*/}
                                     <GridElement s={12} style={{ display: "flex"}}>
                                         <TextArea label={"Message"} data-length="120"/>
                                     </GridElement>

@@ -14,7 +14,7 @@ import Circulation from "@/components/admin/Circulations/Body/Body";
 import CirculationHeader from "@/components/admin/Circulations/Hedar/CirculationHeader";
 import {ADD_SUGGESTION} from "@/graphql/mutations/admin/circulation/Suggestion.mutation";
 import {GroupsByName} from "@/graphql/queries/admin/Ciruclation/groups.query";
-import {GetAllBro} from "@/graphql/queries/admin/Ciruclation/Borrowers.query";
+import {GetAllBro} from "@/graphql/queries/admin/Ciruclation/BorrowersList.query";
 
 
 const NewGroup = () => {

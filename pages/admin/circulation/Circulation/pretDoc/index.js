@@ -3,17 +3,11 @@ import AdminLayout from '../../../../../components/adminLayout'
 import TextBox from "../../../../../components/ui/TextBox";
 import Button from "../../../../../components/ui/Button";
 import Card from "../../../../../components/ui/card/card";
-import {useLazyQuery, useMutation} from "@apollo/react-hooks";
+import {useLazyQuery} from "@apollo/react-hooks";
 import {AllBorrowers} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
-import Link from "next/link";
-import {DELETE_BORROWER} from "../../../../../graphql/mutations/admin/circulation/Borrowers.mutation";
-import Router from "next/router";
-import Borrowers from "../../../../../components/admin/Circulations/Borrwer/Borrowers";
-import  UpdateBorrower from "../../Circulation/pretDoc/UpdateBorrower"
-
-
-
-
+import UpdateBorrower from "../../Circulation/pretDoc/UpdateBorrower"
+import Profiles from "../../../../../components/admin/Circulations/Borrwer/Profiles";
+import BorrowersList from "../../../../../components/admin/Circulations/Borrwer/BorrowersList";
 
 
 /*const onDocHandler = (e) => {
@@ -25,57 +19,65 @@ import  UpdateBorrower from "../../Circulation/pretDoc/UpdateBorrower"
 const predoc = () => {
 
 
-    const [ getAllBorrowers, { loading, error, data }] = useLazyQuery(AllBorrowers);
+    const [getAllBorrowers, {loading, error, data}] = useLazyQuery(AllBorrowers);
 
-
-
-    const [id] = useState('');
-    const [nom, setNom] = useState('');
+    let [filter, setFilter] = useState("");
 
     const onSearchHandler = (e) => {
+        let filterby
+        if (filter ===""){
+            filterby="*"
+        }
+        else{
+            filterby=filter
+        }
         e.preventDefault();
+        console.log("filter :", filterby.valueOf())
         getAllBorrowers({
             variables: {
-                /* bar_code: codBar,*/
-                full_name: nom,
-
+                full_name: filterby,
             }
-        });
+        })
+        ;
     }
 
-    if (loading) {return <div>Loading...</div>;}
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
-    if(error){
+    if (error) {
         console.log(error)
         console.log(data)
     }
 
-
+    console.log("data",data)
     return <div className="container">
         <div className="row">
             <div className="col s12">
                 <form>
-                    <Card >
+                    <Card>
                         <h5>Emprunteurs</h5>
 
                         <div className="row display-flex">
                             <TextBox
                                 label="Chercher avec le nom"
                                 type="text"
-                                onChange={event => { setNom(event.target.value)}}
-                                value={nom}
+                                onChange={event => {
+                                    setFilter(event.target.value)
+                                }}
+                                value={filter}
                             />
                             <Button
                                 onClick={onSearchHandler}
                                 rounded={4}>Search</Button>
-
                         </div>
                     </Card>
                 </form>
                 {
-                    data != null || data !== undefined ? <Borrowers dataSet={data}/> : <Borrowers/>
+
+                    data != null || data !== undefined ? <BorrowersList dataSet={data}/> : ""
                 }
-<UpdateBorrower/>
+                {/*<UpdateBorrower/>*/}
             </div>
         </div>
     </div>

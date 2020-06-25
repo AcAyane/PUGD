@@ -3,7 +3,7 @@ import {useQuery} from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
 
 
-import {GetAllBro} from "@/graphql/queries/admin/Ciruclation/Borrowers.query";
+import {GetAllBro} from "@/graphql/queries/admin/Ciruclation/BorrowersList.query";
 
 const AllBorrewors = () => {
 

@@ -61,7 +61,7 @@ const ListReservation = (props) => {
 
                                     <img src="https://cdn.pixabay.com/photo/2015/11/22/15/09/hummingbird-1056383_1280.jpg"
                                          alt="Materialize"/>
-                                    {res.Record.Title}
+                                    {res.Copy.Record.Title}
 
                                 </div>
                                 {/*todo add cote form grahql*/}

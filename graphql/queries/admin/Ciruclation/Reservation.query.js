@@ -11,18 +11,19 @@ const GET_ALL_RESERVATIONS = gql`
                 Name
               },
             },
-            Record{
-              Title
-              _id
+            Copy{
+              Record{
+                Title
+              }
             }
             dateres,
-            Rank,        
+            Rank,       
         }
       
     }
 `;
 
-const GET_RESERVATIONS_BY_NAME= gql`
+const GET_RESERVATIONS_BY_NAME = gql`
     query($Name_CatBr : String){
         GetAllCategBorrowers(Name_CatBr:$Name_CatBr){
             _id
