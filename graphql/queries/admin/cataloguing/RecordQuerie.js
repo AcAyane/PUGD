@@ -17,14 +17,27 @@ query($Id : String){
     AccMaterial
     NoteAuthor
     NbPages
-    FkSeries
-    FkSubSeries
-    Language
-    OriginalLanguage
-    KeyWords
-    Branches
-    Publishers
-    AuthorityLink
+    FkSeries{
+      _id
+    }
+    FkSubSeries{
+      _id
+    }
+    Language{
+      _id
+    }
+    OriginalLanguage{
+      _id
+    }
+    KeyWords{
+      _id
+    }
+    Branches{
+      _id
+    }
+    Publishers{
+      _id
+    }
     CollectionTitle
   }
 }
@@ -48,14 +61,27 @@ query($ISBN : String){
     AccMaterial
     NoteAuthor
     NbPages
-    FkSeries
-    FkSubSeries
-    Language
-    OriginalLanguage
-    KeyWords
-    Branches
-    Publishers
-    AuthorityLink
+    FkSeries{
+      _id
+    }
+    FkSubSeries{
+      _id
+    }
+    Language{
+      _id
+    }
+    OriginalLanguage{
+      _id
+    }
+    KeyWords{
+      _id
+    }
+    Branches{
+      _id
+    }
+    Publishers{
+      _id
+    }
     CollectionTitle
   }
 }

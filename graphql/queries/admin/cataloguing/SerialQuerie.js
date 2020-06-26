@@ -15,15 +15,30 @@ query($Id : String!){
     ViewSerialCheckIn 
     NoteOnContents 
     GenetalNote 
-    Language 
-    OriginalLanguage 
-    KeyWords 
-    Branches 
-    Publishers 
-    OtherPublishers
-    AuthorityLink
-    Category 
-    ClassNumber  
+    Language{
+      _id
+    } 
+    OriginalLanguage {
+      _id
+    }
+    KeyWords{
+      _id
+    } 
+    Branches{
+      _id
+    } 
+    Publishers {
+      _id
+    }
+    OtherPublishers{
+      _id
+    }
+    Category{
+      _id
+    } 
+    ClassNumber{
+      _id
+    }  
     
   }
 }
@@ -45,15 +60,30 @@ query($ISSN: String){
     ViewSerialCheckIn 
     NoteOnContents 
     GenetalNote 
-    Language 
-    OriginalLanguage 
-    KeyWords 
-    Branches 
-    Publishers 
-    OtherPublishers
-    AuthorityLink
-    Category 
-    ClassNumber 
+    Language{
+      _id
+    } 
+    OriginalLanguage{
+      _id
+    } 
+    KeyWords{
+      _id
+    } 
+    Branches{
+      _id
+    } 
+    Publishers{
+      _id
+    } 
+    OtherPublishers{
+      _id
+    }
+    Category{
+      _id
+    } 
+    ClassNumber{
+      _id
+    } 
   }
 }
 `;

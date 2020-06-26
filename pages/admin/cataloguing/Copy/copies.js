@@ -65,7 +65,7 @@ const catalogingHome = () => {
                                     <span>Bare Code</span>
                                 </th>
                                 <th>Price</th>
-                                <th>Record</th>
+                                
                                 <th>Action</th>
                                 
                             </tr>
@@ -80,11 +80,7 @@ const catalogingHome = () => {
                                             {items.BareCode}
                                         
                                     </td>
-                                    <td>
-                                       
-                                            {items.Record.ISBN}
-                                        
-                                    </td>
+                                    
                                     <td>
                                         <span className="chip lighten-5 red red-text">{items.Price}  </span>
                                     </td>
