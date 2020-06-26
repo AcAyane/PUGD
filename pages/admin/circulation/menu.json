@@ -80,7 +80,7 @@
       "Children": [
         {
           "Label": "Reservation Encour",
-          "href": "/admin/Circulation/Reservation/En_cour"
+          "href": "/admin/circulation/Reservation/En_cour"
         },
         {
           "Label": "Reservation depassé",
@@ -93,12 +93,22 @@
       "Icon": "settings_input_svideo",
       "Children": [
         {
-          "Label": "Management",
-          "href": "/admin/Circulation/Visulaliser/Exemplaire"
+          "Label": "Exemplaire",
+          "href": "/admin/circulation/Visualiser/Exemplaire"
         },
         {
-          "Label": "Collection",
-          "href": "/admin/Circulation/Visulaliser/Notice"
+          "Label": "Notice",
+          "href": "/admin/circulation/Visualiser/Notice"
+        }
+      ]
+    },
+    {
+      "Label": "Suggestion",
+      "Icon": "lightbulb_outline",
+      "Children": [
+        {
+          "Label": "Suggestion",
+          "href": "/admin/circulation/Suggestions"
         }
       ]
     }

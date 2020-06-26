@@ -14,19 +14,47 @@ const ALL_BORROWERS = gql`
         }
     }
 `;
-const BorrowersByName = gql`
-    query($fullname: String!){
-       GetBorrowersByName(fullname : $fullname){
-      
+const GetBorrower = gql`
+    query ($id: String!){
+     getOneBorrower(id:$id){
          _id,
-            fullname,
-            email,
-            gender
-      
-        }
+         bar_code,
+         first_name,
+         last_name,
+         email,
+         phonenumber,
+         birthday,
+         gender,
+         statues,
+         username_opac,
+         password_opac,
+         lang_opac,
+         membershipstart,
+         membershipcanceled,
+         address{
+            rue1,
+            rue2,
+            city,
+            contry,
+            } 
+          
+      }
+    }
+`;
+const AllBorrowers = gql`
+    query($full_name: String){
+       getAllBorrowers(full_name : $full_name){
+     _id, 
+     last_name,
+    first_name,
+    bar_code,
+    email
+   
+}
     }
 `;
 module.exports = {
     ALL_BORROWERS,
-    BorrowersByName
-}
+    AllBorrowers,
+    GetBorrower,
+};

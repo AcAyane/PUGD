@@ -4,9 +4,8 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/graphql/*": ["graphql/*"],
-      "@/shared/*": ["shared/*"],
-      "@/static_api/*": ["static_api/*"],
-      "@/helpers/*": ["helpers/*"]
+      "@shared/*": ["shared/*"],
+      "@/static_api/*": ["static_api/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

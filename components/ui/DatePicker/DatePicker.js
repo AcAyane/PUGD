@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-const DatePicker = ({ label, value, ...props }) => {
+const DatePicker = ({ label,icon, value, ...props }) => {
     const id = "input" + Math.floor(Math.random() * 100000)
     // the ref for the modal
     const datePickerElement = useRef();
@@ -34,11 +34,11 @@ const DatePicker = ({ label, value, ...props }) => {
     return (
 
 
-        <div className="input-field col s12">
+        <React.Fragment>
+            {icon && <i className="material-icons prefix pt-1">{icon}</i>}
             <input id={id} type="text" className="datepicker" ref={datePickerElement} {...props} value={value} />
-
             <label htmlFor={id} className={value !== "" ? "active" : ""}>{label}</label>
-        </div>
+        </React.Fragment>
 
     )
 }

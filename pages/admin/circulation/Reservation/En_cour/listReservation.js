@@ -1,6 +1,5 @@
 import React from 'react'
 import Table from "@/components/ui/Table/Table";
-import moment from "moment";
 
 const ListReservation = (props) => {
     const dateFormat = "DD-MM-YYYY"
@@ -61,7 +60,7 @@ const ListReservation = (props) => {
 
                             <td>{res.Rank}</td>
                             <td className="" width="40">
-                                <span className="task-cat teal accent-4 display-block">{moment(res.dateres).format(dateFormat)}</span>
+                                <span className="task-cat teal accent-4 display-block">{res.dateres}</span>
                             </td>
                             <td >
                                 <span className="task-cat red accent-2 display-block">24-05-2020</span>

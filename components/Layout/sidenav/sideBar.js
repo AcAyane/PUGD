@@ -102,7 +102,7 @@ const sideBar = ({ collapsedState: [collapsed, setcollapsed] }) => {
         </React.Fragment>
 
       </ul>
-      <div className="navigation-background"></div>
+      <div className="navigation-background"/>
       <a
         className="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only"
         href="#"

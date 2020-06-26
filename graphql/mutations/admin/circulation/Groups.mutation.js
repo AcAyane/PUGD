@@ -1,26 +1,37 @@
 import gql from "graphql-tag";
 
-const ADD_GROUPS = gql`
+const ADD_GROUP = gql`
 mutation(
-        $groupName                :                 String,
-        $Responsable              :                 String,
-        $Member                   :                 String,
-        $libelle                  :                 Boolean,
-        $letter                   :                 Boolean,
-        $mail                     :                 Boolean,
+        $name                                 :                 String!,
+        $message                                    :                 String,
+        $respo                                :                 String!,
+        $members                                    :                 [String],
+        $sendLetterRappelToResponsable              :                 Boolean
+        $addResponsableToGroup                      :                 Boolean,
+        $sendMailReservationToResponsable           :                 Boolean,
+        $sendMailRappelToResponsable                :                 Boolean,
+        $sendLetterReservationToResponsable         :                 Boolean,
+        $imprimeNameGroupOneLetter                  :                 Boolean,
+        $imprimeNameGroupOneLetterReservation       :                 Boolean,
     ){
-        InsertOneGroups(
-            NameGroups            :         $groupName,
-            BorrowersId           :         $Responsable,
-            MembersBrrowers       :         $Member,
-            LibelleGroup          :         $libelle,
-            LetterRappel          :         $letter,
-            MailRappel            :         $mail,           
+    
+        InsertOneGroup(
+            name                                    :         $name,
+            message                                 :         $message,
+            responsable                             :         $respo,
+            members                                 :         $members,
+            sendLetterRappelToResponsable           :         $sendLetterRappelToResponsable
+            addResponsableToGroup                   :         $addResponsableToGroup,
+            sendMailReservationToResponsable        :         $sendMailReservationToResponsable,
+            sendMailRappelToResponsable             :         $sendMailRappelToResponsable,           
+            sendLetterReservationToResponsable      :         $sendLetterReservationToResponsable,           
+            imprimeNameGroupOneLetter               :         $imprimeNameGroupOneLetter,           
+            imprimeNameGroupOneLetterReservation    :         $imprimeNameGroupOneLetterReservation,           
         )
     }
 `;
 
 
 module.exports = {
-    ADD_GROUPS,
+    ADD_GROUP,
 }

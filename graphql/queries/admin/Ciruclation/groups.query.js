@@ -1,15 +1,10 @@
 import gql from 'graphql-tag';
 
-const GetAllGrroups = gql`
+const GET_ALL_GROUPS = gql`
     query{
-        GetAllGrroups{
+        all_groups{
             _id,
-            namegroups,
-            CreatedAt,
-            respgroup,
-            letterrappel,
-            libellegroup,
-            mailRappel,
+            name
         }
     }
 `;
@@ -18,24 +13,22 @@ const GroupsByName = gql`
     query($name: String!){
         GetGroupsByName(name: $name){
             _id
-            namegroups,
-            CreatedAt,
-            respgroup{
-                fullname,
+            name,
+            created_at,
+            responsable{
+                first_name,
+                last_name,
                 _id
             },
-            letterrappel,
-            mailRappel,
-            libellegroup,
-            MembersBrrowers{
+            members{
                 _id,
-                fullname,
-                barcode
+                first_name,
+                last_name
             }
         }
     }
 `;
 module.exports = {
-    GetAllGrroups,
+    GET_ALL_GROUPS,
     GroupsByName,
 };

@@ -21,7 +21,7 @@
       "Children": [
         {
           "Label": "Author",
-          "href": "/admin/authorities/author"
+          "href": "/admin/authorities/Author"
         },
         {
           "Label": "headings",
