@@ -26,10 +26,10 @@ const INSERT_RECORD = gql`
         $Branches :         [String],
         $Publishers :       String,
         $OtherPublishers:   String,
-        $AuthorityLink :    [String], 
         $CollectionTitle :  [String],
         $Category :         [String],
         $ClassNumber:       [String],
+        $Responsibility : [String]
     ){
         insertOneRecord(
             isbn :              $isbn,
@@ -55,12 +55,11 @@ const INSERT_RECORD = gql`
             KeyWords :          $KeyWords,
             Branches :          $Branches, 
             Publisher :         $Publishers,
-            OtherPublisher :    $OtherPublishers
-            AuthorityLink :     $AuthorityLink,
+            OtherPublisher :    $OtherPublishers,
             CollectionTitle :   $CollectionTitle, 
             Category :          $Category, 
             ClassNumber :       $ClassNumber,
-            
+            Responsibility : $Responsibility
         )
     }
 `;
@@ -92,10 +91,10 @@ const UPDATE_RECORD = gql`
         $Branches :         [String],
         $Publishers :       String,
         $OtherPublishers:   String,
-        $AuthorityLink :    [String], 
         $CollectionTitle :  [String],
         $Category :         [String],
         $ClassNumber:       [String],
+        $Responsibility : [String]
     ){
         UpdateOneRecord(
             isbn :              $isbn,
@@ -122,10 +121,10 @@ const UPDATE_RECORD = gql`
             Branches :          $Branches,
             Publisher :         $Publishers,
             OtherPublisher :    $OtherPublishers
-            AuthorityLink :     $AuthorityLink,
             CollectionTitle :   $CollectionTitle, 
             Category :          $Category, 
             ClassNumber :       $ClassNumber,
+            Responsibility : $Responsibility
         )
     }
 `;

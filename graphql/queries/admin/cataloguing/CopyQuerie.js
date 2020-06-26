@@ -16,31 +16,7 @@ query($Id : String, $code_bar : String){
     Restricted
     CopyNumber
     NewStatus
-    Record{
-      ISBN
-      Title
-      OtherTitle
-      ParallelTitle
-      RecYear
-      EditionStatement
-      OtherInformations
-      Format
-      Summary
-      IsNew
-      IsNum
-      AccMaterial
-      NoteAuthor
-      NbPages
-      FkSeries
-      FkSubSeries
-      Language
-      OriginalLanguage
-      KeyWords
-      Branches
-      Publishers
-      AuthorityLink
-      CollectionTitle
-    }
+    
   }
 }
 `;
@@ -61,31 +37,7 @@ query($BareCode : String){
     Restricted
     CopyNumber
     NewStatus
-    Record{
-      ISBN
-      Title
-      OtherTitle
-      ParallelTitle
-      RecYear
-      EditionStatement
-      OtherInformations
-      Format
-      Summary
-      IsNew
-      IsNum
-      AccMaterial
-      NoteAuthor
-      NbPages
-      FkSeries
-      FkSubSeries
-      Language
-      OriginalLanguage
-      KeyWords
-      Branches
-      Publishers
-      AuthorityLink
-      CollectionTitle
-    }
+    
   }
 }
 `;

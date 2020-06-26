@@ -10,6 +10,8 @@ import {GET_LANGUAGE_ALL_FIELDS} from "@../../../graphql/queries/admin/catalogui
 import {GET_BRANCH_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/BranchQuerie";
 import {GET_PUBLISHER} from "@../../../graphql/queries/admin/authorities/publisher.queries";
 import {GET_CLASS_NUMBER} from "@../../../graphql/queries/admin/authorities/class_number.queries";
+import {GET_AUTHOR} from "@../../../graphql/queries/admin/authorities/author.queries";
+import {GET_FUNCTION_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/FunctionQuerie";
 const AddSerial = () => {
      
   const { data: data1 }   = useQuery( GET_LANGUAGE_ALL_FIELDS);
@@ -17,6 +19,8 @@ const AddSerial = () => {
   const { data: data3 }  = useQuery( GET_BRANCH_ALL_FIELDS);
   const { data: data6 }  = useQuery( GET_PUBLISHER);
   const { data: data8 }  = useQuery( GET_CLASS_NUMBER);
+  const { data: data10 }  = useQuery( GET_AUTHOR);
+  const { data: data11 }  = useQuery( GET_FUNCTION_ALL_FIELDS);
   
     const [issn, setIssn] = useState('')
     const [TitleProper, seTitleProper] = useState('')
@@ -41,6 +45,8 @@ const AddSerial = () => {
     const [OtherPublishers, setOtherPublishers] = useState('')
     const [ClassNumber, setClassNumber] = useState([])
     const [ClassNumber1, setClassNumber1] = useState([])
+    const [Author, setAuthor] = useState('')
+    const [Function, setFunction] = useState('')
         /* **** */
         const m = []
         let i = 0
@@ -76,6 +82,14 @@ const AddSerial = () => {
         a[b] = items.split("\"")[1]
           , b++
         )) 
+
+        let Responsibilities = []
+     let Responsability = new Map()
+     Responsability['author'] = Author.split("\"")[1]
+     Responsability['Function'] = Function.split("\"")[1]
+     Responsibilities[0] = Responsability
+
+
     const [AddSerial] = useMutation(ADD_SERIAL,{
         onCompleted(data) {
             const {_id} = data
@@ -116,6 +130,8 @@ const AddSerial = () => {
         if(data3 != null || data3 !== undefined ){
           if(data6 != null || data6 !== undefined ){
             if(data8 != null || data8 !== undefined ){
+              if(data10 != null || data10 !== undefined ){
+                if(data11 != null || data11 !== undefined ){
     return (
       <Container>
          {/* HTML VALIDATION  */}
@@ -180,11 +196,26 @@ const AddSerial = () => {
 
                     <div className="row" style={{backgroundColor: "#F8F8F8"}}>
                     <h6  >Responsibility</h6>
-                    <div className="input-field col s12">
-                        <SelectBox   className="validate" label={"Responsibility"}>
+                    <div className="input-field col s6">
+                        <SelectBox onChange={e => setAuthor(e.target.value)}  className="validate" label={"Primary author"}>
                             
                         <option value selected disabled >Choose your option</option>
-                        
+                        { data10.author.map((items) => (
+
+                          <option key={items._id}  value={items._id}> {items.name_auth} </option>
+
+                          )) }
+                        </SelectBox >
+                    </div>
+                    <div className="input-field col s6">
+                        <SelectBox  onChange={e => setFunction(e.target.value)} className="validate" label={"Function"}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        { data11.functions.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
                         </SelectBox >
                     </div>
                     </div>
@@ -398,7 +429,7 @@ const AddSerial = () => {
         
       </Container>
     );
-  }}}}}
+  }}}}}}}
   return <div>
   this is the cataloguing module main page
   </div>

@@ -14,6 +14,9 @@ import {GET_PUBLISHER} from "@../../../graphql/queries/admin/authorities/publish
 import {GET_SUB_SERIES} from "@../../../graphql/queries/admin/authorities/sub_series.queries";
 import {GET_COLLECTION_TITLE} from "@../../../graphql/queries/admin/authorities/collection_title.queries";
 import {GET_CLASS_NUMBER} from "@../../../graphql/queries/admin/authorities/class_number.queries";
+import {GET_CATEGORY} from "@../../../graphql/queries/admin/authorities/category.queries";
+import {GET_AUTHOR} from "@../../../graphql/queries/admin/authorities/author.queries";
+import {GET_FUNCTION_ALL_FIELDS} from "@../../../graphql/queries/admin/cataloguing/FunctionQuerie";
 const AddRecord = () => {
    
     const { data: data1 }   = useQuery( GET_LANGUAGE_ALL_FIELDS);
@@ -24,7 +27,9 @@ const AddRecord = () => {
     const { data: data6 }  = useQuery( GET_PUBLISHER);
     const { data: data7 }  = useQuery( GET_COLLECTION_TITLE);
     const { data: data8 }  = useQuery( GET_CLASS_NUMBER);
-  
+    const { data: data9 }  = useQuery( GET_CATEGORY);
+    const { data: data10 }  = useQuery( GET_AUTHOR);
+    const { data: data11 }  = useQuery( GET_FUNCTION_ALL_FIELDS);
 
     const [isbn, setIsbn] = useState('')
     const [title, seTitle] = useState('')
@@ -58,6 +63,10 @@ const AddRecord = () => {
     const [ClassNumber1, setClassNumber1] = useState([])
     const [CollectionTitle, setCollectionTitle] = useState([])
     const [CollectionTitle1, setCollectionTitle1] = useState([])
+    const [Categories, setCategories] = useState([])
+    const [Categories1, setCategories1] = useState([])
+    const [Author, setAuthor] = useState('')
+    const [Function, setFunction] = useState('')
     /* **** */
     const m = []
     let i = 0
@@ -100,7 +109,24 @@ const AddRecord = () => {
     c[d] = items.split("\"")[1]
       , d++
     )) 
-  
+     /* **** */
+     const e = []
+     let f = 0
+     Categories1.map((items) => (
+     e[f] = items.split("\"")[1]
+       , f++
+     )) 
+     /* ******** */
+     let Responsibilities = []
+     let Responsability = new Map()
+     Responsability['author'] = Author.split("\"")[1]
+     Responsability['Function'] = Function.split("\"")[1]
+     Responsibilities[0] = Responsability
+     console.log(Responsibilities)
+
+
+
+
     const [AddRecord] = useMutation(INSERT_RECORD,{
         onCompleted(data) {
             const {_id} = data
@@ -111,7 +137,7 @@ const AddRecord = () => {
       
     const onSubmitHandler = ()=>{
       
-      console.log("whaaat",Branches1)
+      
       AddRecord({
           variables: {
             isbn: isbn,
@@ -139,7 +165,9 @@ const AddRecord = () => {
             Publishers : Publishers.split("\"")[1],
             OtherPublishers:OtherPublishers.split("\"")[1],
             CollectionTitle:c,
-            ClassNumber:b,
+            ClassNumber:a,
+            Category:e,
+            Responsability:Responsibilities,
           }
       });
     }
@@ -156,6 +184,9 @@ const AddRecord = () => {
               if(data6 != null || data6 !== undefined ){
                 if(data7 != null || data7 !== undefined ){
                   if(data8 != null || data8 !== undefined ){
+                    if(data9 != null || data9 !== undefined ){
+                      if(data10 != null || data10 !== undefined ){
+                        if(data11 != null || data11 !== undefined ){
     return (
       <Container>
          {/* HTML VALIDATION  */}
@@ -219,13 +250,29 @@ const AddRecord = () => {
                   
                     <div className="row" style={{backgroundColor: "#F8F8F8"}}>
                     <h6  >Responsibility</h6>
-                    <div className="input-field col s12">
-                        <SelectBox   className="validate" label={"Responsibility"}>
+                    <div className="input-field col s6">
+                        <SelectBox onChange={e => setAuthor(e.target.value)}  className="validate" label={"Primary author"}>
                             
                         <option value selected disabled >Choose your option</option>
-                        
+                        { data10.author.map((items) => (
+
+                          <option key={items._id}  value={items._id}> {items.name_auth} </option>
+
+                          )) }
                         </SelectBox >
                     </div>
+                    <div className="input-field col s6">
+                        <SelectBox  onChange={e => setFunction(e.target.value)} className="validate" label={"Function"}>
+                            
+                        <option value selected disabled >Choose your option</option>
+                        { data11.functions.map((items) => (
+
+                            <option key={items._id}  value={items._id}> {items.Value} </option>
+
+                            )) }
+                        </SelectBox >
+                    </div>
+                   
                     </div>
                     
                    
@@ -373,12 +420,19 @@ const AddRecord = () => {
 
 
                     <div className="input-field col s6">
-                        <SelectBox   className="validate" label={"Category"}>
+                        <SelectBox   multiple className="validate" setInstance={setCategories}
+                         onChange={e => setCategories1(Categories.getSelectedValues())} label={"Categories"}>
                             
                         <option value selected disabled >Choose your option</option>
-                        
+                        { data9.category_authority.map((items) => (
+
+                        <option key={items._id}  value={items._id}> {items.name} </option>
+
+                        )) }
                         </SelectBox >
                     </div>
+
+
 
                     <div className="input-field col s6">
                         <SelectBox  id="uname14" multiple name="uname14" setInstance={setBranches} className="validate" 
@@ -498,7 +552,7 @@ const AddRecord = () => {
         
       </Container>
     );
-  }}}}}}}}
+  }}}}}}}}}}}
   return <div>
   this is the cataloguing module main page
   </div>
