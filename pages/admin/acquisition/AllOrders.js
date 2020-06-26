@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
 import { GetOrders } from "@/graphql/queries/acquisition/order";
+import { DeleteOrder } from "@/graphql/mutations/acquisition/order";
 import CardTitle from "@/components/ui/card/cardTitle";
 import Card from "@/components/ui/card/card";
 import AdminLayout from "@/components/adminLayout";
@@ -14,6 +15,10 @@ const AllOrders = () => {
       .split(")")[0]
       .replace(/^"(.*)"$/, "$1");
   }
+
+  const [deleteorder, { loading: deleting, error: deleteError }] = useMutation(
+    DeleteOrder
+  );
 
   const { loading, error, data } = useQuery(GetOrders, {
     variables: { type: "order" },
@@ -36,6 +41,7 @@ const AllOrders = () => {
                 <Table
                   Thead={
                     <tr>
+                      <th>Order</th>
                       <th>Establishement</th>
                       <th>Provider</th>
                       <th>Date</th>
@@ -49,16 +55,31 @@ const AllOrders = () => {
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">
-                              {item.establishement}
+                              {item.name}
                             </span>
                           </td>
+                          <td>{item.establishement}</td>
                           <td>{item.provider}</td>
                           <td>{item.date}</td>
                           <td>{item.status}</td>
 
                           <td>
                             <div className="invoice-action">
-                              <a href="#" className="invoice-action-view mr-4">
+                              <a
+                                href="#"
+                                className="invoice-action-view mr-4"
+                                onClick={(e) => {
+                                  deleteorder({
+                                    variables: { _id: splitfunction(item._id) },
+                                    refetchQueries: [
+                                      {
+                                        query: GetOrders,
+                                        variables: { type: "order" },
+                                      },
+                                    ],
+                                  });
+                                }}
+                              >
                                 <i className="material-icons">delete</i>
                               </a>
                               <a

@@ -1,19 +1,12 @@
-/* eslint-disable react/jsx-key */
 import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
-import { GetOrdersCours } from "@/graphql/queries/acquisition/order";
-import { DeleteProvider } from "@/graphql/mutations/acquisition/provider";
+import { GetSuggestionsReader } from "@/graphql/queries/acquisition/suggestion";
 import CardTitle from "@/components/ui/card/cardTitle";
 import Card from "@/components/ui/card/card";
 import AdminLayout from "@/components/adminLayout";
 import Button from "@/components/ui/Button";
-const AllReceiving = () => {
-  const [
-    deleteProvider,
-    { loading: deleting, error: deleteError },
-  ] = useMutation(DeleteProvider);
-
+const AllSuggestions = () => {
   function splitfunction(e) {
     return e
       .split("(")[1]
@@ -21,8 +14,8 @@ const AllReceiving = () => {
       .replace(/^"(.*)"$/, "$1");
   }
 
-  const { loading, error, data } = useQuery(GetOrdersCours, {
-    variables: { type: "order", status: "pending" },
+  const { loading, error, data } = useQuery(GetSuggestionsReader, {
+    variables: { source: "reader" },
   });
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
@@ -33,45 +26,42 @@ const AllReceiving = () => {
         <div className="col s12">
           <CardTitle>
             {" "}
-            <h5>Purchase Management : Receiving</h5>
+            <h5>Reader Suggestions</h5>
           </CardTitle>
+
           <Card>
-            <div className="col s12">
+            <div className="container">
               {data == null ? (
                 nul
               ) : (
                 <Table
                   Thead={
                     <tr>
-                      <th>Order Name</th>
-                      <th>Provider</th>
-                      <th>Date Order</th>
-                      <th>State</th>
-                      <th>Actions</th>
+                      <th>Isbn</th>
+                      <th>Title</th>
+                      <th>Author</th>
+                      <th>Quantity</th>
+                      <th>Comments</th>
                     </tr>
                   }
                   Tbody={
                     <tbody>
-                      {data.getOrders.map((item) => (
+                      {data.getsuggestions.map((item) => (
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">
-                              {item.name}
+                              {item.isbn}
                             </span>
                           </td>
-                          <td>{item.provider}</td>
-                          <td>{item.date}</td>
-                          <td>{item.status}</td>
 
+                          <td>{item.title}</td>
+                          <td>{item.author}</td>
+                          <td>{item.quantity}</td>
+                          <td>{item.comments}</td>
                           <td>
                             <div className="invoice-action">
-                              <a
-                                href={`/admin/acquisition/Receiving?id=${splitfunction(
-                                  item._id
-                                )}`}
-                                className="invoice-action-edit"
-                              >
-                                <i className="material-icons">eject</i>
+                              <a href={`#`} className="invoice-action-edit">
+                                <i className="material-icons">edit</i>
                               </a>
                             </div>
                           </td>
@@ -82,9 +72,6 @@ const AllReceiving = () => {
                 />
               )}
             </div>
-            <Button href="/admin/acquisition/AddProvider" rounded={2}>
-              New
-            </Button>
           </Card>
         </div>
       </div>
@@ -92,5 +79,5 @@ const AllReceiving = () => {
   );
 };
 
-AllReceiving.Layout = AdminLayout;
-export default AllReceiving;
+AllSuggestions.Layout = AdminLayout;
+export default AllSuggestions;

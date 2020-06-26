@@ -31,6 +31,7 @@ const GetOrdersCours = gql`
       order_lines
       orders
       currency
+      name
     }
   }
 `;

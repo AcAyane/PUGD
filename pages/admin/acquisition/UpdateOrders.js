@@ -148,33 +148,33 @@ const UpdateOrders = () => {
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <GridElement className="col s12 m6" name="Order number">
+              <GridElement className="col s12 m6 l4" name="Order number">
                 {touched.order_number && errors.order_number && (
                   <p className="alert alert-danger">{errors.order_number}</p>
                 )}
                 <Field
                   type="text"
                   name="order_number"
-                  placeholder="Enter order number"
+                  placeholder="Order Number"
                   className="form-control"
                 />
               </GridElement>
-              <GridElement className="col s12 m6" name="Status">
+              <GridElement className="col s12 m6 l4" name="Order Name">
+                {touched.name && errors.name && (
+                  <p className="alert alert-danger">{errors.name}</p>
+                )}
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6 l2" name="Status">
                 <Field
                   type="text"
                   name="status"
                   placeholder="pending"
-                  className="form-control"
-                />
-              </GridElement>
-              <GridElement className="col s12 m6" name="Order number">
-                {touched.currency && errors.currency && (
-                  <p className="alert alert-danger">{errors.currency}</p>
-                )}
-                <Field
-                  type="text"
-                  name="currency"
-                  placeholder="Currency"
                   className="form-control"
                 />
               </GridElement>
@@ -191,48 +191,35 @@ const UpdateOrders = () => {
                   className="form-control"
                 />
               </GridElement>
-              {Providers()}
+
               {/* {AllOrderLines()} */}
               <GridElement className="col s12 m6" name="Provider">
-                {touched.id_Provider && errors.id_Provider && (
-                  <p className="alert alert-danger">{errors.id_Provider}</p>
-                )}
-                <Select
-                  id="provider"
+                <Field
+                  type="text"
                   name="provider"
-                  options={ListPro}
-                  multi={true}
-                  selected={values.provider}
-                  onChange={(provider) =>
-                    setFieldValue("provider", provider.value)
-                  }
+                  placeholder="Provider"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
             <Grid>
-              <GridElement className="col s12 m6" name="Name">
+              <GridElement className="col s12 m6" name="Currency">
                 {touched.name && errors.name && (
                   <p className="alert alert-danger">{errors.name}</p>
                 )}
                 <Field
                   type="text"
-                  name="name"
-                  placeholder="Enter Name"
+                  name="currency"
+                  placeholder="currency"
                   className="form-control"
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Financial-Year">
-                {touched.financial_year && errors.financial_year && (
-                  <p className="alert alert-danger">{errors.financial_year}</p>
-                )}
-                <Select
-                  id="financial_year"
+                <Field
+                  type="text"
                   name="financial_year"
-                  options={options}
-                  selected={values.financial_year}
-                  onChange={(year) =>
-                    setFieldValue("financial_year", year.value)
-                  }
+                  placeholder="financial_year"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
@@ -392,8 +379,6 @@ const UpdateOrders = () => {
                 <button className="SubmitButton" type="submit">
                   Submit
                 </button>
-              </Grid>
-              <Grid>
                 <a
                   href={`/admin/acquisition/Billing?id=${
                     Router.query.id

@@ -44,6 +44,10 @@
           "href": "/admin/acquisition/ImportSugg"
         },
         {
+          "Label": "All Suggestions",
+          "href": "/admin/acquisition/AllSuggestions"
+        },
+        {
           "Label": "Suggestion by reader",
           "href": "/admin/acquisition/SuggByReader"
         }
