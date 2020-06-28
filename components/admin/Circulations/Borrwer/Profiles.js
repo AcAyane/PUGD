@@ -1,11 +1,10 @@
 import React from 'react'
 import Collapsible from "../../../ui/Collapsible/Collapsible";
-import PretTable from "../../../../pages/admin/circulation/Circulation/pretDoc/pretTable";
+import PretTable from "../../../../pages/admin/circulation/Circulation/pret_document/pretTable";
 
 
 const Profiles = (props) => {
     const {Borrower} = props
-    const {All_Pret} = props
     console.log("firstname", Borrower)
 
     let Full_Name = Borrower && Borrower.first_name + " " + Borrower.last_name

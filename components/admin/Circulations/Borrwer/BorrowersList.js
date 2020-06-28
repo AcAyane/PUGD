@@ -43,7 +43,7 @@ const BorrowersList = (props) => {
                                 <td>{item.email}</td>
                                 <td>
                                     <Link href={{
-                                        pathname: '/admin/circulation/Circulation/pretDoc/Borrower',
+                                        pathname: '/admin/circulation/Circulation/pret_document/Borrower',
                                         query: {id: item._id}
                                     }}><a>Détails</a></Link>
 
@@ -54,7 +54,7 @@ const BorrowersList = (props) => {
                                     className="invoice-action-view mr-4"
                                     onClick={(e) =>
                                         window.confirm("Are you sure you wish to delete this Borrower") &&
-                                        // Router.push("/admin/circulation/Circulations/pretDoc")&&
+                                        // Router.push("/admin/circulation/Circulations/pret_document")&&
                                         DeleteOneBorrower({
                                             variables: {_id: item._id},
                                             refetchQueries: [
@@ -107,7 +107,7 @@ const BorrowersList = (props) => {
                                 <td>{item.email}</td>
                                 <td>
                                     <Link href={{
-                                        pathname: '/admin/circulation/Circulation/pretDoc/allDoc',
+                                        pathname: '/admin/circulation/Circulation/pret_document/allDoc',
                                         query: {id: item._id}
                                     }}><a>Détails</a></Link>
 
@@ -117,7 +117,7 @@ const BorrowersList = (props) => {
                                     className="invoice-action-view mr-4"
                                     onClick={(e) =>
                                         window.confirm("Are you sure you wish to delete this Borrower") &&
-                                        // Router.push("/admin/circulation/Circulations/pretDoc")&&
+                                        // Router.push("/admin/circulation/Circulations/pret_document")&&
                                         DeleteOneBorrower({
                                             variables: {_id: item._id},
                                             refetchQueries: [

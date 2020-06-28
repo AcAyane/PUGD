@@ -5,14 +5,14 @@ import Button from "../../../../../components/ui/Button";
 import Card from "../../../../../components/ui/card/card";
 import {useLazyQuery} from "@apollo/react-hooks";
 import {AllBorrowers} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
-import UpdateBorrower from "../../Circulation/pretDoc/UpdateBorrower"
+import UpdateBorrower from ".//UpdateBorrower"
 import Profiles from "../../../../../components/admin/Circulations/Borrwer/Profiles";
 import BorrowersList from "../../../../../components/admin/Circulations/Borrwer/BorrowersList";
 
 
 /*const onDocHandler = (e) => {
     /!* alert("hello");*!/
-    Router.push("/admin/circulation/Circulations/pretDoc/allDoc");
+    Router.push("/admin/circulation/Circulations/pret_document/allDoc");
 }*/
 
 

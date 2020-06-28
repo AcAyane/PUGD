@@ -7,7 +7,7 @@
       "Children": [
         {
           "Label": "Prêt de documents",
-          "href": "/admin/circulation/Circulation/pretDoc"
+          "href": "/admin/circulation/Circulation/pret_document"
         },
         {
           "Label": "Retour de documents",

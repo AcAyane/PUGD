@@ -7,6 +7,7 @@ import PretTable from "./pretTable";
 import Profiles from "../../../../../components/admin/Circulations/Borrwer/Profiles";
 import Circulation from "../../../../../components/admin/Circulations/Body/Body";
 import CirculationHeader from "../../../../../components/admin/Circulations/Hedar/CirculationHeader";
+import ReservationTable from "./reservationTable";
 
 const Borrower = () => {
 
@@ -20,8 +21,8 @@ const Borrower = () => {
     if (error){
         console.log("error",error)
     }
-    console.log("pretDoc/Borrower :", data);
-    console.log("pretDoc/Borrower GetBorrowerWithPretAndReservation :", data);
+    console.log("pret_document/Borrower :", data);
+    console.log("pret_document/Borrower GetBorrowerWithPretAndReservation :", data);
     return <React.Fragment>
 
 
@@ -44,13 +45,26 @@ const Borrower = () => {
 
             <div className="card-panel">
 
-                <PretTable title="List Pret"
-                           All_Pret={data && data.GetBorrowerWithPretAndReservation.All_Pret}/>
+                {
+                    data && data && data.GetBorrowerWithPretAndReservation.All_Pret.length !== 0
+                        ?  <PretTable title="List Pret"
+                                      All_Pret={data && data.GetBorrowerWithPretAndReservation.All_Pret}
+                                      user={data && data.GetBorrowerWithPretAndReservation.Borrower._id}
+                        />
+                        : " pas de Pret"
+                }
+
             </div>
             <div className="card-panel">
-                <PretTable
+                {
+                    data && data.GetBorrowerWithPretAndReservation.All_Reservation.length !== 0
+                        ?  <ReservationTable
                     title={"List Reservation"}
-                    All_Pret={data && data.GetBorrowerWithPretAndReservation.All_Reservation}/>
+                    reservations={data && data.GetBorrowerWithPretAndReservation.All_Reservation}/>
+
+                    : " pas de reservation"
+                }
+
 
             </div>
 

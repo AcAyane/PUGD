@@ -108,7 +108,7 @@ const SidebarItems = {
       Children: [
         {
           Label: "Prêt de documents",
-          href: "/admin/circulation/Circulations/pretDoc",
+          href: "/admin/circulation/Circulations/pret_document",
         },
         {
           Label: "Retour de documents",

@@ -22,7 +22,7 @@ const Updating = () => {
 
     const [Insert] = useMutation(INSERT_BORROWERS, {
         onCompleted() {
-            Router.push("/admin/circulation/Circulation/pretDoc")
+            Router.push("/admin/circulation/Circulation/pret_document")
         }
     });
     const onSubmitHandler = () => {
