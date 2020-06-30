@@ -42,6 +42,7 @@
     "react-router": "^5.2.0",
     "react-select": "^3.1.0",
     "reactstrap": "^8.4.1",
+    "yarn": "^1.22.4",
     "yup": "^0.28.5"
   },
   "license": "ISC",
