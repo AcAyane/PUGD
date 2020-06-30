@@ -1,14 +1,19 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
-import { GetOrders } from "@/graphql/queries/acquisition/order";
-import { DeleteOrder } from "@/graphql/mutations/acquisition/order";
+import { GetOrdersCours } from "@/graphql/queries/acquisition/order";
+import { DeleteProvider } from "@/graphql/mutations/acquisition/provider";
 import CardTitle from "@/components/ui/card/cardTitle";
 import Card from "@/components/ui/card/card";
 import AdminLayout from "@/components/adminLayout";
 import Button from "@/components/ui/Button";
+const AllReceiving = () => {
+  const [
+    deleteProvider,
+    { loading: deleting, error: deleteError },
+  ] = useMutation(DeleteProvider);
 
-const AllOrders = () => {
   function splitfunction(e) {
     return e
       .split("(")[1]
@@ -16,12 +21,8 @@ const AllOrders = () => {
       .replace(/^"(.*)"$/, "$1");
   }
 
-  const [deleteorder, { loading: deleting, error: deleteError }] = useMutation(
-    DeleteOrder
-  );
-
-  const { loading, error, data } = useQuery(GetOrders, {
-    variables: { type: "order" },
+  const { loading, error, data } = useQuery(GetOrdersCours, {
+    variables: { type: "order", status: "pending" },
   });
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
@@ -31,7 +32,8 @@ const AllOrders = () => {
       <div className="row">
         <div className="col s12">
           <CardTitle>
-            <h5>Purchase Management : Orders</h5>
+            {" "}
+            <h5>Purchase Management : Receiving</h5>
           </CardTitle>
           <Card>
             <div className="col s12">
@@ -41,24 +43,22 @@ const AllOrders = () => {
                 <Table
                   Thead={
                     <tr>
-                      <th>Order</th>
-                      <th>Establishement</th>
+                      <th>Order Name</th>
                       <th>Provider</th>
-                      <th>Date</th>
-                      <th>Status</th>
+                      <th>Date Order</th>
+                      <th>State</th>
+                      <th>Actions</th>
                     </tr>
                   }
                   Tbody={
                     <tbody>
                       {data.getOrders.map((item) => (
-                        // eslint-disable-next-line react/jsx-key
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">
                               {item.name}
                             </span>
                           </td>
-                          <td>{item.establishement}</td>
                           <td>{item.provider}</td>
                           <td>{item.date}</td>
                           <td>{item.status}</td>
@@ -66,29 +66,12 @@ const AllOrders = () => {
                           <td>
                             <div className="invoice-action">
                               <a
-                                href="#"
-                                className="invoice-action-view mr-4"
-                                onClick={(e) => {
-                                  deleteorder({
-                                    variables: { _id: splitfunction(item._id) },
-                                    refetchQueries: [
-                                      {
-                                        query: GetOrders,
-                                        variables: { type: "order" },
-                                      },
-                                    ],
-                                  });
-                                }}
-                              >
-                                <i className="material-icons">delete</i>
-                              </a>
-                              <a
-                                href={`/admin/acquisition/UpdateOrders?id=${splitfunction(
+                                href={`/admin/acquisition/Receiving?id=${splitfunction(
                                   item._id
                                 )}`}
                                 className="invoice-action-edit"
                               >
-                                <i className="material-icons">edit</i>
+                                <i className="material-icons">eject</i>
                               </a>
                             </div>
                           </td>
@@ -99,7 +82,7 @@ const AllOrders = () => {
                 />
               )}
             </div>
-            <Button href="/admin/acquisition/AddOrder" rounded={2}>
+            <Button href="/admin/acquisition/AddProvider" rounded={2}>
               New
             </Button>
           </Card>
@@ -109,5 +92,5 @@ const AllOrders = () => {
   );
 };
 
-AllOrders.Layout = AdminLayout;
-export default AllOrders;
+AllReceiving.Layout = AdminLayout;
+export default AllReceiving;

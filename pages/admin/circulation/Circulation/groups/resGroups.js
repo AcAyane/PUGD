@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
 
 
 import Icon from "components/ui/Icon/Icon";
 import Table from "../../../../../components/ui/Table/Table";
-
-
-
 
 const ResGroup = (props) => {
     const nul = <span style={{color:'#d60e28'}}>No Group finder</span>;
@@ -91,11 +88,10 @@ const ResGroup = (props) => {
                                                 // eslint-disable-next-line react/no-children-prop
                                                 : <Icon style={{color: '#d5d5d5'}} children={"mail"}/>
                                             }*/}
-
-                                        </a>
-                                        <a href="#!" className="medium-small pl-10">
-                                            <Icon children={'mail'} style={{color: '#ff4080'}} />
-                                            {/*{props.datas.letterrappel ?
+                  </a>
+                  <a href="#!" className="medium-small pl-10">
+                    <Icon children={"mail"} style={{ color: "#ff4080" }} />
+                    {/*{props.datas.letterrappel ?
                                                 // eslint-disable-next-line react/no-children-prop
                                                 <Icon children={'notifications_active'} style={{color: '#ff4080'}} /> : <Icon style={{color: '#d5d5d5'}} children={"notifications_off"}/>
                                             }*/}
@@ -109,8 +105,8 @@ const ResGroup = (props) => {
                     </div>
 
     </React.Fragment>
-
-}
+  );
+};
 // export default withApollo({ssr:true})(AllGroups)
 
-export default ResGroup
+export default ResGroup;

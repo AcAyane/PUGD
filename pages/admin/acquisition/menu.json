@@ -19,11 +19,19 @@
         },
         {
           "Label": "Receivings",
-          "href": "/admin/acquisition/Receivings"
+          "href": "/admin/acquisition/AllReceiving"
         },
         {
           "Label": "Deliveries",
-          "href": "/admin/acquisition/Deliveries"
+          "href": "/admin/acquisition/AllDelivery"
+        },
+        {
+          "Label": "Bills",
+          "href": "/admin/acquisition/AllBills"
+        },
+        {
+          "Label": "Budgets",
+          "href": "/admin/acquisition/Budgets"
         }
       ]
     },
@@ -34,6 +42,10 @@
         {
           "Label": "Import Suggestion",
           "href": "/admin/acquisition/ImportSugg"
+        },
+        {
+          "Label": "All Suggestions",
+          "href": "/admin/acquisition/AllSuggestions"
         },
         {
           "Label": "Suggestion by reader",

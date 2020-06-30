@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GetOrder } from "@/graphql/queries/acquisition/order";
 import { GetAllOrderLines } from "@/graphql/queries/acquisition/orderline";
@@ -12,13 +12,12 @@ import {
 import { GetAllProviders } from "@/graphql/queries/acquisition/provider";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
-import Button from "@material-ui/core/Button";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
 import GridElement from "@/components/ui/Grid/GridElement";
 import Grid from "@/components/ui/Grid/grid";
 import Container from "@/components/ui/Container";
-import MaterialTable from "material-table-formik";
+import MaterialTable from "material-table";
 import AdminLayout from "@/components/adminLayout";
 const options = [
   { value: "20/3/2020", label: "20/3/2020" },
@@ -33,6 +32,7 @@ const ObjectId = (
 ) => s(d.now() / 1000) + " ".repeat(h).replace(/./g, () => s(m.random() * h));
 
 const UpdateOrders = () => {
+  const Router = useRouter();
   const [order_line, setOrder_line] = useState([]);
   const [insertOrderLine] = useMutation(InsertOrderLine, {
     onCompleted: () => {
@@ -83,15 +83,16 @@ const UpdateOrders = () => {
       });
     }
   }
+  function splitfunction(e) {
+    return e
+      .split("(")[1]
+      .split(")")[0]
+      .replace(/^"(.*)"$/, "$1");
+  }
 
   if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 
-  const splitfunction = (e) =>
-    e
-      .split("(")[1]
-      .split(")")[0]
-      .replace(/^"(.*)"$/, "$1");
   return (
     <Container>
       <Formik
@@ -101,6 +102,7 @@ const UpdateOrders = () => {
           order_number: data_order.getOrder.order_number,
           establishement: data_order.getOrder.establishement,
           name: data_order.getOrder.name,
+          currency: data_order.getOrder.currency,
           financial_year: data_order.getOrder.financial_year,
           date: new Date(),
           delivery_address: data_order.getOrder.delivery_address,
@@ -146,18 +148,29 @@ const UpdateOrders = () => {
         render={({ values, errors, touched, setFieldValue }) => (
           <Form>
             <Grid>
-              <GridElement className="col s12 m6" name="Order number">
+              <GridElement className="col s12 m6 l4" name="Order number">
                 {touched.order_number && errors.order_number && (
                   <p className="alert alert-danger">{errors.order_number}</p>
                 )}
                 <Field
                   type="text"
                   name="order_number"
-                  placeholder="Enter order number"
+                  placeholder="Order Number"
                   className="form-control"
                 />
               </GridElement>
-              <GridElement className="col s12 m6" name="Status">
+              <GridElement className="col s12 m6 l4" name="Order Name">
+                {touched.name && errors.name && (
+                  <p className="alert alert-danger">{errors.name}</p>
+                )}
+                <Field
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="form-control"
+                />
+              </GridElement>
+              <GridElement className="col s12 m6 l2" name="Status">
                 <Field
                   type="text"
                   name="status"
@@ -178,48 +191,35 @@ const UpdateOrders = () => {
                   className="form-control"
                 />
               </GridElement>
-              {Providers()}
+
               {/* {AllOrderLines()} */}
               <GridElement className="col s12 m6" name="Provider">
-                {touched.id_Provider && errors.id_Provider && (
-                  <p className="alert alert-danger">{errors.id_Provider}</p>
-                )}
-                <Select
-                  id="provider"
+                <Field
+                  type="text"
                   name="provider"
-                  options={ListPro}
-                  multi={true}
-                  selected={values.provider}
-                  onChange={(provider) =>
-                    setFieldValue("provider", provider.value)
-                  }
+                  placeholder="Provider"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
             <Grid>
-              <GridElement className="col s12 m6" name="Name">
+              <GridElement className="col s12 m6" name="Currency">
                 {touched.name && errors.name && (
                   <p className="alert alert-danger">{errors.name}</p>
                 )}
                 <Field
                   type="text"
-                  name="name"
-                  placeholder="Enter Name"
+                  name="currency"
+                  placeholder="currency"
                   className="form-control"
                 />
               </GridElement>
               <GridElement className="col s12 m6" name="Financial-Year">
-                {touched.financial_year && errors.financial_year && (
-                  <p className="alert alert-danger">{errors.financial_year}</p>
-                )}
-                <Select
-                  id="financial_year"
+                <Field
+                  type="text"
                   name="financial_year"
-                  options={options}
-                  selected={values.financial_year}
-                  onChange={(year) =>
-                    setFieldValue("financial_year", year.value)
-                  }
+                  placeholder="financial_year"
+                  className="form-control"
                 />
               </GridElement>
             </Grid>
@@ -281,6 +281,7 @@ const UpdateOrders = () => {
                     {
                       title: "title",
                       field: "title",
+                      editable: "onAdd",
                     },
                     {
                       title: "author",
@@ -312,6 +313,7 @@ const UpdateOrders = () => {
                           setOrder_line(() => {
                             newData._id = ObjectId();
                             newData.order = Router.query.id;
+                            newData.quantityreceived = 0;
                             const order_line1 = [...order_line, newData];
                             return order_line1;
                           });
@@ -345,6 +347,8 @@ const UpdateOrders = () => {
                             price: newData.price,
                             discount: newData.discount,
                             status: newData.status,
+                            quantityreceived: 0,
+                            quantityfactured: 0,
                           },
                         });
                       }),
@@ -370,11 +374,25 @@ const UpdateOrders = () => {
               </div>
             </Grid>
             <br></br>
-            <Grid>
-              <button className="SubmitButton" type="submit">
-                Submit
-              </button>
-            </Grid>
+            <div>
+              <Grid>
+                <button className="SubmitButton" type="submit">
+                  Submit
+                </button>
+                <a
+                  href={`/admin/acquisition/Billing?id=${
+                    Router.query.id
+                  }&establishement=${
+                    data_order.getOrder.establishement
+                  }&currency=${String(data_order.getOrder.currency)}&provider=${
+                    data_order.getOrder.provider
+                  }`}
+                  className="invoice-action-edit"
+                >
+                  <i className="SubmitButton">Facturation</i>
+                </a>
+              </Grid>
+            </div>
             <br></br>
           </Form>
         )}
