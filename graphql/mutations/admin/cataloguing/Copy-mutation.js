@@ -14,7 +14,13 @@ mutation(
         $Restricted :       String,
         $CopyNumber :       Int,
         $NewStatus :        String,
-        $Record :        String,
+        $Cote :             String,
+        $Localisation :     String,
+        $Section :          String,
+        $Owner :            String,
+        $MediaType :        String,
+        $Status :           String,
+        $Record :           String,
     ){
       insertOneCopy(
             BareCode :         $BareCode ,
@@ -29,6 +35,12 @@ mutation(
             Restricted :       $Restricted,
             CopyNumber :       $CopyNumber ,
             NewStatus :        $NewStatus ,
+            Cote :             $Cote,
+            Localisation :     $Localisation,
+            Section :          $Section,
+            Owner :            $Owner,
+            MediaType :        $MediaType,
+            Status :           $Status,
             Record :           $Record ,
                        
         )
@@ -50,6 +62,12 @@ mutation(
     $Restricted :       String,
     $CopyNumber :       Int,
     $NewStatus :        String,
+    $Cote :             String,
+    $Localisation :     String,
+    $Section :          String,
+    $Owner :            String,
+    $MediaType :        String,
+    $Status :           String,
     $Record :           String,
   ){
     updateOneCopy(
@@ -66,6 +84,12 @@ mutation(
     Restricted :       $Restricted,
     CopyNumber :       $CopyNumber ,
     NewStatus :        $NewStatus ,
+    Cote :             $Cote,
+    Localisation :     $Localisation,
+    Section :          $Section,
+    Owner :            $Owner,
+    MediaType :        $MediaType,
+    Status :           $Status,
     Record :           $Record ,
   )
 }
