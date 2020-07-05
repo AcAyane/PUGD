@@ -7,7 +7,7 @@ const Collapsible = ({ children, ...props }) => {
 
     }, [])
 
-    return <ul className="collapsible" {...props} ref={collapsibleRef}>
+    return <ul className="collapsible" {...props} ref={collapsibleRef} >
         {children}
     </ul>
 }

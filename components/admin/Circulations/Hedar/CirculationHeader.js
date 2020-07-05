@@ -4,29 +4,21 @@ import Card from 'components/ui/card/card'
 
 const CirculationHeader = ({Title, children}) => {
 
-    /*const module = Router.route.split('/')[2]*/
-    /*console.log("router : ",AuthoritiesSideItems[module][1].Children[1].Label)
-    // eslint-disable-next-line no-undef
-    console.log("router : ",AuthoritiesSideItems[module][1].Children.source)
-    console.log("router : ",Router.router.components)
-    //const value = AuthoritiesSideItems[module]*/
-    return (
-
-        <React.Fragment>
-            <Card>
-                <div className="header-container card-header mb-2">
-                    <i className="material-icons pink-text-blue" style={{margin: "auto"}}>
-                        fiber_manual_record
-                    </i>
-                    {/*todo fix it*/}
-                    <h5 className=" uk-icon"> {/*{AuthoritiesSideItems[module][1].Label}*/} Circulation Module
-                        >> {Title}</h5>
-                    <br/>
-                </div>
-                {children}
-            </Card>
-            <style jsx>
-                {`
+    return <React.Fragment>
+        <Card>
+            <div className="header-container card-header mb-2">
+                <i className="material-icons pink-text-blue" style={{margin: "auto"}}>
+                    fiber_manual_record
+                </i>
+                {/*todo fix it*/}
+                <h5 className=" uk-icon"> {/*{AuthoritiesSideItems[module][1].Label}*/} Circulation Module
+                    >> {Title}</h5>
+                <br/>
+            </div>
+            {children}
+        </Card>
+        <style jsx>
+            {`
                     
                     .uk-icon { 
                         margin-left:5px;
@@ -37,8 +29,8 @@ const CirculationHeader = ({Title, children}) => {
                         width: fit-content;
                     }
                 `}
-            </style>
+        </style>
 
-        </React.Fragment>)
+    </React.Fragment>
 }
 export default CirculationHeader

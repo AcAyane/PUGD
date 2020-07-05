@@ -1,38 +1,34 @@
-import React, {lazy, useEffect, useReducer, useState} from "react";
+import React, {useState} from "react";
 import AdminLayout from "../../../../adminLayout";
 import Button from "../../../../ui/Button";
 import Checkbox from "../../../../ui/Checkbox";
 import SelectBox from "../../../../ui/SelectBox";
 import {useMutation, useQuery} from "@apollo/react-hooks";
-import {ALL_BORROWERS, CHECK_CODE_BAR} from "../../../../../graphql/queries/admin/Ciruclation/Borrowers.query";
-import TextBox from "../../../../ui/TextBox";
 import Input from "../../../../ui/Input";
 import DatePicker from "../../../../ui/DatePicker/DatePicker";
-import {ADD_GROUP} from "../../../../../graphql/mutations/admin/circulation/Groups.mutation";
 import {INSERT_BORROWERS} from "../../../../../graphql/mutations/admin/circulation/Borrowers.mutation";
 import Radio from "../../../../ui/Radio/Radio";
 import ToggleSwitch from "../../../../ui/ToggleSwitch/ToggleSwitch";
 import GridElement from "../../../../ui/Grid/GridElement";
 import {GET_ALL_GROUPS} from "../../../../../graphql/queries/admin/Ciruclation/groups.query";
-import {splitfunction} from "../../../../../shared/_herlpersCirculation/_helpers";
 import Router from "next/router";
-import Select from "react-select";
 import Grid from '../../../../ui/Grid/Grid';
+import Search from "../SearchBar";
 
 
 const Formulaire = () => {
 
     const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-      ]
+        {value: 'chocolate', label: 'Chocolate'},
+        {value: 'strawberry', label: 'Strawberry'},
+        {value: 'vanilla', label: 'Vanilla'}
+    ]
 
     // const [state, dispatch] = useReducer(reduce,datas)
 
 
     // const {loading, error, data} = useQuery(ALL_BORROWERS);
-    const {data } = useQuery(GET_ALL_GROUPS);
+    const {data} = useQuery(GET_ALL_GROUPS);
 
     const [Active, setActive] = useState(true)
 
@@ -99,21 +95,9 @@ const Formulaire = () => {
         });
     }
 
-
-
-    /*if( errorGroup){
-        console.log("error to fitch data of group")
+    if (data !== undefined) {
+        console.log("data group :", data.GetAllGrroups)
     }
-    if ( loadingGroup){
-        console.log("loding data group ....")
-    }*/
-        //console.log("data :", data)
-    if( data !== undefined ){
-
-       console.log("data group :", data.all_groups)
-    }
-
-
 
 
     return (
@@ -144,15 +128,15 @@ const Formulaire = () => {
                                     </li>
                                     <li className="input-field col s12 m12 l6">
                                         <ToggleSwitch label="Statues"
-                                                    sufix="Account "
-                                                    sufixActive="Active"
-                                                    sufixDesactive="Désative"
-                                                    colorSufix={Active}
-                                                    checked={Active}
-                                                    onChange={() => {
-                                                        console.log(Active);
-                                                        setActive(!Active)
-                                                    }}
+                                                      sufix="Account "
+                                                      sufixActive="Active"
+                                                      sufixDesactive="Désative"
+                                                      colorSufix={Active}
+                                                      checked={Active}
+                                                      onChange={() => {
+                                                          console.log(Active);
+                                                          setActive(!Active)
+                                                      }}
                                         />
                                     </li>
                                     <div className="col s12 ">
@@ -401,33 +385,34 @@ const Formulaire = () => {
                                     </li>
 
                                     <div className="col l12 m12 s12">
-                                        
-                                    <Grid>
-        
-                                        <GridElement s={12}>
-                                        <SelectBox label={"Add To Group"}
-                                                value={group}
-                                                onChange={e => setGroup(e.target.value)}
-                                        >
-                                            
-                                            
-                                            {
-                                                data && data.all_groups.map((item) => (
-                                                <option key={item._id} value={item._id}>
-                                                    {item.name}
-                                                </option>
-                                                ))
-                                            }
-                                        </SelectBox>
-                                        </GridElement>
-                                    </Grid>
-                                    
-                                    
+
+                                        <Grid>
+
+                                            <GridElement s={12}>
+                                                <Search/>
+                                                {/*<SelectBox label={"Add To Group"}
+                                                           value={group}
+                                                           onChange={e => setGroup(e.target.value)}
+                                                >
+
+
+                                                    {
+                                                        data && data.all_groups.map((item) => (
+                                                            <option key={item._id} value={item._id}>
+                                                                {item.name}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </SelectBox>*/}
+                                            </GridElement>
+                                        </Grid>
+
+
                                     </div>
 
                                     <div className="input-field col l12 m12  s12">
-                                       
-                                    
+
+
                                         <Input
                                             icon="layers"
                                             label="Categories"

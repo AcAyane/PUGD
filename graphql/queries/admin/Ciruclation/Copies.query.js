@@ -35,8 +35,8 @@ BareCode
 `;
 const GetOneCopyByCode = gql`
    
-     query ($code_bar: Int!){
-     GetExamplaireByCodeBar(code_bar:$code_bar){
+     query ($code_bar: String){
+     GetCopyByCodeBar(code_bar:$code_bar){
   _id
   BareCode
   CopyNumber
