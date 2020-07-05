@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 const GET_ALL_GROUPS = gql`
     query{
-        all_groups{
+        GetAllGrroups{
             _id,
             name
         }

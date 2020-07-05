@@ -2,20 +2,18 @@ import gql from 'graphql-tag';
 
 const INSERT_ONE_PRET = gql`
     mutation(
-        $idCopy :                 String,
-        $idBorrower:                   String,
+        $copy_code :               String!,
+        $idBorrower:               String!,
+        $isExpress:               Boolean!,
     ){
-
         InsertOnePret(
-            idCopy  :          $idCopy,
-            idBorrower :           $idBorrower,
-        
+            code_bar_copy :       $copy_code,
+            idBorrower    :       $idBorrower,
+            isExpress     :       $isExpress,
         )
     }
-
 `;
-
-
+/// [1] <--- initial   [3,2] <--- Serach
 const UPDATE_PRET = gql`
     mutation(
          $idCopy :                 String,

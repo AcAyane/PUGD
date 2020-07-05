@@ -66,15 +66,6 @@ query ($idBorrower: String!){
 
 }
 `;
-const SAVE_PRET = gql`
-query ($idBorrower: String!){
-    GetPretOfBorrower(idBorrower:$idBorrower) {
-        Total
-
-    }
-
-}
-`;
 module.exports = {
     GetAllPrets,
     Get_Pret_Of_Borrower

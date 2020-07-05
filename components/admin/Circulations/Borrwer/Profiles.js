@@ -5,7 +5,7 @@ import PretTable from "../../../../pages/admin/circulation/Circulation/pret_docu
 
 const Profiles = (props) => {
     const {Borrower} = props
-    console.log("firstname", Borrower)
+    console.log("first_name", Borrower)
 
     let Full_Name = Borrower && Borrower.first_name + " " + Borrower.last_name
     return <React.Fragment>
@@ -60,8 +60,6 @@ const Profiles = (props) => {
                     <div className="collapsible-header">
                         <i className="material-icons">filter_drama</i>Details
                     </div>
-
-
                     <div className=" collapsible-body s12 m12 l12">
                         <div className="row">
                             <ul className="col card-content s6 m6 l6">
@@ -85,29 +83,7 @@ const Profiles = (props) => {
                         </div>
                     </div>
                 </li>
-                {/*<li>
-                    <div className="collapsible-header">
-                        <i className="material-icons">filter_drama</i>List Pret
-                    </div>
-
-
-                    <div className=" collapsible-body s12 m12 l12">
-                        <PretTable All_Pret={All_Pret}/>
-                    </div>
-                </li>*/}
-
             </Collapsible>
-            {/*<ul className="collapsible">
-
-                <li>
-                    <div className="collapsible-header"><i className="material-icons">place</i>Second</div>
-                    <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-                <li>
-                    <div className="collapsible-header"><i className="material-icons">whatshot</i>Third</div>
-                    <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-                </li>
-            </ul>*/}
         </div>
     </React.Fragment>
 

@@ -1,10 +1,7 @@
 import React from 'react'
 import {FullDate, splitfunction} from "../../../../../shared/_herlpersCirculation/_helpers";
 import Button from "../../../../../components/ui/Button";
-import RecordHome from "../../../edition/delayByReader";
-import Input from "../../../../../components/ui/Input";
-
-
+import Link from 'next/link'
 
 
 const ReservationTable = (props) => {
@@ -29,25 +26,28 @@ const ReservationTable = (props) => {
             </div>
             <div className="col s12 m6 l4">
 
-                <Button className="btn waves-effect waves-light blue darken-2 center" rounded={5}
-                        onClick={onHandlerValidateReservation}
-                >
-                    Ajouter un Reservation
-                </Button>
+                <Link href="../pret_document/AddReservation">
+                    <Button className="btn waves-effect waves-light blue darken-2 center" rounded={5}>
+                        <i className="material-icons left">add</i>
+                        Ajouter un Reservation
+
+                    </Button>
+                </Link>
+
             </div>
         </div>
         <div>
             <table className="table table-bordered">
                 <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">COTE</th>
-                        <th scope="col">Rank</th>
-                        <th scope="col">Date Reservation</th>
-                        <th scope="col">Date Retour</th>
-                        <th scope="col">Date Validation</th>
-                        <th scope="col">Confirmé</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">COTE</th>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Date Reservation</th>
+                    <th scope="col">Date Retour</th>
+                    <th scope="col">Date Validation</th>
+                    <th scope="col">Confirmé</th>
+                </tr>
                 </thead>
                 <tbody>
                 {reservations != null || reservations !== undefined ? reservations.map(reservation => {
@@ -90,8 +90,8 @@ const ReservationTable = (props) => {
 
                                 <span className="chip center whit black-text task display-block">
                                     <b>{
-                                        reservation.rank === 1 && reservation.date_retour !== null  ?
-                                            "en ranyon" :  FullDate(reservation.date_retour)
+                                        reservation.rank === 1 && reservation.date_retour !== null ?
+                                            "en ranyon" : FullDate(reservation.date_retour)
                                     }</b>
                                 </span>
                             </td>

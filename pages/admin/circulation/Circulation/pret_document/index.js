@@ -16,7 +16,7 @@ import BorrowersList from "../../../../../components/admin/Circulations/Borrwer/
 }*/
 
 
-const predoc = () => {
+const predoc = (props) => {
 
 
     const [getAllBorrowers, {loading, error, data}] = useLazyQuery(AllBorrowers);
@@ -63,7 +63,8 @@ const predoc = () => {
                                 label="Chercher avec le nom"
                                 type="text"
                                 onChange={event => {
-                                    setFilter(event.target.value)
+                                    setFilter(event.target.value),
+                                        onSearchHandler
                                 }}
                                 value={filter}
                             />
