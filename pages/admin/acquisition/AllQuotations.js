@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Table from "@/components/ui/Table/Table";
 import { GetOrders } from "@/graphql/queries/acquisition/order";
+import { DeleteOrder } from "@/graphql/mutations/acquisition/order";
 import CardTitle from "@/components/ui/card/cardTitle";
 import Card from "@/components/ui/card/card";
 import AdminLayout from "@/components/adminLayout";
@@ -14,6 +15,10 @@ const AllQuotations = () => {
       .split(")")[0]
       .replace(/^"(.*)"$/, "$1");
   }
+
+  const [deleteorder, { loading: deleting, error: deleteError }] = useMutation(
+    DeleteOrder
+  );
 
   const { loading, error, data } = useQuery(GetOrders, {
     variables: { type: "quotation" },
@@ -58,7 +63,21 @@ const AllQuotations = () => {
 
                           <td>
                             <div className="invoice-action">
-                              <a href="#" className="invoice-action-view mr-4">
+                              <a
+                                href="#"
+                                className="invoice-action-view mr-4"
+                                onClick={(e) => {
+                                  deleteorder({
+                                    variables: { _id: splitfunction(item._id) },
+                                    refetchQueries: [
+                                      {
+                                        query: GetOrders,
+                                        variables: { type: "quotation" },
+                                      },
+                                    ],
+                                  });
+                                }}
+                              >
                                 <i className="material-icons">delete</i>
                               </a>
                               <a

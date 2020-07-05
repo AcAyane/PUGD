@@ -16,11 +16,13 @@ const catalogingHome = () => {
 
     const onSearchHandler = (e) => {
         e.preventDefault();
-        findLibrary({
+        
+               findLibrary({
             variables: {
                 Name: Name,
             }
         });
+        
     }
     console.log(data)
    

@@ -140,7 +140,9 @@ const AddProvider = () => {
               </GridElement>
             </Grid>
 
-            <ButtonSubmit className="SubmitButton">Submit</ButtonSubmit>
+            <button className="SubmitButton" type="submit">
+              Submit
+            </button>
           </Form>
         )}
       />

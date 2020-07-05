@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { Formik, Form, Field } from "formik";
-import html2canvas from "../../../helpers/html2canvas";
+import html2canvas from "@/helpers/html2canvas";
 import * as Yup from "yup";
 import { InsertOrder } from "@/graphql/mutations/acquisition/order";
 import { InsertOrderLine } from "@/graphql/mutations/acquisition/orderline";
@@ -32,6 +32,7 @@ const initialFormData = {
   establishement: "hahahaa",
   name: "haha",
   financial_year: "10",
+  currency: "$",
   date: new Date(),
   delivery_address: "zaeaze",
   billing_address: "zaeaze",
@@ -65,6 +66,7 @@ const options1 = [
 ];
 // const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+var a = 0;
 const AddOrder = () => {
   const [order_line, setOrder_line] = useState([b1]);
 
@@ -82,7 +84,6 @@ const AddOrder = () => {
       alert(error.message);
     },
   });
-
   const ListPro = [];
   function Hello() {
     const { loading, data, error } = useQuery(GetAllProviders);
@@ -156,7 +157,7 @@ const AddOrder = () => {
 
             <Form>
               <Grid>
-                <GridElement className="col s12 m6" name="Order number">
+                <GridElement className="col s12 m6 l4" name="Order number">
                   {touched.order_number && errors.order_number && (
                     <p className="alert alert-danger">{errors.order_number}</p>
                   )}
@@ -167,7 +168,18 @@ const AddOrder = () => {
                     className="form-control"
                   />
                 </GridElement>
-                <GridElement className="col s12 m6" name="Status">
+                <GridElement className="col s12 m6 l4" name="Order Name">
+                  {touched.name && errors.name && (
+                    <p className="alert alert-danger">{errors.name}</p>
+                  )}
+                  <Field
+                    type="text"
+                    name="name"
+                    placeholder="Currency"
+                    className="form-control"
+                  />
+                </GridElement>
+                <GridElement className="col s12 m6 l2" name="Status">
                   <Field
                     type="text"
                     name="status"
@@ -196,7 +208,6 @@ const AddOrder = () => {
                     <p className="alert alert-danger">{errors.id_Provider}</p>
                   )}
                   <Select
-                    className="input-field col s12"
                     id="provider"
                     name="provider"
                     options={ListPro}
@@ -209,14 +220,11 @@ const AddOrder = () => {
                 </GridElement>
               </Grid>
               <Grid>
-                <GridElement className="col s12 m6" name="Name">
-                  {touched.name && errors.name && (
-                    <p className="alert alert-danger">{errors.name}</p>
-                  )}
+                <GridElement className="col s12 m6" name="Currency">
                   <Field
                     type="text"
-                    name="name"
-                    placeholder="Enter Name"
+                    name="currency"
+                    placeholder="Enter Currency"
                     className="form-control"
                   />
                 </GridElement>
@@ -237,7 +245,6 @@ const AddOrder = () => {
               <Grid>
                 <GridElement className="col s12 m6" name="Date">
                   <DatePicker
-                    className="date-control"
                     name="date"
                     showPopperArrow={false}
                     selected={values.date}
@@ -284,6 +291,7 @@ const AddOrder = () => {
                   />
                 </GridElement>
               </Grid>
+              <br></br>
               <Grid>
                 <div style={{ width: "100%" }}>
                   <MaterialTable
@@ -292,6 +300,7 @@ const AddOrder = () => {
                       { title: "Isbn", field: "isbn" },
                       {
                         title: "title",
+
                         field: "title",
                       },
                       {

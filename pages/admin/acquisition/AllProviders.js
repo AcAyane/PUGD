@@ -49,6 +49,7 @@ const AllProviders = () => {
                   Tbody={
                     <tbody>
                       {data.getallproviders.map((item) => (
+                        // eslint-disable-next-line react/jsx-key
                         <tr>
                           <td>
                             <span className="chip lighten-5 red red-text">

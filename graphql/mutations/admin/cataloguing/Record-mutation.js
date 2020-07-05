@@ -24,12 +24,12 @@ const INSERT_RECORD = gql`
         $OriginalLanguage : [String],
         $KeyWords :         [String],
         $Branches :         [String],
-        $Publishers :       String,
-        $OtherPublishers:   String,
+        $Publisher :        String,
+        $OtherPublisher:    String,
         $CollectionTitle :  [String],
-        $Category :         [String],
         $ClassNumber:       [String],
-        $Responsibility : [String]
+     
+       
     ){
         insertOneRecord(
             isbn :              $isbn,
@@ -54,12 +54,12 @@ const INSERT_RECORD = gql`
             OriginalLanguage :  $OriginalLanguage,
             KeyWords :          $KeyWords,
             Branches :          $Branches, 
-            Publisher :         $Publishers,
-            OtherPublisher :    $OtherPublishers,
+            Publisher :         $Publisher,
+            OtherPublisher :    $OtherPublisher,
             CollectionTitle :   $CollectionTitle, 
-            Category :          $Category, 
             ClassNumber :       $ClassNumber,
-            Responsibility : $Responsibility
+          
+          
         )
     }
 `;
