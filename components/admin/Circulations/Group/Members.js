@@ -30,16 +30,16 @@ class Members extends React.Component{
                             }
                                    Tbody={
 
-                                       this.props.dataset.members.map((item)=>{
+                                       this.props.members.members.map((item)=>{
                                            // eslint-disable-next-line react/jsx-key
                                            return <React.Fragment>
                                                <tr>
                                                    <td></td>
                                                    <td></td>
-                                                   <td>{item.first_name}</td>
-                                                   <td>{item.last_name}</td>
-                                                   <td>{item.last_name}</td>
-                                                   <td>{item.last_name}</td>
+                                                   <td>{item.first_name+" "+item.last_name}</td>
+                                                   <td>{item.bar_code}</td>
+                                                   <td>{item.total_pret}</td>
+                                                   <td>{item.total_reservation}</td>
                                                </tr>
                                            </React.Fragment>
                                        })

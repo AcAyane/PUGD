@@ -1,14 +1,15 @@
 import gql from 'graphql-tag';
 
 const ALL_BORROWERS = gql`
-    query{
-     GetAllBro{
-            _id,
-            fullname,
-            gender,
-            email,
-            address,
-            birthday
+    query($filter: String!){
+     getAllBorrowers(filter:$filter){
+          _id
+          first_name,
+          last_name,
+          bar_code
+          birthday,
+          email,
+          gender,
             
           
         }

@@ -16,14 +16,21 @@ const GroupsByName = gql`
             name,
             created_at,
             responsable{
+                _id
+                bar_code,
                 first_name,
                 last_name,
-                _id
+                birthday,
+                
             },
             members{
-                _id,
-                first_name,
-                last_name
+              _id,
+              bar_code,
+              last_name,
+              first_name,
+              total_pret,
+              total_reservation,
+                
             }
         }
     }

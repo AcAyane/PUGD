@@ -128,7 +128,11 @@ const addGroups = () => {
 
 
 
-    const {loading, error, data} = useQuery(ALL_BORROWERS);
+    const {loading, error, data} = useQuery(ALL_BORROWERS, {
+        variables:{
+            filter:""
+        }
+    });
 
     const [name, setName] = useState('')
     const [message, setMessage] = useState('')
@@ -146,7 +150,7 @@ const addGroups = () => {
 
     const [AddGroup] = useMutation(ADD_GROUP,{
         onCompleted() {
-            // Router.reload(window.location.pathname);
+            Router.reload(window.location.pathname);
         }
     });
     const onSubmitHandler = ()=>{
@@ -215,8 +219,9 @@ const addGroups = () => {
                                            value={responsable}
                                            onChange={e => setResponsableGroup(e.target.value)}
                                 >
+                                    <option>chose a responsable </option>
                                     {data.getAllBorrowers.map((item) => (
-                                        <option key={item._id} value={splitfunction(item._id)}>
+                                        <option key={item._id} value={item._id}>
                                             {item.first_name + " " + item.last_name}
 
                                         </option>

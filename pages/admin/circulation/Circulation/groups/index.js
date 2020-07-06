@@ -79,8 +79,8 @@ const Groups = () => {
 
                 : ( <React.Fragment>
                     <div className="row vertical-modern-dashboard">
-                        <Members dataset={data.GetGroupsByName}/>
-                        <Responsable dataset={data.GetGroupsByName}/>
+                        <Members members={data.GetGroupsByName}/>
+                        <Responsable responsable={data.GetGroupsByName}/>
                     </div>
                     </React.Fragment>
                  )

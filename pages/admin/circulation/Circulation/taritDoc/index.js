@@ -29,9 +29,10 @@ const traitDoc = () => {
 
     //console.log(data.copies)
     if(data != null || data !== undefined){
-        console.log(data.copies)
+        console.log(data.GetCopyByCodeBar)
     }
     const onSearchHandler = (e) => {
+
         e.preventDefault();
         findCopy({
             variables: {
@@ -84,8 +85,8 @@ const traitDoc = () => {
                                         } Tbody={
                                             <tr>
                                                 <td>
-                                                    <a key={data.copies._id}>
-                                                        {data.copies.BareCode}
+                                                    <a key={data.GetCopyByCodeBar._id}>
+                                                        {data.GetCopyByCodeBar.BareCode}
                                                     </a>
                                                 </td>
                                                 <td ><span className="chip  teal-text" >960 DEP</span></td>
