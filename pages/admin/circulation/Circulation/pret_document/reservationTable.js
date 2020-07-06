@@ -30,10 +30,8 @@ const ReservationTable = (props) => {
                     <Button className="btn waves-effect waves-light blue darken-2 center" rounded={5}>
                         <i className="material-icons left">add</i>
                         Ajouter un Reservation
-
                     </Button>
                 </Link>
-
             </div>
         </div>
         <div>
@@ -82,8 +80,9 @@ const ReservationTable = (props) => {
                             <td>
                                 <span className="chip center whit black-text task display-block">
                                     <b>{
-                                        FullDate(reservation.date_init) // date reservaion
-                                    }</b>
+                                        reservation.date_init ? FullDate(reservation.date_init) : "-" // date reservaion
+                                        }
+                                    </b>
                                 </span>
                             </td>
                             <td>
@@ -99,7 +98,8 @@ const ReservationTable = (props) => {
 
                                 <span className="chip center teal white-text task display-block">
                                     <b>{
-                                        FullDate(reservation.date_prolongement)}
+                                        reservation.date_prolongement ? FullDate(reservation.date_prolongement) : "-"
+                                        }
                                     </b>
                                 </span>
                             </td>

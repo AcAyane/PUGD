@@ -30,15 +30,15 @@ const Profiles = (props) => {
                             </span>
                             <span className="chip chip white-text deep-purple darken-4 ">
                                 <span className="">Pret : </span>
-                                <span className="users-view-id">{Borrower && Borrower.bar_code}</span>
+                                <span className="users-view-id">{props && props.total_Pret}</span>
                             </span>
                             <span className="chip white-text light-blue darken-4">
                                 <span className="">Reservation : </span>
-                                <span className="users-view-id">{Borrower && Borrower.bar_code}</span>
+                                <span className="users-view-id">{props && props.total_reservation}</span>
                             </span>
                             <span className="chip white-text pink darken-1">
                                 <span className="">Retard : </span>
-                                <span className="users-view-id">{Borrower && Borrower.bar_code}</span>
+                                <span className="users-view-id">{props && props.total_retard}</span>
                             </span>
 
                         </div>

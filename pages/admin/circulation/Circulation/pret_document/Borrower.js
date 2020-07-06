@@ -66,7 +66,9 @@ const Borrower = () => {
                         <div className="row">
                             <Profiles Borrower={data
                             && data.GetBorrowerWithPretAndReservation.Borrower}
-                                      All_Pret={data && data.GetBorrowerWithPretAndReservation.All_Pret}
+                                      total_Pret={data && data.GetBorrowerWithPretAndReservation.All_Pret.length}
+                                      total_reservation={data && data.GetBorrowerWithPretAndReservation.All_Reservation.length}
+                                      total_retard={0}//{data && data.GetBorrowerWithPretAndReservation.total_retard.length}
                             />
                         </div>
                     </div>
