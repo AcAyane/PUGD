@@ -40,7 +40,7 @@ const traitDoc = () => {
         });
     }
     return <Circulation>
-        <CirculationHeader Title="Documents a treté"
+        <CirculationHeader Title="Documents a traité"
                            children={
                                <from>
                                    <span>Recherche des document par leur Code-barres</span>
