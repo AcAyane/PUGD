@@ -2,6 +2,7 @@ import React from 'react'
 import {FullDate, splitfunction} from "../../../../../shared/_herlpersCirculation/_helpers";
 import Button from "../../../../../components/ui/Button";
 import Link from 'next/link'
+import Checkbox from "../../../../../components/ui/Checkbox";
 
 
 const ReservationTable = (props) => {
@@ -38,19 +39,23 @@ const ReservationTable = (props) => {
             <table className="table table-bordered">
                 <thead>
                 <tr>
+                    <th scope="col">Confirmé</th>
                     <th scope="col">Name</th>
                     <th scope="col">COTE</th>
                     <th scope="col">Rank</th>
                     <th scope="col">Date Reservation</th>
                     <th scope="col">Date Retour</th>
                     <th scope="col">Date Validation</th>
-                    <th scope="col">Confirmé</th>
+
                 </tr>
                 </thead>
                 <tbody>
                 {reservations != null || reservations !== undefined ? reservations.map(reservation => {
                     return <React.Fragment>
                         <tr key={splitfunction(reservation.copy._id)}>
+                            <td>
+                                <Checkbox  className="center"/>
+                            </td>
                             <td>
                                 <div className="chip task display-bloc text-darken-1">
                                     <img
@@ -103,6 +108,7 @@ const ReservationTable = (props) => {
                                     </b>
                                 </span>
                             </td>
+
 
                             {/*<a
                         href="#"
